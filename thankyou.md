@@ -1,7 +1,6 @@
 ---
 layout: page
 permalink: /workshop2020/thankyou
-exclude: true
 ---
 
 # Thank you
