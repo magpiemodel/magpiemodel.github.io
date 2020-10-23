@@ -1,6 +1,6 @@
 ---
 layout: page
-permalink: /workshop2020/registration/
+permalink: /workshop2020/registration
 ---
 
 <style>

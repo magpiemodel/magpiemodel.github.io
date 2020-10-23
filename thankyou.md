@@ -1,6 +1,6 @@
 ---
 layout: page
-permalink: /workshop2020/thankyou/
+permalink: /workshop2020/thankyou
 exclude: true
 ---
 
