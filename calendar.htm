@@ -1,0 +1,81 @@
+---
+layout: page
+title:
+permalink: /calendar/
+---
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.css' rel='stylesheet' />
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.js'></script>
+
+
+<script>
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth',
+      initialDate: '2020-10-07',
+      headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+      },
+      navLinks: false, // can click day/week names to navigate views
+      editable: false,
+      selectable: false,
+      eventLimit: true, 
+      events: 'https://fullcalendar.io/demo-events.json',
+      //events: "../calendar-data/index.htm",
+      loading: function(bool) {
+        $('#loading').toggle(bool);
+      },
+      eventRender: function(event, el) {
+        // render the timezone offset below the event title
+        if (event.start.hasZone()) {
+          el.find('.fc-title').after(
+            $('<div class="tzo"/>').text(event.start.format('Z'))
+          );
+        }
+      }
+    });
+
+    calendar.render();
+  });
+
+  // load the list of available timezones, build the <select> options
+  $.getJSON('https://fullcalendar.io/demo-timezones.json', function(timezones) {
+    $.each(timezones, function(i, timezone) {
+      if (timezone != 'UTC') { // UTC is already in the list
+        $('#timezone-selector').append(
+          $("<option/>").text(timezone).attr('value', timezone)
+        );
+      }
+    });
+  });
+
+  // when the timezone selector changes, dynamically change the calendar option
+  $('#timezone-selector').on('change', function() {
+    $('#calendar').fullCalendar('option', 'timezone', this.value || false);
+  });
+
+</script>
+
+
+<div style="padding:0 0 15px 0;">
+    Timezone:
+    <select id='timezone-selector'>
+      <option value='' selected>none</option>
+      <option value='local'>local</option>
+      <option value='UTC'>UTC</option>
+    </select>
+</div>
+
+<div style='float:right'>
+  <span id='loading'>loading...</span>
+</div>
+
+<div id="calendar"></div>
+
+
