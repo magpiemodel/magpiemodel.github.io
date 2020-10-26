@@ -12,52 +12,52 @@ permalink: /calendar/
 <script>
 
   document.addEventListener('DOMContentLoaded', function() {
+    var initialTimeZone = 'local';
+    var timeZoneSelectorEl = document.getElementById('timezone-selector');
+    var loadingEl = document.getElementById('loading');
     var calendarEl = document.getElementById('calendar');
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
-      initialView: 'dayGridMonth',
-      initialDate: '2020-10-07',
+      timeZone: initialTimeZone,
+      initialView: 'listWeek',
+      initialDate: '2020-12-07',
       headerToolbar: {
         left: 'prev,next today',
         center: 'title',
-        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+        right: 'listWeek,dayGridMonth,timeGridWeek,timeGridDay'
       },
-      navLinks: false, // can click day/week names to navigate views
+      navLinks: true, // can click day/week names to navigate views
       editable: false,
-      selectable: false,
+      selectable: true,
       eventLimit: true, 
-      events: 'https://fullcalendar.io/demo-events.json',
-      //events: "../calendar-data/index.htm",
+      events: "../calendar-data/index.htm",
       loading: function(bool) {
-        $('#loading').toggle(bool);
-      },
-      eventRender: function(event, el) {
-        // render the timezone offset below the event title
-        if (event.start.hasZone()) {
-          el.find('.fc-title').after(
-            $('<div class="tzo"/>').text(event.start.format('Z'))
-          );
+        if (bool) {
+          loadingEl.style.display = 'inline'; // show
+        } else {
+          loadingEl.style.display = 'none'; // hide
         }
-      }
+      },
+      eventTimeFormat: { hour: 'numeric', minute: '2-digit', timeZoneName: 'short' },
     });
 
     calendar.render();
-  });
 
-  // load the list of available timezones, build the <select> options
-  $.getJSON('https://fullcalendar.io/demo-timezones.json', function(timezones) {
-    $.each(timezones, function(i, timezone) {
-      if (timezone != 'UTC') { // UTC is already in the list
-        $('#timezone-selector').append(
-          $("<option/>").text(timezone).attr('value', timezone)
-        );
-      }
+    // load the list of available timezones, build the <select> options
+    $.getJSON('https://fullcalendar.io/demo-timezones.json', function(timezones) {
+      $.each(timezones, function(i, timezone) {
+        if (timezone != 'UTC') { // UTC is already in the list
+          $('#timezone-selector').append(
+            $("<option/>").text(timezone).attr('value', timezone)
+          );
+        }
+      });
     });
-  });
 
   // when the timezone selector changes, dynamically change the calendar option
-  $('#timezone-selector').on('change', function() {
-    $('#calendar').fullCalendar('option', 'timezone', this.value || false);
+    timeZoneSelectorEl.addEventListener('change', function() {
+      calendar.setOption('timeZone', this.value);
+    });
   });
 
 </script>
@@ -66,7 +66,6 @@ permalink: /calendar/
 <div style="padding:0 0 15px 0;">
     Timezone:
     <select id='timezone-selector'>
-      <option value='' selected>none</option>
       <option value='local'>local</option>
       <option value='UTC'>UTC</option>
     </select>
