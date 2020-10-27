@@ -5,4 +5,8 @@ event_start:   "2020-12-07T10:00:00+01:00"
 event_end:     "2020-12-07T11:30:00+01:00"
 ---
 
-Participants are required to have MAgPIE properly installed to be able to interactively follow the different workshop exercises. This event offers help in case that participants are having problems to get MAgPIE running. 
+This event is optional and only relevant if you encountered problems performing the steps mentioned in the models [README.md] installation guidelines. 
+
+Participants are required to have MAgPIE properly installed to be able to interactively follow the different workshop exercises. A pool of helper will be available during the meeting to assist you installing MAgPIE on your system.
+
+[README.md]:https://github.com/magpiemodel/magpie/blob/master/README.md#how-to-install
