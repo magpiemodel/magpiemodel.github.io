@@ -18,7 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: MAgPIE workshop 2020
+title: MAgPIE training 2020
 email: magpie@pik-potsdam.de
 description: >- # this means to ignore newlines until "baseurl:"
   The MAgPIE introduction workshop will take place online in 5 sessions

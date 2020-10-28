@@ -1,8 +1,8 @@
 ---
 layout: page
 title:  "Event 0 - Installation help"
-event_start:   "2020-12-07T10:00:00+01:00"
-event_end:     "2020-12-07T11:30:00+01:00"
+event_start:   "2020-12-07T11:00:00+01:00"
+event_end:     "2020-12-07T12:30:00+01:00"
 ---
 
 This event is optional and only relevant if you encountered problems performing the steps mentioned in the models [README.md] installation guidelines. 

@@ -1,8 +1,8 @@
 ---
 layout: page
 title:  "Event 3 - Modifying the model"
-event_start:   "2020-12-10T10:00:00+01:00"
-event_end:     "2020-12-10T12:00:00+01:00"
+event_start:   "2020-12-10T11:00:00+01:00"
+event_end:     "2020-12-10T13:00:00+01:00"
 ---
 
 This session focusses on what to do if the available options are not sufficient and you have to go beyond what has already been implemented. You will learn how you can change the GAMS code as well as how to change model inputs.
