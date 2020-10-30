@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  "PreEvent - What is MAgPIE"
+title:  "PreEvent - What is MAgPIE?"
 event_start:   "2020-11-30T11:00:00+01:00"
 event_end:     "2020-11-30T12:00:00+01:00"
 ---
