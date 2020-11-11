@@ -5,7 +5,7 @@ event_start:   "2020-12-08T11:00:00+01:00"
 event_end:     "2020-12-08T12:30:00+01:00"
 ---
 
-In this event you will learn the basics: how MAgPIE is managed in git and how you run MAgPIE with default settings.
+In this event you will learn the basics: How MAgPIE is managed in git and how you run MAgPIE with default settings.
 
 10min | Welcome & Agenda | [Jan Philipp Dietrich]
 40min | [Git workflow] | [Marcos Alves]
