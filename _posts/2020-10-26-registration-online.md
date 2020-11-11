@@ -24,52 +24,9 @@ categories: workshop2020
 </style>
 
 
-The registration for the MAgPIE 2020 training workshop **Dec 7<sup>th</sup> to Dec 11<sup>th</sup>** is now online! In case you want to join, please submit your registration as early as possible, latest **Nov 22<sup>nd</sup>**. The event is free of charge but **registration is required** to allow us to plan the event accordingly.
+~~The registration for the MAgPIE 2020 training workshop **Dec 7<sup>th</sup> to Dec 11<sup>th</sup>** is now online! In case you want to join, please submit your registration as early as possible, latest **Nov 22<sup>nd</sup>**~~. The event is free of charge but **registration is required** to allow us to plan the event accordingly.
 
 Please be prepared that it may take a few days before you get your registration confirmed via mail. Please contact us via <magpie@pik-potsdam.de> in case you do not receive a confirmation mail within 1 week after registration. 
 
+**Due to higher than expected number of registrations we had to close the registration a few days earlier.** If you were not able to register before the registration closed we can invite you to take our tutorials [online](https://github.com/magpiemodel/tutorials) or wait for our upcoming workshop next year.
 
-<form class="form" accept-charset="UTF-8" action="https://rse.pik-potsdam.de/magpie/registration/2020.php" method="POST" enctype="multipart/form-data">
-
-  <div class="form-group">
-    <label>Name<sup>*</sup></label>
-    <select name="title">
-       <option></option>
-       <option>Ms</option>
-       <option>Mr</option>
-       <option>Dr</option>
-       <option>Prof</option>
-    </select>
-    <input class="input" type="text" name="first_name" placeholder="First Name" required>
-    <input class="input" type="text" name="last_name" placeholder="Last Name" required>
-  </div>
-  <div class="form-group">
-    <label>Email address<sup>*</sup></label>
-    <input class="input" type="email" name="email" placeholder="E-Mail" required>
-  </div>
-  <div class="form-group">
-    <label>Affiliation<sup>*</sup></label>
-    <input class="input" type="text" name="affiliation" placeholder="Affiliation" required>
-  </div>
-  <div class="form-group">
-    <label>City</label>
-    <input class="input" type="text" name="city" placeholder="City" required>
-  </div>
-  <div class="form-group">
-    <label>Country</label>
-    <input class="input" type="text" name="country" placeholder="Country" required>
-  </div>
-
-  <div class="privacy">
-  <div> Privacy policy statement </div>
-  By registering you give us consent to store your contact information and to use it to get in contact with you.
-  We keep this information (participation details) until one month after the workshop. Upon request your data can be removed earlier.
-  You have the right to access your data anytime by contacting us.
-  </div>
-  <div class="form-group">
-    <input type="checkbox" name="dataprotectionpolicy" required>
-    <label>I agree to the privacy policy</label>
-  </div>
-
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
