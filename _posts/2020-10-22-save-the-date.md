@@ -13,7 +13,7 @@ As last year the workshop will be based on the [MAgPIE tutorials] available onli
 
 To slightly counterbalance the downsides coming with the restrictions in this exceptional year we decided to cover the costs of this year’s event and make it **free of charge** for all participants (registration will still be required)!
 
-For further updates, you can subscribe our MAgPIE mailing list  <magpie@listserv.dfn.de> by sending an e mail with the subject **subscribe magpie \<First Name\> \<Last Name\>** to <sympa@listserv.dfn.de>.
+For further updates, you can subscribe to our MAgPIE mailing list  <magpie@listserv.dfn.de> by sending an email with the subject **subscribe magpie \<First Name\> \<Last Name\>** to <sympa@listserv.dfn.de>.
 
 
 [PIK]: https://pik-potsdam.de
