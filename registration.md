@@ -1,6 +1,5 @@
 ---
 layout: post
-author: Jan Philipp Dietrich
 permalink: /workshop2020/r3g1st3r
 ---
 
