@@ -9,7 +9,7 @@ The last part of the workshop will focus on the data preparation for model appli
 
 5min | Welcome back | [Jan Philipp Dietrich]
 60min | [introduction] in data processing with [madrat] | [David Chen]
-55min | [madrat] [exercise] with [mytutorial] | [David Chen]
+55min | [madrat] [exercise] with [mrtutorial] | [David Chen]
 
 
 [Jan Philipp Dietrich]:https://www.pik-potsdam.de/members/dietrich
@@ -17,8 +17,8 @@ The last part of the workshop will focus on the data preparation for model appli
 [David Chen]: https://www.pik-potsdam.de/members/davidch
 
 [madrat]:https://github.com/pik-piam/madrat
-[introduction]:https://github.com/magpiemodel/tutorials/blob/master/madrat/MAgPIE_madrat_tutorial.pdf
+[introduction]:https://github.com/magpiemodel/tutorials/blob/master/madrat/MAgPIE_madrat_tutorial_2020.pdf
 [exercise]:https://github.com/magpiemodel/tutorials/blob/master/madrat/madrat_exercise.md
-[mytutorial]:https://github.com/pik-piam/mrtutorial/
+[mrtutorial]:https://github.com/pik-piam/mrtutorial/
 
 
