@@ -1,8 +1,7 @@
 ---
 layout: page
-permalink: /workshop2020/thankyou
+permalink: /magpie22/thankyou
 ---
 
 
-**Thank you for your feedback!** 
-
+**Thank you!** 
