@@ -1,8 +1,8 @@
 ---
 layout: page
 title:  "PreEvent - What is MAgPIE?"
-event_start:   "2020-11-30T11:00:00+01:00"
-event_end:     "2020-11-30T12:00:00+01:00"
+event_start:   "2022-03-04T11:00:00+01:00"
+event_end:     "2022-03-04T12:00:00+01:00"
 ---
 
 At this pre-event, we will give a short overview about what the [MAgPIE] framework is, how it looks like, and what it is used for. Besides that, we will share some further information about the upcoming workshop, in particular, we will ask participants to have MAgPIE installed prior to it.
@@ -10,6 +10,7 @@ At this pre-event, we will give a short overview about what the [MAgPIE] framewo
 10min | Pre workshop information | [Jan Philipp Dietrich]
 50min | [What is MAgPIE?] | [Jan Philipp Dietrich]
 
+[back to overview](../../magpie22/timetable)
 
 [Jan Philipp Dietrich]:https://www.pik-potsdam.de/members/dietrich
 [MAgPIE]:https://github.com/magpiemodel/magpie
