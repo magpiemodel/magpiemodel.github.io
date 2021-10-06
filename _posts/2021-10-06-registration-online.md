@@ -5,7 +5,7 @@ date:   2021-11-01 10:00:00 +0200
 author: Jan Philipp Dietrich
 mail: dietrich@pik-potsdam.de
 categories: magpie22
-published: true
+published: false
 ---
 
 The registration for the MAgPIE22 workshop & stories event (**Mar 4<sup>th</sup> to Mar 16<sup>th</sup>**) is now [online](../../../registration/register.html)! In case you want to join, please submit your registration as early as possible as experience from our last event showed that available slots fill quickly. The event is free of charge but **registration is required** and seats are limited.
