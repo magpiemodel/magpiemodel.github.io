@@ -1,6 +1,6 @@
 ---
 layout: post
-permalink: /magpie22/registration/register
+permalink: /magpie22/submission/submit
 ---
 
 <style>
@@ -23,14 +23,14 @@ permalink: /magpie22/registration/register
  }
 </style>
 
-Welcome to the MAgPIE22 workshop & stories registration page. Please enter your details and specify which sessions you intent to join. As workshop slots will be more limited than stories slots we would like to encourage you only to select the workshop sessions if you really intent to join them.
+Welcome to the MAgPIE22 stories submission page. Please enter your details and shortly describe your proposed contribution to the stories event.
 
-Please be prepared that it may take a few days before you get your registration confirmed via mail. Please contact us via <magpie@pik-potsdam.de> in case you do not receive a confirmation mail within 2 weeks after registration.
+Acceptance notifications are planned to be send no later than 31st of January 2022. Please contact us via <magpie@pik-potsdam.de> if you have not heard back from us till then or have questions about the procedure.
 
-<form class="form" accept-charset="UTF-8" action="https://rse.pik-potsdam.de/magpie/registration/2022.php" method="POST" enctype="multipart/form-data">
+<form class="form" accept-charset="UTF-8" action="https://rse.pik-potsdam.de/magpie/registration/2022contribution.php" method="POST" enctype="multipart/form-data">
 
   <div class="form-group">
-    <label>Name<sup>*</sup></label>
+    <label>Presenter Name<sup>*</sup></label>
     <select name="title">
        <option></option>
        <option>Ms</option>
@@ -59,18 +59,13 @@ Please be prepared that it may take a few days before you get your registration 
   </div>
 
   <div class="form-group">
-    <div class="form-group">
-      <label>Which sessions to you plan to attend?</label>
-    </div>
-    <input type="checkbox" name="participate_workshop">
-    <label>MAgPIE introduction workshop</label>
-    <input type="checkbox" name="participate_stories">
-    <label>MAgPIE stories</label>
+    <label>Short description of contribution (max 1000 characters)</label>
+    <textarea name="abstract" rows="10" cols="71" maxlength="1000"></textarea>
   </div>
 
   <div class="privacy">
   <div> Privacy policy statement </div>
-  By registering you give us consent to store your contact information and to use it to get in contact with you.
+  By submission you give us consent to store your provided information and to use it to get in contact with you.
   We keep this information (participation details) until one month after the workshop. Upon request your data can be removed earlier.
   You have the right to access your data anytime by contacting us.
   </div>
