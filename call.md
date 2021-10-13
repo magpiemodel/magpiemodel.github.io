@@ -1,9 +1,9 @@
 ---
 layout: page
+title: Call for Contributions
 permalink: /magpie22/stories/call
 ---
 
-## Call for Contributions
 #### submission deadline: 15.01.2022
 
 Since the first open-source release of [MAgPIE] in 2019 the community around the model has started to grow. To foster the community aspect and to create a space for productive exchange we decided to extend our next virtual **MAgPIE workshop** in **March 2022** by **MAgPIE stories**, an event dedicated to sharing specific experiences of using [MAgPIE]. The aim is to give room for everyone to share their [MAgPIE]-related research and to allow the community to get an overview about the various currently ongoing activities.
