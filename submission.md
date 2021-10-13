@@ -1,6 +1,6 @@
 ---
 layout: post
-permalink: /magpie22/submission/submit
+permalink: /magpie22/stories/submit
 ---
 
 <style>
@@ -23,7 +23,7 @@ permalink: /magpie22/submission/submit
  }
 </style>
 
-Welcome to the MAgPIE22 stories submission page. Please enter your details and shortly describe your proposed contribution to the stories event.
+Welcome to the MAgPIE22 stories submission page. Please enter your details and shortly describe your proposed contribution to the stories event. For more information please check the [MAgPIE22 stories call for contributions](call).
 
 Acceptance notifications are planned to be send no later than 31st of January 2022. Please contact us via <magpie@pik-potsdam.de> if you have not heard back from us till then or have questions about the procedure.
 

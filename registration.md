@@ -1,6 +1,6 @@
 ---
 layout: post
-permalink: /magpie22/registration/register
+permalink: /magpie22/register
 ---
 
 <style>
