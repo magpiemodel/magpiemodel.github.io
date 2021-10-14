@@ -1,5 +1,6 @@
 ---
-layout: post
+layout: page
+title: Register
 permalink: /magpie22/register
 ---
 

@@ -1,5 +1,6 @@
 ---
-layout: post
+layout: page
+title: Timetable
 permalink: /magpie22/timetable
 ---
 
@@ -40,9 +41,7 @@ permalink: /magpie22/timetable
 
 </script>
 
-## MAgPIE22 timetable
-
-The preliminary workshop schedule is now available. Please be aware that while the overall dates have been settled, the composition and timing of sessions might be still subject to change. Please do not forget to [register] in case you want to attend the workshop.
+The **preliminary** workshop schedule is now available. Please be aware that while the overall dates have been settled, the composition and timing of sessions might be still subject to change. Please do not forget to [register] in case you want to attend the workshop.
 
 <div style="padding:0 0 15px 0;">
     Timezone:
@@ -55,4 +54,4 @@ The preliminary workshop schedule is now available. Please be aware that while t
 
 <div id="calendar"></div>
 
-[register]:registration/register
+[register]:register

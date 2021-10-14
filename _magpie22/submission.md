@@ -31,7 +31,7 @@ Acceptance notifications are planned to be send no later than 31st of January 20
 
   <div class="form-group">
     <label>Presenter Name<sup>*</sup></label>
-    <select name="title">
+    <select name="presenter_title">
        <option></option>
        <option>Ms</option>
        <option>Mr</option>
@@ -59,15 +59,18 @@ Acceptance notifications are planned to be send no later than 31st of January 20
   </div>
 
   <div class="form-group">
+    <label>Contribution Title</label>
+    <input class="input" type="text" name="contribution_title" placeholder="Title" required>
+  </div>
+
+  <div class="form-group">
     <label>Short description of contribution (max 1000 characters)</label>
     <textarea name="abstract" rows="10" cols="71" maxlength="1000"></textarea>
   </div>
 
   <div class="privacy">
   <div> Privacy policy statement </div>
-  By submission you give us consent to store your provided information and to use it to get in contact with you.
-  We keep this information (participation details) until one month after the workshop. Upon request your data can be removed earlier.
-  You have the right to access your data anytime by contacting us.
+  By submission you give us consent to store your provided information and to use it for getting in contact with you and for promotion of your presentation (e.g. on the conference program). All unpublished information will be kept until one month after the event. You have the right to access your data and/or request its removal anytime by contacting us.
   </div>
   <div class="form-group">
     <input type="checkbox" name="dataprotectionpolicy" required>

@@ -39,7 +39,12 @@ collections:
     title: Events
 
 header_pages:
+  - _magpie22/call.md
+  - _magpie22/registration.md
+  - _magpie22/timetable.md
   - about.md
+
+include: ['_magpie22']
 
 # Exclude from processing.
 # The following items will not be processed, by default.
