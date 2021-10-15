@@ -1,24 +1,24 @@
 ---
 layout: tutorial
 title:  "Use GitHub to work with MAgPIE"
-date:   2020-11-08 11:00:00 +0200
+date:   2020-11-08
 author: Kristine Karstens
-mail: dietrich@pik-potsdam.de
+level: 0
+prevChapter:
+nextChapter: startrun
+requirements:
+  - Git installed
+toLearn:
+  - Fork and update MAgPIE from/with upstream repository.
+  - Understand the basic workflow including pull requests and branches.
+  - Have heard some very basic git commands and know where to find more
+    help.
+lessonsLearned:
+  - You know the basic git commands to use with MAgPIE
 permalink: /tutorial/git
 categories: tutorial
 published: true
 ---
-
-
-[Overview ](.) \| [next tutorial: Start Run >](startrun)
-
-  - [1 Introduction](#introduction)
-      - [Learning objectives](#learning-objectives)
-  - [2 GitHub workflow for
-    magpiemodel](#github-workflow-for-magpiemodel)
-  - [3 Zoo of branches](#zoo-of-branches)
-  - [4 Start to commit yourself](#start-to-commit-yourself)
-  - [5 References to learn more](#references-to-learn-more)
 
 # 1 Introduction
 
