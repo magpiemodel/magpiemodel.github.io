@@ -1,0 +1,63 @@
+---
+layout: post
+---
+
+<p>{% if page.prevChapter %}<a href="{{ page.prevChapter }}">&lt; prev</a> {% endif %}
+| <a href=".">overview </a> |
+{% if page.nextChapter %} <a href="{{ page.nextChapter }}">next &gt;</a>{% endif %}</p>
+
+<hr />
+<blockquote>
+  <p><strong>Level:</strong> <span style="font-size:larger">
+{% if page.level == 0 %}
+  ⚪⚪⚪⚪⚪</span> <span style="color:green">Beginner
+{% elsif page.level == 1 %}
+  ⚫⚪⚪⚪⚪</span> <span style="color:green">Beginner
+{% elsif page.level == 2 %}
+  ⚫⚫⚪⚪⚪</span> <span style="color:orange">Advanced
+{% elsif page.level == 3 %}
+  ⚫⚫⚫⚪⚪</span> <span style="color:orange">Advanced
+{% elsif page.level == 4 %}
+  ⚫⚫⚫⚫⚪</span> <span style="color:red">Expert
+{% elsif page.level == 5 %}
+  ⚫⚫⚫⚫⚫</span> <span style="color:red">Expert
+{% endif %} </span></p>
+  <p><strong>Requirements</strong></p>
+  <ul>
+  {% for req in page.requirements %}
+    <li>{{ req }}</li>
+    {% endfor %}
+  </ul>
+
+  <p><strong>What will be learned:</strong></p>
+  <ul>
+  {% for lesson in page.toLearn %}
+    <li>{{ lesson }}</li>
+  {% endfor %}
+  </ul>
+
+  <p><strong>Overview</strong></p>
+{% include toc.html html=content %}
+</blockquote>
+<hr />
+
+<br />
+
+{{ content }}
+
+<br />
+
+<hr />
+<blockquote>
+  <h1>Lessons learned</h1>
+  <ol>
+    {% for lesson in page.lessonsLearned %}
+      <li>{{ lesson }}</li>
+    {% endfor %}
+  </ol>
+  <hr />
+</blockquote>
+
+<p>{% if page.prevChapter %}<a href="{{ page.prevChapter }}">&lt; prev</a> {% endif %}
+| <a href=".">overview </a> |
+{% if page.nextChapter %} <a href="{{ page.nextChapter }}">next &gt;</a>{% endif %}</p>

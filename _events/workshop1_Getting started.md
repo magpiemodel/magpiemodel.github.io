@@ -17,5 +17,5 @@ In this event you will learn the basics: How MAgPIE is managed in git and how yo
 [Marcos Alves]:https://www.pik-potsdam.de/members/pedrosa
 [Edna Molina Bacca]:https://www.pik-potsdam.de/members/mbacca
 
-[Git workflow]:https://github.com/magpiemodel/tutorials/blob/master/0_GitGithub_Workflow.md
+[Git workflow]:../../tutorial/git
 [Starting MAgPIE with default settings]:https://github.com/magpiemodel/tutorials/blob/master/2_RunDefaultSettings.md

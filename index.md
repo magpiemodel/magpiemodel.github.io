@@ -3,7 +3,7 @@
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
 layout: home
-title: MAgPIE22 is coming | March 2022
+title: MAgPIE22 | March 2022
 list_title: News
 ---
 

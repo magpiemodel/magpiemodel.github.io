@@ -27,6 +27,8 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  magpiemodel
 
+markdown: kramdown
+
 # Build settings
 theme: minima
 plugins:
@@ -44,7 +46,9 @@ header_pages:
   - _magpie22/timetable.md
   - about.md
 
-include: ['_magpie22']
+include:
+  - _magpie22
+  - _tutorial
 
 # Exclude from processing.
 # The following items will not be processed, by default.
