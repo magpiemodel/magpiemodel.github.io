@@ -1,63 +1,87 @@
 ---
-layout: post
+layout: default
 ---
+<article class="post h-entry" itemscope itemtype="http://schema.org/TechArticle">
 
-<p>{% if page.prevChapter %}<a href="{{ page.prevChapter }}">&lt; prev</a> {% endif %}
-| <a href=".">overview </a> |
-{% if page.nextChapter %} <a href="{{ page.nextChapter }}">next &gt;</a>{% endif %}</p>
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="dateLastUpdated">
+        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+        {{ page.lastUpdated | date: date_format }}
+      </time>
+      {%- if page.author -%}
+        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ page.author }}</span></span>
+      {%- endif -%}</p>
+  </header>
 
-<hr />
-<blockquote>
-  <p><strong>Level:</strong> <span style="font-size:larger">
-{% if page.level == 0 %}
-  ⚪⚪⚪⚪⚪</span> <span style="color:green">Beginner
-{% elsif page.level == 1 %}
-  ⚫⚪⚪⚪⚪</span> <span style="color:green">Beginner
-{% elsif page.level == 2 %}
-  ⚫⚫⚪⚪⚪</span> <span style="color:orange">Advanced
-{% elsif page.level == 3 %}
-  ⚫⚫⚫⚪⚪</span> <span style="color:orange">Advanced
-{% elsif page.level == 4 %}
-  ⚫⚫⚫⚫⚪</span> <span style="color:red">Expert
-{% elsif page.level == 5 %}
-  ⚫⚫⚫⚫⚫</span> <span style="color:red">Expert
-{% endif %} </span></p>
-  <p><strong>Requirements</strong></p>
-  <ul>
-  {% for req in page.requirements %}
-    <li>{{ req }}</li>
-    {% endfor %}
-  </ul>
+  <div class="post-content e-content" itemprop="articleBody">
 
-  <p><strong>What will be learned:</strong></p>
-  <ul>
-  {% for lesson in page.toLearn %}
-    <li>{{ lesson }}</li>
-  {% endfor %}
-  </ul>
+    <p>{% if page.previous.url %}<a href="{{page.previous.url}}">&lt; {{page.previous.title}}</a> {% endif %}
+    | <a href=".">Overview</a> |
+    {% if page.next.url %} <a href="{{page.next.url}}">{{page.next.title}} &gt;</a>{% endif %}</p>
 
-  <p><strong>Overview</strong></p>
-{% include toc.html html=content %}
-</blockquote>
-<hr />
+    <hr />
+    <blockquote>
+      <p><strong>Level:</strong>
+    {% if page.level == 0 %}
+      ⚪⚪⚪⚪⚪ <span style="color:green">Beginner
+    {% elsif page.level == 1 %}
+      ⚫⚪⚪⚪⚪ <span style="color:green">Beginner
+    {% elsif page.level == 2 %}
+      ⚫⚫⚪⚪⚪ <span style="color:orange">Advanced
+    {% elsif page.level == 3 %}
+      ⚫⚫⚫⚪⚪ <span style="color:orange">Advanced
+    {% elsif page.level == 4 %}
+      ⚫⚫⚫⚫⚪ <span style="color:red">Expert
+    {% elsif page.level == 5 %}
+      ⚫⚫⚫⚫⚫ <span style="color:red">Expert
+    {% endif %} </span></p>
+      <p><strong>Requirements</strong></p>
+      <ul>
+      {% for req in page.requirements %}
+        <li>{{ req }}</li>
+        {% endfor %}
+      </ul>
 
-<br />
+      <p><strong>Content</strong></p>
+      <ul>
+      {% for lesson in page.lessonsContent %}
+        <li>{{ lesson }}</li>
+      {% endfor %}
+      </ul>
 
-{{ content }}
+      <p><strong>Overview</strong></p>
+    {% include toc.html html=content %}
+    </blockquote>
+    <hr />
 
-<br />
+    <br />
 
-<hr />
-<blockquote>
-  <h1>Lessons learned</h1>
-  <ol>
-    {% for lesson in page.lessonsLearned %}
-      <li>{{ lesson }}</li>
-    {% endfor %}
-  </ol>
-  <hr />
-</blockquote>
+    {{ content }}
 
-<p>{% if page.prevChapter %}<a href="{{ page.prevChapter }}">&lt; prev</a> {% endif %}
-| <a href=".">overview </a> |
-{% if page.nextChapter %} <a href="{{ page.nextChapter }}">next &gt;</a>{% endif %}</p>
+    <br />
+
+    <hr />
+    <blockquote>
+      <h1>Lessons learned</h1>
+      <ol>
+        {% for lesson in page.lessonsLearned %}
+          <li>{{ lesson }}</li>
+        {% endfor %}
+      </ol>
+      <hr />
+    </blockquote>
+
+    <p>{% if page.previous.url %}<a href="{{page.previous.url}}">&lt; {{page.previous.title}}</a> {% endif %}
+    | <a href=".">Overview</a> |
+    {% if page.next.url %} <a href="{{page.next.url}}">{{page.next.title}} &gt;</a>{% endif %}</p>
+
+  </div>
+
+{%- if site.disqus.shortname -%}
+{%- include disqus_comments.html -%}
+{%- endif -%}
+
+<a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+</article>

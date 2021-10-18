@@ -1,15 +1,13 @@
 ---
 layout: tutorial
-title:  "Start MAgPIE with default settings"
-date:   2020-11-20
+title:  Starting a run
+lastUpdated:   2020-11-20
 author: Edna J. Molina Bacca, Kristine Karstens
 level: 1
-prevChapter: git
-nextChapter:
 requirements:
   - GAMS & R installed
   - MAgPIE model installed
-toLearn:
+lessonsContent:
   - starting MAgPIE with default settings
   - understanding the stages of model execution
   - initial troubleshooting steps in case of an error
@@ -19,7 +17,6 @@ lessonsLearned:
   - You had a look into on the terminal output and the full.lst
   - (Maybe) you solved some first issues
   - You cancelled a MAgPIE run
-permalink: /tutorial/startrun
 published: true
 ---
 

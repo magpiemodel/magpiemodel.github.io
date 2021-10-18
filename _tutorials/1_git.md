@@ -1,21 +1,18 @@
 ---
 layout: tutorial
-title:  "Use GitHub to work with MAgPIE"
-date:   2020-11-08
+title:  The GitHub repository
+lastUpdated:   2020-11-08
 author: Kristine Karstens
 level: 0
-prevChapter:
-nextChapter: startrun
 requirements:
   - Git installed
-toLearn:
+lessonsContent:
   - Fork and update MAgPIE from/with upstream repository.
   - Understand the basic workflow including pull requests and branches.
   - Have heard some very basic git commands and know where to find more
     help.
 lessonsLearned:
   - You know the basic git commands to use with MAgPIE
-permalink: /tutorial/git
 categories: tutorial
 published: true
 ---

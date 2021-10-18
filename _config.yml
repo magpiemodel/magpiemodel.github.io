@@ -39,6 +39,11 @@ collections:
     output: true
     permalink: /events/:path/
     title: Events
+  tutorials:
+    output: true
+    permalink: /:collection/:name
+    title: Tutorials
+    sort_by: lesson
 
 header_pages:
   - _magpie22/call.md
@@ -48,7 +53,6 @@ header_pages:
 
 include:
   - _magpie22
-  - _tutorial
 
 # Exclude from processing.
 # The following items will not be processed, by default.
