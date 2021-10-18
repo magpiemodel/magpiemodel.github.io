@@ -4,7 +4,7 @@
 
 layout: page
 title: Tutorials
-permalink: tutorials
+permalink: /tutorials/
 ---
 
 {% for tutorial in site.tutorials %}
