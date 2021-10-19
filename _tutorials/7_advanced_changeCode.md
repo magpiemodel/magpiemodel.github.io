@@ -1,14 +1,26 @@
-Advanced: Change MAgPIE GAMS Code
-================
-Florian Humpenöder (<humpenoeder@pik-potsdam.de>)
-10 December, 2020
+---
+layout: tutorial
+title:  Modify model code
+lastUpdated:   2020-12-10
+author: Florian Humpenöder
+level: 4
+requirements:
+  - Requirement A
+  - Requirement B
+lessonsContent:
+  - Changing the MAgPIE GAMS code
+  - adding In-Code documentation
+  - adding a new module realization
+  - integrate new realization
+lessonsLearned:
+  - lesson A
+  - lesson B
+  - (Maybe) lesson C
+  - lesson D
+published: true
+---
 
-  - [1 Introduction](#introduction)
-  - [2 Learning objectives](#learning-objectives)
-  - [3 Adding a new realization](#adding-a-new-realization)
-  - [4 Testing a new realization](#testing-a-new-realization)
-
-### 1 Introduction
+## Introduction
 
 MAgPIE has a modular concept. Each module (e.g. `pasture`) can have
 several realizations (e.g. `dynamic` and `static`). The purpose of these
@@ -21,8 +33,6 @@ behavior can be compared between the two realizations. Eventually, the
 new realization might become the new default at some point and the old
 realization is deleted.
 
-### 2 Learning objectives
-
 This tutorial shows how to add a new realization to a module in the
 MAgPIE model. To illustrate the different steps, we will expand the
 `urban` land module. In the current MAgPIE master, the `urban` land
@@ -30,12 +40,12 @@ module has only a `static` realization. In this tutorial, we will add a
 `dynamic` realization, which changes urban land based on population
 growth.
 
-### 3 Adding a new realization
+## Adding a new realization
 
 We want to add a new realization to the `urban` land module. The `urban`
 land module is located here: `modules/34_urban`.
 
-#### Add a new realization by duplicating an existing one
+### Add a new realization by duplicating an existing one
 
 Duplicate the `static` folder and rename it to `dynamic`. Now we need to
 add and edit files in the `dynamic` folder. Add the following files by
@@ -44,7 +54,7 @@ and `preloop.gms`. Open each new file and delete the copied code from
 `presolve.gms`, but keep the copyright header. Now add the following
 content to these files, and modify `presolve.gms` and `realization.gms`.
 
-##### declarations.gms
+#### declarations.gms
 
 ``` r
 equations
@@ -56,15 +66,15 @@ parameters
 ;
 ```
 
-##### equations.gms
+#### equations.gms
 
 ``` r
 q34_urban(j2)..
- vm_land(j2,"urban") =e= 
+ vm_land(j2,"urban") =e=
  pcm_land(j2,"urban") * (1 + sum((ct,cell(i2,j2)), p34_pop_growth(ct,i2)) * m_timestep_length);
 ```
 
-##### preloop.gms
+#### preloop.gms
 
 ``` r
 loop(t_all$(ord(t_all) > 1),
@@ -72,14 +82,14 @@ loop(t_all$(ord(t_all) > 1),
 );
 ```
 
-##### presolve.gms
+#### presolve.gms
 
 ``` r
 *vm_land.fx(j,"urban") = pcm_land(j,"urban");
 vm_carbon_stock.fx(j,"urban",c_pools) = 0;
 ```
 
-##### realization.gms
+#### realization.gms
 
 ``` r
 *' @description In the dynamic realization, urban land expands based on population growth.
@@ -93,7 +103,7 @@ Hint: I saved these changes in the `urban` land module in a feature
 branch. Your code should agree with the code in `f_urban`:
 <https://github.com/flohump/magpie/tree/f_urban/modules/34_urban/dynamic>
 
-#### Update the code
+### Update the code
 
 To include the new realization `dynamic` properly into the GAMS code we
 run a specific R command in the main folder. First navigate in your
@@ -121,9 +131,9 @@ instructions, which will add a `not_used.txt` file.
 
 Now you can quit the R session with `q()`.
 
-### 4 Testing a new realization
+## Testing a new realization
 
-#### Start a model run
+### Start a model run
 
 For a quick GAMS test, we simply set the new realization in the file
 `main.gms` in line 256 (replace `static` by `dynamic`). We can then
@@ -160,7 +170,7 @@ We could now start a model run with `Rscript start.R -> 1: default -> 1:
 Direct execution`. Or, even better write a start script without changing
 `config/default.cfg`.
 
-#### Check the results
+### Check the results
 
 Start a new R session in the MAgPIE main folder, and execute these
 commands.

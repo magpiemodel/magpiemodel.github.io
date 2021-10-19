@@ -1,18 +1,23 @@
-Look at the GAMS code and its structure
-================
-Kristine Karstens (<karstens@pik-potsdam.de>), Felicitas Beier
-(<beier@pik-potsdam.de>), Abhijeet Mishra (<mishra@pik-potsdam.de>)
-02 November, 2020
-
-  - [Preface: Structure of the MAgPIE
-    Model](#preface-structure-of-the-magpie-model)
-  - [1. Introduction](#introduction)
-      - [Learning objectives](#learning-objectives)
-  - [2. Structure of a module](#structure-of-a-module)
-      - [Structure within each
-        realization](#structure-within-each-realization)
-      - [2.3 Coding etiquette variable and parameter
-        naming](#coding-etiquette-variable-and-parameter-naming)
+---
+layout: tutorial
+title:  GAMS code structure
+lastUpdated:   2020-11-02
+author: Kristine Karstens, Felicitas Beier, Abhijeet Mishra
+level: 2
+requirements:
+  - Requirement A
+  - Requirement B
+lessonsContent:
+  - content A
+  - content B
+  - content C
+lessonsLearned:
+  - lesson A
+  - lesson B
+  - (Maybe) lesson C
+  - lesson D
+published: true
+---
 
 ## Preface: Structure of the MAgPIE Model
 
@@ -20,13 +25,13 @@ MAgPIE (Model for Agricultural Production and its Impacts on the
 Environment) is a modular open source framework for modeling global
 land-systems. Before looking into the code structure, we want you to
 understand the basic dependencies of what we call ‘modules’. The full
-interdependence and more detailed information can be found in our model
-documentation: <https://rse.pik-potsdam.de/doc/magpie/>
+interdependence and more detailed information can be found in our
+[model documentation](https://rse.pik-potsdam.de/doc/magpie/4.3.5)
 
 Here we want to shortly draw your attention on the ‘main lines’ of
 module interdependence.
 
-<img src="figures/magpie_model.gif" width="100%" style="display: block; margin: auto;" />
+![Model overview](../assets/img/magpie_model.gif)
 
   - The future projections of population and GDP for given scenario
     assumptions represent the main drivers of the model.
@@ -41,10 +46,10 @@ module interdependence.
   - Associated costs are feeding into the goal function of the cost
     module at the core of the model.
   - Around this ‘main line’ of agricultural production modules are build
-      - assessing impacts and policy interactions (upper part)  
+      - assessing impacts and policy interactions (upper part)
       - adding more detail to the production chain (lower part).
 
-## 1\. Introduction
+## Introduction
 
 The inner core of the MAgPIE model is written in GAMS. For the execution
 of the code, all parts of the code have to be put into a single file,
@@ -66,36 +71,26 @@ GAMS code. After completion of this exercise, you will be able to:
 3.  Understand the basic rules of variable or parameter naming
     conventions and their meanings.
 
-## 2\. Structure of a module
+##  Structure of a module
 
 When you open the `modules` folder you will see a long list of all
 module and the `include.gms` (ensuring inclusion of all modules into the
 `full.gms`). Looking inside a module folder, every module is built
 following the same structure:
 
-<div class="figure" style="text-align: center">
-
-<img src="figures/module_struc.png" alt="structure of any module" width="30%" />
-
-<p class="caption">
-
-structure of any module
-
-</p>
-
-</div>
+![structure of any module](../assets/img/module_struc.png)
 
 The module structure contains
 
   - input folder with overarching input files for all realizations
   - realization folders containing the source code of each realization
-  - \[module\_name\].gms file with module description and listing of all
+  - `[module_name].gms` file with module description and listing of all
     realizations
-  - several \[realization\_name\].gms files with realization description
+  - several `[realization_name].gms` files with realization description
     and linking to the specific source code
 
 New realizations can be added by keeping that structure (more in
-`7_advanced_changeCode.Rmd`). In that sense MAgPIE is easily extendable.
+[this tutorial](7-advanced-changecode)). In that sense MAgPIE is easily extendable.
 
 ### Structure within each realization
 
@@ -119,7 +114,7 @@ Note that not every gms-files is needed in every realization.
 | nl\_release.gms  | Releases restrictions to linear behavior again.                                                                                      |
 | not\_used.txt    | Lists interfaces (declared in other modules) that are not used within this realization, but in other realizations of the same module |
 
-### 2.3 Coding etiquette variable and parameter naming
+### Coding etiquette variable and parameter naming
 
 The MAgPIE model structure is build upon the idea that every module
 itself is encapsulated just interacting on a **clearly defined
@@ -130,8 +125,6 @@ In this sense realizations are replaceable within a module, since all
 realizations of a module have to deliver/interact with the same
 interface variables. This is ensured by defined rules for variable and
 parameter naming.
-
-#### Coding Etiquette
 
 The following prefixes are used within the model code:
 
@@ -168,8 +161,3 @@ Suffixes indicate the level of aggregation of an object:
     _(setname) aggregation over set
     _reg regional aggregation (exception)
     _glo global aggregation (exception)
-
-\[1\]
-
-1.  Document version history :
-    <https://github.com/magpiemodel/tutorials/commits/master/4_GAMScodeStructure.Rmd>

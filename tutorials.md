@@ -18,6 +18,10 @@ permalink: /tutorials/
     border-radius:10px;
     border:2px solid #a9a9a9;
   }
+
+  p {
+    margin:0
+  }
 </style>
 
 {% for tutorial in site.tutorials %}
@@ -38,7 +42,7 @@ permalink: /tutorials/
 {% endif %} </span></h4>
   <ul>
   {% for lesson in tutorial.lessonsContent %}
-    <li>{{ lesson }}</li>
+    <li>{{ lesson | markdownify }}</li>
   {% endfor %}
   </ul>
   </blockquote>

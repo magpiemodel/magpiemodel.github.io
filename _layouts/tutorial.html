@@ -13,6 +13,9 @@ layout: default
     border-radius:10px;
     border:2px solid #a9a9a9;
   }
+  .infobox p {
+    margin:0
+  }
 </style>
 
 <article class="post h-entry" itemscope itemtype="http://schema.org/TechArticle">
@@ -60,7 +63,7 @@ layout: default
       <h4>Content</h4>
       <ul>
       {% for lesson in page.lessonsContent %}
-        <li>{{ lesson }}</li>
+        <li>{{ lesson | markdownify }}</li>
       {% endfor %}
       </ul>
 
@@ -76,7 +79,7 @@ layout: default
       <h4>Lessons learned</h4>
       <ol>
         {% for lesson in page.lessonsLearned %}
-          <li>{{ lesson }}</li>
+          <li>{{ lesson | markdownify }}</li>
         {% endfor %}
       </ol>
     </blockquote>

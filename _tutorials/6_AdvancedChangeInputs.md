@@ -1,26 +1,25 @@
-Changing inputs in the MAgPIE model
-================
-Miodrag Stevanovic (<stevanovic@pik-potsdam.de>), updated by Florian
-Humpenöder (<humpenoeder@pik-potsdam.de>)
-12 December, 2020
+---
+layout: tutorial
+title:  Update model inputs
+lastUpdated:   2020-12-12
+author: Miodrag Stevanovic, Florian Humpenöder
+level: 4
+requirements:
+  - Requirement A
+  - Requirement B
+lessonsContent:
+  - Create a local input data repository.
+  - Package a patch file.
+  - Include a patch in the model configuration
+lessonsLearned:
+  - lesson A
+  - lesson B
+  - (Maybe) lesson C
+  - lesson D
+published: true
+---
 
-  - [1 Introduction](#introduction)
-      - [1.1 Learning objectives](#learning-objectives)
-      - [2 Demonstration of change in input data for national land-based
-        NDC
-        policies](#demonstration-of-change-in-input-data-for-national-land-based-ndc-policies)
-          - [2.1 Create folder for local input data
-            repository](#create-folder-for-local-input-data-repository)
-          - [2.2 Create a patched file policy\_definition.csv and
-            package it with
-            gms::tardir()](#create-a-patched-file-policy_definition.csv-and-package-it-with-gmstardir)
-          - [2.3 Add the .tgz packed patch file in the configuration
-            file](#add-the-.tgz-packed-patch-file-in-the-configuration-file)
-  - [3 Alternative way of adding a local
-    repository](#alternative-way-of-adding-a-local-repository)
-  - [4 Excercise:](#excercise)
-
-# 1 Introduction
+## Introduction
 
 The input data for MAgPIE is prepared by a set of pre-processing
 routines that take the data from original sources (e.g. FAO, LPJmL…),
@@ -60,18 +59,11 @@ contain the following types of data:
     policies)
       - additional\_data\_rev3.86.tgz
 
-### 1.1 Learning objectives
-
 There is a specific procedure on how to handle the changing of the input
 data. It will be demonstrated by the example of changing the USA NDC
-policy on afforestation target at 2030 with the following learning
-objectives:
+policy on afforestation target at 2030.
 
-1.  Create local input data repository.
-2.  Package the patch file.
-3.  Update the configuration to automatically apply designed changes.
-
-## 2 Demonstration of change in input data for national land-based NDC policies
+## Patch national land-based NDC policies
 
 Once the input data is downloaded to the local MAgPIE repository in
 forms of different input files in designated input folders (in the core,
@@ -84,7 +76,7 @@ order to avoid this risk, it is recommended to create a local folder
 that serves as a repository for the patch files that will apply changes
 to the data by overwriting the original data.
 
-### 2.1 Create folder for local input data repository
+### Create a local data repository
 
 The folder for local input data repository can be created anywhere and
 it’s path must be provided to the settings in `config/default.cfg` file.
@@ -112,7 +104,7 @@ cfg$repositories <- append(list("https://rse.pik-potsdam.de/data/magpie/public"=
                            getOption("magpie_repos"))
 ```
 
-### 2.2 Create a patched file policy\_definition.csv and package it with gms::tardir()
+### Create a patch and package it
 
 Create a sub-directory in the `./patch_inputdata` which is going to be
 used for packaging of the patched files.
@@ -153,7 +145,7 @@ gms::tardir(dir="patch_inputdata/patch_ndc_usa_190909",
 unlink("patch_inputdata/patch_ndc_usa_190909", recursive=TRUE)
 ```
 
-### 2.3 Add the .tgz packed patch file in the configuration file
+### Add the patch file to the configuration
 
 Finally, the configuration file should be informed about the change in
 the input data and the existing patch file that replaces the existing
@@ -215,7 +207,7 @@ With this setup, the download script (`Rscript start.R -> 3 Download
 data`) will first look into the public repo and secondly into your local
 repo for downloading the files specified in `cfg$input`.
 
-# 4 Excercise:
+## Excercise
 
 Write your own starting script that will test the scenario with changed
 NDC policy for the USA described above. None of the changes should

@@ -17,7 +17,7 @@ categories: tutorial
 published: true
 ---
 
-# 1 Introduction
+## Introduction
 
 MAgPIE is published as open source software on GitHub. Hence we invite
 all interested people to understand but also develop the code. Since
@@ -35,19 +35,9 @@ prefered one. Note the following:
     SourceForge and various more are open-source alternatives to
     GitHub.)
 
-## Learning objectives
+## GitHub workflow for magpiemodel
 
-The goal of this exercise is to set up MAgPIE for collaborative working.
-After completion of this exercise, you’ll be able to:
-
-1.  Fork and update MAgPIE from/with upstream repository.
-2.  Understand the basic workflow including pull requests and branches.
-3.  Have heard some very basic git commands and know where to find more
-    help.
-
-# 2 GitHub workflow for magpiemodel
-
-<img src="../assets/img/github_workflow.png" width="100%" style="display: block; margin: auto;" />
+![GitHub workflow](../assets/img/github_workflow.png)
 
 Every code development (even bugfixes) will be merged into our main
 repository under <https://github.com/magpiemodel/magpie> with the help
@@ -79,13 +69,13 @@ called ‘remotes’ to your local repository.
 > **Exercise**: Check, if there is anything to merge from the upstream
 > repository into your fork. If so, merge it into your fork.
 
-# 3 Zoo of branches
+## Zoo of branches
 
 To start new developments we create feature branches to keep the develop
 branch clean. In the following figure you can see a simple example for
 branches and their relationships.
 
-<img src="../assets/img/git_branches.png" width="100%" style="display: block; margin: auto;" />
+![Git Branches](../assets/img/git_branches.png)
 
   - The master branch of the upstream repository will be created by the
     magpiemodel team after accumulation of new developments in the
@@ -104,7 +94,7 @@ branches and their relationships.
     between your magpie fork and the local working copy can be found in
     the next section.
 
-# 4 Start to commit yourself
+## Start to commit yourself
 
 When you start making your first changes to the code at your local copy,
 we strongly recommend to do a tutorial to get familiar with the basic
@@ -115,7 +105,7 @@ Here we just want to draw your attention to: - the branching workflow,
 we kindly ask you to use and - the various working areas of the git
 workflow.
 
-<img src="../assets/img/git_basics.png" width="100%" style="display: block; margin: auto;" />
+![Git basics](../assets/img/git_basics.png)
 
 Git wil help you not only to push changes to your remote repositories to
 version control them, you will also locally control your development
@@ -132,7 +122,7 @@ steps:
 
   - Now you can do a `pull request`.
 
-# 5 References to learn more
+## References to learn more
 
   - <https://education.github.com/git-cheat-sheet-education.pdf>
   - <https://git-scm.com/book/en/v2>

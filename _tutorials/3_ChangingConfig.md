@@ -8,9 +8,9 @@ requirements:
   - Requirement A
   - Requirement B
 lessonsContent:
-  - content A
-  - content B
-  - content C
+  - Understand MAgPIE configuration
+  - Update settings
+  - Run the model with updated configuration.
 lessonsLearned:
   - lesson A
   - lesson B
@@ -19,9 +19,7 @@ lessonsLearned:
 published: true
 ---
 
-# 1 Introduction
-
-## 1.1 What is configuration
+## Introduction
 
 In computing, configuration files (or config files) are files used to
 configure the parameters and initial settings for some computer
@@ -38,7 +36,7 @@ work with a combination of different settings for the model.
 We’ll discuss *writing your own start script* in the next session which
 changes the model setting automatically.
 
-## 1.2 Relevence to MAgPIE
+### Relevence to MAgPIE
 
 Across Unix-like operating systems many different configuration-file
 formats exist, with each application or service potentially having a
@@ -53,28 +51,7 @@ as a complete model. These components are called **modules** in MAgPIE
 terminology. These modules are individual entities and can be thought of
 as a **switch(es)** that can be turned on or off.
 
-## 1.3 Learning objectives
-
-The goal of this exercise is to make changes to the *default*
-configuration. After completion of this exercise, you’ll be able to:
-
-1.  Understand how MAgPIE configuration works.
-
-
-
-2.  Change the title and number of simulation steps for your runs.
-
-
-
-3.  Select which outputs your model should generate.
-
-
-
-4.  Run the model with updated configuration.
-
-
-
-# 2 Getting started
+## Getting started
 
 As stated earlier, MAgPIE configuration (or settings) can be changed by
 hand using a normal text editor (notepad, notepad++ etc.). It is
@@ -85,32 +62,27 @@ GitHub\[2\].
 The folder where MAgPIE is cloned should typically contain the
 files\[3\] as in Figure 1.
 
-![Contents of folder where MAgPIE is cloneds](figures/mag-clone.png)
+![Contents of folder where MAgPIE is cloned](../assets/img/mag-clone.png)
 
 Make sure that you have the following files and folders:
 
-1.  Folders : config, core, doc, modules, scripts, standalone
-2.  CITATION.cff
-3.  LICENCS
-4.  main.gms
-5.  CHANGELOG.md, README.md
-6.  output.R, scripts.R
-7.  .Rprofile, .gitignore, .travis.yml
+1. Folders : config, core, doc, modules, scripts, standalone
+2. CITATION.cff
+3. LICENCS
+4. main.gms
+5. CHANGELOG.md, README.md
+6. output.R, scripts.R
+7. .Rprofile, .gitignore, .travis.yml
 
-# 3 MAgPIE configuration
+## MAgPIE configuration
 
 Users are requested to follow the following procedure in order to check
 the config file for MAgPIE:
 
-
-
-1\. Naviagte to the folder where you have cloned MAgPIE.
-
-2\. Look for the folder named **config**.
-
-3\. Within this **config** folder, look for the file **default.cfg**.
-
-4\. Right click on **default.cfg** file and open it with a text editor
+1. Naviagte to the folder where you have cloned MAgPIE.
+2. Look for the folder named **config**.
+3. Within this **config** folder, look for the file **default.cfg**.
+4. Right click on **default.cfg** file and open it with a text editor
 of your choice.
 
 
@@ -187,9 +159,9 @@ the **gms** section (cfg$gms$\*) of the config file. These modules in
 MAgPIE can be turned on to select a *module realization* (in case of
 multiple *module realizations*, an off setting is also available).
 
-# 4 Exercises
+## Exercises
 
-## 4.1 Changing the title
+### Changing the title
 
 Let us try to see what is the default title of MAgPIE runs. This can be
 seen by looking for the following text in default.cfg file (line 17):
@@ -223,8 +195,6 @@ If you happen to start a MAgPIE run right now, can you guess the name of the
 results folder within the output folder?
 ```
 
-
-
 In order to change the default tile, users are requested to edit the
 setting so as to contain their **affiliation** within the quotations and
 save the file after editing. The default setting of title:
@@ -245,7 +215,7 @@ For example:
 cfg$title <- "mag4workshop_PIK"
 ```
 
-## 4.2 Changing the time step
+### Changing the time step
 
 MAgPIE, being a recursive dynamic model, can run with various levels of
 time steps.
@@ -284,7 +254,7 @@ and set it to 5
 cfg$gms$c_timesteps <- 5
 ```
 
-## 4.3 Changing the ouputs generated
+### Changing the ouputs generated
 
 MAgPIE is also capable of generating some stylized outputs which can be
 created automatically once the model run is finished. To see the current
@@ -318,23 +288,13 @@ and replace it with “rds\_report”,“interpolation”
 cfg$output <- c("rds_report","interpolation")
 ```
 
-# 5 Running the model with updated configuration
+## Running the model with updated configuration
 
 So far, we have successfully changed:
 
-
-
-1.  Title of MAgPIE runs
-
-
-
-2.  Time steps of simulation
-
-
-
-3.  Outputs desired
-
-
+1. Title of MAgPIE runs
+2. Time steps of simulation
+3. Outputs desired
 
 Now, lets try to run the model with this updated configuration.
 
@@ -372,20 +332,14 @@ This will start\[7\] the model run on your local machine.
 
 1.  **Cloning a repository**:
     <https://help.github.com/en/articles/cloning-a-repository>
-
 2.  **MAgPIE repo**: <https://github.com/magpiemodel/magpie>
-
 3.  Users may or may not see the **.git** folder in their model folder
     depending on their *hidden files and folder* settings.
-
 4.  The time step settings are within the **gms** component of the
     **cfg** list.
-
 5.  Complete list of output R scripts can be found in
     **scripts/output/single** or **scripts/output/comparison** folders.
-
 6.  Complete list of starting R scripts can also be found in the
     **scripts**/**start** folder.
-
 7.  To stop a run you can use the key combination **ctrl** + **c** on
     windows machines.
