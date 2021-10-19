@@ -8,9 +8,9 @@ requirements:
   - Requirement A
   - Requirement B
 lessonsContent:
-  - content A
-  - content B
-  - content C
+  - Navigate though the GAMS code of MAgPIE
+  - Understand the structure of modules and realizations
+  - Understand rules naming conventions
 lessonsLearned:
   - lesson A
   - lesson B
@@ -60,16 +60,6 @@ folder. For the final model execution, exactly one realization of each
 module is chosen and included. The configuration settings that are set
 in `default.cfg` (or inside the run scripts) determine the realization
 entering the `full.gms`.
-
-### Learning objectives
-
-The goal of this exercise is to understand the basic structure of the
-GAMS code. After completion of this exercise, you will be able to:
-
-1.  Navigate though the GAMS code of MAgPIE.
-2.  Understand the basic structure of modules and realizations.
-3.  Understand the basic rules of variable or parameter naming
-    conventions and their meanings.
 
 ##  Structure of a module
 
