@@ -1,6 +1,20 @@
 ---
 layout: default
 ---
+
+<style>
+  blockquote.infobox {
+    color:black;
+    background: #f9f9f9;
+    font-style:normal;
+    padding: 1em;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    border-radius:10px;
+    border:2px solid #a9a9a9;
+  }
+</style>
+
 <article class="post h-entry" itemscope itemtype="http://schema.org/TechArticle">
 
   <header class="post-header">
@@ -21,56 +35,50 @@ layout: default
     | <a href=".">Overview</a> |
     {% if page.next.url %} <a href="{{page.next.url}}">{{page.next.title}} &gt;</a>{% endif %}</p>
 
-    <hr />
-    <blockquote>
-      <p><strong>Level:</strong>
+    <blockquote class="infobox">
+      <h4>Level:
     {% if page.level == 0 %}
-      ⚪⚪⚪⚪⚪ <span style="color:green">Beginner
+      ⚪⚪⚪⚪⚪ <span style="color:purple">All levels
     {% elsif page.level == 1 %}
       ⚫⚪⚪⚪⚪ <span style="color:green">Beginner
     {% elsif page.level == 2 %}
-      ⚫⚫⚪⚪⚪ <span style="color:orange">Advanced
+      ⚫⚫⚪⚪⚪ <span style="color:green">Beginner
     {% elsif page.level == 3 %}
       ⚫⚫⚫⚪⚪ <span style="color:orange">Advanced
     {% elsif page.level == 4 %}
-      ⚫⚫⚫⚫⚪ <span style="color:red">Expert
+      ⚫⚫⚫⚫⚪ <span style="color:orange">Advanced
     {% elsif page.level == 5 %}
       ⚫⚫⚫⚫⚫ <span style="color:red">Expert
-    {% endif %} </span></p>
-      <p><strong>Requirements</strong></p>
+    {% endif %} </h4>
+      <h4>Requirements</h4>
       <ul>
       {% for req in page.requirements %}
         <li>{{ req }}</li>
         {% endfor %}
       </ul>
 
-      <p><strong>Content</strong></p>
+      <h4>Content</h4>
       <ul>
       {% for lesson in page.lessonsContent %}
         <li>{{ lesson }}</li>
       {% endfor %}
       </ul>
 
-      <p><strong>Overview</strong></p>
+      <h4>Overview</h4>
     {% include toc.html html=content %}
     </blockquote>
-    <hr />
-
-    <br />
 
     {{ content }}
 
     <br />
 
-    <hr />
-    <blockquote>
-      <h1>Lessons learned</h1>
+    <blockquote class="infobox">
+      <h4>Lessons learned</h4>
       <ol>
         {% for lesson in page.lessonsLearned %}
           <li>{{ lesson }}</li>
         {% endfor %}
       </ol>
-      <hr />
     </blockquote>
 
     <p>{% if page.previous.url %}<a href="{{page.previous.url}}">&lt; {{page.previous.title}}</a> {% endif %}

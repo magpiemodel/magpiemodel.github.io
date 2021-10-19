@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title:  Starting a run
-lastUpdated:   2020-11-20
+lastUpdated: 2020-11-20
 author: Edna J. Molina Bacca, Kristine Karstens
 level: 1
 requirements:

@@ -7,18 +7,32 @@ title: Tutorials
 permalink: /tutorials/
 ---
 
+<style>
+  blockquote {
+    color:black;
+    background: #f9f9f9;
+    font-style:normal;
+    padding: 1em;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    border-radius:10px;
+    border:2px solid #a9a9a9;
+  }
+</style>
+
 {% for tutorial in site.tutorials %}
+  <blockquote>
   <h4><a href="{{tutorial.url}}">{{tutorial.title}}</a>
 {% if tutorial.level == 0 %}
-  ⚪⚪⚪⚪⚪ <span style="color:green">Beginner
+  ⚪⚪⚪⚪⚪ <span style="color:purple">All levels
 {% elsif tutorial.level == 1 %}
   ⚫⚪⚪⚪⚪ <span style="color:green">Beginner
 {% elsif tutorial.level == 2 %}
-  ⚫⚫⚪⚪⚪ <span style="color:orange">Advanced
+  ⚫⚫⚪⚪⚪ <span style="color:green">Beginner
 {% elsif tutorial.level == 3 %}
   ⚫⚫⚫⚪⚪ <span style="color:orange">Advanced
 {% elsif tutorial.level == 4 %}
-  ⚫⚫⚫⚫⚪ <span style="color:red">Expert
+  ⚫⚫⚫⚫⚪ <span style="color:orange">Advanced
 {% elsif tutorial.level == 5 %}
   ⚫⚫⚫⚫⚫ <span style="color:red">Expert
 {% endif %} </span></h4>
@@ -27,5 +41,5 @@ permalink: /tutorials/
     <li>{{ lesson }}</li>
   {% endfor %}
   </ul>
-  <br />
+  </blockquote>
 {% endfor %}

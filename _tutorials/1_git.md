@@ -3,7 +3,7 @@ layout: tutorial
 title:  The GitHub repository
 lastUpdated:   2020-11-08
 author: Kristine Karstens
-level: 0
+level: 1
 requirements:
   - Git installed
 lessonsContent:
@@ -35,7 +35,7 @@ prefered one. Note the following:
     SourceForge and various more are open-source alternatives to
     GitHub.)
 
-### Learning objectives
+## Learning objectives
 
 The goal of this exercise is to set up MAgPIE for collaborative working.
 After completion of this exercise, you’ll be able to:
