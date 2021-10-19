@@ -9,7 +9,7 @@ In this event you will learn the basics: How MAgPIE is managed in git and how yo
 
 10min | Welcome & Agenda | [Jan Philipp Dietrich]
 40min | [Git workflow] | [Marcos Alves]
-40min | [Starting MAgPIE with default settings] | [Edna Molina Bacca]
+40min | [Starting a run] | [Edna Molina Bacca]
 
 [back to overview](../../magpie22/timetable)
 
@@ -17,5 +17,5 @@ In this event you will learn the basics: How MAgPIE is managed in git and how yo
 [Marcos Alves]:https://www.pik-potsdam.de/members/pedrosa
 [Edna Molina Bacca]:https://www.pik-potsdam.de/members/mbacca
 
-[Git workflow]:../../tutorial/git
-[Starting MAgPIE with default settings]:https://github.com/magpiemodel/tutorials/blob/master/2_RunDefaultSettings.md
+[Git workflow]:../../tutorials/1-git
+[Starting a run]:../../tutorials/2-start-run
