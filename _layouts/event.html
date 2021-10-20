@@ -4,6 +4,9 @@ layout: page
 
 <p>{{ content | markdownify}}</p>
 
+{% assign people = site.pages | where: "shortID", "people" | first %}
+
+{% if page.agenda %}
 <table>
   <tbody>
 {% for item in page.agenda %}
@@ -36,8 +39,11 @@ layout: page
         </td><td>⚪⚪⚪⚪⚪ <span style="color:purple">All levels</span></td>
       {% endif %}
       <td>
-      {% if item.presenterURL %}
-        <a href="{{item.presenterURL}}">{{item.presenter}}</a>
+      {% assign person = people.data | where: "id", item.presenter | first %}
+      {% if person.url %}
+        <a href="{{person.url}}">{{person.firstName}} {{person.lastName}}</a>
+      {% elsif person.lastName %}
+        {{person.firstName}} {{person.lastName}}
       {% else %}
         {{item.presenter}}
       {% endif %}
@@ -46,7 +52,14 @@ layout: page
 {% endfor %}
 </tbody>
 </table>
-
+{% endif %}
 
 {% assign timetable = site.pages | where: "title", "Timetable" | first %}
-<p><a href="{{timetable.url}}">back to overview</a></p>
+<p>
+{% if page.previous.url %}
+  <a href="{{page.previous.url}}">&lt; previous</a>
+{% endif %}
+| <a href="{{timetable.url}}">back to overview</a> |
+{% if page.next.url %}
+ <a href="{{page.next.url}}">next &gt;</a></p>
+{% endif %}
