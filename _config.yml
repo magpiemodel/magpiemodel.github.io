@@ -37,7 +37,7 @@ plugins:
 collections:
   events:
     output: true
-    permalink: /events/:path/
+    permalink: /events/:name
     title: Events
   tutorials:
     output: true
