@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title:  Changing the Configuration
+shortID: config
 lastUpdated:   2019-10-12
 author: Abhijeet Mishra
 level: 2

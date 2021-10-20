@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title:  Input data preparation (MADRaT)
+shortID: madrat
 lastUpdated:   2020-12-03
 author: David M Chen
 level: 4

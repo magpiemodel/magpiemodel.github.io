@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title:  Analyzing model outputs
+shortID: output
 lastUpdated:   2020-11-02
 author: Isabelle Weindl, Felicitas Beier
 level: 3

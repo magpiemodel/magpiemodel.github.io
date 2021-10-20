@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title:  The GitHub repository
+shortID: git
 lastUpdated:   2020-11-08
 author: Kristine Karstens
 level: 1

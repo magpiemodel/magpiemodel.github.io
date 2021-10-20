@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title:  Update model inputs
+shortID: changeInput
 lastUpdated:   2020-12-12
 author: Miodrag Stevanovic, Florian Humpenöder
 level: 4

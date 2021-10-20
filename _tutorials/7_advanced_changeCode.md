@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title:  Modify model code
+shortID: changeCode
 lastUpdated:   2020-12-10
 author: Florian Humpenöder
 level: 4

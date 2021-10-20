@@ -1,0 +1,52 @@
+---
+layout: page
+---
+
+<p>{{ content | markdownify}}</p>
+
+<table>
+  <tbody>
+{% for item in page.agenda %}
+    <tr>
+      <td>{{item.length}}min</td>
+      {% if item.shortID %}
+      {% assign elem = site.tutorials | where: "shortID", item.shortID | first %}
+      <td><a href="{{ elem.url }}">{{ elem.title }}</a></td>
+      <td>{% if elem.level == 0 %}
+          ⚪⚪⚪⚪⚪ <span style="color:purple">All levels
+        {% elsif elem.level == 1 %}
+          ⚫⚪⚪⚪⚪ <span style="color:green">Beginner
+        {% elsif elem.level == 2 %}
+          ⚫⚫⚪⚪⚪ <span style="color:green">Beginner
+        {% elsif elem.level == 3 %}
+          ⚫⚫⚫⚪⚪ <span style="color:orange">Advanced
+        {% elsif elem.level == 4 %}
+          ⚫⚫⚫⚫⚪ <span style="color:orange">Advanced
+        {% elsif elem.level == 5 %}
+          ⚫⚫⚫⚫⚫ <span style="color:red">Expert
+        {% endif %}</span>
+      </td>
+      {% else %}
+        <td>
+        {% if item.url %}
+          <a href="{{item.url}}">{{item.title}}</a>
+        {% else %}
+          {{item.title}}
+        {% endif %}
+        </td><td>⚪⚪⚪⚪⚪ <span style="color:purple">All levels</span></td>
+      {% endif %}
+      <td>
+      {% if item.presenterURL %}
+        <a href="{{item.presenterURL}}">{{item.presenter}}</a>
+      {% else %}
+        {{item.presenter}}
+      {% endif %}
+      </td>
+    </tr>
+{% endfor %}
+</tbody>
+</table>
+
+
+{% assign timetable = site.pages | where: "title", "Timetable" | first %}
+<p><a href="{{timetable.url}}">back to overview</a></p>

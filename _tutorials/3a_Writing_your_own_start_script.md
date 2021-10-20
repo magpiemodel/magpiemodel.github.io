@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title:  Creating a start script
+shortID: startScript
 lastUpdated:   2019-10-13
 author: Abhijeet Mishra
 level: 3
