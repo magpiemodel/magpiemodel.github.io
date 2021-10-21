@@ -2,8 +2,7 @@
 layout: post
 title:  "Save the date!"
 date:   2021-10-05 14:00:00 +0200
-author: Jan Philipp Dietrich
-mail: dietrich@pik-potsdam.de
+author: jpd
 categories: magpie22
 ---
 

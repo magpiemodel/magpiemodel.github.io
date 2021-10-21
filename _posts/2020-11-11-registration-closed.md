@@ -2,8 +2,7 @@
 layout: post
 title:  "Workshop registration closed"
 date:   2020-12-31 12:00:00 +0200
-author: Jan Philipp Dietrich
-mail: dietrich@pik-potsdam.de
+author: jpd
 categories: magpie22
 published: false
 ---

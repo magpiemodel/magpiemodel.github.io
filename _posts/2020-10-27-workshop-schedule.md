@@ -2,8 +2,7 @@
 layout: post
 title:  "Workshop schedule"
 date:   2021-10-14 11:00:00 +0200
-author: Jan Philipp Dietrich
-mail: dietrich@pik-potsdam.de
+author: jpd
 categories: magpie22
 published: true
 ---
