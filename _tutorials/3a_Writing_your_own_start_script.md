@@ -3,7 +3,9 @@ layout: tutorial
 title:  Creating a start script
 shortID: startScript
 lastUpdated:   2019-10-13
-author: Abhijeet Mishra
+model: MAgPIE
+modelVersion: 4.0.0
+author: am
 level: 3
 requirements:
   - Requirement A

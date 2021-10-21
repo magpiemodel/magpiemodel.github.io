@@ -3,7 +3,9 @@ layout: tutorial
 title:  Modify model code
 shortID: changeCode
 lastUpdated:   2020-12-10
-author: Florian Humpenöder
+model: MAgPIE
+modelVersion: 4.0.0
+author: fh
 level: 4
 requirements:
   - Requirement A

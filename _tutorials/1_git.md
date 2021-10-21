@@ -3,7 +3,9 @@ layout: tutorial
 title:  The GitHub repository
 shortID: git
 lastUpdated:   2020-11-08
-author: Kristine Karstens
+model: MAgPIE
+modelVersion: 4.0.0
+author: kk
 level: 1
 requirements:
   - Git installed

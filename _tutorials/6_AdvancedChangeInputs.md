@@ -3,7 +3,11 @@ layout: tutorial
 title:  Update model inputs
 shortID: changeInput
 lastUpdated:   2020-12-12
-author: Miodrag Stevanovic, Florian Humpenöder
+model: MAgPIE
+modelVersion: 4.0.0
+author:
+  - ms
+  - fh
 level: 4
 requirements:
   - Requirement A

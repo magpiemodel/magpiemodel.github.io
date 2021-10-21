@@ -11,7 +11,7 @@ data:
   - firstName: Abhijeet
     lastName: Mishra
     id: am
-    url: https://www.pik-potsdam.de/de/institut/members/mishra/
+    url: https://www.pik-potsdam.de/members/mishra
   - firstName: Michael
     lastName: Windisch
     id: mw
@@ -25,15 +25,28 @@ data:
     id: ma
     url: https://www.pik-potsdam.de/members/pedrosa
   - firstName: Edna Molina
-    lasteName: Bacca
+    lastName: Bacca
     id: emb
     url: https://www.pik-potsdam.de/members/mbacca
   - firstName: Florian
     lastName: Humpenöder
     id: fh
     url: https://www.pik-potsdam.de/members/florianh
-  - firstName: David
+  - firstName: David Meng-Chuen
     lastName: Chen
     id: dc
     url: https://www.pik-potsdam.de/members/davidch
+  - firstName: Kristine
+    lastName: Karstens
+    id: kk
+    url: https://www.pik-potsdam.de/members/karstens
+  - firstName: Isabelle
+    lastName: Weindl
+    id: iw
+    url: https://www.pik-potsdam.de/members/weindl
+  - firstName: Miodrag
+    lastName: Stevanović
+    id: ms
+    url: https://www.pik-potsdam.de/members/miodrag
+
 ---

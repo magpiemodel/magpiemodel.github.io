@@ -3,7 +3,11 @@ layout: tutorial
 title:  Analyzing model outputs
 shortID: output
 lastUpdated:   2020-11-02
-author: Isabelle Weindl, Felicitas Beier
+model: MAgPIE
+modelVersion: 4.0.0
+author:
+  - iw
+  - fb
 level: 3
 requirements:
   - Requirement A

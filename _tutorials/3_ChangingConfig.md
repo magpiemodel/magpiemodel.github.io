@@ -3,7 +3,9 @@ layout: tutorial
 title:  Changing the Configuration
 shortID: config
 lastUpdated:   2019-10-12
-author: Abhijeet Mishra
+model: MAgPIE
+modelVersion: 4.0.0
+author: am
 level: 2
 requirements:
   - Requirement A

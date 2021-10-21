@@ -3,7 +3,11 @@ layout: tutorial
 title:  Starting a run
 shortID: start
 lastUpdated: 2020-11-20
-author: Edna J. Molina Bacca, Kristine Karstens
+model: MAgPIE
+modelVersion: 4.0.0
+author:
+  - emb
+  - kk
 level: 1
 requirements:
   - GAMS & R installed

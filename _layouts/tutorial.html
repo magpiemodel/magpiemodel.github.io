@@ -16,7 +16,13 @@ layout: default
   .infobox p {
     margin:0
   }
+
+  .p-author a {
+    color:grey;
+  }
 </style>
+
+{% assign people = site.pages | where: "shortID", "people" | first %}
 
 <article class="post h-entry" itemscope itemtype="http://schema.org/TechArticle">
 
@@ -27,8 +33,23 @@ layout: default
         {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
         {{ page.lastUpdated | date: date_format }}
       </time>
+      {% if page.modelVersion %} {{page.model}} v{{page.modelVersion}} {% endif %}
       {%- if page.author -%}
-        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ page.author }}</span></span>
+        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">
+          {% assign sep = "" %}
+          {% for author in page.author %}
+            {%- assign person = people.data | where: "id", author | first -%}
+            {{- sep -}}
+            {%- if person.url -%}
+              <a href="{{person.url}}">{{ person.firstName }} {{ person.lastName }}</a>
+            {%- elsif person.lastName -%}
+              {{ person.firstName }} {{ person.lastName }}
+            {%- else -%}
+              {{ author }}
+            {%- endif -%}
+            {%- assign sep = ", " -%}
+          {%- endfor -%}
+        </span></span>
       {%- endif -%}</p>
   </header>
 

@@ -3,7 +3,12 @@ layout: tutorial
 title:  GAMS code structure
 shortID: gams
 lastUpdated:   2020-11-02
-author: Kristine Karstens, Felicitas Beier, Abhijeet Mishra
+model: MAgPIE
+modelVersion: 4.0.0
+author:
+  - kk
+  - fb
+  - am
 level: 2
 requirements:
   - Requirement A
