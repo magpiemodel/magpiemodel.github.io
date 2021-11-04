@@ -2,6 +2,7 @@
 layout: page
 title: About
 permalink: /about/
+published: false
 ---
 
 This is a info page for the **MAgPIE22** workshop for the land use modeling framework [MAgPIE](https://github.com/magpiemodel/magpie) which is currently developed at the [Potsdam Institute for Climate Impact Research (PIK)](https://pik-potsdam.de) and further partner institutions.
