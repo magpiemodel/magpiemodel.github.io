@@ -19,7 +19,7 @@ the clock change end of October). The next dates are:
 
 * Wednesday **27th Oct 2021 11am CEST**
 * Wednesday **24th Nov 2021 11am CET**
-* Wednesday **22nd Dec 2021 11am CET** (might get cancelled due to holidays)
+* ~~Wednesday **22nd Dec 2021 11am CET**~~ (cancelled due to holidays)
 * Wednesday **19th Jan 2022 11am CET**
 
 If you having received the meeting credentials yet, please get in touch with us
