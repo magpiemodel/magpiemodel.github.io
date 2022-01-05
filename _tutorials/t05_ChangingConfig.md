@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title:  Changing the Configuration
+title:  Update model settings
 shortID: config
 lastUpdated:   2019-10-12
 model: MAgPIE

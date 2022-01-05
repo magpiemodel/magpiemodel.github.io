@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title:  GAMS code structure
+title:  GAMS code, modules & realizations
 shortID: gams
 lastUpdated:   2020-11-02
 model: MAgPIE

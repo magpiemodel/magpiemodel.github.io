@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title:  Starting a run
+title:  Starting a MAgPIE run
 shortID: start
 lastUpdated: 2020-11-20
 model: MAgPIE

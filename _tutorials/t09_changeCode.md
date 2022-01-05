@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title:  Modify model code
+title:  Creating a new realization
 shortID: changeCode
 lastUpdated:   2020-12-10
 model: MAgPIE

@@ -1,6 +1,6 @@
 ---
 layout: event
-title:  "Workshop 4 - Preparing input data"
+title:  "Workshop 5 - Updating input data"
 event_start:   "2022-03-11T11:00:00+01:00"
 event_end:     "2022-03-11T13:00:00+01:00"
 agenda:

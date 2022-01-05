@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title:  The GitHub repository
+title:  Git & the GitHub repository
 shortID: git
 lastUpdated:   2020-11-08
 model: MAgPIE

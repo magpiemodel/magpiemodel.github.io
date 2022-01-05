@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title:  Update model inputs
+title:  Input data repositories & Patches
 shortID: changeInput
 lastUpdated:   2020-12-12
 model: MAgPIE

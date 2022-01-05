@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title:  Analyzing model outputs
+title:  Regional output analysis
 shortID: output
 lastUpdated:   2020-11-02
 model: MAgPIE
