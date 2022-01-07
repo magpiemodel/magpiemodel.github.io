@@ -99,7 +99,9 @@ in markdown, HTML and PDF format will be stored.
 
 ## Documentation Structure
 The model documentation for MAgPIE 4.4.0 can be found at <https://rse.pik-potsdam.de/doc/magpie/4.4.0>.
-Besides the Overview page, which gives a general introduction to the model, the
+Links to the model documentations of other versions can usually be found in the
+`README.md` of the corresponding model.
+Besides the overview page, which gives a general introduction to the model, the
 documentation is structured by modules, which each one of them documented on a
 separated HTML page (see for instance the [TC module](https://rse.pik-potsdam.de/doc/magpie/4.4.0/13_tc.htm)).
 Each module page starts with a brief introduction of the module which we call
@@ -129,10 +131,25 @@ with this contract or violates it which helps to determine which part of the mod
 requires some fixing if the model shows faulty behavior.
 
 
+## Modify documentation
 
+To modify the documentation one can just change the documentation comments in
+the code. To distinguish documentation comments from normal comments they
+always start with a `*'` instead of just '*'.
+The module contract of a module can always be found in the `module.gms` file
+of the corresponding module, while the introduction to a realization is found in
+the `realization.gms` files.
+To better control the documentation output there are a few control commands
+which all start with an '@'. For instance `@equations` starts a section which
+documents equations and makes sure that all following equations in the code
+also appear in the documentation. In a similar fashion `@code` starts a section
+in which all following code which also be copied to the documentation. To close
+a section one can use the `@stop` command.
+A complete and up-to-date overview of available commands can be found on the
+help page of the `goxygen` function.
 
-
-## Updating documentation
+After the update the new documentation can be compiled via calling the
+`goxygen` function.
 
 
 [goxygen]:https://github.com/pik-piam/goxygen
