@@ -11,8 +11,6 @@ requirements:
   - abc
 lessonsContent:
   - abc
-lessonsLearned:
-  - abc
 categories: tutorial
 published: true
 ---

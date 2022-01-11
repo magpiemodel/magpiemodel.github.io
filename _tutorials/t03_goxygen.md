@@ -1,26 +1,43 @@
 ---
 layout: tutorial
-title:  Model documentation (goxygen)
+title: Model documentation (goxygen)
 shortID: goxygen
-lastUpdated:   2022-01-05
+lastUpdated: 2022-01-05
 model: MAgPIE
-modelVersion: 4.x
+modelVersion: 4.4.0
 author:
   - jpd
 level: 2
 requirements:
-  - local copy of the MAgPIE model
-  - R installed
-  - Libraries "pandoc" and "pandoc-citeproc" installed (https://pandoc.org)
+  - local copy of the MAgPIE model (<https://github.com/magpiemodel/magpie>)
+  - R installed (<https://www.r-project.org/>)
+  - Libraries `pandoc` and `pandoc-citeproc` installed (<https://pandoc.org>)
 lessonsContent:
   - Explaination of in-code documentation
   - goxygen installation guide (for documentation compilation)
   - Properly reading MAgPIE documentation
   - Updating model documentation
-lessonsLearned:
-  - finding the model documentation for a specific version
-  - understanding the module contract and realization descriptions
-  - knowing how to update the documentation
+exercises:
+  - task: Create the model documentation from code
+    solution: "1. go to the main directory of the model and start R\n
+               2. run `goxygen::goxygen()`\n
+               3. The documentation can now be found in the \"doc\" sub-folder
+                  of the model"
+  - task: Check the number of interfaces and interactions of the yields module in MAgPIE 4.4.0
+    solution: "1. Open the model documentation for MAgPIE 4.4.0 ([here](https://rse.pik-potsdam.de/doc/magpie/4.4.0))\n
+               2. Find the yield module ([14. Yields](https://rse.pik-potsdam.de/doc/magpie/4.4.0/14_yields.htm))\n
+               3. Count the number of [inputs](https://rse.pik-potsdam.de/doc/magpie/4.4.0/14_yields.htm#input) and
+               [outputs](https://rse.pik-potsdam.de/doc/magpie/4.4.0/14_yields.htm#output) to the model\n
+               4. Check the links to other modules in the [interface plot](https://rse.pik-potsdam.de/doc/magpie/4.4.0/14_yields.htm#interfaces)\n\n
+               **Answer:** \n
+               * **10 input** and **4 output** interfaces\n
+               * **11 modules** exchange information with the yields module"
+  - task: Change the land module to "Water" and add yourself as author
+    solution: "1. go to your local MAgPIE copy and navigate to the land module @ `modules/10_land`\n
+               2. open `modules.gms` in an editor\n
+               3. Replace `Land` after `@title` with `Water`\n
+               4. Add your name in the line starting with `@authors`\n
+               5. run `goxygen::goxygen()` from the main folder of the model"
 published: true
 ---
 
@@ -81,7 +98,7 @@ install.packages("goxygen")
 
 To use [goxygen] you have to make sure that `pandoc` as well as `pandoc-citeproc`
 are installed on your system. Installation instructions for pandoc can be found
-at https://pandoc.org/.
+at <https://pandoc.org/>.
 
 For a documentation in PDF you additionally need to make sure to have
 [Latex](https://www.latex-project.org/) installed.
@@ -98,7 +115,8 @@ By default the function will create a folder `doc` in which the documentation
 in markdown, HTML and PDF format will be stored.
 
 ## Documentation Structure
-The model documentation for MAgPIE 4.4.0 can be found at <https://rse.pik-potsdam.de/doc/magpie/4.4.0>.
+The model documentation for MAgPIE [4.4.0](https://rse.pik-potsdam.de/doc/magpie/4.4.0)
+can be found [here](https://rse.pik-potsdam.de/doc/magpie/4.4.0).
 Links to the model documentations of other versions can usually be found in the
 `README.md` of the corresponding model.
 Besides the overview page, which gives a general introduction to the model, the

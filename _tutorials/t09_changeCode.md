@@ -15,11 +15,6 @@ lessonsContent:
   - adding In-Code documentation
   - adding a new module realization
   - integrate new realization
-lessonsLearned:
-  - lesson A
-  - lesson B
-  - (Maybe) lesson C
-  - lesson D
 published: true
 ---
 

@@ -13,11 +13,6 @@ requirements:
 lessonsContent:
   - Introduction to the MADRaT framework
   - Create madrat-based data processing
-lessonsLearned:
-  - lesson A
-  - lesson B
-  - (Maybe) lesson C
-  - lesson D
 published: true
 ---
 

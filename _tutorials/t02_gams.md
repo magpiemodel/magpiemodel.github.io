@@ -17,11 +17,6 @@ lessonsContent:
   - Navigate though the GAMS code of MAgPIE
   - Understand the structure of modules and realizations
   - Understand rules naming conventions
-lessonsLearned:
-  - lesson A
-  - lesson B
-  - (Maybe) lesson C
-  - lesson D
 published: true
 ---
 

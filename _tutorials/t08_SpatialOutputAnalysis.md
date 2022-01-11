@@ -13,8 +13,6 @@ requirements:
   - Requirement B
 lessonsContent:
   - xyz
-lessonsLearned:
-  - xyz
 published: true
 ---
 

@@ -16,11 +16,6 @@ lessonsContent:
   - Create a local input data repository.
   - Package a patch file.
   - Include a patch in the model configuration
-lessonsLearned:
-  - lesson A
-  - lesson B
-  - (Maybe) lesson C
-  - lesson D
 published: true
 ---
 

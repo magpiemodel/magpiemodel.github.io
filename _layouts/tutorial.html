@@ -77,7 +77,7 @@ layout: default
       <h4>Requirements</h4>
       <ul>
       {% for req in page.requirements %}
-        <li>{{ req }}</li>
+        <li>{{ req | markdownify}}</li>
         {% endfor %}
       </ul>
 
@@ -96,14 +96,17 @@ layout: default
 
     <br />
 
+    {% if page.exercises %}
     <blockquote class="infobox">
-      <h4>Lessons learned</h4>
-      <ol>
-        {% for lesson in page.lessonsLearned %}
-          <li>{{ lesson | markdownify }}</li>
+      <h4>Exercises <small>(click on the arrows to uncover the solution)</small></h4>
+        {% for exercise in page.exercises %}
+        <details>
+          <summary>{{ exercise.task}}</summary>
+          <blockquote>{{ exercise.solution | markdownify }}</blockquote>
+        </details>
         {% endfor %}
-      </ol>
     </blockquote>
+    {% endif %}
 
     <p>{% if page.previous.url %}<a href="{{page.previous.url}}">&lt; {{page.previous.title}}</a> {% endif %}
     | <a href=".">Overview</a> |

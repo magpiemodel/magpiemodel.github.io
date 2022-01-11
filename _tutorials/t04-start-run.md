@@ -17,11 +17,6 @@ lessonsContent:
   - understanding the stages of model execution
   - initial troubleshooting steps in case of an error
   - cancelling a MAgPIE run
-lessonsLearned:
-  - You started a MAgPIE run with default settings
-  - You had a look into on the terminal output and the full.lst
-  - (Maybe) you solved some first issues
-  - You cancelled a MAgPIE run
 published: true
 ---
 

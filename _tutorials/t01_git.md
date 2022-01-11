@@ -14,8 +14,6 @@ lessonsContent:
   - Understand the basic workflow including pull requests and branches.
   - Have heard some very basic git commands and know where to find more
     help.
-lessonsLearned:
-  - You know the basic git commands to use with MAgPIE
 categories: tutorial
 published: true
 ---

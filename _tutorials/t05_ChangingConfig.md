@@ -14,11 +14,6 @@ lessonsContent:
   - Understand MAgPIE configuration
   - Update settings
   - Run the model with updated configuration.
-lessonsLearned:
-  - lesson A
-  - lesson B
-  - (Maybe) lesson C
-  - lesson D
 published: true
 ---
 

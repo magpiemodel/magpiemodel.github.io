@@ -20,17 +20,6 @@ lessonsContent:
     `shinyresults`.
   - Use the `magpie4` package for output analysis.
   - Analyse outputs with the `gdx` package.
-lessonsLearned:
-  - You have an overview on several tools analysing MAgPIE outputs.
-  - You know how to start model-internal R-scripts.
-  - You know how to generate and where to find the automated
-    validation PDF and how it is structured.
-  - You know how to start the evaluation tool `appResultsLocal` from
-    the package `shinyresults` and how you can visualized MAgPIE
-    results with this tool.
-  - You know the general functionality of the `magpie4` package and
-    how to use some of the functions.
-  - You know the general functionality of the `gdx` package.
 published: true
 ---
 

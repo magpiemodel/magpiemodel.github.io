@@ -13,11 +13,6 @@ requirements:
 lessonsContent:
   - Understand MAgPIE starting scripts
   - Create custom starting scripts
-lessonsLearned:
-  - lesson A
-  - lesson B
-  - (Maybe) lesson C
-  - lesson D
 published: true
 ---
 
