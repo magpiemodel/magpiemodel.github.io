@@ -2,16 +2,18 @@
 layout: tutorial
 title:  Regional output analysis
 shortID: output
-lastUpdated:   2020-11-02
+lastUpdated:   2022-01-13
 model: MAgPIE
-modelVersion: 4.0.0
+modelVersion: 4.4.0
 author:
   - iw
   - fb
 level: 3
 requirements:
-  - Requirement A
-  - Requirement B
+  - Local copy of the MAgPIE model (<https://github.com/magpiemodel/magpie>)
+  - Have R installed (<https://www.r-project.org/>)
+  - (For validation.pdf creation:) Have Latex installed (e.g., MiKTeX <https://miktex.org/howto/install-miktex>)
+  - Have completed a MAgPIE run OR downloaded existing MAgPIE runs (<https://zenodo.org/record/2572620#.X8Zr9RbPw2w>)
 lessonsContent:
   - Use model-internal R-scripts for output analysis.
   - Know where to find the automated validation PDF and how it is
@@ -20,22 +22,40 @@ lessonsContent:
     `shinyresults`.
   - Use the `magpie4` package for output analysis.
   - Analyse outputs with the `gdx` package.
+exercises:
+  - task: Execute the model-internal output script `rds report` via the command
+  window. This script collects the results of several report-functions -
+  that calculate many key output variables like Production, Land Use or
+  Yields - and writes them into one rds file.
+    solution: "1. open a command line in the main MAgPIE model folder\n
+               2. select model run by typing in number and press `ENTER`\n
+               3. select `rds report` by pressing 2 and `ENTER`\n
+               4. select `Direct execution` by pressing 3 and `ENTER`\n"
+  - task: Open a validation pdf (either in a folder containing your own simulation
+  results or the downloaded MAgPIE simulation runs and\n
+  (a) make yourself familiar with the structure of the document and the
+      hierarchy of outputs as displayed by the table of contents and\n
+  (b) have a look at some figures displaying model outputs of your
+      interest.
 published: true
 ---
 
-## Introduction
+
+## Introduction{#Intro}
 
 After having successfully started and accomplished a simulation run, the
 next step is to evaluate the simulation results. In case you have not
 yet conducted an own MAgPIE simulation or your simulation is still
-running, you can download model runs produced with the master branch of
-the GIT repository (<https://github.com/magpiemodel/magpie/tree/master>)
-for the MAgPIE4 release and copy the folders containing the simulation
+running, you can download model runs produced for Mishra et al. (2021)
+(<https://doi.org/10.5194/gmd-14-6467-2021>).
+These runs were created with version 4.3.5 of the MAgPIE model
+(<https://github.com/magpiemodel/magpie/tree/master>).
+You can download these runs as tgz folder from Zenodo (**magpie_v4.3.5_gmd-2021-76.tgz**
+at <https://zenodo.org/record/5417474#.YeAf8_DMJaQ>)
+and copy the folders containing the simulation
 results into the **output** folder of your local version of the MAgPIE
-model. The runs can be downloaded from:
-<https://zenodo.org/record/2572620#.X8Zr9RbPw2w>. They have been release
-together with the MAgPIE4 model description paper
-(<https://gmd.copernicus.org/articles/12/1299/2019/gmd-12-1299-2019-assets.html>).
+model (Note: if you freshly cloned the model and did not set up a run yet, you
+will have to create an empty output folder).
 
 There are several ways to assess and evaluate MAgPIE results. This
 tutorial gives an overview on different tools and options that can be
@@ -46,26 +66,25 @@ automatically as a combination of the **model title** and other
 information (as defined in the default.cfg via the command
 cfg$results\_folder) inside the **output** folder of the model.
 
-## Model-internal R-scripts for output analysis
+## Model-internal R-scripts for output analysis{#Scripts}
 
+# Model-internal R-scripts in the config file{#ScriptsConfig}
 In the file “config/default.cfg”, it is possible to indicate which
-R-scripts are executed for output analysis after a model run is
-finished. Scripts evaluating single runs are stored in the folder
-**scripts/output/single**, while the folder
-**scripts/output/comparison** contains scripts that compare model output
-across several runs. In the default MAgPIE configuration, the scripts
+R scripts are executed for output analysis after a model run is
+finished. These R scripts can be found in scripts/output.
+In the default MAgPIE configuration, the scripts *output\_check*
 *rds\_report* (to be used in appResultsLocal; see explanations below),
-*validation* and *interpolation* are selected via cfg$output:
+*validation\_short* and *extra/disaggregation* are selected via cfg$output:
 
 ``` r
-cfg$output <- c("rds_report","validation","interpolation")
+cfg$output <- c("output_check", "rds_report", "validation_short",
+                "extra/disaggregation")
 ```
-
-Output scripts that are included in the folders
-**scripts/output/single** and **scripts/output/comparison** can also be
-executed via command window. To do so, windows users can open a command
-line prompt in the MAgPIE model folder by using **shift** + **right
-click** and then selecting *open command window here* option.
+# Manual exection of model-internal R-scripts{#ScriptsManual}
+Output scripts can also be executed via the command window.
+To do so, windows users can open a command
+line prompt in the MAgPIE model folder by using **shift** + **rightClick** and
+then selecting **open command window here** option.
 
 In the command prompt, use the following command:
 
@@ -73,49 +92,30 @@ In the command prompt, use the following command:
 Rscript output.R
 ```
 
-You are now asked to choose the output mode: 1: Output for single run 2:
-Comparison across
-runs
+You are now asked to choose the simulation run for which you would like to
+execute an output script.
 
-![Executing output scripts via command window](../assets/img/Rscript_outputR.png)
+![Selection of model runs](../assets/img/Rscript_output_runselection.PNG)
 
-In both cases, you can choose from the list of available model
-simulations, for which runs you want to conduct the model output
-analysis:
+Next, you can choose which output scripts you want to execute:
 
-![Selection of model runs](../assets/img/Rscript_output_runselection.png)
+![Selection of model-internal output scripts](../assets/img/Rscript_output_scriptselection.PNG)
 
-In the next step, you can interactively indicate which model-internal
-output scripts you want to
-execute:
+The last step is to select the run submission type, e.g. “Direct execution”:
 
-![Selection of model-internal output scripts](../assets/img/Rscript_output_scriptselection.png)
-
-The last step is to select the run submission type, e.g.“Direct
-execution”:
-
-![Selection of run submission type](../assets/img/Rscript_output_submissiontype.png)
+![Selection of run submission type](../assets/img/Rscript_output_submissiontype.PNG)
 
 Now, the selected script is executed. After completion, the results are
 written in the respective folder of the simulation run inside the
 **output** folder of the model.
 
-### Exercise
+## Automated model validation{#Validationpdf}
 
-Execute the model-internal output script **report.R** via command
-window. This script collects the results of several report-functions -
-that calculate many key output variables like Production, Land Use or
-Yields - and writes them into one mif-file that can be read with text
-editors. Please refer to the `vignette("mif")` of the package *mip*
-(model intercomparison plots) to learn more about the mif format.
-
-## Automated model validation
-
-The automated model validation is an important example of output
-analysis based on model-internal scripts (see section 2). If the
+The automated model validation is an example of output
+analysis based on model-internal scripts (see \@ref(Scripts)). If the
 validation script is executed (either by selection via cfg$output as
-explained in 2.1. or by execution via the command window as explained in
-2.2.), a standard evaluation PDF is created that validates numerous
+explained in <a id="ScriptsConfig"></a> or by execution via the command window as explained in
+\@ref(ScriptsManual)), a standard evaluation PDF is created that validates numerous
 model outputs with a validation database containing historical data and
 projections for most outputs returned by the model, either visually or
 via statistical tests. A standard evaluation PDF consists of hundreds of
@@ -124,7 +124,8 @@ evaluating the model outputs on such a broad level rather than focusing
 only on key outputs, it allows getting a more complete picture of the
 corresponding simulation. As an example of such validation files, you
 can download the evaluation documents produced for all runs shown in the
-MAgPIE 4 framework paper (<https://doi.org/10.5281/zenodo.1485303>).
+MAgPIE 4 framework paper (<https://doi.org/10.5281/zenodo.1485303>)
+or the runs downloaded for this exercise (<https://zenodo.org/record/5417474#.YeAf8_DMJaQ>).
 
 The table of contents of the validation PDF gives a good overview over
 the model outputs that can be simulated with a MAgPIE standard
@@ -132,19 +133,7 @@ simulation, even though the validation PDF only shows a subset of
 possible model
 outputs:
 
-![Table of contents of the validation pdf](../assets/img/toc_validationpdf.png)
-
-### Exercise
-
-Open a validation pdf (either in a folder containing your own simulation
-results or the downloaded MAgPIE simulation runs, or the validation
-files that show results of the simulation runs used for the MAgPIE4
-paper) and
-
-1.  make yourself familiar with the structure of the document and the
-    hierarchy of outputs as displayed by the table of contents and
-2.  have a look at some figures displaying model outputs of your
-    interest.
+![Table of contents of the validation pdf](../assets/img/toc_validationpdf.PNG)
 
 ## Interactive scenario analysis
 
@@ -176,11 +165,10 @@ evaluate.
 
 You can use filters to select a subset of all runs stored in the output
 folder of the model, for example by searching for runs that have been
-finished at a certain day or by searching for keywords in the title of
-the simulation
-runs:
+finished at a certain day, have been created by a certain user
+or by searching for keywords in the title of the simulation runs:
 
-![Run selection by using a filter](../assets/img/appResults_runselection.png)
+![Run selection by using a filter](../assets/img/appResults_runselection.PNG)
 
 ### Exercise
 
