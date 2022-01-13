@@ -18,4 +18,4 @@ Like last year all events will be free of charge but will require a **registrati
 
 [PIK]: https://pik-potsdam.de
 [MAgPIE]: https://github.com/magpiemodel/magpie
-[MAgPIE tutorials]: https://github.com/magpiemodel/tutorials
+[MAgPIE tutorials]: ../../../../tutorials
