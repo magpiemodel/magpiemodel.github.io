@@ -23,20 +23,20 @@ lessonsContent:
   - Use the `magpie4` package for output analysis.
   - Analyse outputs with the `gdx` package.
 exercises:
-  - task: Execute the model-internal output script `rds report` via the command
-  window. This script collects the results of several report-functions -
-  that calculate many key output variables like Production, Land Use or
-  Yields - and writes them into one rds file.
+  - task: "Execute the model-internal output script `rds report` via the command
+          window. This script collects the results of several report-functions -
+          that calculate many key output variables like Production, Land Use or
+          Yields - and writes them into one rds file."
     solution: "1. open a command line in the main MAgPIE model folder\n
                2. select model run by typing in number and press `ENTER`\n
                3. select `rds report` by pressing 2 and `ENTER`\n
                4. select `Direct execution` by pressing 3 and `ENTER`\n"
-  - task: Open a validation pdf (either in a folder containing your own simulation
-  results or the downloaded MAgPIE simulation runs and\n
-  (a) make yourself familiar with the structure of the document and the
-      hierarchy of outputs as displayed by the table of contents and\n
-  (b) have a look at some figures displaying model outputs of your
-      interest.
+  - task: "Open a validation pdf (either in a folder containing your own simulation
+           results or the downloaded MAgPIE simulation runs and\n
+           (a) make yourself familiar with the structure of the document and the
+           hierarchy of outputs as displayed by the table of contents and\n
+           (b) have a look at some figures displaying model outputs of your
+           interest."
 published: true
 ---
 
@@ -68,7 +68,7 @@ cfg$results\_folder) inside the **output** folder of the model.
 
 ## Model-internal R-scripts for output analysis{#Scripts}
 
-# Model-internal R-scripts in the config file{#ScriptsConfig}
+# Model-internal R-scripts in the config file
 In the file “config/default.cfg”, it is possible to indicate which
 R scripts are executed for output analysis after a model run is
 finished. These R scripts can be found in scripts/output.
@@ -80,7 +80,7 @@ In the default MAgPIE configuration, the scripts *output\_check*
 cfg$output <- c("output_check", "rds_report", "validation_short",
                 "extra/disaggregation")
 ```
-# Manual exection of model-internal R-scripts{#ScriptsManual}
+# Manual exection of model-internal R-scripts
 Output scripts can also be executed via the command window.
 To do so, windows users can open a command
 line prompt in the MAgPIE model folder by using **shift** + **rightClick** and
@@ -113,9 +113,10 @@ written in the respective folder of the simulation run inside the
 
 The automated model validation is an example of output
 analysis based on model-internal scripts (see \@ref(Scripts)). If the
-validation script is executed (either by selection via cfg$output as
-explained in <a id="ScriptsConfig"></a> or by execution via the command window as explained in
-\@ref(ScriptsManual)), a standard evaluation PDF is created that validates numerous
+validation script is executed (either by selection via `cfg$output` as
+explained [above](#model-internal-r-scripts-in-the-config-file) or
+by execution via the command window as explained in \@ref(ScriptsManual)),
+a standard evaluation PDF is created that validates numerous
 model outputs with a validation database containing historical data and
 projections for most outputs returned by the model, either visually or
 via statistical tests. A standard evaluation PDF consists of hundreds of
