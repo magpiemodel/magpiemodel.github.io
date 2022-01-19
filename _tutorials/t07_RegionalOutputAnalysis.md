@@ -27,21 +27,21 @@ exercises:
           window. This script collects the results of several report-functions -
           that calculate many key output variables like Production, Land Use or
           Yields - and writes them into one rds file."
-    solution: "1. open a command line in the main MAgPIE model folder\n
+    solution: "1. open a command window in the main MAgPIE model folder\n
                2. select model run by typing in number and press `ENTER`\n
-               3. select `rds report` by pressing 2 and `ENTER`\n
-               4. select `Direct execution` by pressing 3 and `ENTER`\n"
+               3. select `rds report` by pressing `2` and `ENTER`\n
+               4. select `Direct execution` by pressing `3` and `ENTER`\n"
   - task: "Open a validation pdf (either in a folder containing your own simulation
            results or the downloaded MAgPIE simulation runs and\n
            (a) make yourself familiar with the structure of the document and the
-           hierarchy of outputs as displayed by the table of contents and\n
+           hierarchy of outputs as displayed by the table of contents and; \n
            (b) have a look at some figures displaying model outputs of your
            interest."
 published: true
 ---
 
 
-## Introduction{#Intro}
+## Introduction
 
 After having successfully started and accomplished a simulation run, the
 next step is to evaluate the simulation results. In case you have not
@@ -109,7 +109,7 @@ Now, the selected script is executed. After completion, the results are
 written in the respective folder of the simulation run inside the
 **output** folder of the model.
 
-## Automated model validation{#Validationpdf}
+## Automated model validation
 
 The automated model validation is an example of output
 analysis based on model-internal scripts (see \@ref(Scripts)). If the
