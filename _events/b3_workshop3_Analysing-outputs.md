@@ -12,7 +12,7 @@ agenda:
     presenter: fb
   - shortID: output2
     length: 50
-    presenter: fb
+    presenter: pj
 ---
 
 After having learned how to start MAgPIE this session will focus on how to analyze its outputs. The session is split into two parts with the first part focusing on regional outputs whereas the second part will deal with spatially more explicit, gridded model outputs.

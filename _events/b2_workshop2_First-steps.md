@@ -9,13 +9,13 @@ agenda:
     presenter: jpd
   - shortID: start
     length: 40
-    presenter: emb
+    presenter: mw
   - shortID: config
     length: 35
-    presenter: mw
+    presenter: dl
   - shortID: startScript
     length: 40
-    presenter: am
+    presenter: vs
 ---
 
 This event will show you the basics necessary to run MAgPIE: How is a model run started? How can the settings of a run be adjusted? And how can an experiment setup be described and started via a custom start script?

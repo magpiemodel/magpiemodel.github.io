@@ -12,10 +12,10 @@ agenda:
     presenter: fh
   - shortID: pr
     length: 15
-    presenter: tba
+    presenter: mc
   - shortID: changeInput
     length: 45
-    presenter: fh
+    presenter: ms
 ---
 
 This session focuses on what to do if the available options are not sufficient and you have to go beyond what has already been implemented. You will learn how you can change the GAMS code as well as how to change model inputs. And it will be explained how these changes can be made available to the whole community via pull requests to the main repository.

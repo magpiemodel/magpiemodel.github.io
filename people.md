@@ -48,5 +48,21 @@ data:
     lastName: Stevanović
     id: ms
     url: https://www.pik-potsdam.de/members/miodrag
+  - firstName: Debbora
+    lastName: Leip
+    id: dl
+    url: https://www.pik-potsdam.de/members/dleip
+  - firstName: Vartika
+    lastName: Singh
+    id: vs
+    url: https://www.pik-potsdam.de/members/vasingh
+  - firstName: Patrick
+    lastName: von Jeetze
+    id: pj
+    url: https://www.pik-potsdam.de/members/vjeetze
+  - firstName: Michael
+    lastName: Crawford
+    id: mc
+    url: https://www.pik-potsdam.de/members/crawford
 
 ---
