@@ -51,13 +51,14 @@ exercises:
                2. Set the working directory to the main MAgPIE model folder (e.g. by copying the path of the folder with RIGHT CLICK + COPY and executing the command ``setwd(readClipboard())``\n
                3. Assign the gdx file: ``gdx <- ''fulldata.gdx''``\n
                4. solution to (a) ``cellularCarbon <- carbonstock(gdx)``\n
-               5. solution to (b) ``regionalCarbon <- carbonstock(gdx = gdx, level = ''reg'')``"
-   - task: "Using the gdx R library to extract the level and marginal values of the MAgPIE variable ov43_watavail."
-     solution: "``w <- readGDX(gdx, "ov43_watavail", select = list(type = c("level", "marginal")))``"
+               5. solution to (b) ``regionalCarbon <- carbonstock(gdx = gdx, level = ''reg'')``."
+  - task: "Use the gdx R library to extract the level and marginal values of the MAgPIE variable ov43watavail."
+    solution: "1. Open R and load the gdx library (``library(gdx)``)\n
+               2. Assign the gdx file ``gdx <- ''fulldata.gdx''``\n
+               3. Execute ``w <- readGDX(gdx, ''ov43_watavail'', select = list(type = c(''level'', ''marginal'')))``"
 
 published: true
 ---
-
 
 ## Introduction
 
