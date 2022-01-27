@@ -2,7 +2,7 @@
 layout: tutorial
 title:  Regional output analysis
 shortID: output
-lastUpdated:   2022-01-13
+lastUpdated:   2022-01-27
 model: MAgPIE
 modelVersion: 4.4.0
 author:
@@ -50,38 +50,40 @@ running, you can download model runs produced for Mishra et al. (2021)
 (<https://doi.org/10.5194/gmd-14-6467-2021>).
 These runs were created with version 4.3.5 of the MAgPIE model
 (<https://github.com/magpiemodel/magpie/tree/master>).
-You can download these runs as tgz folder from Zenodo (**magpie_v4.3.5_gmd-2021-76.tgz**
-at <https://zenodo.org/record/5417474#.YeAf8_DMJaQ>)
+You can download these runs as tgz folder from Zenodo (choose the folder
+``magpie_v4.3.5_gmd-2021-76.tgz`` at <https://zenodo.org/record/5417474#.YeAf8_DMJaQ>)
 and copy the folders containing the simulation
-results into the **output** folder of your local version of the MAgPIE
+results into the *output* folder of your local version of the MAgPIE
 model (Note: if you freshly cloned the model and did not set up a run yet, you
-will have to create an empty output folder).
+will have to create an empty output folder first).
 
 There are several ways to assess and evaluate MAgPIE results. This
 tutorial gives an overview on different tools and options that can be
 used to analyse model outputs.
 
-For each simulation, results are written to a folder that is created
-automatically as a combination of the **model title** and other
-information (as defined in the default.cfg via the command
-cfg$results\_folder) inside the **output** folder of the model.
+For each simulation, results are written into a subfolder of the *output* folder.
+This subfolder is created automatically. Its name is a combination of the
+model title and date. This is defined in the *default.cfg*
+(``cfg$results_folder <- "output/:title::date:"``).
 
-## Model-internal R-scripts for output analysis{#Scripts}
+
+## Model-internal R-scripts for output analysis
 
 # Model-internal R-scripts in the config file
-In the file “config/default.cfg”, it is possible to indicate which
-R scripts are executed for output analysis after a model run is
-finished. These R scripts can be found in scripts/output.
+In the file *config/default.cfg*, it is possible to specify which
+R scripts are executed after a model run is finished.
+These R scripts can be found in the folder *scripts/output*.
 In the default MAgPIE configuration, the scripts *output\_check*
 *rds\_report* (to be used in appResultsLocal; see explanations below),
-*validation\_short* and *extra/disaggregation* are selected via cfg$output:
+*validation\_short* and *extra/disaggregation* are selected via ``cfg$output``:
 
 ``` r
 cfg$output <- c("output_check", "rds_report", "validation_short",
                 "extra/disaggregation")
 ```
-# Manual exection of model-internal R-scripts
-Output scripts can also be executed via the command window.
+
+# Manual execution of model-internal R-scripts
+These output scripts can also be executed via the command window.
 To do so, windows users can open a command
 line prompt in the MAgPIE model folder by using **shift** + **rightClick** and
 then selecting **open command window here** option.
@@ -105,9 +107,9 @@ The last step is to select the run submission type, e.g. “Direct execution”:
 
 ![Selection of run submission type](../assets/img/Rscript_output_submissiontype.PNG)
 
-Now, the selected script is executed. After completion, the results are
+Now, the selected script will be executed. After completion, the results are
 written in the respective folder of the simulation run inside the
-**output** folder of the model.
+*output* folder of the model.
 
 ## Automated model validation
 
