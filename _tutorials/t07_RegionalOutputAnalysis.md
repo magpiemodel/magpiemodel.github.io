@@ -26,9 +26,9 @@ exercises:
   - task: "Execute the model-internal output script `rds report` via the command
           window. This script collects the results of several report-functions -
           that calculate many key output variables like Production, Land Use or
-          Yields - and writes them into one rds file."
+          Yields - and writes them into an rds file."
     solution: "1. open a command window in the main MAgPIE model folder\n
-               2. select model run by typing in number and press `ENTER`\n
+               2. select model run by typing in the respective number and press `ENTER`\n
                3. select `rds report` by pressing `2` and `ENTER`\n
                4. select `Direct execution` by pressing `3` and `ENTER`\n"
   - task: "Open a validation pdf (either in a folder containing your own simulation
@@ -37,6 +37,24 @@ exercises:
            hierarchy of outputs as displayed by the table of contents and; \n
            (b) have a look at some figures displaying model outputs of your
            interest."
+  - task: "Start the interactive scenario analysis tool using the shinyresults R library,
+           select one particular model run using the title filter and look at a variable of your choice."
+    solution: "1. Open an R session in the main folder structure of the MAgPIE model folder\n
+               2. Execute the command ``shinyresults::appResultsLocal()``\n
+               3. After the interactive site has opened, select `title` as a filter in the `Select Data` tab and look for the simulation run of your choice\n
+               4. Click on `Load selection` and open the `LinePlot1` or `AreaPlot1` tab\n
+               5. Select a variable of your choice and optionally also a particular scenario or region."
+  - task: "Apply the function carbonstock() from the R library magpie4 using the file “fulldata.gdx” in the folder of a model simulation run as input for the function.\n
+               (a) Use the default settings of the arguments of the function\n
+               (b) Change the arguments of the function, e.g. change the regional resolution from cellular (cluster level) to regional."
+    solution: "1. Open an R session or R Studio\n
+               2. Set the working directory to the main MAgPIE model folder (e.g. by copying the path of the folder with RIGHT CLICK + COPY and executing the command ``setwd(readClipboard())``\n
+               3. Assign the gdx file: ``gdx <- ''fulldata.gdx''``\n
+               4. solution to (a) ``cellularCarbon <- carbonstock(gdx)``\n
+               5. solution to (b) ``regionalCarbon <- carbonstock(gdx = gdx, level = ''reg'')``"
+   - task: "Using the gdx R library to extract the level and marginal values of the MAgPIE variable ov43_watavail."
+     solution: "``w <- readGDX(gdx, "ov43_watavail", select = list(type = c("level", "marginal")))``"
+
 published: true
 ---
 
@@ -69,7 +87,7 @@ model title and date. This is defined in the *default.cfg*
 
 ## Model-internal R-scripts for output analysis
 
-# Model-internal R-scripts in the config file
+# Model-internal R-script selection in the config file
 In the file *config/default.cfg*, it is possible to specify which
 R scripts are executed after a model run is finished.
 These R scripts can be found in the folder *scripts/output*.
@@ -114,10 +132,12 @@ written in the respective folder of the simulation run inside the
 ## Automated model validation
 
 The automated model validation is an example of output
-analysis based on model-internal scripts (see \@ref(Scripts)). If the
-validation script is executed (either by selection via `cfg$output` as
-explained [above](#model-internal-r-scripts-in-the-config-file) or
-by execution via the command window as explained in \@ref(ScriptsManual)),
+analysis based on model-internal scripts (see
+[above](#model-internal-r-scripts-for-output-analysis)).
+If the validation script is executed (either by selection via `cfg$output` as
+explained [above](#model-internal-r-script-selection-in-the-config-file) or
+by execution via the command window as explained
+[above](#manual-execution-of-model-internal-r-scripts),
 a standard evaluation PDF is created that validates numerous
 model outputs with a validation database containing historical data and
 projections for most outputs returned by the model, either visually or
@@ -127,14 +147,12 @@ evaluating the model outputs on such a broad level rather than focusing
 only on key outputs, it allows getting a more complete picture of the
 corresponding simulation. As an example of such validation files, you
 can download the evaluation documents produced for all runs shown in the
-MAgPIE 4 framework paper (<https://doi.org/10.5281/zenodo.1485303>)
-or the runs downloaded for this exercise (<https://zenodo.org/record/5417474#.YeAf8_DMJaQ>).
+MAgPIE 4 framework paper (<https://doi.org/10.5281/zenodo.1485303>).
 
 The table of contents of the validation PDF gives a good overview over
 the model outputs that can be simulated with a MAgPIE standard
 simulation, even though the validation PDF only shows a subset of
-possible model
-outputs:
+possible model outputs:
 
 ![Table of contents of the validation pdf](../assets/img/toc_validationpdf.PNG)
 
@@ -148,9 +166,9 @@ different large PDF files.
 
 To overcome this issue, we developed the interactive scenario analysis
 and evaluation tools appResultsLocal (and appResults for the use within
-the PIK network) as part of the library **shinyresults**
-(<https://github.com/pik-piam/shinyresults>), which show evaluation
-plots for multiple scenarios including historical data and other
+the PIK network) as part of the library ``shinyresults``
+(<https://github.com/pik-piam/shinyresults>). It facilitates the evaluation of
+results with plots for multiple scenarios including historical data and other
 projections based on an interactive selection of regions and variables.
 You can use this tool by running the following R command in the main
 folder of your model, which will automatically collect all runs in the
@@ -173,12 +191,6 @@ or by searching for keywords in the title of the simulation runs:
 
 ![Run selection by using a filter](../assets/img/appResults_runselection.PNG)
 
-### Exercise
-
-Choose *title* as filter and select 2 simulations that are stored in the
-output folder of your model, e.g. the SSP2 and SSP5 simulations from the
-downloaded set of MAgPIE
-runs:
 
 ![How to use the title for filtering runs](../assets/img/appResults_runselection_title.png)
 
@@ -206,20 +218,19 @@ include or exclude validation data (if available) and download the plot.
 ## Analysis of outputs with the magpie4 library
 
 If you want to go beyond visual output analysis and predefined output
-evaluation facilitated by scripts in the model folders
-**scripts/output/single** and **scripts/output/comparison**, you can use
-the functionality of the R package *magpie4*
+evaluation facilitated by scripts, you can use
+the functionality of the R package **magpie4**
 (<https://github.com/pik-piam/magpie4>). This library contains a list of
-common functions for extracting outputs from the MAgPIE model which are
+functions for extracting outputs from the MAgPIE model, which are
 also the basis for the generation of the automated validation PDF. For a
-quick overview on the functions which are included in the library, you
+quick overview of the functions included in the library, you
 can have a look in the folder **magpie4/R**. The following figure shows
 a subset of R-files included in
 **magpie4/R**:
 
 ![Subset of R functions of the magpie4 library](../assets/img/subset_functions_magpie4.png)
 
-For making yourself familiar with this library, you can open a R/RStudio
+To make yourself familiar with this library, you can open an R/RStudio
 session and set the MAgPIE model folder as working directory. This can
 be done by using the following command:
 
@@ -240,40 +251,31 @@ page:
 
 ![Help page of the carbonstock-function of the magpie4 library](../assets/img/magpie4_help_carbonstock.png)
 
-### Exercise
 
-Apply the function *carbonstock* for calculations in R, by using the
-file “fulldata.gdx” in the folder of a model simulation run as input for
-the function.
+## Analyzing outputs with the gdx library
 
-1.  Use the default settings of the arguments of the function
-2.  Change the arguments of the function, e.g. set the level from “cell”
-    to “reg”.
+The **gdx library** (<https://github.com/pik-piam/gdx>) allows to
+directly access objects contained in the *fulldata.gdx* file via the
+function ``readGDX``. A pragmatic way to learn how to use this function
+for the extraction of interesting information from the *fulldata.gdx* is
+to open R files of the **magpie4** library within Rstudio. Most of the
+magpie4 functions make use of ``readGDX``.
 
-## Analysis of outputs with the gdx library
-
-The **gdx library** (<https://github.com/pik-piam/gdx>) allows for
-directly accessing objects contained in the fulldata.gdx via the
-function **readGDX**. A pragmatic way to learn how to use this function
-for the extraction of interesting information from the fulldata.gdx is
-to open R-files of the magpie4 library within Rstudio. Most of the
-magpie4 functions make use of **readGDX**.
-
-In the function *carbonstock* of the **magpie4** library, we see several
-instances where **readGDX** is used,
+In the function ``magpie4::carbonstock()``, we see several
+instances where ``gdx::readGDX`` is used,
 e.g.:
 
 ``` r
-a <- readGDX(gdx,"ov_carbon_stock",select=list(type="level"),react="silent")
-sm_cc_carbon <- readGDX(gdx,"sm_cc_carbon2",react = "silent")
-ov_land <- readGDX(gdx,"ov_land",select = list(type="level"))
-fm_carbon_density <- readGDX(gdx,"fm_carbon_density")[,t,]
+a <- readGDX(gdx, "ov_carbon_stock", select=list(type = "level"), react = "silent")
+sm_cc_carbon <- readGDX(gdx, "sm_cc_carbon2", react = "silent")
+ov_land <- readGDX(gdx, "ov_land", select = list(type = "level"))
+fm_carbon_density <- readGDX(gdx, "fm_carbon_density")[,t,]
 ```
 
 It is possible to extract various GAMS objects like *“sets”*,
 *“equations”*, *“parameters”*, *“variables”* and *“aliases”* with
-**readGDX**.
+``readGDX``.
 
-With the argument *select=list(type=“level”)*, you can select the levels
-of endogenous variables, with *select=list(type=“marginal”)* you can
+With the argument ``select = list(type = “level”)``, you can select the level values
+of endogenous variables, with ``select = list(type = “marginal”)`` you can
 extract the marginal values of these variables.
