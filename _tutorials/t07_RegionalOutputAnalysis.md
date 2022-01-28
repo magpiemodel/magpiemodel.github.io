@@ -116,15 +116,15 @@ Rscript output.R
 You are now asked to choose the simulation run for which you would like to
 execute an output script.
 
-![Selection of model runs](../assets/img/Rscript_output_runselection.PNG)
+![Selection of model runs](../assets/img/Rscript_output_runselection.png)
 
 Next, you can choose which output scripts you want to execute:
 
-![Selection of model-internal output scripts](../assets/img/Rscript_output_scriptselection.PNG)
+![Selection of model-internal output scripts](../assets/img/Rscript_output_scriptselection.png)
 
 The last step is to select the run submission type, e.g. “Direct execution”:
 
-![Selection of run submission type](../assets/img/Rscript_output_submissiontype.PNG)
+![Selection of run submission type](../assets/img/Rscript_output_submissiontype.png)
 
 Now, the selected script will be executed. After completion, the results are
 written in the respective folder of the simulation run inside the
