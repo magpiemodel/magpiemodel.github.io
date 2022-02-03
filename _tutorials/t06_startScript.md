@@ -8,8 +8,8 @@ modelVersion: 4.0.0
 author: am
 level: 3
 requirements:
-  - GAMS Installed, Magpie model folder downloaded
-  - Requirement B
+  - GAMS Installed, Magpie model folder on local computer
+  - Undertaken Tutorial 1 and 2
 lessonsContent:
   - Understand MAgPIE starting scripts
   - Create custom starting scripts
@@ -19,13 +19,14 @@ published: true
 ## Introduction
 
 MAgPIE reads its specified configuration file just before starting a
-model run. Editing these config files by hand maybe practical in cases
-where a user is making one run at a time but more often than not, users
-may have to work with a combination of different settings for the model.
+model run. Editing these config files by hand (as we did in tutorial just before)
+maybe practical in cases where a user is making one run at a time but more
+often than not, users may have to work with a combination of different
+settings for the model.
 
 For example, a user may want to run two different food demand scenarios in
 MAgPIE (free trade or selfsuff_reduced) and along with this, a user
-may also want to run two different yield scenarios (dynamic and management_calibrated).
+may also want to run two different land scenarios (landmatrix_dec18 and feb15).
 In this case, the total number of runs needed is 4. In
 such cases, editing config files by hand is not advisable. Here, a good
 programming practice would be to rather change these config files using
@@ -34,13 +35,13 @@ an R script which changes the config settings in an automatized manner.
 With MAgPIE having a lot of modules and settings which can be changed
 and used in various combinations, it becomes imperative that a user be
 able to change a lot of settings concurrently. This can be achieved by
-changing the config file (from tutorial series 3) for turning on or off
+changing the config file (from tutorial 2) for turning on or off
 module realizations and other settings.
 
 ## Getting started
 
 Before we write our own starting script, it is important to know what a
-start script really does. Let’s have a look at tutorial 3 again and see
+start script really does. Let’s have a look at tutorial 1 again and see
 the last part of the exercise where we started a model run. For this, we
 first opened a command line prompt in the cloned MAgPIE folder and ran
 the following command:
@@ -400,7 +401,8 @@ for(trade_setting  in c("selfsuff_reduced","free_apr16")){
 } # <- Closing trade loop
 ```
 
-## Starting MAgPIE with custom R script
+## Exercise
+**Starting MAgPIE with custom R script**
 
 So far, we have learned:
 
