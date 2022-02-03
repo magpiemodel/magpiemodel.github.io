@@ -9,7 +9,7 @@ author: am
 level: 3
 requirements:
   - GAMS Installed, Magpie model folder on local computer
-  - Undertaken Tutorial 1 and 2
+  - Undertaken Tutorial 4 and 5
 lessonsContent:
   - Understand MAgPIE starting scripts
   - Create custom starting scripts
@@ -35,7 +35,7 @@ an R script which changes the config settings in an automatized manner.
 With MAgPIE having a lot of modules and settings which can be changed
 and used in various combinations, it becomes imperative that a user be
 able to change a lot of settings concurrently. This can be achieved by
-changing the config file (from tutorial 2) for turning on or off
+changing the config file (from tutorial 5) for turning on or off
 module realizations and other settings.
 
 ## Getting started
