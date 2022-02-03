@@ -8,7 +8,7 @@ modelVersion: 4.0.0
 author: am
 level: 3
 requirements:
-  - Requirement A
+  - GAMS Installed, Magpie model folder downloaded
   - Requirement B
 lessonsContent:
   - Understand MAgPIE starting scripts
@@ -23,13 +23,13 @@ model run. Editing these config files by hand maybe practical in cases
 where a user is making one run at a time but more often than not, users
 may have to work with a combination of different settings for the model.
 
-For example, a user may want to run two different trade scenarios in
-MAgPIE (self sufficiency based & free-trade) and along with this, a user
-may also want to run two different policy scenarios (with and without
-CO2 prices). In this case, the total number of runs needd is 2\*2=4. In
+For example, a user may want to run two different food demand scenarios in
+MAgPIE (free trade or selfsuff_reduced) and along with this, a user
+may also want to run two different yield scenarios (dynamic and management_calibrated).
+In this case, the total number of runs needed is 4. In
 such cases, editing config files by hand is not advisable. Here, a good
 programming practice would be to rather change these config files using
-an R script which changes the config settings in automatised manner.
+an R script which changes the config settings in an automatized manner.
 
 With MAgPIE having a lot of modules and settings which can be changed
 and used in various combinations, it becomes imperative that a user be
@@ -102,7 +102,7 @@ start_run(cfg="default.cfg")
 ```
 
 The **start\_run()** function sourced from above is the used to start
-the run.
+the run using the settings specified in the **default.cfg** file.
 
 ## Writing our own start script
 
@@ -116,7 +116,7 @@ simplicity, let’s just try to change two settings. We’ll make a total of
 
 
 
-2.  Making runs with two different **forestry** module realizations.
+2.  Making runs with two different **land** module realizations.
 
 
 
@@ -203,7 +203,8 @@ source("scripts/start_functions.R")
 ```
 
 Now, we’ll source the **default config** which you had changed in
-tutorial 3. To do so, add the following line to your
+tutorial 3. This loads the default.cfg file from the main folder and you can start
+making changes to it. To do so, add the following line to your
 script:
 
 ``` r
@@ -284,8 +285,8 @@ cfg$output <- c("rds_report","interpolation")
 #### Adding loop(s)
 
 We’ll now write a loop to go over the different combinations of module
-realiazations. As stated earlier, we’ll make 4 runs with changes to
-trade module and forestry module. Figure 1 describes and explains the
+realizations. As stated earlier, we’ll make 4 runs with changes to
+trade module and land module. Figure 1 describes and explains the
 available module realizations for these two modules.
 
 ![Module setting combinations](../assets/img/module-settings.png)
@@ -294,24 +295,24 @@ The loop we write should change the config based on which module
 realization we choose. Here, lets try making runs with the following
 combinations:
 
-1.  Trade default + Forestry default
-2.  Trade default + Forestry alt
-3.  Trade alt + Forestry default
-4.  Trade alt + Forestry alt
+1.  Trade default + Land default
+2.  Trade default + Land alt
+3.  Trade alt + Land default
+4.  Trade alt + Land alt
 
 To do so, the loop should go two times over trade module realizations
-and then for each of theses instances, two times over the forestry
+and then for each of theses instances, two times over the land
 module realizations. In principle, this loop’s general structure should
 look like this:
 
 ``` r
 for(trade_setting in c("default_trade","alt_trade")){
 
-  for(forestry_setting in c("default_forestry","alt_forestry")){
+  for(land_setting in c("default_land","alt_land")){
 
     change_trade_module_realization   ## Updates cfg
 
-    change_forestry_module_realization  ## Updates cfg
+    change_land_module_realization  ## Updates cfg
 
     change_title_according_to_run_setting
 
@@ -327,27 +328,27 @@ the loop which we deleted earlier):
 ``` r
 # Starting trade loop
 for(trade_setting  in c("selfsuff_reduced","free_apr16")){
-  # Starting forestry loop
-  for(forestry_setting  in c("dynamic_may20","static_sep16")){
+  # Starting land loop
+  for(land_setting  in c("landmatrix_dec18","feb15")){
 
     # Set trade realization
     cfg$gms$trade <- trade_setting
 
-    # Set forestry realization
-    cfg$gms$forestry <- forestry_setting
+    # Set land realization
+    cfg$gms$land <- land_setting
 
     # Changing title flags
     if(trade_setting  == "selfsuff_reduced") trade_flag="resTrade"
     if(trade_setting  == "free_apr16") trade_flag="freeTrade"
-    if(forestry_setting  == "dynamic_may20") forestry_flag = "dynFor"
-    if(forestry_setting  == "static_sep16") forestry_flag = "statFor"
+    if(land_setting  == "landmatrix_dec18") land_flag = "landmatrix"
+    if(land_setting  == "feb15") land_flag = "baseland"
 
     # Updating default tile
-    cfg$title<- paste0("MAgPIE","_",trade_flag,"_",forestry_flag)
+    cfg$title<- paste0("MAgPIE","_",trade_flag,"_",land_flag)
 
     ## cfg has been changed further at his stage, start the run
     start_run(cfg=cfg)
-  } # <- Closing forestry loop
+  } # <- Closing land loop
 } # <- Closing trade loop
 ```
 
@@ -375,27 +376,27 @@ cfg$output <- c("rds_report","interpolation")
 
 # Starting trade loop
 for(trade_setting  in c("selfsuff_reduced","free_apr16")){
-  # Starting forestry loop
-  for(forestry_setting  in c("dynamic_may20","static_sep16")){
+  # Starting land loop
+  for(land_setting  in c("landmatrix_dec18","feb15")){
 
     # Set trade realization
     cfg$gms$trade <- trade_setting
 
-    # Set forestry realization
-    cfg$gms$forestry <- forestry_setting
+    # Set land realization
+    cfg$gms$land <- land_setting
 
     # Changing title flags
     if(trade_setting  == "selfsuff_reduced") trade_flag="resTrade"
     if(trade_setting  == "free_apr16") trade_flag="freeTrade"
-    if(forestry_setting  == "dynamic_may20") forestry_flag = "dynFor"
-    if(forestry_setting  == "static_sep16") forestry_flag = "statFor"
+    if(land_setting  == "landmatrix_dec18") land_flag = "landmatrix"
+    if(land_setting  == "feb15") land_flag = "baseland"
 
     # Updating default tile
-    cfg$title<- paste0("MAgPIE","_",trade_flag,"_",forestry_flag)
+    cfg$title<- paste0("MAgPIE","_",trade_flag,"_",land_flag)
 
     ## cfg has been changed further at his stage, start the run
     start_run(cfg=cfg)
-  } # <- Closing forestry loop
+  } # <- Closing land loop
 } # <- Closing trade loop
 ```
 
