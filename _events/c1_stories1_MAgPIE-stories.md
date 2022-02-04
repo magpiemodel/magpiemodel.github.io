@@ -2,13 +2,25 @@
 layout: event
 title:  "Stories 1 - MAgPIE stories #1"
 event_start:   "2022-03-15T11:00:00+01:00"
-event_end:     "2022-03-15T12:30:00+01:00"
+event_end:     "2022-03-15T13:00:00+01:00"
 agenda:
   - title: Welcome
     length: 10
     presenter: tbd
-  - title: MAgPIE stories #1
-    length: 80
+  - title: Talk #1
+    length: 20
+    presenter: tbd
+  - title: Talk #2
+    length: 20
+    presenter: tbd
+  - title: Talk #3
+    length: 20
+    presenter: tbd
+  - title: Talk #4
+    length: 20
+    presenter: tbd
+  - title: Talk #5
+    length: 20
     presenter: tbd
 ---
 
