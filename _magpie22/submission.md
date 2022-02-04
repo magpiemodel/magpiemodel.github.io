@@ -1,6 +1,7 @@
 ---
 layout: post
 permalink: /magpie22/stories/submit
+published: false
 ---
 
 <style>
