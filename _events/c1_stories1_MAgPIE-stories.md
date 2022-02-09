@@ -6,7 +6,7 @@ event_end:     "2022-03-15T13:00:00+01:00"
 agenda:
   - title: Welcome
     length: 10
-    presenter: tbd
+    presenter: hlc
   - title: Sticky and improvements in spatially explicit outputs
     abstract: "In this story, I would like to explain what's behind sticky and
     also give examples on the improvements it brings to spatially-explicit data.
@@ -33,7 +33,8 @@ agenda:
     the environment. Scarcity of agricultural water is alleviated as the increase
     in TFP gives room for adjustment of the spatial planting structure."
     length: 20
-    presenter: Dr Ruiying Du
+    presenter: Ruiying Du
+    presenterURL: https://github.com/Ruiying-Du
     institution: Zhejiang University
     country: China
   - title: Global Innovation Needs Assessments (GINAs)

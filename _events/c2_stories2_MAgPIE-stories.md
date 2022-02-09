@@ -6,7 +6,7 @@ event_end:     "2022-03-16T13:00:00+01:00"
 agenda:
   - title: Welcome
     length: 10
-    presenter: tbd
+    presenter: ap
   - title: The long and short of it
     abstract: "You never learn until you fail - my talk will focus on the
     experiences of an outsider (no, literally!) in this intricate but explicit,
