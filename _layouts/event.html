@@ -2,6 +2,23 @@
 layout: page
 ---
 
+<style>
+  blockquote.abstract {
+    color:#021c08;
+    background: #d8e6e8;
+    font-style:normal;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    border-radius:10px;
+    border:0;
+    padding: 1em;
+  }
+
+  .nowrap {
+    white-space: nowrap ;
+  }
+</style>
+
 <p>{{ content | markdownify}}</p>
 
 {% assign people = site.pages | where: "shortID", "people" | first %}
@@ -30,23 +47,35 @@ layout: page
         {% endif %}</span>
       </td>
       {% else %}
-        <td>
-        {% if item.url %}
-          <a href="{{item.url}}">{{item.title}}</a>
+        <td colspan="2">
+        {% if item.abstract %}
+        <details>
+          <summary>{% if item.url %}
+            <a href="{{item.url}}">{{item.title}}</a>
+          {% else %}
+            {{item.title}}
+          {% endif %}</summary>
+          <blockquote class="abstract">{{ item.abstract | markdownify }}</blockquote>
+        </details>
         {% else %}
-          {{item.title}}
+          {% if item.url %}
+            <a href="{{item.url}}">{{item.title}}</a>
+          {% else %}
+            {{item.title}}
+          {% endif %}
         {% endif %}
-        </td><td>⚪⚪⚪⚪⚪ <span style="color:purple">All levels</span></td>
+        </td>
       {% endif %}
       <td>
       {% assign person = people.data | where: "id", item.presenter | first %}
-      {% if person.url %}
+      <span class="nowrap">{% if person.url %}
         <a href="{{person.url}}">{{person.firstName}} {{person.lastName}}</a>
       {% elsif person.lastName %}
         {{person.firstName}} {{person.lastName}}
       {% else %}
         {{item.presenter}}
-      {% endif %}
+      {% endif %}</span>
+      <br/> {{item.institution}} {{item.country}}
       </td>
     </tr>
 {% endfor %}
