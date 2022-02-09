@@ -63,7 +63,7 @@ agenda:
     abstract: "As foundation for future work, we are coupling MAgPIE and the
     MESSAGEix framework. Initially, we’re using a soft-link approach similar to
     the MESSAGEix-GLOBIOM land-use emulator matrix. In this approach, a set of
-    land-use scenarios are integrated into the MESSAGE energy model via some of
+    land-use scenarios is integrated into the MESSAGE energy model via some of
     their core outputs relevant for the energy system, e.g., bioenergy production
     potential and associated AFOLU GHG emissions. Scenarios are defined based
     on 2100 target prices for bioenergy per GJ produced and GHG emissions per
@@ -75,6 +75,7 @@ agenda:
     we ran into, and first results."
     length: 20
     presenter: Jan Steinhauser
+    presenterURL: https://iiasa.ac.at/staff/jan-steinhauser
     institution: IIASA
     country: Austria
   - title: Dollar per Kelvin - From physical change to economic driver

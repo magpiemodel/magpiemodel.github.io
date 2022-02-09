@@ -73,7 +73,11 @@ layout: page
       {% elsif person.lastName %}
         {{person.firstName}} {{person.lastName}}
       {% else %}
-        {{item.presenter}}
+        {%if item.presenterURL %}
+          <a href="{{item.presenterURL}}">{{item.presenter}}</a>
+        {% else %}
+          {{item.presenter}}
+        {% endif %}
       {% endif %}</span>
       <br/> {{item.institution}} {{item.country}}
       </td>
