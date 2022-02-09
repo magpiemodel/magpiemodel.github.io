@@ -15,7 +15,7 @@ agenda:
     from a distance and eventually making contributions."
     length: 20
     presenter: vs
-    institution: IMA, IFPRI, HU-Berlin
+    institution: IIMA, IFPRI, HU-Berlin
     country: India
   - title: "Meeting the Water Redlines in China: Implications for Food, Trade,
     and GHG Emissions"
