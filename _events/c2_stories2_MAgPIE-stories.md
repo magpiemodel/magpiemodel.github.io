@@ -35,6 +35,7 @@ agenda:
     the two redlines are dominated by the water cap redline."
     length: 20
     presenter: Meng Xu
+    presenterURL: https://github.com/xumeng18
     institution: Zhejiang University
     country: China
   - title: The Inevitable Policy Response
@@ -92,6 +93,7 @@ agenda:
     practices."
     length: 20
     presenter: Charlie Briggs
+    presenterURL: https://www.vivideconomics.com/charlie-briggs-2/
     institution: Vivid Economics
     country: UK
 ---
