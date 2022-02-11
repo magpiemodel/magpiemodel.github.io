@@ -2,6 +2,7 @@
 layout: page
 title: Call for Contributions
 permalink: /magpie22/stories/call
+published: false
 ---
 
 #### submission deadline: ~~15.01.2022~~ 26.01.2022 (extended)

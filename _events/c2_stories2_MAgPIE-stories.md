@@ -54,6 +54,7 @@ agenda:
     scenario for the modelling."
     length: 20
     presenter: Christian Mortlock
+    presenterURL: https://www.vivideconomics.com/christian-mortlock/
     institution: Vivid Economics
     country: UK
   - title: "Taking the landscape perspective with MAgPIE - insights from the
