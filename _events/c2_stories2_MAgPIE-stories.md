@@ -7,12 +7,14 @@ agenda:
   - title: Welcome
     length: 10
     presenter: ap
-  - title: The long and short of it
-    abstract: "You never learn until you fail - my talk will focus on the
-    experiences of an outsider (no, literally!) in this intricate but explicit,
-    convoluted but documented maze that is MAgPIE. I will share excerpts about
-    my experiences over the past two years, picking up the model step by step
-    from a distance and eventually making contributions."
+  - title: "Use of a global model answering regional questions: Case Study
+    from India"
+    abstract: "In this story, I will talk about the experiences of using a global
+    model to answer policy relevant questions for India. Under the Food,
+    Agriculture, Biodiversity and Land-Use project, our team in undertaking model
+    development and research exercise to pursue interesting policy questions for
+    India such as introduction of a biofuel policy, policy shocks that focus on
+    water use reduction as well as closing the yield gap for India."
     length: 20
     presenter: vs
     institution: IIMA, IFPRI, HU-Berlin
