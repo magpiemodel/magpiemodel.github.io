@@ -2,21 +2,22 @@
 layout: tutorial
 title:  GAMS code, modules & realizations
 shortID: gams
-lastUpdated:   2020-11-02
+lastUpdated:   2022-02-22
 model: MAgPIE
-modelVersion: 4.0.0
+modelVersion: 4.4.0
 author:
   - kk
   - fb
   - am
+  - emb
 level: 2
 requirements:
-  - Requirement A
-  - Requirement B
+  - GAMS Installed
+  - MAgPIE clone in your local machine
 lessonsContent:
-  - Navigate though the GAMS code of MAgPIE
+  - Navigate through the GAMS code of MAgPIE
   - Understand the structure of modules and realizations
-  - Understand rules naming conventions
+  - Understand naming rules and conventions
 published: true
 ---
 
@@ -27,12 +28,13 @@ Environment) is a modular open source framework for modeling global
 land-systems. Before looking into the code structure, we want you to
 understand the basic dependencies of what we call ‘modules’. The full
 interdependence and more detailed information can be found in our
-[model documentation](https://rse.pik-potsdam.de/doc/magpie/4.3.5)
+[model documentation](https://rse.pik-potsdam.de/doc/magpie/4.4.0/)
 
 Here we want to shortly draw your attention on the ‘main lines’ of
-module interdependence.
+module interdependence:
 
-![Model overview](../assets/img/magpie_model.gif)
+[comment]: <>![Model overview](../assets/img/magpie_model.gif)
+<img src="../assets/img/magpie_model.gif" alt="drawing" width="200"/>
 
   - The future projections of population and GDP for given scenario
     assumptions represent the main drivers of the model.
