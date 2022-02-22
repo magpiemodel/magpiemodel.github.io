@@ -2,45 +2,49 @@
 layout: tutorial
 title:  Input data preparation (MADRaT)
 shortID: madrat
-lastUpdated:   2020-12-03
+lastUpdated:   2022-22-02
 model: MADRaT
 modelVersion: 1.0.0
 author: dc
 level: 4
 requirements:
-  - Requirement A
-  - Requirement B
+  - Basic knowledge of R programming language
+  - Fork and clone https://github.com/pik-piam/mrtutorial
 lessonsContent:
   - Introduction to the MADRaT framework
-  - Create madrat-based data processing
+  - magclass object functionality
+  - MADRaT-based input data preprocessing
+  - Portable Unaggregated Collections (PUCs) in MADRaT
+exercises:
+  - task: " With the ```agg_gdp``` magpie object, answer the following questions, what is Germany’s share of Agricultural GDP in 2010? (Germany’s ISO3
+    code is “DEU”)"
+    solution: "``agg_gdp[“DEU”,2010,]``"
+  - task: "Recalculate a tgz file with a different regional aggregation, using the OECD regionmapping found in folder XXX and the .puc file we have already created. Additionally, insert a text file with the text ''extra OECD text'' in the new output."
+    solution: "`` pucAggregate(puc = ''C:/PIK/inputdata/puc/rev2_extra_tutorial_tag.puc'', regionmapping = ''regionmappingOECD.csv'', extra = ''new OECD text'') ``"
+
 published: true
 ---
 
 ## Introduction
 
-In this exercise, we will look into the MADRaT framework; Libraries
-organized throught this framework do the bulk of the processing of the
+In this exercise, we will dig deeper into magclass objects and the MADRaT framework.
+Libraries organized through this framework do the bulk of the processing of the
 data that goes in and comes out of the MAgPIE model, and are
 standardized for consistency. For this exercise, we will work with the
 ‘mrtutorial’ package as an example of the mr- package structure.
 
-Please fork your own branch of mrtutorial from
+Please fork and locally clone your own branch of mrtutorial from
 <https://github.com/pik-piam/mrtutorial>
-
-Then clone this branch locally.
 
 ## Package structure
 
-Directories in the package are automatically generated for the most
-part.
-
-You can also create new libraries through RStudio via “New Project –\>
+You can also create new madrat-based libraries through RStudio via “New Project –\>
 New Directory –\> R Package”.
 
-Important: To make new libraries accessible through the madrat world,
+Importantly, to make these libraries accessible to  MADRaT functionality,
 they must include the file “madrat.R” in the R folder of the package.
 
-## MADRaT Functions - Exercise
+## MADRaT Functions - Downloading, Reading, Calculating Model Inputs
 
 We will look closesly into the workflow of processing new data sources
 to be ready for use in the MAgPIE model. Madrat splits this workflow
@@ -51,7 +55,7 @@ which has a specific function wrapper.
 
 Note that if direct download not possible, data files can be manually
 created in the inputdata/sources folder. This is not the preferred
-implemntation, but in this case, a download function is not necessary.
+implementation, but in this case, a download function is not necessary.
 Naming of the source folder must however match the read functions.
 Metadata on where the data was obtained, how it was downloaded, etc.
 should ideally be documented in the download script. For an ideal case,
@@ -83,7 +87,7 @@ be multiple subdimensions, due to the use of the “.”. This is generally
 to be avoided, to avoid confusing names and dimensions. Let’s rena
 
 ``` r
-x <- readSource("TutorialWDI", subtype="SP.POP.TOTL", convert=FALSE)
+pop_no_conv <- readSource("TutorialWDI", subtype="SP.POP.TOTL", convert=FALSE)
 ```
 
 ### Convert Function
@@ -99,7 +103,7 @@ default OFF but can be implemented via convert=“onlycorrect”
 Please open convertTutorialWDI.R
 
 ``` r
-x <- readSource("TutorialWDI", subtype="SP.POP.TOTL", convert=TRUE)
+pop_conv <- readSource("TutorialWDI", subtype="SP.POP.TOTL", convert=TRUE)
 
 ```
 
@@ -116,42 +120,32 @@ open this function.
 ag_gdp <- calcOutput("AgGDP")
 ```
 
-By default, calcOutput functions will aggregate to the regional level.
-We can also turn the cache on via:
+By default, calcOutput functions will aggregate to the regional level,
+otherwise ```agggregate = F``` is reqired to keep the original regional level. 
+The region mapping can also be changed in setConfig().
 
 ``` r
-setConfig(forcecache=T)
+getConfig()
 ```
 
 Now try running the same function again. We can also go see where cache
-files are stored. All functions are cached as .Rda in
-/inputdata/cache/cache\_folder after the first run, meaning
-time-consuming functions do not need to be re-run. This means however
-that for any updates to functions, the older cached function needs to be
-deleted. Cache is toggled with setConfig(forcecache=TRUE).
+files are stored. All functions are cached as ```.Rds``` files in
+```/inputdata/cache\_folder``` after the first time they are run, meaning
+time-consuming functions do not need to be re-run from scratch. The caching functionality catches any changes to the function content and/or arguments, the source folder, or any mappings called within the function; in such cases, a new cache file will be created. Caching can toggled with setConfig(forcecache=TRUE).
 
-## Exercise
+## Model Preprocessing
 
-Using our new ag\_gdp magpie object, answer the following questions in
-break out rooms:
+### fullMODEL() functions and retrieveData() wrapper
 
-1.  What is Germany’s share of Agricultural GDP in 2010? (Germany’s ISO3
-    code is “DEU”)
+Data from mr-libraries is bundled together into a ```.tgz``` file to be used as model input. This is done via the "full" functions which calls all the ```calcOutput()``` functions needed to be included. For MAgPIE these are 3 separate calls for regional, cellular, and validation data: ```fullMAGPIE()```, ```fullCELLULARMAGPIE```, and ```fullVALIDATION```. "full" functions are called via the retrieveData(), and create a ```.tgz``` file containing the processed (aggregated) function outputs in the ```/inputdata/output/``` folder. These files are aggregated to the regional level in the case of ```fullMAGPIE()``` and the cluster level in the case of ```fullCELLULARMAGPIE```. They also create a Portable Unaggregated Collections (PUCs, see below) tgz file of the function outputs at original resolution, in the ```/inputdata/puc/``` folder. The ```dev``` argument allows for running development-phase preprocessings, with the contents of the ```dev``` argument appended to the ```.tgz``` output. If the ```dev``` flag is used, the ```PUC``` is by default not created.
 
-Let’s imagine that agricultural GDP comes from only 3 sectors:
-c(“grains”, “vegetables”, “livestock”), for which each contributes
-20%, 15%, 65% of ag. GDP respectively.
+```r
+retrieveData(model = "tutorial", rev=1, dev = "" )
+```
 
-2.  Modify the calcAgGDP function so that it includes a 2nd
-    sub-dimension in the 3rd dimension (dim 3.2) detailing the split
-    into the 3 sectors, while keeping Ag\_GDP\_share in dimension 3.1
+### Portable Unaggregated Collections (PUCs)
 
-Use new.magpie() to get started.
+The ```retrieveData()``` function creates a PUC. This ```tgz``` file includes the outputs of the functions at original resolution. This allows for the easier sharing of processed input data that the user can then aggregate as they prefer, using the function ```pucAggregate```.
 
-3.  Once the function is modified, you will have to rebuild the
-    mrtutorial library in order for these changes to take place. This
-    can be done with the Rstudio “Install and Restart” during the
-    testing phase, but when ready for commit, lucode2::buildLibrary()
-    needs to be run. This requires installing the lucode2 package. Only
-    when all Errors, Warnings, and Notes are taken care of can the
-    package be correctly committed.
+Extra arguments can be specified give additional instructions to the preprocessing. In this simple example case, the ```extra``` argument simply allows for the insertion of a text file into the ```.tgz```, and these can be changed when re-calculating the ```.tgz``` from the ```.puc```. In the case of MAgPIE regional pucs ```.puc```, the main argument to be changed is the ```regionmapping``` while for cellular data ```ctype``` (the number of clusters) and ```clusterweight``` (weighting for clusters) can additionally be changed. PUCs thus allow the user to locally process data flexibly for any region mapping, and number and weight of clusters. 
+
