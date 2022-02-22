@@ -13,7 +13,7 @@ author:
 level: 2
 requirements:
   - GAMS Installed
-  - MAgPIE clone in your local machine
+  - MAgPIE clone in local machine
 lessonsContent:
   - Navigate through the GAMS code of MAgPIE
   - Understand the structure of modules and realizations
@@ -33,7 +33,7 @@ interdependence and more detailed information can be found in our
 Here, we want to shortly draw your attention to the ‘main line’ of
 module interdependence:
 
-<img src="../assets/img/magpie_model.gif" alt="centered image" width="400"/>
+<img src="../assets/img/magpie_model.gif" alt="centered image" width="450"/>
 
 - The future projections of population and GDP for given scenario
   assumptions represent the main drivers of the model.
@@ -50,12 +50,12 @@ module interdependence:
 - Along with this ‘main line’ of agricultural production modules, the model
   includes additional:
     - assessments of impacts and policy interactions (upper part)
-    - More details of the production chain (lower part).
+    - details of the production chain (lower part).
 
 ## Introduction
 
-The inner core of the MAgPIE model is written in GAMS. For the execution of the
-code, all parts of the code are put into a single file, the `full.gms`
+The inner core of the MAgPIE model is written in GAMS. For the model execution,
+all parts of the code are put into a single file, the `full.gms`
 (done automatically). The `modules` folder store all the blocks of the code.
 Every folder within `modules` represents a component of the model and has
 several realizations. The final model execution includes only one realization
@@ -65,9 +65,9 @@ of each module. The configuration settings that are set in `default.cfg`
 
 ##  Structure of a module
 
-When you open the `modules` folder you will see a long list of the individual
-modules and the `include.gms` that ensures the inclusion of all modules into the
-`full.gms` file. All modules are built similarly and follow the same structure:
+When you open the `modules` folder, you see a long list of the individual
+modules and the `include.gms` file that ensures the inclusion of all modules into the
+`full.gms`. All modules are built similarly and follow the same structure:
 
 ![structure of any module](../assets/img/module_struc.png)
 
@@ -78,7 +78,7 @@ modules and the `include.gms` that ensures the inclusion of all modules into the
   - Several `[realization_name].gms` files with the realization description
     that links to the specific source code
 
-New realizations can be added by keeping that structure (more in
+New realizations can be added by keeping the same structure (more in
 [this tutorial](7-advanced-changecode)). In that sense, MAgPIE is easily extendable.
 
 ### Structure within each realization
