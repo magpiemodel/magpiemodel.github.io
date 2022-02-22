@@ -33,8 +33,7 @@ interdependence and more detailed information can be found in our
 Here we want to shortly draw your attention on the ‘main lines’ of
 module interdependence:
 
-[comment]: <>![Model overview](../assets/img/magpie_model.gif)
-<img src="../assets/img/magpie_model.gif" alt="drawing" width="200"/>
+<p class="aligncenter"><img src="../assets/img/magpie_model.gif" alt="centered image" width="600"/></p>
 
   - The future projections of population and GDP for given scenario
     assumptions represent the main drivers of the model.
