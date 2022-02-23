@@ -137,7 +137,7 @@ prefix, sets have a 2-digit number suffix (defining the number of the
 module in which the set is exclusively used). If the set is used in more
 than one module, it does not have any suffix.
 
-In other cases, the prefixes have to be extended by a second letter:
+In other cases, the prefixes are extended with a second letter to indicate details such as:
 
     ?c_ value for the Current timestep - necessary for constraints. Each *c_-object must have a time-dependent counterpart
     ?q_ parameter containing the values of an equation
