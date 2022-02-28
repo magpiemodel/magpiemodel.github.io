@@ -2,9 +2,9 @@
 layout: tutorial
 title:  Input data repositories & Patches
 shortID: changeInput
-lastUpdated:   2020-12-12
+lastUpdated:   2022-02-28
 model: MAgPIE
-modelVersion: 4.0.0
+modelVersion: 4.4.2
 author:
   - ms
   - fh
