@@ -2,13 +2,13 @@
 layout: tutorial
 title:  Git pull requests - feeding back
 shortID: pr
-lastUpdated:   2022-01-11
+lastUpdated:   2022-02-28
 model: MAgPIE
 modelVersion: 4.4.0
 author: mc
 level: 3
 requirements:
-  - basic knowledge about git and GitHub
+  - Basic knowledge about _git_ and GitHub
   - A MAgPIE fork on GitHub
 lessonsContent:
   - MAgPIE policy for updates of the main repository
@@ -50,11 +50,19 @@ research and,
 2. The researcher originally developing that feature will benefit from it through new 
 collaborations and publications.
 
+
 ---
 
 # How do pull requests (PR) work?
 
-**DESCRIPTION**
+Whenever you update your fork from the main repository (e.g. `magpiemodel:develop`) you use the 
+Git command `pull`. This attempts to merge the code from the main repository into your forked repository. A 
+"pull request" operates similarly, except from the other direction. By notifying
+the maintainers of the main repository that you have code that you would like to merge, you start
+a dialogue wherein the code can be reviewed and tested before it is incorporated into the main repository. 
+For MAgPIE, this process takes place over GitHub.com. After reviewing your code, the maintainers "pull" 
+from your repository into the main repository.
+
 
 ---
 
@@ -62,14 +70,22 @@ collaborations and publications.
 
 Below is a step-by-step guide to submitting a pull request, from committing to your own fork
 to filling out the PR template itself. For the purposes of this tutorial, the PR includes a
-new start script, `FSEC_environmentalPollutants.R`.
+new output script, `FSEC_environmentalPollutants.R`.
 
 
 ## On your local fork
 
 ### Complete and thoroughly test your code changes
 
-This is the start script, currently in my local, forked repository, that will be included into the `magpiemodel:develop` branch:
+When actively developing MAgPIE, you should refrain from making additions to the `master` branch.
+In general one should either create branches off of the `develop` branch for specific features, or 
+change the `develop` branch itself.
+
+When developing the MAgPIE model, please following the coding etiquette available 
+[here](https://rse.pik-potsdam.de/doc/magpie/4.4.0/).
+
+This is the output script, currently on the `develop` branch of my local, forked repository 
+(`mscrawford/magpiemodel:develop`), that will be included into the `magpiemodel:develop` branch:
 
 ```R
 # |  (C) 2008-2022 Potsdam Institute for Climate Impact Research (PIK)
@@ -121,8 +137,9 @@ out <- getReportGridPollutants(gdx = gdx, reportOutputDir = pollutantsOutputDir,
 ```
 
 In particular, at this point you should **pull the most recent `magpiemodel:develop` branch 
-into your repository**. This ensures that your changes are already embedded into the current `magpiemodel:develop` 
-branch and will streamline the process of testing your innovations and later merging them into the `magpiemodel:develop` branch.
+into your repository**. This ensures that your changes are already embedded into the current 
+`magpiemodel:develop` branch and will streamline the process of testing your innovations and 
+later merging them.
 
 
 --- 
@@ -131,9 +148,10 @@ branch and will streamline the process of testing your innovations and later mer
 
 It's critically important that you **add your various changes to the `CHANGELOG.md`** in the base 
 directory of your fork. This enables us to trace developments over time and, eventually, 
-package them cleanly into release candidates. Below is the current state of the unreleased MAgPIE develop branch:
+package them cleanly into release candidates. Below is the current state of the unreleased MAgPIE 
+develop branch:
 
-```
+```md
 # Changelog
 
 All notable changes to this project will be documented in this file.
@@ -171,10 +189,10 @@ and this project adheres to [Semantic Versioning](https:/semver.org/spec/v2.0.0.
 - **scripts** fixed misleading warning in check_config
 ```
 
-Note that it separates all code changes into `changed`, `added`, `removed`, and `fixed`. If you made multiple
+Note that the `CHANGELOG` separates all code changes into `changed`, `added`, `removed`, and `fixed`. If you made multiple
 commits which included changes, additions, and removals, these must be broken down here. In practice, it is
 better _git_ etiquette (i.e. nicer for the maintainers) to have smaller, discrete PRs that are easily digested
-and partain to specific aspects of the code base than larger, unwieldy changes.
+and pertain to specific aspects of the code base than larger, unwieldy changes.
 
 
 ---
@@ -189,7 +207,7 @@ output script.
 
 ### Commit your changes to your local fork
 
-With my added start script and corresponding update to the `CHANGELOG.md`, I need to commit my changes and push 
+With my added output script and corresponding update to the `CHANGELOG.md`, I need to commit my changes and push 
 them to my own fork. I first _staged_ the changes (by running `git add *` in the terminal) and now _commit_ them:
 
 ![PR_2](../assets/img/PR_2_commit.png)
@@ -209,6 +227,7 @@ Unless you've heavily customized your fork, you will want to push this new commi
 ## On your GitHub account
 
 ### Creating a new PR
+
 From here we initiate the PR from `github.com`. Navigating to my own fork, we see my new commit is represented:
 
 ![PR_4](../assets/img/PR_4_GitHub_recentCommit.png)
@@ -218,7 +237,7 @@ One can futher observe that my branch is `1 commit ahead of magpiemodel:develop`
 
 ---
 
-I now navigate to `Pull requests` in the top-left menu, clicking a `New pull request`.
+I now navigate to `Pull requests` in the top-left menu, clicking `New pull request`.
 
 ![PR_5](../assets/img/PR_5_GitHub_createPullRequest.png)
 
@@ -256,10 +275,13 @@ attention. Shown in this tutorial however, adding start scripts are a low risk c
 label from the label list (by clicking the wrench on on the right).
 1. **Provide additional information based on the PR label**.
 1. **Performance gain/loss**. For medium and high risk changes, one must report the runtime of the new branch. High risk 
-in particular should be compared with a control run of the `magpiemodel:develop` branch. 
+in particular should be compared with a control run of the `magpiemodel:develop` branch. Ideally additions to the code
+should not incur runtime changes. If they do, there must be good reasons for it.
 1. **Added changes to `CHANGELOG.md`**.
 1. **Compilation check**. Make sure that your model compiles successfully.
-1. **No hard-coded numbers and cluster/country/region names**.
+1. **No hard-coded numbers and cluster/country/region names**. MAgPIE is able to run across flexible cluster, country, and 
+region definitions. This flexibility stems from these definitions only entering the model through input parameters as the
+model is being started. Thus, hard-coding these definitions will lead to erronous results.
 1. **The new code doesn't contain declared but unused parameters or variables**.
 1. **Where relevant, In-code comments added including documentation comments**.
 1. **Make sure that the documentation worked for your additions**.
@@ -277,17 +299,3 @@ After completing the PR template you should request at least two reviewers from 
 After recieving your PR request, both MAgPIE maintainers will independently review your changes and request 
 clarifications or changes as appropriate. After this interaction has been completed, they will accept the PR 
 and it will be automatically merged into the `magpiemodel:develop` branch.
-
-
----
-
-# Requirements for code in order to be accepted in the main repository
-
-The ability to feed code back to the main repository unfortunately does not come
-for free. In order to keep the model in a usable form for everybody there are
-some quality criteria model updates must fulfill in order to be accepted. What
-this criteria are and why they are so important will be explained in the following:
-
-* **handling of regional data**:
-* **performance**:
-* **coding etiquette**:
