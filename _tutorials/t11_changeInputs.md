@@ -113,7 +113,7 @@ Create a sub-directory in the `./patch_inputdata` which is going to be
 used for packaging of the patched files.
 
 ``` r
-dir.create("./patch_inputdata/patch_ndc_usa_190909")
+dir.create("./patch_inputdata/patch_ndc_usa")
 ```
 
 Copy the original file the `policy_definition.csv` in the patch folder.
