@@ -4,6 +4,14 @@ publish: false
 title: People
 shortID: people
 data:
+  - firstName: Hermann
+    lastName: Lotze-Campen
+    id: hlc
+    url: https://www.pik-potsdam.de/members/hlotze
+  - firstName: Alexander
+    lastName: Popp
+    id: ap
+    url: https://www.pik-potsdam.de/members/popp
   - firstName: Jan Philipp
     lastName: Dietrich
     id: jpd

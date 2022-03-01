@@ -2,6 +2,7 @@
 layout: page
 title: Call for Contributions
 permalink: /magpie22/stories/call
+published: false
 ---
 
 #### submission deadline: ~~15.01.2022~~ 26.01.2022 (extended)
@@ -27,11 +28,13 @@ Submissions will be reviewed in a *single-blind* process, which means that revie
 
 ### Submission
 
-To [submit](submit) your proposed talk or workshop session please fill out our [submission form](submit). The form will ask you to provide your contact details along with a short description of your proposed contribution (max 1000 characters).
+~~To submit your proposed talk or workshop session please fill out our submission form. The form will ask you to provide your contact details along with a short description of your proposed contribution (max 1000 characters).~~
 
-Click [**->here<-**](submit) for submission.
+~~Click **->here<-** for submission.~~
 
-The event is free of charge. We are looking forward to receiving your submission!
+~~The event is free of charge. We are looking forward to receiving your submission!~~
+
+The submission page has now been closed.
 
 ### Timeline
 

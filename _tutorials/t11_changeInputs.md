@@ -2,9 +2,9 @@
 layout: tutorial
 title:  Input data repositories & Patches
 shortID: changeInput
-lastUpdated:   2020-12-12
+lastUpdated:   2022-02-28
 model: MAgPIE
-modelVersion: 4.0.0
+modelVersion: 4.4.2
 author:
   - ms
   - fh
@@ -33,11 +33,11 @@ usually at the beginning of the settings. Currently, the input data is
 set as:
 
 ``` r
-cfg$input <- c("isimip_rcp-IPSL_CM5A_LR-rcp2p6-co2_rev48_c200_690d3718e151be1b450b394c1064b1c5.tgz",
-         "rev4.52_h12_magpie.tgz",
-         "rev4.52_h12_validation.tgz",
-         "calibration_H12_c200_26Feb20.tgz",
-         "additional_data_rev3.86.tgz")
+cfg$input <- c(regional    = "rev4.65_h12_magpie.tgz",
+               cellular    = "rev4.65_h12_1998ea10_cellularmagpie_c200_MRI-ESM2-0-ssp370_lpjml-8e6c5eb1.tgz",
+               validation  = "rev4.65_h12_validation.tgz",
+               additional  = "additional_data_rev4.07.tgz",
+               calibration = "calibration_H12_sticky_feb18_free_30Nov21.tgz")
 ```
 
 Once specified in the configuration as the input data, the data is
@@ -49,21 +49,24 @@ in terminal by `tar` and `untar` commands. The data archive files
 contain the following types of data:
 
   - Cellular input data (e.g. land area, crop yields, water
-    requirements, carbon density)
-      - isimip\_rcp-IPSL\_CM5A\_LR-rcp2p6-co2\_rev48\_c200\_690d3718e151be1b450b394c1064b1c5.tgz
-  - Regional input and validation data (e.g. food demand)
-      - rev4.52\_h12\_magpie.tgz
-      - rev4.52\_h12\_validation.tgz
-      - calibration\_H12\_c200\_26Feb20.tgz
+    requirements, carbon density):
+      - `cellular    = "rev4.65_h12_1998ea10_cellularmagpie_c200_MRI-ESM2-0-ssp370_lpjml-8e6c5eb1.tgz"`
+  - Regional input and validation data (e.g. food demand):
+      - `regional    = "rev4.65_h12_magpie.tgz"`
+      - `validation  = "rev4.65_h12_validation.tgz"`
+  - Calibration data:
+      - `calibration = "calibration_H12_sticky_feb18_free_30Nov21.tgz"`
   - Global and other input data (e.g. conversion factors, national
-    policies)
-      - additional\_data\_rev3.86.tgz
+    policies):
+      - `additional  = "additional_data_rev4.07.tgz"`
+
+## Patch input data
 
 There is a specific procedure on how to handle the changing of the input
 data. It will be demonstrated by the example of changing the USA NDC
 policy on afforestation target at 2030.
 
-## Patch national land-based NDC policies
+### Example: Change national land-based NDC policies
 
 Once the input data is downloaded to the local MAgPIE repository in
 forms of different input files in designated input folders (in the core,
@@ -110,7 +113,7 @@ Create a sub-directory in the `./patch_inputdata` which is going to be
 used for packaging of the patched files.
 
 ``` r
-dir.create("./patch_inputdata/patch_ndc_usa_190909")
+dir.create("./patch_inputdata/patch_ndc_usa")
 ```
 
 Copy the original file the `policy_definition.csv` in the patch folder.
@@ -118,13 +121,13 @@ In R:
 
 ``` r
 file.copy(from="./scripts/npi_ndc/policies/policy_definitions.csv",
-          to="./patch_inputdata/patch_ndc_usa_190909/.")
+          to="./patch_inputdata/patch_ndc_usa/.")
 ```
 
 or in the command line:
 
 ``` cmd
-cp scripts/npi_ndc/policies/policy_definitions.csv patch_inputdata/patch_ndc_usa_190909/.
+cp scripts/npi_ndc/policies/policy_definitions.csv patch_inputdata/patch_ndc_usa/.
 ```
 
 Edit the content, in this case update the USA afforestation NDC policy
@@ -139,10 +142,10 @@ After saving the file, package it with the tardir function in R
 environment and delete the file patch folder:
 
 ``` r
-gms::tardir(dir="patch_inputdata/patch_ndc_usa_190909",
-               tarfile="patch_inputdata/patch_ndc_usa_190909.tgz")
+gms::tardir(dir="patch_inputdata/patch_ndc_usa",
+               tarfile="patch_inputdata/patch_ndc_usa.tgz")
 
-unlink("patch_inputdata/patch_ndc_usa_190909", recursive=TRUE)
+unlink("patch_inputdata/patch_ndc_usa", recursive=TRUE)
 ```
 
 ### Add the patch file to the configuration
@@ -152,22 +155,22 @@ the input data and the existing patch file that replaces the existing
 input data. For this, edit the `config/default.cfg` file from:
 
 ``` r
-cfg$input <- c("isimip_rcp-IPSL_CM5A_LR-rcp2p6-co2_rev48_c200_690d3718e151be1b450b394c1064b1c5.tgz",
-         "rev4.52_h12_magpie.tgz",
-         "rev4.52_h12_validation.tgz",
-         "calibration_H12_c200_26Feb20.tgz",
-         "additional_data_rev3.86.tgz")
+cfg$input <- c(regional    = "rev4.65_h12_magpie.tgz",
+               cellular    = "rev4.65_h12_1998ea10_cellularmagpie_c200_MRI-ESM2-0-ssp370_lpjml-8e6c5eb1.tgz",
+               validation  = "rev4.65_h12_validation.tgz",
+               additional  = "additional_data_rev4.07.tgz",
+               calibration = "calibration_H12_sticky_feb18_free_30Nov21.tgz")
 ```
 
 to:
 
 ``` r
-cfg$input <- c("isimip_rcp-IPSL_CM5A_LR-rcp2p6-co2_rev48_c200_690d3718e151be1b450b394c1064b1c5.tgz",
-         "rev4.52_h12_magpie.tgz",
-         "rev4.52_h12_validation.tgz",
-         "calibration_H12_c200_26Feb20.tgz",
-         "additional_data_rev3.86.tgz",
-         "patch_ndc_usa_190909.tgz")
+cfg$input <- c(regional    = "rev4.65_h12_magpie.tgz",
+               cellular    = "rev4.65_h12_1998ea10_cellularmagpie_c200_MRI-ESM2-0-ssp370_lpjml-8e6c5eb1.tgz",
+               validation  = "rev4.65_h12_validation.tgz",
+               additional  = "additional_data_rev4.07.tgz",
+               calibration = "calibration_H12_sticky_feb18_free_30Nov21.tgz",
+               "patch_ndc_usa.tgz")
 ```
 
 It is very important to add the patch file at the end of the listings in
@@ -178,10 +181,10 @@ in it.
 At the next start of the model by `Rscript`, the new patch will place
 the file with change inputs according to the changes in the settings.
 
-# 3 Alternative way of adding a local repository
+## Alternative way of adding a local repository
 
-As an alternative to the steps carried out in 2.1 we can add a local
-repository to `getOption("magpie_repos")`. For this, we have to add an
+As an alternative to the steps described above, one can add a local
+repository to `getOption("magpie_repos")`. For this, one has to add an
 entry in the `.Rprofile` file. Typically `.Rprofile` is located in the
 users’ home directory `(~/.Rprofile)`.
 
@@ -190,7 +193,7 @@ options(magpie_repos=list("~/input_data/"=NULL))
 ```
 
 The local repository `input_data` can be located anywhere on your
-filesystem. You could then add `patch_ndc_usa_190909.tgz` in this
+filesystem. You could then add `patch_ndc_usa.tgz` in this
 folder.
 
 Hint: If you can’t locate your `.Rprofile`, you can use
@@ -211,7 +214,7 @@ repo for downloading the files specified in `cfg$input`.
 
 Write your own starting script that will test the scenario with changed
 NDC policy for the USA described above. None of the changes should
-actually occur in the default.cfg, but instead the starting script
+actually occur in the `default.cfg`, but instead the starting script
 should introduce them to the loaded cfg object.
 
 Add a MAgPIE start script here:
@@ -255,20 +258,15 @@ cfg$output <- c("rds_report")
 
 cfg$title <- "SSP2_NDC_default"
 cfg <- gms::setScenario(cfg,c("SSP2","NDC"))
-cfg$input <- c("isimip_rcp-IPSL_CM5A_LR-rcp2p6-co2_rev48_c200_690d3718e151be1b450b394c1064b1c5.tgz",
-               "rev4.52_h12_magpie.tgz",
-               "rev4.52_h12_validation.tgz",
-               "calibration_H12_c200_26Feb20.tgz",
-               "additional_data_rev3.86.tgz")
 start_run(cfg,codeCheck=FALSE)
 
 cfg$title <- "SSP2_NDC_USA"
 cfg <- gms::setScenario(cfg,c("SSP2","NDC"))
-cfg$input <- c("isimip_rcp-IPSL_CM5A_LR-rcp2p6-co2_rev48_c200_690d3718e151be1b450b394c1064b1c5.tgz",
-               "rev4.52_h12_magpie.tgz",
-               "rev4.52_h12_validation.tgz",
-               "calibration_H12_c200_26Feb20.tgz",
-               "additional_data_rev3.86.tgz",
-               "patch_ndc_usa_190909.tgz")
+cfg$input <- c(regional    = "rev4.65_h12_magpie.tgz",
+               cellular    = "rev4.65_h12_1998ea10_cellularmagpie_c200_MRI-ESM2-0-ssp370_lpjml-8e6c5eb1.tgz",
+               validation  = "rev4.65_h12_validation.tgz",
+               additional  = "additional_data_rev4.07.tgz",
+               calibration = "calibration_H12_sticky_feb18_free_30Nov21.tgz",
+               "patch_ndc_usa.tgz")
 start_run(cfg,codeCheck=FALSE)
 ```
