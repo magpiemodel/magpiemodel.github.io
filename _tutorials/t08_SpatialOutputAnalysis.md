@@ -21,7 +21,7 @@ exercises:
     solution: "`x <- read.magpie("<path-to-output-folder>/cell.land_0.5.mz`"
   - task: "How many 0.5 degree grid cells, time steps and land use types does the object `x` contain? Also use `magclass::getComment()` to find out in which unit the data is stored."
     solution: "Find out how many 0.5 degree grid cells, time steps and land use types `x` contains by using `str(x)`. You will find out that for default runs `x` covers 59199 grid cells, 19 time steps and 7 land use types. `magclass::getComment(x)` gives `'unit: Mha per grid-cell'`"
-  - task: "Calculate the difference in cropland area per grid cell between 2015 and 2050 and store the difference in an object calles `cropDiff`."
+  - task: "Calculate the difference in cropland area per grid cell between 2015 and 2050 and store the difference in an object called `cropDiff`."
     solution: "`cropDiff <- x[,'y2050', 'crop'] - x[,'y2015', 'crop']`"
   - task: "Plot the difference in cropland area per grid cell between 2015 and 2050 using `luplot::plotmap()`. See also `?plotmap` for further plotting options."
     solution: "`luplot::plotmap(cropDiff, legend_range = c(-0.25, 0.25))`"
