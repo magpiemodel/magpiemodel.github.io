@@ -19,13 +19,13 @@ lessonsContent:
   - Use the `luplot` package for spatial visualisation of magclass objects in R
 exercises:
   - task: "Read the file `cell.land_0.5.mz` from the MAgPIE output folder into R and assign it to an object `x`"
-    solution: "```x <- read.magpie("<path-to-output-folder>/cell.land_0.5.mz```"
+    solution: "`x <- read.magpie("<path-to-output-folder>/cell.land_0.5.mz`"
   - task: "How many 0.5 degree grid cells, time steps and land use types does the object `x` contain? Also use `magclass::getComment()` to find out in which unit the data is stored."
     solution: "Find out how many 0.5 degree grid cells, time steps and land use types `x` contains by using `str(x)`. You will find out that for default runs `x` covers 59199 grid cells, 19 time steps and 7 land use types. `magclass::getComment(x)` gives `"unit: Mha per grid-cell"`"
   - task: "Calculate the difference in cropland area per grid cell between 2015 and 2050 and store the difference in an object calles `cropDiff`."
-    solution: "```cropDiff <- x[,"y2050", "crop"] - x[,"y2015", "crop"]```"
+    solution: "`cropDiff <- x[,"y2050", "crop"] - x[,"y2015", "crop"]`"
   - task: "Plot the difference in cropland area per grid cell between 2015 and 2050 using `luplot::plotmap()`. See also `?plotmap` for further plotting options."
-    solution: "```luplot::plotmap(cropDiff, legend_range = c(-0.25, 0.25))```"
+    solution: "`luplot::plotmap(cropDiff, legend_range = c(-0.25, 0.25))`"
 
 published: true
 ---
@@ -67,7 +67,7 @@ Please choose the right version for your operation system, select a destination 
 
 If you encounter an error while trying to execute _Panoply_ after installation, make sure you have **Java 9** (or later) available on your computer. In case you need to install/update Java, go to the website <https://www.oracle.com/java/technologies/downloads/#jdk17-windows> and download the appropriate version for your operating system.
 
-![Panoply download](../assets/img/t08_panoply_download.png)
+![Panoply download](../assets/img/t08_java_download.png)
 
 ### Using _Panoply_ to visualise MAgPIE output
 
@@ -95,7 +95,7 @@ But instead of pressing _Creat plot_, this time click on _Combine plot_. You'll 
 
 We can also change the appearance of the plot by reprojection the map to a different coordinate reference system (CRS), or by changing the color scale.
 
-In order to change the CRS, we can open the window _Map projection_ via
+In order to change the CRS, we can open the window _Map Projection_ via
 
 ![Panoply download](../assets/img/t08_change_projection1.png)
 
@@ -113,9 +113,9 @@ Now let us work a bit on the color scale. For this, select the option _Scale_ un
 
 This will open the following window, where we can tweak a range of map properties.
 
-![Panoply download](../assets/img/t08_choose_scale.png)
+![Panoply download](../assets/img/t08_scale_window.png)
 
-The you can set the range of the legend to [-0.25; 0.25] and select the color bar 'CB_PiYG_09.cpt' or any color bar to your liking. However, consider that this is a change map and using a neutral color like grey or white in the center of your color range is helps with the interpretation of the data. Also set the label format to '%.2f'. This will change the legend label format two digits behind the comma. You can also add a custom caption by selecting _custom_ and entering a suitable text. Under _Window_ -> _Label_ we can also change/remove global plot labels. In the end your plot should look similar to this:
+There you can set the range of the legend to [-0.25; 0.25] and select the color bar 'CB_PiYG_09.cpt' or any color bar to your liking. However, consider that this is a change map and using a neutral color like grey or white in the center of your color range is helps with the interpretation of the data. Also set the label format to '%.2f'. This will change the legend label format two digits behind the comma. You can also add a custom caption by selecting _custom_ and entering a suitable text. Under _Window_ -> _Label_ we can also change/remove global plot labels. In the end your plot should look similar to this:
 
 ![Panoply download](../assets/img/t08_example_CroplandChange.png)
 
@@ -131,6 +131,6 @@ This will open up the following window
 
 ![Panoply download](../assets/img/t08_animation_options.png)
 
-In order to display relative changes, set Array 1 to 'None (leave fixed)' and select a frame rate of e.g. 1 fps, then click on _Okay_. Choose a file destination, select a file name and press _Save_. _Panoply_ will now create an MP4-animation of the complete time series.
+In order to display relative changes, set _Array 1_ to 'None (leave fixed)' and select a frame rate of e.g. 1 fps, then click on _Okay_. Choose a file destination, select a file name and press _Save_. _Panoply_ will now create an MP4-animation of the complete time series.
 
 ![Panoply download](../assets/img/t08_animation_progress.png)
