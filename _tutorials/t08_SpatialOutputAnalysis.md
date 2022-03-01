@@ -20,9 +20,9 @@ exercises:
   - task: "Read the file `cell.land_0.5.mz` from the MAgPIE output folder into R and assign it to an object `x`"
     solution: "`x <- read.magpie("<path-to-output-folder>/cell.land_0.5.mz`"
   - task: "How many 0.5 degree grid cells, time steps and land use types does the object `x` contain? Also use `magclass::getComment()` to find out in which unit the data is stored."
-    solution: "Find out how many 0.5 degree grid cells, time steps and land use types `x` contains by using `str(x)`. You will find out that for default runs `x` covers 59199 grid cells, 19 time steps and 7 land use types. `magclass::getComment(x)` gives `"unit: Mha per grid-cell"`"
+    solution: "Find out how many 0.5 degree grid cells, time steps and land use types `x` contains by using `str(x)`. You will find out that for default runs `x` covers 59199 grid cells, 19 time steps and 7 land use types. `magclass::getComment(x)` gives `'unit: Mha per grid-cell'`"
   - task: "Calculate the difference in cropland area per grid cell between 2015 and 2050 and store the difference in an object calles `cropDiff`."
-    solution: "`cropDiff <- x[,"y2050", "crop"] - x[,"y2015", "crop"]`"
+    solution: "`cropDiff <- x[,'y2050', 'crop'] - x[,'y2015', 'crop']`"
   - task: "Plot the difference in cropland area per grid cell between 2015 and 2050 using `luplot::plotmap()`. See also `?plotmap` for further plotting options."
     solution: "`luplot::plotmap(cropDiff, legend_range = c(-0.25, 0.25))`"
 
@@ -88,7 +88,7 @@ We can go back to our data window and click on 'crop' once again.
 
 ![Panoply download](../assets/img/t08_reselect_data.png)
 
-But instead of pressing _Creat plot_, this time click on _Combine plot_. You'll now find two array tabs on the top left-hand side. Also _Panoply_ will prompt the _Arrays_-window for us. Under 'plot' select 'Array 2 - Array 1' and select the year 2050 in "Array 2: crop", as shown below, and hit 'Enter'
+But instead of pressing _Create plot_, this time click on _Combine plot_. You'll now find two array tabs on the top left-hand side. Also _Panoply_ will prompt the _Arrays_-window for us. Under 'plot' select 'Array 2 - Array 1' and select the year 2050 in "Array 2: crop", as shown below, and hit 'Enter'
 
 ![Panoply download](../assets/img/t08_arrays.png)
 
