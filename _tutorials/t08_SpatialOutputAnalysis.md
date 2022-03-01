@@ -5,8 +5,7 @@ shortID: output2
 lastUpdated:   2022-03-01
 model: MAgPIE
 modelVersion: 4.4.0
-author:
-  - pvj
+author: pvj
 level: 3
 requirements:
   - Local copy of the MAgPIE model (<https://github.com/magpiemodel/magpie>)
@@ -59,7 +58,7 @@ Spatially explicit MAgPIE output is usually stored in two different data formats
 
 In order to download _Panoply_, please, visit the website <https://www.giss.nasa.gov/tools/panoply/>. Scroll down until you find the header _Get Panoply_ and click on _Download Panoply_. This will lead you to the following page:
 
-![Panoply download](../assets/img/t08_panoply_download.png)
+![Panoply download](../assets/img/t08_panoply_page.png)
 
 Please choose the right version for your operation system, select a destination folder and proceed with the download. After the download has finished follow the instructions for installing _Panoply_ that can be found on the website for your operating system.
 
@@ -87,7 +86,7 @@ The plot shows the cropland area in each grid cell given in Mha. _Panoply_ also 
 
 We can go back to our data window and click on 'crop' once again.
 
-![Panoply download](../assets/img/t08_select_data.png)
+![Panoply download](../assets/img/t08_reselect_data.png)
 
 But instead of pressing _Creat plot_, this time click on _Combine plot_. You'll now find two array tabs on the top left-hand side. Also _Panoply_ will prompt the _Arrays_-window for us. Under 'plot' select 'Array 2 - Array 1' and select the year 2050 in "Array 2: crop", as shown below, and hit 'Enter'
 
