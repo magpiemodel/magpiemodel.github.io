@@ -2,10 +2,10 @@
 layout: tutorial
 title:  Creating a start script
 shortID: startScript
-lastUpdated:   2019-10-13
+lastUpdated:   2022-02-01
 model: MAgPIE
-modelVersion: 4.0.0
-author: am
+modelVersion: 4.4.0
+author: Vartika Singh
 level: 3
 requirements:
   - GAMS Installed, Magpie model folder on local computer
@@ -35,7 +35,7 @@ an R script which changes the config settings in an automatized manner.
 With MAgPIE having a lot of modules and settings which can be changed
 and used in various combinations, it becomes imperative that a user be
 able to change a lot of settings concurrently. This can be achieved by
-changing the config file (from tutorial 2) for turning on or off
+changing the config file (from tutorial 5) for turning on or off
 module realizations and other settings.
 
 ## Getting started
