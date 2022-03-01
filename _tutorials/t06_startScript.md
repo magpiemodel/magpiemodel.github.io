@@ -2,14 +2,14 @@
 layout: tutorial
 title:  Creating a start script
 shortID: startScript
-lastUpdated:   2019-10-13
+lastUpdated:   2022-02-01
 model: MAgPIE
-modelVersion: 4.0.0
-author: am
+modelVersion: 4.4.0
+author: Vartika Singh
 level: 3
 requirements:
   - GAMS Installed, Magpie model folder on local computer
-  - Undertaken Tutorial 4 and 5
+  - Undertaken Tutorial 1 and 2
 lessonsContent:
   - Understand MAgPIE starting scripts
   - Create custom starting scripts
