@@ -18,11 +18,11 @@ lessonsContent:
   - Package a patch file.
   - Include a patch in the model configuration
 exercises: 
-  - task: Write your own starting script that will test the scenario with changed
+  - task: "Write your own starting script that will test the scenario with changed
 NDC policy for the USA described above. None of the changes should
 actually occur in the `default.cfg`, but instead the starting script
-should introduce them to the loaded cfg object.
-    solution: 
+should introduce them to the loaded cfg object."
+    solution: "
 ``` r
 # |  (C) 2008-2020 Potsdam Institute for Climate Impact Research (PIK)
 # |  authors, and contributors see CITATION.cff file. This file is part
@@ -71,7 +71,7 @@ cfg$input <- c(regional    = "rev4.65_h12_magpie.tgz",
                patch       = "patch_ndc_usa.tgz")
 start_run(cfg,codeCheck=FALSE)
 ```
-
+"
 
 Add a MAgPIE start script here:
 `scripts/start/projects/name_of_your_script.R`
