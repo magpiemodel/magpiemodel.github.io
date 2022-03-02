@@ -10,8 +10,9 @@ author:
   - fh
 level: 4
 requirements:
-  - Requirement A
-  - Requirement B
+  - Local copy of the MAgPIE model (https://github.com/magpiemodel/magpie)
+  - Have R installed (https://www.r-project.org/)
+  - Have R package `gms` installed
 lessonsContent:
   - Create a local input data repository.
   - Package a patch file.
@@ -170,7 +171,7 @@ cfg$input <- c(regional    = "rev4.65_h12_magpie.tgz",
                validation  = "rev4.65_h12_validation.tgz",
                additional  = "additional_data_rev4.07.tgz",
                calibration = "calibration_H12_sticky_feb18_free_30Nov21.tgz",
-               "patch_ndc_usa.tgz")
+               patch       = "patch_ndc_usa.tgz")
 ```
 
 It is very important to add the patch file at the end of the listings in
@@ -267,6 +268,6 @@ cfg$input <- c(regional    = "rev4.65_h12_magpie.tgz",
                validation  = "rev4.65_h12_validation.tgz",
                additional  = "additional_data_rev4.07.tgz",
                calibration = "calibration_H12_sticky_feb18_free_30Nov21.tgz",
-               "patch_ndc_usa.tgz")
+               patch       = "patch_ndc_usa.tgz")
 start_run(cfg,codeCheck=FALSE)
 ```
