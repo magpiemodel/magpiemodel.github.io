@@ -297,5 +297,10 @@ After completing the PR template you should request at least two reviewers from 
 #### The review process
 
 After recieving your PR request, both MAgPIE maintainers will independently review your changes and request 
-clarifications or changes as appropriate. After this interaction has been completed, they will accept the PR 
-and it will be automatically merged into the `magpiemodel:develop` branch.
+clarifications or changes as appropriate. 
+
+![PR_8](../assets/img/PR_8_GitHub_PRTemplate_Reviewers.png)
+
+The reviewers, one of whom must be from the Research and Software Engineering (RSE) department at PIK, have use the above
+checklist. After this interaction has been completed, they will accept the PR and it will be automatically merged 
+into the `magpiemodel:develop` branch.

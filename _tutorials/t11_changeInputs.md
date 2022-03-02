@@ -10,8 +10,9 @@ author:
   - fh
 level: 4
 requirements:
-  - Requirement A
-  - Requirement B
+  - Local copy of the MAgPIE model (https://github.com/magpiemodel/magpie)
+  - Have R installed (https://www.r-project.org/)
+  - Have R package `gms` installed
 lessonsContent:
   - Create a local input data repository.
   - Package a patch file.
@@ -170,7 +171,7 @@ cfg$input <- c(regional    = "rev4.65_h12_magpie.tgz",
                validation  = "rev4.65_h12_validation.tgz",
                additional  = "additional_data_rev4.07.tgz",
                calibration = "calibration_H12_sticky_feb18_free_30Nov21.tgz",
-               "patch_ndc_usa.tgz")
+               patch       = "patch_ndc_usa.tgz")
 ```
 
 It is very important to add the patch file at the end of the listings in
@@ -210,7 +211,7 @@ With this setup, the download script (`Rscript start.R -> 3 Download
 data`) will first look into the public repo and secondly into your local
 repo for downloading the files specified in `cfg$input`.
 
-## Excercise
+## Exercices 
 
 Write your own starting script that will test the scenario with changed
 NDC policy for the USA described above. None of the changes should
@@ -220,8 +221,8 @@ should introduce them to the loaded cfg object.
 Add a MAgPIE start script here:
 `scripts/start/projects/name_of_your_script.R`
 
-With this content:
 
+Solution: 
 ``` r
 # |  (C) 2008-2020 Potsdam Institute for Climate Impact Research (PIK)
 # |  authors, and contributors see CITATION.cff file. This file is part
@@ -267,6 +268,6 @@ cfg$input <- c(regional    = "rev4.65_h12_magpie.tgz",
                validation  = "rev4.65_h12_validation.tgz",
                additional  = "additional_data_rev4.07.tgz",
                calibration = "calibration_H12_sticky_feb18_free_30Nov21.tgz",
-               "patch_ndc_usa.tgz")
+               patch       = "patch_ndc_usa.tgz")
 start_run(cfg,codeCheck=FALSE)
 ```
