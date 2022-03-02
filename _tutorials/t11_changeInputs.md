@@ -72,10 +72,7 @@ cfg$input <- c(regional    = "rev4.65_h12_magpie.tgz",
 start_run(cfg,codeCheck=FALSE)
 ```
 "
-
-Add a MAgPIE start script here:
-`scripts/start/projects/name_of_your_script.R`
-published: true
+published: false
 ---
 
 ## Introduction
