@@ -168,7 +168,7 @@ library(luplot)
 ?luplot
 ```
 
-The library contains helpful functions for plotting `magclass` objects in different ways, e.g. `plotmap` that transfers data stored in a `magclass` object to a simple map. However, we cannot plot all data at the same time. Therefore, we need to select a time step and a variable that we want to look at. Data dimensions in `magclass` objects are indexed in the following three-dimensional way `x[<cell>, <time>, <data>]` Here, we choose the year `y2050` and the variable primary forest (`primforest`). In `plotmap` can also define the upper and lower boundary of the legend via `legend_range`.
+The library contains helpful functions for plotting `magclass` objects in different ways, e.g. `plotmap` that transfers data stored in a `magclass` object to a simple map. However, we cannot plot all data at the same time. Therefore, we need to select a time step and a variable that we want to look at. Data dimensions in `magclass` objects are indexed in the following three-dimensional form `x[<cell>, <time>, <data>]`. Here, we choose the year `y2050` and the variable primary forest (`primforest`). In `plotmap` can also define the upper and lower boundary of the legend via `legend_range`.
 
 ```r
 luplot::plotmap(x[,'y2050', 'primforest'], legend_range = c(0, 0.3))
