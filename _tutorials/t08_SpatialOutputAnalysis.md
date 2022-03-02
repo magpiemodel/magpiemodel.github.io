@@ -18,7 +18,7 @@ lessonsContent:
   - Use the `luplot` package for spatial visualisation of magclass objects in R
 exercises:
   - task: "Read the file `cell.land_0.5.mz` from the MAgPIE output folder into R and assign it to an object `x`"
-    solution: "`x <- read.magpie("<path-to-output-folder>/cell.land_0.5.mz`"
+    solution: "`x <- read.magpie('<path-to-output-subfolder>/cell.land_0.5.mz')`"
   - task: "How many 0.5 degree grid cells, time steps and land use types does the object `x` contain? Also use `magclass::getComment()` to find out in which unit the data is stored."
     solution: "Find out how many 0.5 degree grid cells, time steps and land use types `x` contains by using `str(x)`. You will find out that for default runs `x` covers 59199 grid cells, 19 time steps and 7 land use types. `magclass::getComment(x)` gives `'unit: Mha per grid-cell'`"
   - task: "Calculate the difference in cropland area per grid cell between 2015 and 2050 and store the difference in an object called `cropDiff`."
@@ -74,7 +74,7 @@ Navigate to the folder, in which _Panoply_ is stored and click on Panoply.exe to
 
 ![Panoply download](../assets/img/t08_output_data.png)
 
-Select the file 'cell.land_0.5.nc' and press _open_. We now see a window that lists all information that is stored in this file, including the names and the type of data that are available.
+Select the file 'cell.land_0.5.nc' and press _open_. 'cell.land_0.5.nc' includes a spatially explicit time-series of the land area (Mha) covered by the different land-types (cropland, pasture, etc.) per 0.5 degree grid cell. We now see a window that lists all information that is stored in this file, including the names and the type of data that are available. We can also look at the panel on the right-hand side to see some meta data, e.g. the _units_.
 
 ![Panoply download](../assets/img/t08_view_data.png)
 
@@ -133,3 +133,45 @@ This will open up the following window
 In order to display relative changes, set _Array 1_ to 'None (leave fixed)' and select a frame rate of e.g. 1 fps, then click on _Okay_. Choose a file destination, select a file name and press _Save_. _Panoply_ will now create an MP4-animation of the complete time series.
 
 ![Panoply download](../assets/img/t08_animation_progress.png)
+
+## Analysis of spatial outputs in R using the _magclass_ and _luplot_ libraries
+
+For further analysis and processing of spatial MAgPIE projections beyond visual interpretation, spatial outputs can be imported and analysed in R using the packages `magclass` (<https://github.com/pik-piam/magclass>) and `luplot` (<https://github.com/pik-piam/luplot>). `magclass` provides a range of tools for handling MAgPIE's own _magclass_-format (ending '.mz') for storing spatio-temporal data. The `magclass` package also includes a vignette that describes the functionality of the package, including examples on how to handle spatio-temporal MAgPIE output.
+
+We can make ourselves familiar with the `maglcass` package by opening an R (RStudio) session. Find the _output_ folder of your local MAgPIE version and set the working directory to the subfolder containing the results of a finished model run.
+
+``` r
+setwd("/path/to/your/magpie/output/subfolder")
+```
+
+We can call the library and look at the help pages:
+
+``` r
+library(magclass)
+?magclass
+```
+
+In order to get an overview of the functionality, we can click on the index and look for helpful functions, e.g.
+`read.magpie` and navigate to the help/documentation page, by clicking on it.
+
+We can now try to read in 'cell.land_0.5.nc' by typing
+
+``` r
+x <- read.magpie('cell.land_0.5.mz')
+```
+Then we can use `str(x)` to find out the structure of the object `x`.
+
+We can also load the library `luplot` and look at the help pages:
+
+``` r
+library(luplot)
+?luplot
+```
+
+The library also contains helpful functions for plotting magpie objects, e.g. `plotmap` that transfers data stored in a `magclass` object to a map. However, we cannot plot all data at the same time. Therefore, we need to select a time step and a variable that we want to look at. Here, we choose the year `y2050` and the variable primary forest (`primforest`). We can also define the upper and lower boundary of the legend via `legend_range`.
+
+```r
+luplot::plotmap(x[,'y2050', 'primforest'], legend_range = c(0, 0.3))
+```
+
+![Panoply download](../assets/img/t08_plotmap.png)
