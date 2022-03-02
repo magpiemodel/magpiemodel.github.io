@@ -17,6 +17,64 @@ lessonsContent:
   - Create a local input data repository.
   - Package a patch file.
   - Include a patch in the model configuration
+exercises: 
+  - task: Write your own starting script that will test the scenario with changed
+NDC policy for the USA described above. None of the changes should
+actually occur in the `default.cfg`, but instead the starting script
+should introduce them to the loaded cfg object.
+    solution: 
+``` r
+# |  (C) 2008-2020 Potsdam Institute for Climate Impact Research (PIK)
+# |  authors, and contributors see CITATION.cff file. This file is part
+# |  of MAgPIE and licensed under AGPL-3.0-or-later. Under Section 7 of
+# |  AGPL-3.0, you are granted additional permissions described in the
+# |  MAgPIE License Exception, version 1.0 (see LICENSE file).
+# |  Contact: magpie@pik-potsdam.de
+
+# ----------------------------------------------------------
+# description: Test USA NDC
+# ----------------------------------------------------------
+
+
+######################################
+#### Script to start a MAgPIE run ####
+######################################
+
+library(lucode2)
+library(magclass)
+library(gms)
+
+# Load start_run(cfg) function which is needed to start MAgPIE runs
+source("scripts/start_functions.R")
+
+#start MAgPIE runs
+source("config/default.cfg")
+
+#cfg$force_download <- FALSE
+
+cfg$results_folder <- "output/:title:"
+
+cfg$output <- c("rds_report")
+
+
+cfg$title <- "SSP2_NDC_default"
+cfg <- gms::setScenario(cfg,c("SSP2","NDC"))
+start_run(cfg,codeCheck=FALSE)
+
+cfg$title <- "SSP2_NDC_USA"
+cfg <- gms::setScenario(cfg,c("SSP2","NDC"))
+cfg$input <- c(regional    = "rev4.65_h12_magpie.tgz",
+               cellular    = "rev4.65_h12_1998ea10_cellularmagpie_c200_MRI-ESM2-0-ssp370_lpjml-8e6c5eb1.tgz",
+               validation  = "rev4.65_h12_validation.tgz",
+               additional  = "additional_data_rev4.07.tgz",
+               calibration = "calibration_H12_sticky_feb18_free_30Nov21.tgz",
+               patch       = "patch_ndc_usa.tgz")
+start_run(cfg,codeCheck=FALSE)
+```
+
+
+Add a MAgPIE start script here:
+`scripts/start/projects/name_of_your_script.R`
 published: true
 ---
 
@@ -211,63 +269,3 @@ With this setup, the download script (`Rscript start.R -> 3 Download
 data`) will first look into the public repo and secondly into your local
 repo for downloading the files specified in `cfg$input`.
 
-## Excercise
-
-Write your own starting script that will test the scenario with changed
-NDC policy for the USA described above. None of the changes should
-actually occur in the `default.cfg`, but instead the starting script
-should introduce them to the loaded cfg object.
-
-Add a MAgPIE start script here:
-`scripts/start/projects/name_of_your_script.R`
-
-With this content:
-
-``` r
-# |  (C) 2008-2020 Potsdam Institute for Climate Impact Research (PIK)
-# |  authors, and contributors see CITATION.cff file. This file is part
-# |  of MAgPIE and licensed under AGPL-3.0-or-later. Under Section 7 of
-# |  AGPL-3.0, you are granted additional permissions described in the
-# |  MAgPIE License Exception, version 1.0 (see LICENSE file).
-# |  Contact: magpie@pik-potsdam.de
-
-# ----------------------------------------------------------
-# description: Test USA NDC
-# ----------------------------------------------------------
-
-
-######################################
-#### Script to start a MAgPIE run ####
-######################################
-
-library(lucode2)
-library(magclass)
-library(gms)
-
-# Load start_run(cfg) function which is needed to start MAgPIE runs
-source("scripts/start_functions.R")
-
-#start MAgPIE runs
-source("config/default.cfg")
-
-#cfg$force_download <- FALSE
-
-cfg$results_folder <- "output/:title:"
-
-cfg$output <- c("rds_report")
-
-
-cfg$title <- "SSP2_NDC_default"
-cfg <- gms::setScenario(cfg,c("SSP2","NDC"))
-start_run(cfg,codeCheck=FALSE)
-
-cfg$title <- "SSP2_NDC_USA"
-cfg <- gms::setScenario(cfg,c("SSP2","NDC"))
-cfg$input <- c(regional    = "rev4.65_h12_magpie.tgz",
-               cellular    = "rev4.65_h12_1998ea10_cellularmagpie_c200_MRI-ESM2-0-ssp370_lpjml-8e6c5eb1.tgz",
-               validation  = "rev4.65_h12_validation.tgz",
-               additional  = "additional_data_rev4.07.tgz",
-               calibration = "calibration_H12_sticky_feb18_free_30Nov21.tgz",
-               patch       = "patch_ndc_usa.tgz")
-start_run(cfg,codeCheck=FALSE)
-```
