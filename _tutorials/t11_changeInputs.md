@@ -218,6 +218,11 @@ NDC policy for the USA described above. None of the changes should
 actually occur in the `default.cfg`, but instead the starting script
 should introduce them to the loaded cfg object.
 
+Add a MAgPIE start script here:
+`scripts/start/projects/name_of_your_script.R`
+
+
+Solution: 
 ``` r
 # |  (C) 2008-2020 Potsdam Institute for Climate Impact Research (PIK)
 # |  authors, and contributors see CITATION.cff file. This file is part
