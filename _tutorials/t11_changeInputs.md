@@ -17,13 +17,7 @@ lessonsContent:
   - Create a local input data repository.
   - Package a patch file.
   - Include a patch in the model configuration
-exercises: 
-  - task: "Write your own starting script that will test the scenario with changed
-NDC policy for the USA described above. None of the changes should
-actually occur in the `default.cfg`, but instead the starting script
-should introduce them to the loaded cfg object."
-    solution: " ``` r # |  (C) 2008-2020 Potsdam Institute for Climate Impact Research (PIK) ```"
-published: false
+published: true
 ---
 
 ## Introduction
@@ -216,6 +210,13 @@ cfg$repositories <- append(list("https://rse.pik-potsdam.de/data/magpie/public"=
 With this setup, the download script (`Rscript start.R -> 3 Download
 data`) will first look into the public repo and secondly into your local
 repo for downloading the files specified in `cfg$input`.
+
+## Exercices 
+
+Write your own starting script that will test the scenario with changed
+NDC policy for the USA described above. None of the changes should
+actually occur in the `default.cfg`, but instead the starting script
+should introduce them to the loaded cfg object.
 
 ``` r
 # |  (C) 2008-2020 Potsdam Institute for Climate Impact Research (PIK)
