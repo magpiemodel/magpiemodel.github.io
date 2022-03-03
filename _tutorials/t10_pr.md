@@ -2,7 +2,7 @@
 layout: tutorial
 title:  Git pull requests - feeding back
 shortID: pr
-lastUpdated:   2022-02-28
+lastUpdated: 2022-03-03
 model: MAgPIE
 modelVersion: 4.4.0
 author: mc
@@ -12,12 +12,34 @@ requirements:
   - A MAgPIE fork on GitHub
 lessonsContent:
   - MAgPIE policy for updates of the main repository
-  - procedure to create a MAgPIE pull request  
+  - Procedure to create a MAgPIE pull request
+exercises:
+  - task: "Produce figures depicting the current `magpiemodel:develop` branch's behaviour
+           for these indicators: Land-use, emissions, food prices, Tau."
+    solution: "1. Open a terminal in the main MAgPIE model folder\n
+               2. Ensure that you are on the `develop` branch by running `git checkout develop`\n
+               3. Run a default run with the start script (`Rscript start.R`)\n
+               4. Within the main model directory, in an `R` session run `shinyresults::appResultsLocal()`\n
+                  You may have to install this package on your local machine.\n
+               5. Print these following plots to .pdfs:\n
+                  - Resources/Land Cover/+/Cropland\n
+                  - Resources/Land Cover/+/Pastures and Rangelands\n
+                  - Emissions/CO2/Land\n
+                  - Productivity/Landuse Intensity Indicator Tau\n
+                  - Prices/Food Price Index"
+  - task: "Ensure that your GAMS code compiles."
+    solution: "1. Open a terminal and navigate to your main MAgPIE directory\n
+               2. Ensure that you have checked out the correct branch\n
+               3. Run `Rscript start.R` and download the input data (`3: download data`)\n
+               4. Within your terminal, run `gams main.gms action=c`"
+  - task: "Ensure that the documentation for MAgPIE is successful derived"
+    solution: "1. Open an R session within your model's main directory\n
+               2. Run `goxygen::goxygen()`"
 categories: tutorial
 published: true
 ---
 
-# The "pull request" – feeding back to the main repository
+# The "pull request" – feeding back to the main repository
 
 MAgPIE lives through its community of developers and is based on the idea
 that all research should be open, accessible and usable. While not enforced by
@@ -282,7 +304,12 @@ label from the label list (by clicking the wrench on on the right).
 in particular should be compared with a control run of the `magpiemodel:develop` branch. Ideally additions to the code
 should not incur runtime changes. If they do, there must be good reasons for it.
 1. **Added changes to `CHANGELOG.md`**.
-1. **Compilation check**. Make sure that your model compiles successfully.
+1. **Compilation check**. Make sure that your model compiles successfully. Navigate to your `magpie` directory and within 
+the console run `gams main.gms action=c`.
+
+> A tip: It may be necessary - if you haven't already run the model in your directory - to download the input data from the PIK
+> servers. To do so, run `Rscript start.R` and select `3: download data | just download default.cfg input data`.
+
 1. **No hard-coded numbers and cluster/country/region names**. MAgPIE is able to run across flexible cluster, country, and 
 region definitions. This flexibility stems from these definitions only entering the model through input parameters as the
 model is being started. Thus, hard-coding these definitions will lead to erronous results.
