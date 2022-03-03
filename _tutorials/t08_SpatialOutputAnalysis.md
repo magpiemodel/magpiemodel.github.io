@@ -154,21 +154,35 @@ library(magclass)
 In order to get an overview of the functionality, we can click on the index and look for helpful functions, e.g.
 `read.magpie` and navigate to the help/documentation page, by clicking on it.
 
-We can now try to read in 'cell.land_0.5.nc' by typing
+We can now try to read in 'cell.land_0.5.mz' by typing
 
 ``` r
 x <- read.magpie('cell.land_0.5.mz')
 ```
-Then we can use `str(x)` to find out how the data is structured in `x`.
+Then we can use `str(x)` to find out how the data is structured in `x`. We can analyse `x` and perform a range of calculations. Data dimensions in `magclass` objects are indexed in the following three-dimensional form
 
-Similarly, we can also load the library `luplot` and look at the help pages:
+```r
+x[<cell>, <time>, <data>]
+```
+For example, we can compute the difference in the primary forest ('primforest') area per grid cell between 2015 and 2050:
+
+```r
+primforestDiff <- x[,'y2050', 'primforest'] - x[,'y2015', 'primforest']
+```
+We can also compute the difference for all land classes simultaneously by typing
+
+```r
+allDiff <- x[,'y2050',] - x[,'y2015',]
+```
+
+Now, let us load the library `luplot` and look at the help pages:
 
 ``` r
 library(luplot)
 ?luplot
 ```
 
-The library contains helpful functions for plotting `magclass` objects in different ways, e.g. `plotmap` that transfers data stored in a `magclass` object to a simple map. However, we cannot plot all data at the same time. Therefore, we need to select a time step and a variable that we want to look at. Data dimensions in `magclass` objects are indexed in the following three-dimensional form `x[<cell>, <time>, <data>]`. Here, we choose the year `y2050` and the variable primary forest (`primforest`). In `plotmap` can also define the upper and lower boundary of the legend via `legend_range`.
+The library contains helpful functions for plotting `magclass` objects in different ways, e.g. `plotmap` that transfers data stored in a `magclass` object to a simple map. However, we cannot plot all data at the same time. Therefore, we need to select a time step and a variable that we want to look at. Here, we choose the year `y2050` and the variable primary forest again. In `plotmap` can also define the upper and lower boundary of the legend via `legend_range`.
 
 ```r
 luplot::plotmap(x[,'y2050', 'primforest'], legend_range = c(0, 0.3))
