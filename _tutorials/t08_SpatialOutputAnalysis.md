@@ -164,7 +164,7 @@ Then we can use `str(x)` to find out how the data is structured in `x`. We can a
 ```r
 x[<cell>, <time>, <data>]
 ```
-For example, we can compute the difference in the primary forest ('primforest') area per grid cell between 2015 and 2050:
+For example, we can compute the difference in the primary forest ('primforest') area in all grid cells between 2015 and 2050:
 
 ```r
 primforestDiff <- x[,'y2050', 'primforest'] - x[,'y2015', 'primforest']
