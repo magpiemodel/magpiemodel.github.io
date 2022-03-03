@@ -162,7 +162,7 @@ x <- read.magpie('cell.land_0.5.mz')
 Then we can use `str(x)` to find out how the data is structured in `x`. We can analyse `x` and perform a range of calculations. Data dimensions in `magclass` objects are indexed in the following three-dimensional form
 
 ```r
-x[<cell>, <time>, <data>]
+x['<cell>', '<time>', '<data>']
 ```
 For example, we can compute the difference in the primary forest ('primforest') area in all grid cells between 2015 and 2050:
 
