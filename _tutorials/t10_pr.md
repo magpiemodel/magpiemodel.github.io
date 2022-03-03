@@ -72,14 +72,15 @@ Below is a step-by-step guide to submitting a pull request, from committing to y
 to filling out the PR template itself. For the purposes of this tutorial, the PR includes a
 new output script, `FSEC_environmentalPollutants.R`.
 
+---
 
 ## On your local fork
 
 ### Complete and thoroughly test your code changes
 
 When actively developing MAgPIE, you should refrain from making additions to the `master` branch.
-In general one should either create branches off of the `develop` branch for specific features, or 
-change the `develop` branch itself.
+In general one should either create branches off of your fork of `develop` branch for specific features, or 
+change the fork's `develop` branch itself.
 
 When developing the MAgPIE model, please following the coding etiquette available 
 [here](https://rse.pik-potsdam.de/doc/magpie/4.4.0/).
@@ -191,8 +192,7 @@ and this project adheres to [Semantic Versioning](https:/semver.org/spec/v2.0.0.
 
 Note that the `CHANGELOG` separates all code changes into `changed`, `added`, `removed`, and `fixed`. If you made multiple
 commits which included changes, additions, and removals, these must be broken down here. In practice, it is
-better _git_ etiquette (i.e. nicer for the maintainers) to have smaller, discrete PRs that are easily digested
-and pertain to specific aspects of the code base than larger, unwieldy changes.
+better _git_ etiquette (i.e. nicer for the maintainers) to have smaller, discrete PRs that implement a singular feature or advancement, than larger PRs implementing many disconnected features simultaneously.
 
 
 ---
@@ -256,6 +256,9 @@ they all there?
 and merge these latest changes into your own branch.
 
 
+> A tip: It is possible to pull from the `magpiemodel:develop` branch to your fork (likely `origin:develop`) through GitHub.com, and then you could pull from the origin to your local machine. Another potentially convenient method could be adding an `upstream` remote the your git repository on your local machine, as [here](https://gist.github.com/CristinaSolana/1885435).
+
+
 ---
 
 ### The PR template
@@ -266,6 +269,7 @@ the main repository. One should go through the template thoroughly and address e
 
 ![PR_7](../assets/img/PR_7_GitHub_PRTemplate.png)
 
+---
 
 #### A breakdown of the PR template
 
@@ -285,7 +289,7 @@ model is being started. Thus, hard-coding these definitions will lead to erronou
 1. **The new code doesn't contain declared but unused parameters or variables**.
 1. **Where relevant, In-code comments added including documentation comments**.
 1. **Make sure that the documentation worked for your additions**.
-1. **Changes to the `magpie4` enable postprocessing of any new model output**.
+1. **Changes to the `magpie4` enable postprocessing of any new model output**. `magpie4` is the [R repository](https://github.com/pik-piam/magpie4) which is used to generate analyses from the model output datasets.
 1. **Self-review of my own code**. Perhaps the most important checkbox. Are you certain that your code does what you think it
 does?
 1. **For high risk runs: validation of major model indicators - Land-use, emissions, food prices, Tau**. Screenshots of 
@@ -294,6 +298,8 @@ branch are appropriate for most changes.
 
 After completing the PR template you should request at least two reviewers from the MAgPIE mainanence team.
 
+---
+
 #### The review process
 
 After recieving your PR request, both MAgPIE maintainers will independently review your changes and request 
@@ -301,6 +307,6 @@ clarifications or changes as appropriate.
 
 ![PR_8](../assets/img/PR_8_GitHub_PRTemplate_Reviewers.png)
 
-The reviewers, one of whom must be from the Research and Software Engineering (RSE) department at PIK, have use the above
+The reviewers, one of whom must be from the Research and Software Engineering (RSE) department at PIK, use the above
 checklist. After this interaction has been completed, they will accept the PR and it will be automatically merged 
 into the `magpiemodel:develop` branch.
