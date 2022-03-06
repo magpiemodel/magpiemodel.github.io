@@ -151,4 +151,4 @@ Suffixes indicate the level of aggregation of an object:
     _glo global aggregation (exception)
 
 ### Workshop Material
-You will find the slides used in the workshop [here](../assets/pdf/GAMScode.pdf)
+You will find the slides used in the workshop [here](../assets/pdf/GAMScode.pdf).
