@@ -149,3 +149,6 @@ Suffixes indicate the level of aggregation of an object:
     _(setname) aggregation over set
     _reg regional aggregation (exception)
     _glo global aggregation (exception)
+
+### Workshop Material
+[Slides](../assets/pdf/GAMScode.pdf)
