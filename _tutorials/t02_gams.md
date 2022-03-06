@@ -73,7 +73,7 @@ modules and the `include.gms` file that ensures the inclusion of all modules int
 
   - An input folder with overarching input files for all realizations
   - Realization folders containing the source code of each realization
-  - The `[module_name].gms` file with the module description and listing of all
+  - The `modules.gms` file with the module description and listing of all
     realizations
   - Several `[realization_name].gms` files with the realization description
     that links to the specific source code
@@ -100,6 +100,7 @@ Note that not every gms-file is needed in every realization.
 | postsolve.gms    | Includes calculations to be executed after each time step and defines output.                                                        |
 | nl\_fix.gms      | Fixes non-linear behaviour to linear behavior.                                                                                       |
 | nl\_release.gms  | Releases restrictions to linear behavior again.                                                                                      |
+| scaling.gms         | Lists the expected order of magnitude of specific variables calculated in this model to improve the efficiency of the run|   
 | not\_used.txt    | Lists interfaces (declared in other modules) that are not used within this realization, but that are in other realizations of the same module |
 
 ### Coding etiquette variable and parameter naming
