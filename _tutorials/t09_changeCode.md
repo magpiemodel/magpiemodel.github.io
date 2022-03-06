@@ -8,8 +8,9 @@ modelVersion: 4.0.0
 author: fh
 level: 4
 requirements:
-  - Requirement A
-  - Requirement B
+  - Local copy of the MAgPIE model (https://github.com/magpiemodel/magpie)
+  - Have R installed (https://www.r-project.org/)
+  - Have R package `gms` installed
 lessonsContent:
   - Changing the MAgPIE GAMS code
   - adding In-Code documentation
@@ -34,8 +35,8 @@ realization is deleted.
 This tutorial shows how to add a new realization to a module in the
 MAgPIE model. To illustrate the different steps, we will expand the
 `urban` land module. In the current MAgPIE master, the `urban` land
-module has only a `static` realization. In this tutorial, we will add a
-`dynamic` realization, which changes urban land based on population
+module has a `static` and `exo_nov21` realization. In this tutorial, we will add a
+new realization called `pop_growth`, which changes urban land based on population
 growth.
 
 ## Adding a new realization
@@ -45,8 +46,8 @@ land module is located here: `modules/34_urban`.
 
 ### Add a new realization by duplicating an existing one
 
-Duplicate the `static` folder and rename it to `dynamic`. Now we need to
-add and edit files in the `dynamic` folder. Add the following files by
+Duplicate the `static` folder and rename it to `pop_growth`. Now we need to
+add and edit files in the `pop_growth` folder. Add the following files by
 duplicating the `presolve.gms` file: `declarations.gms`, `equations.gms`
 and `preloop.gms`. Open each new file and delete the copied code from
 `presolve.gms`, but keep the copyright header. Now add the following
@@ -103,7 +104,7 @@ branch. Your code should agree with the code in `f_urban`:
 
 ### Update the code
 
-To include the new realization `dynamic` properly into the GAMS code we
+To include the new realization `pop_growth` properly into the GAMS code we
 run a specific R command in the main folder. First navigate in your
 command line to the MAgPIE main folder, then open a new R session (type
 `R` followed by ENTER), and then copy-paste the following R commands:
@@ -134,7 +135,7 @@ Now you can quit the R session with `q()`.
 ### Start a model run
 
 For a quick GAMS test, we simply set the new realization in the file
-`main.gms` in line 256 (replace `static` by `dynamic`). We can then
+`main.gms` in line 256 (replace `static` by `pop_growth`). We can then
 check if the model compiles correctly with this command evoked from the
 command line.
 
@@ -147,11 +148,8 @@ into the `main.lst` file. It will tell you what kind of error occurred.
 
 To make our test run as fast as possible, we reduce the number of time
 steps to 3 and deactivate elastic food demand. For this, we change
-`$setglobal c_timesteps coup2100` in main.gms in line 224 to `$setglobal
-c_timesteps quicktest`, and change the value of `s15_elastic_demand`
-from 1 to 0 in line 74 in `modules/15_food/anthropometrics_jan18/input`.
-<https://github.com/flohump/magpie/blob/f_urban/main.gms#L224>
-<https://github.com/flohump/magpie/blob/f_urban/modules/15_food/anthropometrics_jan18/input.gms#L74>
+`$setglobal c_timesteps coup2100` in main.gms in line 217 to `$setglobal
+c_timesteps quicktest`.
 
 Now we can start a test run with this command. This can take up to 10-15
 minutes, depending on the resources of your machine.
@@ -162,8 +160,8 @@ gams main.gms
 
 GAMS will create a `fulldata.gdx` file in the main folder.
 
-For starting a productive model run, we would have to change the config
-file `config/default.cfg` in line 489 (replace `static` by `dynamic`).
+For starting a productive model run, we would have to change `cfg$gms$urban` in 
+the config file `config/default.cfg` (replace `static` by `pop_growth`).
 We could now start a model run with `Rscript start.R -> 1: default -> 1:
 Direct execution`. Or, even better write a start script without changing
 `config/default.cfg`.
