@@ -28,17 +28,17 @@ exercises:
                2. Under 'Code' you find links for cloning the code via ssh or https 
                   (note that, if yu want to use ssh, you need to store a ssh-key 
                    on your github account). Copy a link.
-               3. Clone the repo e.g. via command line with `git clone <copied_link>`.
-               4. Change dir into your freshy created repo and type `git status` 
+               3. Clone the repo e.g. via command line with ``git clone <copied_link>``.
+               4. Change dir into your freshy created repo and type ``git status`` 
                   to check if it worked."
   - task: "Check, if there is anything to merge from the upstream repository into your fork. 
            If so, merge it into your fork."
-    solution: "1. You can use the simple way: Click "fetch upstream" on the github page or
+    solution: "1. You can use the simple way: Click 'fetch upstream' on the github page or
                   use the command line to update your local repo (see following instructions).
-               2. Add magpiemodel remote via `git remote add magpie git@github.com:magpiemodel/magpie.git`.
-               3. Fetch changes via `git fetch magpie`.
-               4. Merge changes into your current branch via `git merge magpie/<branch>`.
-               5. Push changes via `git push`."
+               2. Add magpiemodel remote via ``git remote add magpie git@github.com:magpiemodel/magpie.git``.
+               3. Fetch changes via ``git fetch magpie``.
+               4. Merge changes into your current branch via ``git merge magpie/<branch>``.
+               5. Push changes via ``git push``."
 categories: tutorial
 published: true
 ---
