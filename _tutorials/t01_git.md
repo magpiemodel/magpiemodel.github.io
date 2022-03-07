@@ -21,7 +21,7 @@ exercises:
     solution: "1. Open a browser and visit <https://github.com/magpiemodel/magpie>.
                2. (If not:) Sign-in (or first sign-up) in github.
                3. Find the fork symbol in the upper right corner and 
-                  click on it to create a fork of the magpie repository on your on account.
+                  click on it to create a fork of the magpie repository on your on account."
   - task: "Visit your fork and clone the repository at your machine."
     solution: "1. Visit your own fork under <https://github.com/<your_github_account>/magpie> or
                   find 'magpie' on your github account page.
@@ -30,7 +30,7 @@ exercises:
                    on your github account). Copy a link.
                3. Clone the repo e.g. via command line with `git clone <copied_link>`.
                4. Change dir into your freshy created repo and type `git status` 
-                  to check if it worked. 
+                  to check if it worked."
   - task: "Check, if there is anything to merge from the upstream repository into your fork. 
            If so, merge it into your fork."
     solution: "1. You can use the simple way: Click "fetch upstream" on the github page or
