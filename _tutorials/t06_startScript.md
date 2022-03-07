@@ -5,11 +5,11 @@ shortID: startScript
 lastUpdated:   2022-03-07
 model: MAgPIE
 modelVersion: 4.4.0
-authors: Abhijeet Mishra, Michael Crawford, Vartika Singh
+authors: Abhijeet Mishra, Michael Windisch, Vartika Singh
 level: 3
 requirements:
-  - GAMS Installed, Magpie model folder on local computer
-  - Undertaken Tutorial 4 and 5
+  - GAMS Installed, Magpie model folder cloned on local computer
+  - Undertaken Tutorial 4 and 5 and understand how to start model run
 lessonsContent:
   - Understand MAgPIE starting scripts
   - Create custom starting scripts
