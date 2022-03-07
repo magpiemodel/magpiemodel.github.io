@@ -23,6 +23,12 @@ lessonsContent:
   - Use the `magpie4` package for output analysis.
   - Analyse outputs with the `gdx` package.
 exercises:
+- task: "Open a validation pdf (either in a folder containing your own simulation
+         results or the downloaded MAgPIE simulation runs and\n
+         (a) make yourself familiar with the structure of the document and the
+         hierarchy of outputs as displayed by the table of contents and; \n
+         (b) have a look at some figures displaying model outputs of your
+         interest."
   - task: "Execute the model-internal output script `rds report` via the command
           window. This script collects the results of several report-functions -
           that calculate many key output variables like Production, Land Use or
@@ -31,12 +37,6 @@ exercises:
                2. select model run by typing in the respective number and press `ENTER`\n
                3. select `rds report` by pressing `2` and `ENTER`\n
                4. select `Direct execution` by pressing `3` and `ENTER`\n"
-  - task: "Open a validation pdf (either in a folder containing your own simulation
-           results or the downloaded MAgPIE simulation runs and\n
-           (a) make yourself familiar with the structure of the document and the
-           hierarchy of outputs as displayed by the table of contents and; \n
-           (b) have a look at some figures displaying model outputs of your
-           interest."
   - task: "Start the interactive scenario analysis tool using the shinyresults R library,
            select one particular model run using the title filter and look at a variable of your choice."
     solution: "1. Open an R session in the main folder structure of the MAgPIE model folder\n
@@ -44,6 +44,9 @@ exercises:
                3. After the interactive site has opened, select `title` as a filter in the `Select Data` tab and look for the simulation run of your choice\n
                4. Click on `Load selection` and open the `LinePlot1` or `AreaPlot1` tab\n
                5. Select a variable of your choice and optionally also a particular scenario or region."
+   - task: "Find out how to include a custom validation file in the interactive scenario analysis tool. (This can be useful when you have additional or newer validation data at hand)"
+     solution: "1. Open the documentation to the function ``shinyresults::appResultsLocal()``\n
+                2. Specify a particular validation file (.rds or .mif) when executing the command, e.g.: appResultsLocal(valfile = "output/default_2022-01-13_12.26.03/validationNEW.mif"). Note that this file has to be located in the main folder or you need to provide the full path to its location."
   - task: "Apply the function carbonstock() from the R library magpie4 using the file “fulldata.gdx” in the folder of a model simulation run as input for the function.\n
                (a) Use the default settings of the arguments of the function\n
                (b) Change the arguments of the function, e.g. change the regional resolution from cellular (cluster level) to regional."
