@@ -2,10 +2,10 @@
 layout: tutorial
 title:  Creating a start script
 shortID: startScript
-lastUpdated:   2022-02-01
+lastUpdated:   2022-03-07
 model: MAgPIE
 modelVersion: 4.4.0
-author: Vartika Singh
+authors: Abhijeet Mishra, Michael Crawford, Vartika Singh
 level: 3
 requirements:
   - GAMS Installed, Magpie model folder on local computer
@@ -296,8 +296,6 @@ cfg$results_folder <- "output/:title:"
 # Change time step settings
 cfg$gms$c_timesteps <- 5
 
-# Updating the desired output generation automatically after run
-cfg$output <- c("rds_report","interpolation")
 ```
 
 #### Adding loop(s)
@@ -393,9 +391,6 @@ cfg$results_folder <- "output/:title:"
 
 # Change time step settings
 cfg$gms$c_timesteps <- 5
-
-# Updating the desired output generation automatically after run
-cfg$output <- c("rds_report","interpolation")
 
 # Starting trade loop
 for(trade_setting  in c("selfsuff_reduced","free_apr16")){
