@@ -34,46 +34,50 @@ of 75%. "
 published: true
 ---
 
-## MAdRAT and mrtutorial installation
+## MADRaT and mrtutorial installation
 
 In this exercise, we will dig deeper into magclass objects and the MADRaT framework.
 Libraries organized through this framework do the bulk of the processing of the
 data that goes in and comes out of the MAgPIE model, and are
 standardized for consistency. For this exercise, we will work with the
-‘mrtutorial’ package as an example of the mr- package structure.
+**mrtutorial** package as an example of the mr- package structure.
 
 
-First, please install the **madrat** package. 
-The installation may prompt you to set a main folder for madrat data. This should
-be set somewhere easily accessible, such as "C:/PIK/inputdata"
+First, please install and load the **madrat** package. 
+The installation may prompt you to set a main folder for madrat data. Name this folder '/inputdata/', and put it somewhere easily accessible, such as "C:/PIK/inputdata".
+
 
 ```r
 install.packages("madrat")
+library(madrat)
+getConfig()
 ```
+
 
 We'll also work with the **mrtutorial** package to show how the input data 
 processing pipeline works for feeding into a model such as MAgPIE. 
 
 ```r
 install.packages("mrtutorial")
+library(mrtutorial)
 ```
 
 Furthermore, we will look into the source code of **mrtutorial** so 
-1) fork and 2) locally clone your own branch of mrtutorial from
+1) fork and 2) locally clone your own branch of **mrtutorial** from
 <https://github.com/pik-piam/mrtutorial>
 
 Let's open the package folder. The one important thing to note is that the package
 has the **madrat.R** file manually placed in the ```mrtutorial/R/``` folder. 
 
-One can thus also create new madrat-based libraries. 
+This links the package with the MADRaT framework, and one can also create new MADRaT-based libraries by placing this file in the package's respective R folder.
 
 
 ## MADRaT Functions - Downloading, Reading, Calculating Model Inputs
 
 We will look closely into the workflow of processing new data sources
-to be ready for use in the MAgPIE model. Madrat splits this workflow
+to be ready for use in the MAgPIE model. MADRaT splits this workflow
 into download, read, correct, convert, and calculate steps, each of
-which has a specific function wrapper.
+which has a specific **function wrapper**.
 
 ### Download function
 
@@ -83,14 +87,12 @@ implementation, but in this case, a download function is not necessary.
 Naming of the source folder must however match the read functions.
 Metadata on where the data was obtained, how it was downloaded, etc.
 should ideally be documented in the download script. For another example,
-please see downloadTau in the madrat package.
+please see downloadTau in the MADRaT package.
 
 Please open the downloadTutorialWDI R script. Note that this download script 
 requires the **WDI** package. 
 
 ``` r
-library(madrat)
-
 install.packages("WDI")
 
 downloadSource("TutorialWDI")
@@ -103,18 +105,17 @@ we call it via the **downloadSource()** wrapper.
 
 Read functions are the first step in transforming input data into
 magclass objects. They should be as simple as possible, with most steps
-of data cleaning, filling in, and transforming reserved for the correct
+of data cleaning, filling in, and transforming reserved for the convert and correct
 function. The Read function should be able to specify between indicators
 (subtypes).
 
-Remember that magclass objects are an array with the the spatial
-dimension in the first dimension, the temporal dimension in the second,
+Remember that magclass objects are an array with spatial
+information in the first dimension, temporal information in the second dimension,
 and data values in the third dimemsion(s) (3.1, 3.2…).
 
 Now let’s look at readTutorialWDI.R. Note here that because of the way
-WDI downloads it’s data, the naming of the data is assumed by madrat to
-be multiple subdimensions, due to the use of the “.”. This is generally
-to be avoided, to avoid confusing names and dimensions, and we rename this at line 
+WDI downloads it’s data, the naming of the data is assumed in MADRaT to
+be multiple subdimensions, due to internal use of “.” as dimension separator. Data names that have full stops are to be avoided, to avoid confusing names and dimensions, and we rename this at line 
 39.
 
 ``` r
@@ -125,7 +126,7 @@ pop_no_conv <- readSource("TutorialWDI", subtype="SP.POP.TOTL", convert=FALSE)
 ```
 
 Again, here **readTutorialWDI** is called via **readSource()** and not 
-readTutorialWDI directly. How can we see the 
+readTutorialWDI directly. How can we see the number of countries, years and data colummns the ```pop_no_conv``` object has?
 
 ### Convert Function
 
@@ -153,11 +154,11 @@ Magclass objects are consistent in structure, making calculations easy.
 The calcOutput wrapper function calls the functions used to transform
 input data, called as calcOutput(“type”, “option1”, “option2”, …).
 
-Note however, that if dimensions do not match, operations will expand the output,
+Note however, that if dimensions across 2 magclass objects do not match, operations will expand the output,
 by doing the full matrix multiplication across all dimensions.
 
-For example, object A with regions 'Greece', 'Italy' ;
-object B with regions 'Italy', 'Poland';
+For example, given mag-object A with regions 'Greece', 'Italy' ;
+and mag-object B with regions 'Italy', 'Poland';
 
 A * B will give an object with regions 'Greece.Italy', 'Greece.Poland', 'Italy.Italy', 'Italy.Poland'.
 
@@ -172,7 +173,7 @@ ag_gdp <- calcOutput("AgGDP", aggregate = FALSE)
 ```
 
 By default, calcOutput functions will aggregate to the regional level,
-otherwise ```aggregate = F``` is reqired to keep the original regional level. 
+otherwise ```aggregate = F``` is required to keep the original regional level. 
 The region mapping can also be changed in setConfig().
 
 
@@ -200,7 +201,7 @@ Exercises:
 
 1. What is the agricultural GDP of germany? (Germany's ISO3 code is DEU)
 
-2. Calculate the amount of agricultural GDP generated by each person employed in
+2. Using the functions we have seen, calculate the amount of agricultural GDP generated by each person employed in
 agriculture for each country, assuming globally an employment-to-population ratio
 of 75%. 
 
