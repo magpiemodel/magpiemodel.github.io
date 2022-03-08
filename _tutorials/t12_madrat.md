@@ -9,6 +9,7 @@ author: dc
 level: 4
 requirements:
   - Basic knowledge of R programming language
+  - Install madrat and mrtutorial R packages
   - Fork and clone https://github.com/pik-piam/mrtutorial
 lessonsContent:
   - Introduction to the MADRaT framework
