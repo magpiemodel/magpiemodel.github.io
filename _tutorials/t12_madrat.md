@@ -192,10 +192,6 @@ cases, the function is re-run and a new cache file for the new settings applied
 will be created. Caching can toggled with setConfig(forcecache=TRUE).
 
 
-``` r
-getConfig()
-```
-
 Exercises:
 
 1. What is the agricultural GDP of germany? (Germany's ISO3 code is DEU)
