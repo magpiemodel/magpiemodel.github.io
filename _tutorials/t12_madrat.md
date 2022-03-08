@@ -152,9 +152,9 @@ Either in terms of data structure, or the values themselves?
 
 Magclass objects are consistent in structure, making calculations easy.
 The calcOutput wrapper function calls the functions used to transform
-input data, called as calcOutput(“type”, “option1”, “option2”, …).
+input data, called as calcOutput(“functionName”, "otherArguments”, …).
 
-Note however, that if dimensions across 2 magclass objects do not match, operations will expand the output,
+**Note!** During mag-object calculations, if dimensions across 2 magclass objects do not match, operations will expand the output,
 by doing the full matrix multiplication across all dimensions.
 
 For example, given mag-object A with regions 'Greece', 'Italy' ;
@@ -162,8 +162,7 @@ and mag-object B with regions 'Italy', 'Poland';
 
 A * B will give an object with regions 'Greece.Italy', 'Greece.Poland', 'Italy.Italy', 'Italy.Poland'.
 
-calcAgGDP() will calculate agricultural gdp as share of total gdp. Let’s
-open this function.
+Let's open **calcAgGDP**, which calculates agricultural gdp as a share of total gdp,
 
 
 ``` r
@@ -178,7 +177,7 @@ The region mapping can also be changed in setConfig().
 
 
 Note that **calcOutput** functions return a list of objects. x is the main magclass object to be returned. Since the weighting of non-absolute values generally requires weighting, a weight can be specified within the calcOutput()
-function itself. Unit and Description are important outputs for proper documentation fo the function and object.
+function itself. Unit and Description are important outputs for proper documentation of the function and object.
 
 
 Now try running some of the same functions again. You may notice that now, 
