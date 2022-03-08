@@ -30,12 +30,12 @@ exercises:
                3. Open the file **core/sets.gms** and find the definition of the set by searching 
                   for `\"quicktest\"` (line 190). The set includes the years y1995, y2010, y2025."
   - task: "By editing the corresponding setting in the default.cfg file, change the model configuration such that 
-           only the output scripts \"output_check\" and \"rds_report\" are run."
+           only the output script \"output_check\" is run."
     solution: "1. Find the corresponding setting the config file by searching for `cfg$output` (line 1484).\n
                2. Change the current output scripts (typically 
                   `c(\"output_check\", \"rds_report\", \"validation_short\",\"extra/disaggregation\")`) 
-                  to only include `\"output_check\"` and `\"rds_report\"`, i.e. 
-                  `cfg$output <- c(\"output_check\", \"rds_report\")`.\n"
+                  to only include `\"output_check\"`, i.e. 
+                  `cfg$output <- c(\"output_check\")`.\n"
   - task: "Start a MAgPIE run using the updated model settingsfrom exercises 1-3."
     solution: 1. See tutorial [Starting a MAgPIE run](t06-startscript) on how to start a default MAgPIE 
                  run (i.e. a MAgPIE run using the settings as defined in **default.cfg**). 
@@ -122,14 +122,15 @@ This includes
 - metadata settings (e.g. the title of the model run)
 - technical settings (e.g. the maximum number of iterations if precision goal is not met)
 - module settings (e.g. which SSP scenario should be used for population projections)
-- output and model reporting settings (e.g. which files should be copied to the output folder)
+- output and model reporting settings (e.g. which output scripts should be run)
 
 These settings are collected as elements of a list called `cfg`.
 The module settings (`cfg$gms$*`) make up the main part of the MAgPIE config file.
 As MAgPIE is modular in structure, each module has its own section in the 
-config file. Here, the module realization is chosen (in case of
-multiple realizations, an *off* setting is also available), 
-and additional module parameters are set.
+config file. Here, the module realization is chosen and additional module parameters
+are set, as shown in the following figure for the *technological change (13_tc)* module.
+
+![Example of a module section in the default.cfg file](../assets/img/moduleSectionConfigFile.png)
 
 The following table gives a description of core components from the MAgPIE config file.
 Additionally, settings are also explained within the config file, by comments preceeding
@@ -137,7 +138,7 @@ the respective setting.
 
 | No | Config               | Description                                                                           |
 | -: | :------------------- | :------------------------------------------------------------------------------------ |
-|  1 | cfg$title            | Model title                                                                           |
+|  1 | cfg$title            | Model run title                                                                           |
 |  2 | cfg$model            | Path to the submodel (relative to main model folder)                                  |
 |  3 | cfg$input            | Input data source                                                                     |
 |  4 | cfg$repositories     | Repository containing input data                                                      |
@@ -150,10 +151,10 @@ the respective setting.
 | 11 | cfg$calib\_cropland  | Switch for cropland calibration                                                       |
 | 12 | cfg$recalc\_npi\_ndc | Settings for NPI/NDC recalculation                                                    |
 | 13 | cfg$policyregions    | National or Sub-national mapping                                                      |
-| 14 | cfg$gms              | List of module settings                                                                       |
+| 14 | cfg$gms              | List of module settings                                                               |
 | 15 | cfg$sequential       | How runs should be made                                                               |
 | 16 | cfg$logoption        | Log information                                                                       |
-| 17 | cfg$output           | Generation of output files                                                            |
+| 17 | cfg$output           | Output scripts that should be used                                                    |
 | 18 | cfg$results\_folder  | Results folder name                                                                   |
 | 19 | cfg$files2export     | Files copied to output folder                                                         |
 | 20 | cfg$runstatistics    | Folder run statistics location                                                        |
@@ -214,9 +215,6 @@ use any character string for the results folder name but it is important
 to remember that if a result folder by the same name already exists,
 the model execution stops (if `cfg$force_replace <- FALSE`) or earlier 
 model outputs are replaced (if `cfg$force_replace <- TRUE`).
-
-> Question: If you happen to start a MAgPIE run right now, can you guess
-the name of the results folder within the output folder?
 
 > Exercise 1: By editing the corresponding setting in the default.cfg file, change the 
   title of the model run to contain your affiliation (e.g. \"magWorkshop_PIK\").
@@ -295,11 +293,11 @@ should not be run, you can simply add or remove the corresponding script
 name to the setting, e.g.
 
 ``` r
-cfg$output <- c("output_check", "rds_report")
+cfg$output <- c("output_check", "rds_report", "extra/disaggregation")
 ```
 > Exercise 3: By editing the corresponding setting in the default.cfg file, 
-  change the model configuration such that only the output scripts \"output_check\"
-  and \"rds_report\" are run.
+  change the model configuration such that only the output script \"output_check\"
+  is run.
 
 ## Running the model with updated configuration
 
@@ -331,6 +329,9 @@ the model run, use **crtl + c**).
 > Exercise 4: Start a MAgPIE run using the updated model settings from
   exercises 1-3.
   
+## Workshop Material
+You can find the slides used in the workshop [here](../assets/pdf/UpdateModelSettings.pdf).
+
 --------------------------------------------------------------
 
 1.  **Cloning a repository**: <https://help.github.com/en/articles/cloning-a-repository>

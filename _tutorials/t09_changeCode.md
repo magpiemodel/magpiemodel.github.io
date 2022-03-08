@@ -2,9 +2,9 @@
 layout: tutorial
 title:  Creating a new realization
 shortID: changeCode
-lastUpdated:   2020-12-10
+lastUpdated:   2022-03-07
 model: MAgPIE
-modelVersion: 4.0.0
+modelVersion: 4.4.0
 author: fh
 level: 4
 requirements:
@@ -23,21 +23,24 @@ published: true
 
 MAgPIE has a modular concept. Each module (e.g. `pasture`) can have
 several realizations (e.g. `dynamic` and `static`). The purpose of these
-realization is a) to maintain the current default model behavior and b)
+realizations is a) to maintain the current default model behavior and b)
 to keep the model operational while developing a new realization. A
 typical use case is the extension of a realization by a specific
 feature. In this case, one would copy the current default realization,
 rename it properly, and apply the wanted changes. Then, the model
-behavior can be compared between the two realizations. Eventually, the
+behavior can be compared between the two realizations. Possibly, the
 new realization might become the new default at some point and the old
 realization is deleted.
 
 This tutorial shows how to add a new realization to a module in the
 MAgPIE model. To illustrate the different steps, we will expand the
 `urban` land module. In the current MAgPIE master, the `urban` land
-module has a `static` and `exo_nov21` realization. In this tutorial, we will add a
-new realization called `pop_growth`, which changes urban land based on population
-growth.
+module has a `static` and `exo_nov21` realization. In `static`, 
+urban land is just static over time. In `exo_nov21`, future
+urban land is prescribed based on existing scenarios of urbanization.
+In this tutorial, we will add a new realization called `pop_growth`, 
+which changes urban land based on population
+growth. Note that this should be only used for illustrative purposes. 
 
 ## Adding a new realization
 
@@ -135,7 +138,7 @@ Now you can quit the R session with `q()`.
 ### Start a model run
 
 For a quick GAMS test, we simply set the new realization in the file
-`main.gms` in line 256 (replace `static` by `pop_growth`). We can then
+`main.gms` in line 251 (replace `static` by `pop_growth`). We can then
 check if the model compiles correctly with this command evoked from the
 command line.
 
