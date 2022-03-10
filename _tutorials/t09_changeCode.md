@@ -174,7 +174,7 @@ gams main.gms
 GAMS will create a `fulldata.gdx` file in the main folder.
 
 For starting a productive model run, we would have to change `cfg$gms$urban` in 
-the config file `config/default.cfg` (replace `static` by `pop_growth`).
+the config file `config/default.cfg` (`cfg$gms$urban   <- "pop_growth"`).
 We could now start a model run with `Rscript start.R -> 1: default -> 1:
 Direct execution`. Or, even better write a start script without changing
 `config/default.cfg`.
