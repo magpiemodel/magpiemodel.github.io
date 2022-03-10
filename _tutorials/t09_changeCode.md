@@ -8,9 +8,9 @@ modelVersion: 4.4.0
 author: fh
 level: 4
 requirements:
-  - Local copy of the MAgPIE model (https://github.com/magpiemodel/magpie)
+  - Local copy of the MAgPIE model 4.4.0 (https://github.com/magpiemodel/magpie)
   - Have R installed (https://www.r-project.org/)
-  - Have R package `gms` installed
+  - Have R packages `gms` and `magpie4` installed
 lessonsContent:
   - Changing the MAgPIE GAMS code
   - adding In-Code documentation
