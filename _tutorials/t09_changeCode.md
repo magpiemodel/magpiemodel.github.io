@@ -2,7 +2,7 @@
 layout: tutorial
 title:  Creating a new realization
 shortID: changeCode
-lastUpdated:   2022-03-07
+lastUpdated:   2022-03-10
 model: MAgPIE
 modelVersion: 4.4.0
 author: fh
@@ -94,7 +94,7 @@ vm_carbon_stock.fx(j,"urban",c_pools) = 0;
 #### realization.gms
 
 ``` r
-*' @description In the dynamic realization, urban land expands based on population growth.
+*' @description In this realization, urban land expands based on population growth.
 *' Carbon stocks are fixed to zero because
 *' information on urban land carbon density is missing.
 
@@ -138,7 +138,7 @@ Now you can quit the R session with `q()`.
 ### Start a model run
 
 For a quick GAMS test, we simply set the new realization in the file
-`main.gms` in line 251 (replace `static` by `pop_growth`). We can then
+`main.gms`: `$setglobal urban pop_growth`. We can then
 check if the model compiles correctly with this command evoked from the
 command line.
 
@@ -150,9 +150,7 @@ If you get compilation errors, you have to resolve these first. Look
 into the `main.lst` file. It will tell you what kind of error occurred.
 
 To make our test run as fast as possible, we reduce the number of time
-steps to 3 and deactivate elastic food demand. For this, we change
-`$setglobal c_timesteps coup2100` in main.gms in line 217 to `$setglobal
-c_timesteps quicktest`.
+steps to 3. For this, we set `$setglobal c_timesteps quicktest` in main.gms.
 
 Now we can start a test run with this command. This can take up to 10-15
 minutes, depending on the resources of your machine.
