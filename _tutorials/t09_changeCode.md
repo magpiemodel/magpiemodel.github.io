@@ -49,36 +49,49 @@ land module is located here: `modules/34_urban`.
 
 ### Add a new realization by duplicating an existing one
 
-Duplicate the `static` folder and rename it to `pop_growth`. Now we need to
-add and edit files in the `pop_growth` folder. Add the following files by
-duplicating the `presolve.gms` file: `declarations.gms`, `equations.gms`
-and `preloop.gms`. Open each new file and delete the copied code from
-`presolve.gms`, but keep the copyright header. Now add the following
-content to these files, and modify `presolve.gms` and `realization.gms`.
+Duplicate the `static` folder and rename it to `pop_growth`. Now we need edit and add 
+files in the `pop_growth` folder. 
+In the end, you should have the following files:
 
 #### declarations.gms
 
 ``` r
+positive variables
+ vm_cost_urban(j)			Technical adjustment cost
+;
+
 equations
- q34_urban(j)               urban land (mio. ha)
+ q34_urban(j)       		urban land (mio. ha)
 ;
 
 parameters
- p34_pop_growth(t_all,i)        annual population growth rate (1)
+ p34_pop_growth(t_all,i) 		annual population growth rate (1)
 ;
 ```
 
 #### equations.gms
 
 ``` r
+$ontext
+Urban land in the current time step (vm_land) is forced to the value from the previous 
+time step (pcm_land) multiplied by 1 + population growth between these time steps.
+$offtext
+
 q34_urban(j2)..
- vm_land(j2,"urban") =e=
+ vm_land(j2,"urban") =e= 
  pcm_land(j2,"urban") * (1 + sum((ct,cell(i2,j2)), p34_pop_growth(ct,i2)) * m_timestep_length);
 ```
 
 #### preloop.gms
 
 ``` r
+$ontext
+#Calculate annual population growth rate
+Since the temporal resolution of t_all is 5-year time steps, we have to divide the change 
+between time steps by the number of years between these time steps (m_yeardiff) to get 
+annual values.
+$offtext
+
 loop(t_all$(ord(t_all) > 1),
  p34_pop_growth(t_all,i) = (im_pop(t_all,i)/im_pop(t_all-1,i) - 1) / m_yeardiff(t_all);
 );
@@ -87,23 +100,22 @@ loop(t_all$(ord(t_all) > 1),
 #### presolve.gms
 
 ``` r
-*vm_land.fx(j,"urban") = pcm_land(j,"urban");
+*fix carbon stocks to zero
 vm_carbon_stock.fx(j,"urban",c_pools) = 0;
+*Biodiversity
+vm_bv.fx(j,"urban", potnatveg) = pcm_land(j,"urban") * fm_bii_coeff("urban",potnatveg) * fm_luh2_side_layers(j,potnatveg);
+*fix costs to zero
+vm_cost_urban.fx(j) = 0;
 ```
 
 #### realization.gms
 
 ``` r
 *' @description In this realization, urban land expands based on population growth.
-*' Carbon stocks are fixed to zero because
-*' information on urban land carbon density is missing.
+*' Carbon stocks are assumed zero.
 
-*' @limitations Carbon stocks are assumed zero.
+*' @limitations Only for illustrative purpose
 ```
-
-Hint: I saved these changes in the `urban` land module in a feature
-branch. Your code should agree with the code in `f_urban`:
-<https://github.com/flohump/magpie/tree/f_urban/modules/34_urban/dynamic>
 
 ### Update the code
 
