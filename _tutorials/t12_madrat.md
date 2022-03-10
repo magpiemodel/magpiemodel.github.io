@@ -81,14 +81,6 @@ which has a specific **function wrapper**.
 
 ### Download function
 
-Note that if direct download not possible, data files can be manually
-created in the inputdata/sources folder. This is not the preferred
-implementation, but in this case, a download function is not necessary.
-Naming of the source folder must however match the read functions.
-Metadata on where the data was obtained, how it was downloaded, etc.
-should ideally be documented in the download script. For another example,
-please see downloadTau in the MADRaT package.
-
 Please open the downloadTutorialWDI R script. Note that this download script 
 requires the **WDI** package. 
 
@@ -97,6 +89,16 @@ install.packages("WDI")
 
 downloadSource("TutorialWDI")
 ```
+The folder 'sources' should now have been created in the 'inputdata' folder, with
+the WDI source folder in this directory. Metadata on where the data was obtained, how it was downloaded, etc. should also be documented in the download script.
+For another example,
+please see downloadTau in the MADRaT package.
+
+Note that if direct download not possible, data files can be manually
+created in the inputdata/sources folder. This is not the preferred
+implementation, but in this case, a download function is not necessary.
+Naming of the source folder and the read functions must match.
+
 
 Note again that although the function is itself named **downloadTutorialWDI**,
 we call it via the **downloadSource()** wrapper.
@@ -113,10 +115,14 @@ Remember that magclass objects are an array with spatial
 information in the first dimension, temporal information in the second dimension,
 and data values in the third dimemsion(s) (3.1, 3.2…).
 
-Now let’s look at readTutorialWDI.R. Note here that because of the way
-WDI downloads it’s data, the naming of the data is assumed in MADRaT to
+Now let’s look at readTutorialWDI.R. 
+
+Note: Because of the way
+WDI formats its data, the naming of the data is assumed in MADRaT to
 be multiple subdimensions, due to internal use of “.” as dimension separator. Data names that have full stops are to be avoided, to avoid confusing names and dimensions, and we rename this at line 
 39.
+
+Run this function:
 
 ``` r
 #this script requires dplyr and tidyr packages, so install these if not already available:
@@ -130,9 +136,9 @@ readTutorialWDI directly. How can we see the number of countries, years and data
 
 ### Convert Function
 
-The convert function will complete the magclass object: For
-country-level data, all 249 countries represented in MAGPie need to have
-a value and be in ISO3 country code. toolCountryFill() in the convert
+The convert function will complete the magclass object: For MAgPIE input on
+country-level, all 249 countries represented in MAGPie need to exist
+in ISO3 country code. toolCountryFill() in the convert
 function also removes any country that it can not match.
 
 Note that here we have omitted a correctSource() function, it is by
@@ -140,12 +146,14 @@ default OFF but can be implemented via ```convert=“onlycorrect”```
 
 Please open convertTutorialWDI.R
 
+We can run the read and convert script together by setting 'convert = TRUE'. 
+
 ``` r
-pop_conv <- readSource("TutorialWDI", subtype="SP.POP.TOTL", convert=TRUE)
+pop_conv <- readSource("TutorialWDI", subtype = "SP.POP.TOTL", convert = TRUE)
 
 ```
 
-What are some of the main differences between the 2 data objects we have created?
+What are some of the main differences between the 2 pop objects we have created?
 Either in terms of data structure, or the values themselves? 
 
 ### calcOutput
@@ -164,6 +172,7 @@ A * B will give an object with regions 'Greece.Italy', 'Greece.Poland', 'Italy.I
 
 Let's open **calcAgGDP**, which calculates agricultural gdp as a share of total gdp,
 
+And run two calls of this fucntion, again using the wrapper 'calcOutput()' wrapper.
 
 ``` r
 ag_gdp_agg <- calcOutput("AgGDP")
