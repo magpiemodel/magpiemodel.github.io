@@ -2,14 +2,14 @@
 layout: tutorial
 title:  Creating a start script
 shortID: startScript
-lastUpdated:   2019-10-13
+lastUpdated:   2022-03-07
 model: MAgPIE
-modelVersion: 4.0.0
-author: am
+modelVersion: 4.4.0
+authors: Abhijeet Mishra, Michael Windisch, Vartika Singh
 level: 3
 requirements:
-  - GAMS Installed, Magpie model folder on local computer
-  - Undertaken Tutorial 1 and 2
+  - GAMS Installed, Magpie model folder cloned on local computer
+  - Undertaken Tutorial 4 and 5 and understand how to start model run
 lessonsContent:
   - Understand MAgPIE starting scripts
   - Create custom starting scripts
@@ -35,13 +35,13 @@ an R script which changes the config settings in an automatized manner.
 With MAgPIE having a lot of modules and settings which can be changed
 and used in various combinations, it becomes imperative that a user be
 able to change a lot of settings concurrently. This can be achieved by
-changing the config file (from tutorial 2) for turning on or off
+changing the config file (from tutorial 5) for turning on or off
 module realizations and other settings.
 
 ## Getting started
 
 Before we write our own starting script, it is important to know what a
-start script really does. Let’s have a look at tutorial 1 again and see
+start script really does. Let’s have a look at tutorial 4 again and see
 the last part of the exercise where we started a model run. For this, we
 first opened a command line prompt in the cloned MAgPIE folder and ran
 the following command:
@@ -142,9 +142,10 @@ the contents are the same and we’ll now start making changes to this
 The contents should look like this:
 
 ``` r
-######################################
-#### Script to start a MAgPIE run ####
-######################################
+# ------------------------------------------------
+# description: start run with default.cfg settings
+# position: 1
+# ------------------------------------------------
 
 # Load start_run(cfg) function which is needed to start MAgPIE runs
 source("scripts/start_functions.R")
@@ -184,7 +185,7 @@ Now that we have the importance of documenting your code out of the way,
 lets go back to writing our script.
 
 As we still want to make changes to the **config** before starting a
-run, lets delete the following line which starts the MAgPIE run as we
+run, lets delete/push the following line which starts the MAgPIE run,below. We
 don’t need it for now (we’ll need it in the end):
 
 ``` r
@@ -195,9 +196,10 @@ start_run(cfg="default.cfg")
 Your script should now look like this:
 
 ``` r
-###########################################################
-#### Some header which explains what this script does  ####
-###########################################################
+# ------------------------------------------------
+# description: start run with default.cfg settings
+# position: 1
+# ------------------------------------------------
 
 # Load start_run(cfg) function which is needed to start MAgPIE runs
 source("scripts/start_functions.R")
@@ -220,9 +222,10 @@ from tutorial 3.
 Your script should now look like this:
 
 ``` r
-###########################################################
-#### Some header which explains what this script does  ####
-###########################################################
+# ------------------------------------------------
+# description: start run with default.cfg settings
+# position: 1
+# ------------------------------------------------
 
 # Load start_run(cfg) function which is needed to start MAgPIE runs
 source("scripts/start_functions.R")
@@ -243,18 +246,26 @@ changes would be made to the **cfg** object and we’ll use the notation
 **cfg$\<some\_setting\>** for this purpose (Ref. Table 1 from tutorial 3
 for details).
 
+You can change the Description to give a sense of what this script does.
 Go ahead and add the following lines in your **magpie\_workshop.R**
 script:
 
 ``` r
+# ------------------------------------------------
+# description: Magpie workshop start script
+# position: 1
+# ------------------------------------------------
+
+###########################################################
+#### Some header which explains what this script does  ####
+###########################################################
+
 # Change results folder name
 cfg$results_folder <- "output/:title:"
 
 # Change time step settings
 cfg$gms$c_timesteps <- 5
 
-# Updating the desired output generation automatically after run
-cfg$output <- c("rds_report","interpolation")
 ```
 
 You’ll see that we had already changed these settings by hand in
@@ -263,6 +274,12 @@ using the **magpie\_workshop.R** starting script which should look like
 this now:
 
 ``` r
+
+# ------------------------------------------------
+# description: Magpie workshop start script
+# position: 1
+# ------------------------------------------------
+
 ###########################################################
 #### Some header which explains what this script does  ####
 ###########################################################
@@ -279,8 +296,6 @@ cfg$results_folder <- "output/:title:"
 # Change time step settings
 cfg$gms$c_timesteps <- 5
 
-# Updating the desired output generation automatically after run
-cfg$output <- c("rds_report","interpolation")
 ```
 
 #### Adding loop(s)
@@ -356,6 +371,11 @@ for(trade_setting  in c("selfsuff_reduced","free_apr16")){
 The final **magpie\_workshop.R** script should look like this:
 
 ``` r
+# ------------------------------------------------
+# description: Magpie workshop start script
+# position: 1
+# ------------------------------------------------
+
 ###########################################################
 #### Some header which explains what this script does  ####
 ###########################################################
@@ -371,9 +391,6 @@ cfg$results_folder <- "output/:title:"
 
 # Change time step settings
 cfg$gms$c_timesteps <- 5
-
-# Updating the desired output generation automatically after run
-cfg$output <- c("rds_report","interpolation")
 
 # Starting trade loop
 for(trade_setting  in c("selfsuff_reduced","free_apr16")){

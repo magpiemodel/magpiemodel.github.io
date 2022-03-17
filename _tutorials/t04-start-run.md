@@ -146,13 +146,13 @@ includes the following steps:
 | step                               | tasks:                                                                                                                  | embedded in:                                              |
 | :--------------------------------- | :---------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------- |
 | 1\. job submission                 | load chosen start script, apply chosen submission type                                                                  | start.R                                                   |
-| \- lock model folder -             | create `.lock` folder to stop co-execution                                                                              | scripts/start\_functions.R                                |
+| \- lock model folder -             | create `.lock` file to stop co-execution                                                                              | scripts/start\_functions.R                                |
 | 2\. configurate run and code check | load libraries, configure settings, run `gms::settingsCheck()` to check code for consistency                            | scripts/start\_function.R                                 |
 | 3\. input data                     | check whether data download is nessessary, download data                                                                | scripts/start\_functions.R (`gms::download_distribute()`) |
 | 4\. npi/ndc calculation            | calculate for specific cluster and regional settings the representation of land based npi/ndc policies within the model | scripts/npi\_ndc/start\_npi\_ndc.R                        |
 | 5\. yield calibration              | calculates a regional yield calibration factor based on a pre run of magpie to be inline with FAO production data       | scripts/calibration/calc\_calib.R                         |
 | 6\. gams code submission           | execute gams command to final run the gams model, start post-processing after run finished                              | scripts/run\_submit/submit.R                              |
-| \- unlock model folder -           | delete `.lock` folder, be ready for next call of start script                                                           | scripts/start\_functions.R                                |
+| \- unlock model folder -           | delete `.lock` file, be ready for next call of start script                                                           | scripts/start\_functions.R                                |
 
 Several of these steps will generate terminal output.
 
@@ -200,7 +200,7 @@ in tutorial `5_AnalysingModelOutputs.Rmd`.
 
 # First ideas for troubleshooting
 
-Here we listed some troubles and where to find them:
+Here we list some troubles and where to find them:
 
 | step     |                                                                  | possible issues:                                                             |
 | :------- | :--------------------------------------------------------------- | :--------------------------------------------------------------------------- |

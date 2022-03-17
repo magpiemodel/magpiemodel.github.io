@@ -13,7 +13,7 @@ requirements:
   - Local copy of the MAgPIE model (<https://github.com/magpiemodel/magpie>)
   - Have R installed (<https://www.r-project.org/>)
   - (For validation.pdf creation:) Have Latex installed (e.g., MiKTeX <https://miktex.org/howto/install-miktex>)
-  - Have completed a MAgPIE run OR downloaded existing MAgPIE runs (<https://zenodo.org/record/2572620#.X8Zr9RbPw2w>)
+  - Have completed a MAgPIE run OR downloaded existing MAgPIE runs (<https://zenodo.org/record/2572620#.X8Zr9RbPw2w> or <https://zenodo.org/record/5417474#.YeAf8_DMJaQ>)
 lessonsContent:
   - Use model-internal R-scripts for output analysis.
   - Know where to find the automated validation PDF and how it is
@@ -23,37 +23,44 @@ lessonsContent:
   - Use the `magpie4` package for output analysis.
   - Analyse outputs with the `gdx` package.
 exercises:
-  - task: "Execute the model-internal output script `rds report` via the command
+- task: "Open a validation pdf (either in a folder containing your own simulation
+         results or the downloaded MAgPIE simulation runs and\n
+         (a) make yourself familiar with the structure of the document and the
+         hierarchy of outputs as displayed by the table of contents and; \n
+         (b) have a look at some figures displaying model outputs of your
+         interest."
+- task: "Execute the model-internal output script `rds report` via the command
           window. This script collects the results of several report-functions -
           that calculate many key output variables like Production, Land Use or
           Yields - and writes them into an rds file."
-    solution: "1. open a command window in the main MAgPIE model folder\n
+  solution: "1. open a command window in the main MAgPIE model folder\n
                2. select model run by typing in the respective number and press `ENTER`\n
                3. select `rds report` by pressing `2` and `ENTER`\n
                4. select `Direct execution` by pressing `3` and `ENTER`\n"
-  - task: "Open a validation pdf (either in a folder containing your own simulation
-           results or the downloaded MAgPIE simulation runs and\n
-           (a) make yourself familiar with the structure of the document and the
-           hierarchy of outputs as displayed by the table of contents and; \n
-           (b) have a look at some figures displaying model outputs of your
-           interest."
-  - task: "Start the interactive scenario analysis tool using the shinyresults R library,
+- task: "Start the interactive scenario analysis tool using the shinyresults R library,
            select one particular model run using the title filter and look at a variable of your choice."
-    solution: "1. Open an R session in the main folder structure of the MAgPIE model folder\n
+  solution: "1. Open an R session in the main folder structure of the MAgPIE model folder\n
                2. Execute the command ``shinyresults::appResultsLocal()``\n
                3. After the interactive site has opened, select `title` as a filter in the `Select Data` tab and look for the simulation run of your choice\n
                4. Click on `Load selection` and open the `LinePlot1` or `AreaPlot1` tab\n
                5. Select a variable of your choice and optionally also a particular scenario or region."
-  - task: "Apply the function carbonstock() from the R library magpie4 using the file “fulldata.gdx” in the folder of a model simulation run as input for the function.\n
+- task: "Find out how to include a custom validation file in the interactive scenario analysis tool.
+         (This can be useful when you have additional or newer validation data at hand)"
+  solution: "1. Open the documentation to the function ``shinyresults::appResultsLocal()``\n
+            2. Specify a particular validation file (.rds or .mif) when executing the command,
+            e.g.: appResultsLocal(valfile = `output/default_2022-01-13_12.26.03/validationNEW.mif`).
+            Note that this file has to be located in the main folder
+            or you need to provide the full path to its location."
+- task: "Apply the function carbonstock() from the R library magpie4 using the file “fulldata.gdx” in the folder of a model simulation run as input for the function.\n
                (a) Use the default settings of the arguments of the function\n
                (b) Change the arguments of the function, e.g. change the regional resolution from cellular (cluster level) to regional."
-    solution: "1. Open an R session or R Studio\n
+  solution: "1. Open an R session or R Studio\n
                2. Set the working directory to the main MAgPIE model folder (e.g. by copying the path of the folder with RIGHT CLICK + COPY and executing the command ``setwd(readClipboard())``\n
                3. Assign the gdx file: ``gdx <- ''fulldata.gdx''``\n
                4. solution to (a) ``cellularCarbon <- carbonstock(gdx)``\n
                5. solution to (b) ``regionalCarbon <- carbonstock(gdx = gdx, level = ''reg'')``."
-  - task: "Use the gdx R library to extract the level and marginal values of the MAgPIE variable ov43watavail."
-    solution: "1. Open R and load the gdx library (``library(gdx)``)\n
+- task: "Use the gdx R library to extract the level and marginal values of the MAgPIE variable ov43watavail."
+  solution: "1. Open R and load the gdx library (``library(gdx)``)\n
                2. Assign the gdx file ``gdx <- ''fulldata.gdx''``\n
                3. Execute ``w <- readGDX(gdx, ''ov43_watavail'', select = list(type = c(''level'', ''marginal'')))``"
 
@@ -88,21 +95,10 @@ model title and date. This is defined in the *default.cfg*
 
 ## Model-internal R-scripts for output analysis
 
-# Model-internal R-script selection in the config file
-In the file *config/default.cfg*, it is possible to specify which
-R scripts are executed after a model run is finished.
-These R scripts can be found in the folder *scripts/output*.
-In the default MAgPIE configuration, the scripts *output\_check*
-*rds\_report* (to be used in appResultsLocal; see explanations below),
-*validation\_short* and *extra/disaggregation* are selected via ``cfg$output``:
-
-``` r
-cfg$output <- c("output_check", "rds_report", "validation_short",
-                "extra/disaggregation")
-```
-
 # Manual execution of model-internal R-scripts
-These output scripts can also be executed via the command window.
+There are several output scripts that can be executed after the model run has
+finished. These R scripts can be found in the folder *scripts/output*.
+They can be selected and executed via the command window.
 To do so, windows users can open a command
 line prompt in the MAgPIE model folder by using **shift** + **rightClick** and
 then selecting **open command window here** option.
@@ -130,6 +126,20 @@ Now, the selected script will be executed. After completion, the results are
 written in the respective folder of the simulation run inside the
 *output* folder of the model.
 
+
+# Model-internal R-script selection in the config file
+In the file *config/default.cfg*, it is possible to specify which of these
+output  R scripts are executed after a model run is finished.
+In the default MAgPIE configuration, the scripts *output\_check*
+*rds\_report* (to be used in appResultsLocal; see [below](#interactive-scenario-analysis)),
+*validation\_short* and *extra/disaggregation* are selected via ``cfg$output``:
+
+``` r
+cfg$output <- c("output_check", "rds_report", "validation_short",
+                "extra/disaggregation")
+```
+
+
 ## Automated model validation
 
 The automated model validation is an example of output
@@ -148,14 +158,15 @@ evaluating the model outputs on such a broad level rather than focusing
 only on key outputs, it allows getting a more complete picture of the
 corresponding simulation. As an example of such validation files, you
 can download the evaluation documents produced for all runs shown in the
-MAgPIE 4 framework paper (<https://doi.org/10.5281/zenodo.1485303>).
+MAgPIE 4 framework paper (<https://doi.org/10.5281/zenodo.1485303>)
+or run the "validation" or "validation_short" output scripts as explained above.
 
 The table of contents of the validation PDF gives a good overview over
 the model outputs that can be simulated with a MAgPIE standard
 simulation, even though the validation PDF only shows a subset of
 possible model outputs:
 
-![Table of contents of the validation pdf](../assets/img/toc_validationpdf.PNG)
+![Table of contents of the validation pdf](../assets/img/validationPDF_toc.png)
 
 ## Interactive scenario analysis
 
@@ -190,7 +201,7 @@ folder of the model, for example by searching for runs that have been
 finished at a certain day, have been created by a certain user
 or by searching for keywords in the title of the simulation runs:
 
-![Run selection by using a filter](../assets/img/appResults_runselection.PNG)
+![Run selection by using a filter](../assets/img/appResults_runselection.png)
 
 
 ![How to use the title for filtering runs](../assets/img/appResults_runselection_title.png)

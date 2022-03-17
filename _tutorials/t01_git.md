@@ -2,23 +2,48 @@
 layout: tutorial
 title:  Git & the GitHub repository
 shortID: git
-lastUpdated:   2020-11-08
+lastUpdated:   2022-03-06
 model: MAgPIE
-modelVersion: 4.0.0
+modelVersion: 4.4.0
 author: kk
 level: 1
 requirements:
-  - Git installed
+  - local git installation
+  - github account
 lessonsContent:
   - Fork and update MAgPIE from/with upstream repository.
   - Understand the basic workflow including pull requests and branches.
   - Have heard some very basic git commands and know where to find more
     help.
+exercises:
+  - task: "Visit us on  <https://github.com/magpiemodel/magpie> and 
+           create your own fork by clicking at ‘fork’ (at the upper right)."
+    solution: "1. Open a browser and visit <https://github.com/magpiemodel/magpie>.\n
+               2. (If not:) Sign-in (or first sign-up) in github.\n
+               3. Find the fork symbol in the upper right corner and \n
+                  click on it to create a fork of the magpie repository on your on account."
+  - task: "Visit your fork and clone the repository at your machine."
+    solution: "1. Visit your own fork under <https://github.com/<your_github_account>/magpie> or\n
+                  find 'magpie' on your github account page.\n
+               2. Under 'Code' you find links for cloning the code via ssh or https \n
+                  (note that, if yu want to use ssh, you need to store a ssh-key \n
+                   on your github account). Copy a link.\n
+               3. Clone the repo e.g. via command line with ``git clone <copied_link>``.\n
+               4. Change dir into your freshy created repo and \n
+                  type ``git status``to check if it worked."
+  - task: "Check, if there is anything to merge from the upstream repository into your fork.\n 
+           If so, merge it into your fork."
+    solution: "1. You can use the simple way: Click 'fetch upstream' on the github page or\n
+                  use the command line to update your local repo (see following instructions).\n
+               2. Add magpiemodel remote via ``git remote add magpie git@github.com:magpiemodel/magpie.git``.\n
+               3. Fetch changes via ``git fetch magpie``.\n
+               4. Merge changes into your current branch via ``git merge magpie/<branch>``.\n
+               5. Push changes via ``git push``."
 categories: tutorial
 published: true
 ---
 
-## Introduction
+# Introduction
 
 MAgPIE is published as open source software on GitHub. Hence we invite
 all interested people to understand but also develop the code. Since
@@ -36,7 +61,7 @@ prefered one. Note the following:
     SourceForge and various more are open-source alternatives to
     GitHub.)
 
-## GitHub workflow for magpiemodel
+# GitHub workflow for magpiemodel
 
 ![GitHub workflow](../assets/img/github_workflow.png)
 
@@ -61,7 +86,7 @@ ssh-key and use ssh to connect to GitHub.
 > machine.
 
 To keep your fork up-to-date with the upstream repository you can use
-the GitHub interface. Via `Compare` you are able to check if the
+the GitHub interface. Via `Fetch upstream` you are able to check if the
 upstream is some commits ahead and, if so, merge this new changes into
 your fork. If you feel familiar with git, you also can do this merging
 procedure by adding both your fork and the upstream repository as so
@@ -95,7 +120,7 @@ branches and their relationships.
     between your magpie fork and the local working copy can be found in
     the next section.
 
-## Start to commit yourself
+# Start to commit yourself
 
 When you start making your first changes to the code at your local copy,
 we strongly recommend to do a tutorial to get familiar with the basic
@@ -123,7 +148,7 @@ steps:
 
   - Now you can do a `pull request`.
 
-## References to learn more
+# References to learn more
 
   - <https://education.github.com/git-cheat-sheet-education.pdf>
   - <https://git-scm.com/book/en/v2>
