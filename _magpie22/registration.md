@@ -2,6 +2,7 @@
 layout: page
 title: Register
 permalink: /magpie22/register
+published: false
 ---
 
 <style>

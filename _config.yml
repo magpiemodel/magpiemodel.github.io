@@ -18,11 +18,12 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: MAgPIE22 workshop & stories
+title: MAgPIE workshop & stories
 email: magpie@pik-potsdam.de
 description: >- # this means to ignore newlines until "baseurl:"
-  The MAgPIE22 workshop & stories event will take place online in 5 workshop
-  and 2 story sessions of 1-3 hours from Mar 4 till Mar 16 2022.
+  The last MAgPIE workshop & stories event took place online
+  from Mar 4 till Mar 16 2022. The next workshop is not yet scheduled but will
+  also be announced here.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  magpiemodel
