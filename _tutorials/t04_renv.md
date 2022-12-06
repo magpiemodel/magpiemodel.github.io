@@ -35,7 +35,7 @@ MAgPIE uses [renv](https://rstudio.github.io/renv/) for managing required R pack
 ## modifying renv
 - to modify your renv use `piamenv` functions described below
 - alternatively run `make <target>` on the command line
-- this requires `make` which is not pre-installed on Windows
+- `make` is pre-installed except on Windows, run `winget install gnuwin32.make` to install it there
 - `make help` will print a list of available targets
 
 ### update renv
