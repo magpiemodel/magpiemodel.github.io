@@ -18,7 +18,7 @@ categories: tutorial
 published: true
 ---
 # basics
-MAgPIE uses [renv](https://rstudio.github.io/renv/) for managing required R packages. When starting R from the MAgPIE folder the corresponding renv is automatically activated. This means that packages are installed to and loaded from the renv subfolder instead of the usual package library. Thus updates in the global package library do not affect MAgPIE which is especially important on multi-user systems where packages may be loaded by some users while others are updating these packages. In such a situation the loaded packages are no longer valid and R crashes. Another advantage of renv is that it can document exactly which packages are currently installed, and it makes it easy to go back to a previous package configuration via renv.lock files.
+MAgPIE uses [renv](https://rstudio.github.io/renv/) for managing required R packages. When starting R from the MAgPIE folder the corresponding renv is automatically activated. This means that packages are installed to and loaded from the renv subfolder instead of the usual package library. Thus, updates in the global package library do not affect MAgPIE. This is especially important on multi-user systems where packages may be loaded by some users while others are updating these packages. In such a situation, the loaded packages are no longer valid and R crashes. Another advantage of renv is that it can document exactly which packages are currently installed, and it makes it easy to go back to a previous package configuration via renv.lock files.
 
 ## MAgPIE renv structure
 ### main renv
@@ -83,7 +83,7 @@ MAgPIE uses [renv](https://rstudio.github.io/renv/) for managing required R pack
 > **Exercise**: Navigate to the path where renv loads packages from, and check whether they are actually symlinks into the renv cache.
 
 ## renv functions
-The piamenv functions explained earlier should cover all common tasks, use the following for more control.
+The `piamenv` functions explained earlier should cover all common tasks, use the following for more control.
 - `renv::install("package@2.3.4")` install specific package version
 - `renv::install("githubuser/package", ref = "<commit hash>")` install package from GitHub, optionally provide commit hash
 - `renv::install("/p/tmp/username/yourpackagefolder")` install package from sources
