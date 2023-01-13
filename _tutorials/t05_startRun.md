@@ -29,7 +29,7 @@ execution, that should be understood to do basic troubleshooting.
 
 # Start Scripts
 
-To run the model execute within in terminal (cmd for Windows, shell for
+To run the model execute within a terminal (cmd for Windows, shell for
 Linux, MacOS) in the main folder of the model:
 
 ``` bash
