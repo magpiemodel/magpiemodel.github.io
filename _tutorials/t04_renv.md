@@ -26,7 +26,7 @@ exercises:
                  - help:    Show this help.\n
                  - docs:    Generate/update model HTML documentation in the doc/ folder.\n
                  - update-renv: Upgrade all pik-piam packages in your renv to the respective latest release and write renv.lock to archive.\n
-                 - update-all-renv: Upgrade all packages (including CRAN packages) in your renv to the respective latest release and write renv.lock to archive.\n
+                 - update-renv-all: Upgrade all packages (including CRAN packages) in your renv to the respective latest release and write renv.lock to archive.\n
                  - archive-renv: Write renv.lock to archive.\n
                  - restore-renv: Restore renv to the state described in interactively selected renv.lock from the archive or a run folder.\n
                  - check:   Check if the GAMS code follows the coding etiquette using gms::codeCheck.\n
@@ -126,7 +126,7 @@ The `piamenv` functions explained earlier should cover all common tasks, use the
 - `renv::install("githubuser/package", ref = "<commit hash>")` install package from GitHub, optionally provide commit hash
 - `renv::install("/p/tmp/username/yourpackagefolder")` install package from sources
 - `renv::remove("package")` uninstall package
-- `renv::update(exclude = "renv")` (`make update-all-renv`) update all packages except renv (please do not update renv itself)
+- `renv::update(exclude = "renv")` (`make update-renv-all`) update all packages except renv (please do not update renv itself)
 - `renv::update("package")` update package
 - `renv::snapshot()` write renv.lock
 - `renv::status()` show differences between library and renv.lock
