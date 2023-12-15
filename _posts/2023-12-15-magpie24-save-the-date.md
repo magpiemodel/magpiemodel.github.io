@@ -6,7 +6,7 @@ author: jpd
 categories: magpie24
 ---
 
-### **Apr 10<sup>th</sup> - Apr 12<sup>th</sup> 2022** MAgPIE24 workshop & stories
+### **Apr 10<sup>th</sup> - Apr 12<sup>th</sup> 2024** MAgPIE24 workshop & stories
 
 After a one year break we will have our next **MAgPIE24 workshop & stories** event mid of april next year. This time we will organize it in a hybrid format hosted on the Telegrafenberg at the Potsdam Institute for Climate Impact Research. On this 3 day event we will have again a mix of a introduction workshop for the [MAgPIE] model and the underlying [MADRaT] data processing framework as well as two MAgPIE stories sessions in which current user and developer of the model present their most recent work.
 
