@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Save the date! MAgPIE24 workshop & Stories "
+title:  "Save the date! MAgPIE24 workshop & stories "
 date:   2023-12-15 14:00:00 +0200
 author: jpd
 categories: magpie24
