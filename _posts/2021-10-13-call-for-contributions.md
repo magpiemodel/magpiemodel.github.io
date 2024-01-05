@@ -4,7 +4,7 @@ title:  "Call for Contributions online"
 date:   2021-10-13 10:00:00 +0200
 author: jpd
 categories: magpie22
-published: true
+published: false
 ---
 
 The [**call for contributions**](../../../stories/call) is now [**online**](../../../stories/call)! We are looking forward to learn more about all the exiting MAgPIE stuff which is happening or currently planned.

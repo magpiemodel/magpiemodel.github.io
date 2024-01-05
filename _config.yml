@@ -21,9 +21,9 @@
 title: MAgPIE workshop & stories
 email: magpie@pik-potsdam.de
 description: >- # this means to ignore newlines until "baseurl:"
-  The last MAgPIE workshop & stories event took place online
-  from Mar 4 till Mar 16 2022. The next workshop is not yet scheduled but will
-  also be announced here.
+  The next MAgPIE workshop & stories event will take place at the Potsdam
+  Institute for Climate Impact Research (PIK) as well as online
+  from Apr 10 till Apr 12 2024. 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  magpiemodel
@@ -49,13 +49,13 @@ collections:
     sort_by: lesson
 
 header_pages:
-  - _magpie22/call.md
-  - _magpie22/registration.md
-  - _magpie22/timetable.md
+  - _magpie24/call.md
+  - _magpie24/registration.md
+  - _magpie24/timetable.md
   - about.md
 
 include:
-  - _magpie22
+  - _magpie24
   - _showcase
 
 # Exclude from processing.
