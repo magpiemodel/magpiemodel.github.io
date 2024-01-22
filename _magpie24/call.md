@@ -1,17 +1,17 @@
 ---
 layout: page
 title: Call for Contributions
-permalink: /magpie22/stories/call
-published: false
+permalink: /magpie24/stories/call
+published: true
 ---
 
-#### submission deadline: ~~15.01.2022~~ 26.01.2022 (extended)
+#### submission deadline: 15.02.2024 
 
-Since the first open-source release of [MAgPIE] in 2019 the community around the model has started to grow. To foster the community aspect and to create a space for productive exchange we decided to extend our next virtual **MAgPIE workshop** in **March 2022** by **MAgPIE stories**, an event dedicated to sharing specific experiences of using [MAgPIE]. The aim is to give room for everyone to share their [MAgPIE]-related research and to allow the community to get an overview about the various currently ongoing activities.
+Since the first open-source release of [MAgPIE] in 2019 the community around the model has started to grow. To foster the community aspect and to create a space for productive exchange we will also have this years **MAgPIE workshop** in **April 2024** combined with two **MAgPIE stories** sessions dedicated to sharing specific experiences of using [MAgPIE]. The aim is to give room for everyone to share their [MAgPIE]-related research and to allow the community to get an overview about the various currently ongoing activities.
 
-**MAgPIE stories** will be subsequent to the **MAgPIE training workshop**. In contrast to the introductory training workshop, the **MAgPIE stories** event is targeting the [MAgPIE] community as a whole including *all* levels of experience. The sessions will be put together by the organizing team based on the submissions. We invite submissions about [MAgPIE] related projects and activities in *all* development stages from drafting phase to finished research. **MAgPIE stories** will have the form of a talk with room for discussion afterwards.
+In contrast to the introductory training workshop, the **MAgPIE stories** event is targeting the [MAgPIE] community as a whole including *all* levels of experience. The sessions will be put together by the organizing team based on the submissions. We invite submissions about [MAgPIE] related projects and activities in *all* development stages from drafting phase to finished research. **MAgPIE stories** will have the form of a talk with room for discussion afterwards.
 
-The organizing team is looking forward to receiving submissions of your very own **MAgPIE stories** and projects you want to share with us.
+The organizing team is looking forward to receive submissions of your very own **MAgPIE stories** and projects you want to share with us.
 
 ### Who can submit?
 
@@ -28,27 +28,22 @@ Submissions will be reviewed in a *single-blind* process, which means that revie
 
 ### Submission
 
-~~To submit your proposed talk or workshop session please fill out our submission form. The form will ask you to provide your contact details along with a short description of your proposed contribution (max 1000 characters).~~
+To submit your proposed talk please fill out our submission form. The form will ask you to provide your contact details along with a short description of your proposed contribution (max 1000 characters).
 
-~~Click **->here<-** for submission.~~
+Click **[->here<-](submit)** for submission.
 
-~~The event is free of charge. We are looking forward to receiving your submission!~~
+The event is free of charge. We are looking forward to receive your submission!
 
-The submission page has now been closed.
 
 ### Timeline
 
-* submission deadline  ~~15.01.2022~~ **26.01.2022** (extended)
-* acceptance notification before 10.02.2022
-* final program available 20.02.2022
-* MAgPIE pre event **04.03.2022**
-* MAgPIE introduction workshop **07.03. - 11.03.2022**
-* MAgPIE stories **14.03. - 15.03.2022**
+* submission deadline  **15.02.2024** 
+* acceptance notification before 15.03.2024
+* final program available 29.03.2024
+* MAgPIE workshop & stories **10.04. - 12.04.2024**
 
 ### Contact
 
 If you have any questions during the submission and review process, please contact us via <magpie@pik-potsdam.de>.
-
-
 
 [MAgPIE]:https://github.com/magpiemodel/magpie
