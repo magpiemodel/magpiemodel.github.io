@@ -11,7 +11,7 @@ Since the first open-source release of [MAgPIE] in 2019 the community around the
 
 In contrast to the introductory training workshop, the **MAgPIE stories** event is targeting the [MAgPIE] community as a whole including *all* levels of experience. The sessions will be put together by the organizing team based on the submissions. We invite submissions about [MAgPIE] related projects and activities in *all* development stages from drafting phase to finished research. **MAgPIE stories** will have the form of a talk with room for discussion afterwards.
 
-The organizing team is looking forward to receive submissions of your very own **MAgPIE stories** and projects you want to share with us.
+The organizing team is looking forward to receiving submissions of your very own **MAgPIE stories** and projects you want to share with us.
 
 ### Who can submit?
 
@@ -32,7 +32,7 @@ To submit your proposed talk please fill out our submission form. The form will 
 
 Click **[->here<-](submit)** for submission.
 
-The event is free of charge. We are looking forward to receive your submission!
+The event is free of charge. We are looking forward to receiving your submission!
 
 
 ### Timeline
