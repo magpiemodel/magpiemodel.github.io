@@ -5,7 +5,7 @@ permalink: /magpie24/stories/call
 published: true
 ---
 
-#### submission deadline: 15.02.2024 
+#### submission deadline: 08.03.2024 
 
 Since the first open-source release of [MAgPIE] in 2019 the community around the model has started to grow. To foster the community aspect and to create a space for productive exchange we will also have this years **MAgPIE workshop** in **April 2024** combined with two **MAgPIE stories** sessions dedicated to sharing specific experiences of using [MAgPIE]. The aim is to give room for everyone to share their [MAgPIE]-related research and to allow the community to get an overview about the various currently ongoing activities.
 
@@ -37,7 +37,7 @@ The event is free of charge. We are looking forward to receiving your submission
 
 ### Timeline
 
-* submission deadline  **15.02.2024** 
+* submission deadline  **08.03.2024** 
 * acceptance notification before 15.03.2024
 * final program available 29.03.2024
 * MAgPIE workshop & stories **10.04. - 12.04.2024**
