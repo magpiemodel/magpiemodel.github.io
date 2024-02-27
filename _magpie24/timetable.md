@@ -2,7 +2,7 @@
 layout: page
 title: Timetable
 permalink: /magpie22/timetable
-published: true
+published: false
 ---
 
 

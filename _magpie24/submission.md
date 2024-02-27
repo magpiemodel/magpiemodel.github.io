@@ -1,7 +1,7 @@
 ---
 layout: post
-permalink: /magpie22/stories/submit
-published: false
+permalink: /magpie24/stories/submit
+published: true
 ---
 
 <style>
@@ -24,11 +24,13 @@ published: false
  }
 </style>
 
-Welcome to the MAgPIE22 stories submission page. Please enter your details and shortly describe your proposed contribution to the stories event. For more information please check the [MAgPIE22 stories call for contributions](call).
+Welcome to the MAgPIE24 stories submission page. Please enter your details and shortly describe your proposed contribution to the stories event. For more information please check the [MAgPIE24 stories call for contributions](call).
 
-Acceptance notifications are planned to be send no later than 10th of February 2022. Please contact us via <magpie@pik-potsdam.de> if you have not heard back from us till then or have questions about the procedure.
+Acceptance notifications are planned to be send no later than 15th of March 2024. Please contact us via <magpie@pik-potsdam.de> if you have not heard back from us till then or have questions about the procedure.
 
-<form class="form" accept-charset="UTF-8" action="https://rse.pik-potsdam.de/magpie/registration/2022contribution.php" method="POST" enctype="multipart/form-data">
+**ATTENTION: We got some reports that the submission form is not working properly in combination with some content blocker browser plugins. In these cases you won't see any error message and you will get forwarded to the thank you page, but the contribution is not submitted. To make sure that your submission is reaching us, we recommend to also send in parallel a mail with title and abstract to <magpie@pik-potsdam.de>. Sorry for the inconvenience!**
+
+<form class="form" accept-charset="UTF-8" action="https://rse.pik-potsdam.de/magpie/registration/2024contribution.php" method="POST" enctype="multipart/form-data">
 
   <div class="form-group">
     <label>Presenter Name<sup>*</sup></label>
