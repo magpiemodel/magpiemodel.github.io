@@ -5,7 +5,7 @@ shortID: renv
 lastUpdated: 2022-11-24
 model: MAgPIE
 modelVersion: 4.6.0
-author: pf
+author: ps
 level: 3
 requirements:
   - R installed (<https://www.r-project.org/>)
@@ -42,14 +42,6 @@ exercises:
                8. `renv::snapshot()`\n
                9. `renv::install('magclass@6.7.1'); renv::status()`\n
                10. `piamenv::archiveRenv()`"
-  - task: "Disable renv and enable the snapshot feature and set a snapshot. Then start an `R` session and verify that renv is not active, but instead the snapshot is used."
-    solution: "1. Remove the `.Rprofile` file from the main folder.\n
-               2. In the mainfolder rename `.snapshot.Rprofile` to `.Rprofile`\n
-               3. Open .Rprofile and comment in the lines that set a snapshot\n
-               4. Open an R session within your model's main directory\n
-               5. `.libPaths()` should show\n
-                 - [1] '/p/projects/rd3mod/R/libraries/snapshots/2022_10_28_R4'\n
-                 - [2] '/p/system/packages/R/4.1.2/gcc-mkl/lib64/R/library'"
 categories: tutorial
 published: true
 ---
@@ -137,8 +129,3 @@ The `piamenv` functions explained earlier should cover all common tasks, use the
 
 ## package development
 When testing packages in development use `renv::install("githubuser/package")` to install the package from your fork. Be careful with updates, your custom package might get overwritten.
-
-# legacy snapshots
-Before MAgPIE started using renv it was using so-called "snapshots" to get a stable package environment. You can restore this snapshot machinery (and disable renv) by renaming `.snapshot.Rprofile` -> `.Rprofile`. If you do, please make sure to *not* commit your changes to `.Rprofile`. For coupled model runs you need to use snapshots, renv does not cover that use case yet. Snapshot support will be removed when coupled model runs are possible with renv.
-
-> **Exercise**: Disable renv and enable snapshots. Then start an `R` session and verify that renv is not active, but instead the snapshot is used. (solution at the bottom)
