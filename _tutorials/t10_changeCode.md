@@ -8,9 +8,11 @@ modelVersion: 4.4.0
 author: fh
 level: 4
 requirements:
-  - Local copy of the MAgPIE model 4.4.0 (https://github.com/magpiemodel/magpie)
+  - Have GAMS installed (https://www.gams.com)
   - Have R installed (https://www.r-project.org/)
   - Have R packages `gms` and `magpie4` installed
+  - Have a local copy of the MAgPIE master checked out from https://github.com/magpiemodel/magpie
+  - Have downloaded the MAgPIE default data via `Rscript start.R` -> "download data"
 lessonsContent:
   - Changing the MAgPIE GAMS code
   - adding In-Code documentation
@@ -49,7 +51,7 @@ land module is located here: `modules/34_urban`.
 
 ### Add a new realization by duplicating an existing one
 
-Duplicate the `static` folder and rename it to `pop_growth`. Now we need edit and add 
+Duplicate the `static` folder and rename it to `pop_growth`. Now we need to edit and add 
 files in the `pop_growth` folder. 
 In the end, you should have the following files:
 
