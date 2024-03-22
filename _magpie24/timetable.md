@@ -1,8 +1,8 @@
 ---
 layout: page
 title: Timetable
-permalink: /magpie22/timetable
-published: false
+permalink: /magpie24/timetable
+published: true
 ---
 
 
@@ -22,7 +22,7 @@ published: false
       timeZone: initialTimeZone,
       contentHeight: 700,
       initialView: 'listYear',
-      initialDate: '2022-03-04',
+      initialDate: '2024-04-10',
       headerToolbar: '',
       navLinks: true, // can click day/week names to navigate views
       editable: false,

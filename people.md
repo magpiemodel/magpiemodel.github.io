@@ -72,5 +72,11 @@ data:
     lastName: Crawford
     id: mc
     url: https://www.pik-potsdam.de/members/crawford
-
+  - firstName: Pascal
+    lastName: Sauer
+    id: ps
+    url: https://www.pik-potsdam.de/members/pascalfu
+  - firstName: David
+    lastName: Hötten
+    id: dh
 ---
