@@ -52,7 +52,7 @@ collections:
 header_pages:
   - _magpie24/call.md
   - _magpie24/registration.md
-  - _magpie24/timetable.md
+ # - _magpie24/timetable.md
   - about.md
 
 include:
