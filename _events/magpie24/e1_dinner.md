@@ -1,11 +1,11 @@
 ---
 layout: event
-title:  "Dinner - In person"
-event_start:   "2024-04-10T17:00:00+01:00"
+title:  "Workshop Dinner"
+event_start:   "2024-04-10T17:30:00+01:00"
 agenda:
   - title: Workshop dinner
-    length: 60
+    length: 210
     presenter: MAgPIE team
 ---
 
-A conference dinner for in-person attendees. 
+Official workshop dinner for all in-person attendees at Genusswerkstatt Potsdam, Breite Straße 1a, 14467 Potsdam. 
