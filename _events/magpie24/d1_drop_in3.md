@@ -8,4 +8,4 @@ agenda:
     length: 60
     presenter: MAgPIE team
 ---
-A drop-in session designed to provide an opportunity for attendees to ask questions about the previous days workshop. This is to ensure all attendees have had the opportunity to catch up on the previous days workshops.
+This is a online drop-in session designed to provide an opportunity for attendees to ask questions about the previous days workshops 5 and 6. This is to ensure all attendees have had the opportunity to catch up on the previous days workshops and is in particular (but not exclusively) targeted at online participants who could not attend the live workshop session due to time difference.

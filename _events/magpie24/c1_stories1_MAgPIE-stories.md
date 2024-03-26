@@ -42,3 +42,7 @@ agenda:
 The first of two MAgPIE stories sessions in which MAgPIE user and developer
 share talk about their MAgPIE-based research and share their experiences (click
 on the arrows to see the abstracts for each talk).
+
+The MAgPIE story sessions are **open for everyone** and do not require any registration. You can join the sessions via [Zoom](https://pik-potsdam.zoom-x.de/j/63414780182?pwd=OTFpbDJVdU02cUZocy90L3hlODRnQT09).
+
+[**click here to join the zoom room**](https://pik-potsdam.zoom-x.de/j/63414780182?pwd=OTFpbDJVdU02cUZocy90L3hlODRnQT09)
