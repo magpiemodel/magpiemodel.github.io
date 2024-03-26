@@ -1,6 +1,6 @@
 ---
 layout: event
-title:  "MAgPIE installation help evening session"
+title:  "MAgPIE installation help | evening session (online)"
 event_start:   "2024-04-05T15:00:00+01:00"
 event_end:     "2024-04-05T16:00:00+01:00"
 agenda:

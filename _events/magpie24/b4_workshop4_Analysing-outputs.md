@@ -1,6 +1,6 @@
 ---
 layout: event
-title:  "Workshop 4 - Analyse outputs"
+title:  "Workshop 4 - Analyse outputs (hybrid)"
 event_start:   "2024-04-11T12:00:00+01:00"
 event_end:     "2024-04-11T14:00:00+01:00"
 agenda:

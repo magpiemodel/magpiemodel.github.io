@@ -1,6 +1,6 @@
 ---
 layout: event
-title:  "Drop-in Session- Workshop 1/2"
+title:  "Drop-in Session- Workshop 1/2 (online)"
 event_start:   "2024-04-11T16:00:00+01:00"
 event_end:     "2024-04-11T17:00:00+01:00"
 agenda:

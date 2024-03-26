@@ -1,6 +1,6 @@
 ---
 layout: event
-title:  "Stories 2 - MAgPIE stories #2"
+title:  "MAgPIE stories #2 (hybrid)"
 event_start:   "2024-04-11T14:30:00+01:00"
 event_end:     "2024-04-11T16:00:00+01:00"
 agenda:

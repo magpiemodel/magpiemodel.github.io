@@ -1,6 +1,6 @@
 ---
 layout: event
-title:  "Workshop 1 - What is MAgPIE"
+title:  "Workshop 1 - What is MAgPIE (hybrid)"
 event_start:   "2024-04-10T09:00:00+01:00"
 event_end:     "2024-04-10T11:00:00+01:00"
 

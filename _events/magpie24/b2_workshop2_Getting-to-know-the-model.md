@@ -1,6 +1,6 @@
 ---
 layout: event
-title:  "Workshop 2 - Model code overview"
+title:  "Workshop 2 - Model code overview (hybrid)"
 event_start:   "2024-04-10T12:00:00+01:00"
 event_end:     "2024-04-10T14:00:00+01:00"
 
