@@ -13,7 +13,7 @@ published: true
 <script>
 
   document.addEventListener('DOMContentLoaded', function() {
-    var initialTimeZone = 'local';
+    var initialTimeZone = 'UTC+2';
     var timeZoneSelectorEl = document.getElementById('timezone-selector');
     var loadingEl = document.getElementById('loading');
     var calendarEl = document.getElementById('calendar');
@@ -47,6 +47,7 @@ The **preliminary** workshop schedule is now available. Please be aware that whi
 <div style="padding:0 0 15px 0;">
     Timezone:
     <select id='timezone-selector'>
+      <option value='UTC+2'>Potsdam (workshop venue)</option>
       <option value='local'>local</option>
       <option value='UTC'>UTC</option>
     </select>

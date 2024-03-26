@@ -1,8 +1,8 @@
 ---
 layout: event
 title:  "Workshop 2 - Model code overview (hybrid)"
-event_start:   "2024-04-10T12:00:00+01:00"
-event_end:     "2024-04-10T14:00:00+01:00"
+event_start:   "2024-04-10T13:00:00+02:00"
+event_end:     "2024-04-10T15:00:00+02:00"
 
 agenda:
   - shortID: gams

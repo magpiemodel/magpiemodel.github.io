@@ -1,8 +1,8 @@
 ---
 layout: event
 title:  "Workshop 6 - Data (pre-)processing (hybrid)"
-event_start:   "2024-04-12T12:00:00+01:00"
-event_end:     "2024-04-12T15:00:00+01:00"
+event_start:   "2024-04-12T13:00:00+02:00"
+event_end:     "2024-04-12T16:00:00+02:00"
 agenda:
   - shortID: magclass 
     length: 70 

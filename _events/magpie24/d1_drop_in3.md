@@ -1,8 +1,8 @@
 ---
 layout: event
 title:  "Drop-in Session - Workshop 5/6 (online)"
-event_start:   "2024-04-15T15:00:00+01:00"
-event_end:     "2024-04-15T16:00:00+01:00"
+event_start:   "2024-04-15T16:00:00+02:00"
+event_end:     "2024-04-15T17:00:00+02:00"
 agenda:
   - title: Interactive help session
     length: 60

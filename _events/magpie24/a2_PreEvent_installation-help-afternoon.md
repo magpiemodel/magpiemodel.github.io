@@ -1,8 +1,8 @@
 ---
 layout: event
 title:  "MAgPIE installation help #2 (online)"
-event_start:   "2024-04-05T15:00:00+01:00"
-event_end:     "2024-04-05T16:00:00+01:00"
+event_start:   "2024-04-05T16:00:00+02:00"
+event_end:     "2024-04-05T17:00:00+02:00"
 agenda:
   - title: Interactive help session
     length: 60

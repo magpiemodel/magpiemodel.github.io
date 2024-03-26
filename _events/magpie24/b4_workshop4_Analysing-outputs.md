@@ -1,8 +1,8 @@
 ---
 layout: event
 title:  "Workshop 4 - Analyse outputs (hybrid)"
-event_start:   "2024-04-11T12:00:00+01:00"
-event_end:     "2024-04-11T14:00:00+01:00"
+event_start:   "2024-04-11T13:00:00+02:00"
+event_end:     "2024-04-11T15:00:00+02:00"
 agenda:
   - title: Welcome back
     length: 5
