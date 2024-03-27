@@ -20,7 +20,7 @@ published: true
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
       timeZone: initialTimeZone,
-      contentHeight: 700,
+      contentHeight: 810,
       initialView: 'listYear',
       initialDate: '2024-04-10',
       headerToolbar: '',
