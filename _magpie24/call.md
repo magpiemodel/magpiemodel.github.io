@@ -5,6 +5,8 @@ permalink: /magpie24/stories/call
 published: true
 ---
 
+## The call is now closed!
+
 #### submission deadline: 08.03.2024 
 
 Since the first open-source release of [MAgPIE] in 2019 the community around the model has started to grow. To foster the community aspect and to create a space for productive exchange we will also have this years **MAgPIE workshop** in **April 2024** combined with two **MAgPIE stories** sessions dedicated to sharing specific experiences of using [MAgPIE]. The aim is to give room for everyone to share their [MAgPIE]-related research and to allow the community to get an overview about the various currently ongoing activities.
@@ -30,7 +32,7 @@ Submissions will be reviewed in a *single-blind* process, which means that revie
 
 To submit your proposed talk please fill out our submission form. The form will ask you to provide your contact details along with a short description of your proposed contribution (max 1000 characters).
 
-Click **[->here<-](submit)** for submission.
+Click ~~**[->here<-]()**~~ for submission.
 
 The event is free of charge. We are looking forward to receiving your submission!
 

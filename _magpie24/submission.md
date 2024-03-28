@@ -1,7 +1,7 @@
 ---
 layout: post
 permalink: /magpie24/stories/submit
-published: true
+published: false
 ---
 
 <style>
