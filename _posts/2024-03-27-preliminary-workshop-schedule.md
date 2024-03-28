@@ -7,4 +7,4 @@ categories: magpie24
 published: true
 ---
 
-The preliminary [**MAgPIE24 workshop program**](../../../timetable) is now [**online**](../../../timetable)! Especially for participants joining remotely, please notice that you can switch the view to your local timezone. Please also keep in mind that the program is still **preliminary** and subject to changes.
+The preliminary [**MAgPIE24 workshop program**](../../../timetable) is now online! Especially for participants joining remotely, please notice that you can switch the view to your local timezone. Please also keep in mind that the program is still **preliminary** and subject to changes.
