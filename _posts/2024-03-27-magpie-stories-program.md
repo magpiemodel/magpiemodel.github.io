@@ -1,10 +1,10 @@
 ---
 layout: post
 title:  "MAgPIE24 stories program and participation information"
-date:   2024-03-25 15:00:00 +0200
+date:   2024-03-28 10:00:00 +0200
 author: jpd
 categories: magpie24
-published: false
+published: true
 ---
 
 We are excited to announce that the preliminary MAgPIE24 stories program is now online with 10 presenters from around the world! You find the program for day 1 [**here**](../../../../events/c1-stories1-magpie-stories) and for day 2 [**here**](../../../../events/c2-stories2-magpie-stories).

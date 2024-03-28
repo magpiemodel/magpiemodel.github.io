@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Preliminary MAgPIE24 workshop program online"
-date:   2024-03-25 14:00:00 +0200
+date:   2024-03-28 09:00:00 +0200
 author: jpd
 categories: magpie24
 published: false
