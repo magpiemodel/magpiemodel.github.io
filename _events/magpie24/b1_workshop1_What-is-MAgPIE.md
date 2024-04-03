@@ -9,7 +9,7 @@ agenda:
     length: 10
     presenter: jpd 
   - title: What is MAgPIE?
-    url: https://slides.com/jandietrich/magpie-4-0/
+    url: https://slides.com/jandietrich/magpie-4-7/
     length: 50
     presenter: jpd
   - shortID: git
