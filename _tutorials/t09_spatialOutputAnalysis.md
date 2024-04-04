@@ -21,7 +21,7 @@ exercises:
   - task: "The file `cell.bii_0.5.mz` in the MAgPIE output folder reports the Biodiversity Intactness Index (BII) in each grid cell. Read it into R and assign it to an object `bii`."
     solution: "`bii <- read.magpie('<path-to-output-subfolder>/cell.bii_0.5.mz')`"
   - task: "How many 0.5 degree grid cells and time steps does the object `bii` contain? Also use `magclass::getComment()` to find out in which unit the data is stored."
-    solution: "Find out how many 0.5 degree grid cells and time steps `bii` contains by using `str(bii)`. You will find out that for default runs `x` covers 67420 grid cells, 18 time steps and only one data layer. `magclass::getComment(x)` gives `"unitless"`"
+    solution: "Find out how many 0.5 degree grid cells and time steps `bii` contains by using `str(bii)`. You will find out that for default runs `x` covers 67420 grid cells, 18 time steps and only one data layer. `magclass::getComment(x)` gives `'unitless'`"
   - task: "Calculate the difference in BII per grid cell between 2015 and 2050 and store the difference in an object called `biiDiff`."
     solution: "`biiDiff <- bii[, 2050,] - bii[, 2015, ]`"
   - task: "Plot the difference in BII per grid cell between 2015 and 2050 using the `terra::plot()` function."
