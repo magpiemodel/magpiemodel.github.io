@@ -21,7 +21,7 @@ exercises:
   - task: "The file `cell.bii_0.5.mz` in the MAgPIE output folder reports the Biodiversity Intactness Index (BII) in each grid cell. Read it into R and assign it to an object `bii`."
     solution: "`bii <- read.magpie('<path-to-output-subfolder>/cell.bii_0.5.mz')`"
   - task: "How many 0.5 degree grid cells and time steps does the object `bii` contain? Also use `magclass::getComment()` to find out in which unit the data is stored."
-    solution: "Find out how many 0.5 degree grid cells and time steps `bii` contains by using `str(bii)`. You will find out that for default runs `x` covers 67420 grid cells, 18 time steps and only one data layer. `magclass::getComment(x)` gives `'unitless'`"
+    solution: "Find out how many 0.5 degree grid cells and time steps `bii` contains by using `str(bii)`. You will find out that `bii` has 67420 grid cells, 18 time steps and only one data layer. `magclass::getComment(x)` gives `'unitless'`"
   - task: "Calculate the difference in BII per grid cell between 2015 and 2050 and store the difference in an object called `biiDiff`."
     solution: "`biiDiff <- bii[, 2050,] - bii[, 2015, ]`"
   - task: "Plot the difference in BII per grid cell between 2015 and 2050 using the `terra::plot()` function."
@@ -67,7 +67,7 @@ If you encounter an error while trying to execute _Panoply_ after installation, 
 
 ![Java download](../assets/img/t09_java_jdk-21_download.png)
 
-After the installing Java, please make sure that the `JAVA_HOME` is set correctly. To set the `JAVA_HOME` variable, locate your Java installation directory. If you chose JDK 21, it will be something like `C:\Program Files\Java\jdk-21`. On Windows 10/11 you can search for **Edit the system environment variables**. Select **Environment Variables...* and under **System variables** see whether the `JAVA_HOME` variable is set correctly. If it's not yet set, press **New...** and enter `JAVA_HOME` in **Variable name:** and under **Variable value:** enter the path to your Java installation, in this example `C:\Program Files\Java\jdk-21`. Press **OK** to set the `JAVA_HOME` variable.
+After the installing Java, please make sure that the `JAVA_HOME` is set correctly. To set the `JAVA_HOME` variable, locate your Java installation directory. If you chose JDK 21, it will be something like `C:\Program Files\Java\jdk-21`. On Windows 10/11 you can search for **Edit the system environment variables**. Select **Environment Variables...** and under **System variables** see whether the `JAVA_HOME` variable is set correctly. If it's not yet set, press **New...** and enter `JAVA_HOME` in **Variable name:** and under **Variable value:** enter the path to your Java installation, here `C:\Program Files\Java\jdk-21`. Press **OK** to set the `JAVA_HOME` variable.
 
 ![Set environment variablw](../assets/img/t09_java_environment_variable.png)
 
