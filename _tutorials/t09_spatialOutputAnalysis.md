@@ -18,7 +18,7 @@ lessonsContent:
   - Use the `luplot` package for spatial visualisation of magclass objects in R
   - Transform `magclass`-object to a `SpatRaster`-object of the `terra` package
 exercises:
-  - task: "The file `cell.bii_0.5.mz` in the MAgPIE output folder reports the Biodiversity Intactness Index (BII) in each grid cell. Read it into R and assign it to an object `bii`".
+  - task: "The file `cell.bii_0.5.mz` in the MAgPIE output folder reports the Biodiversity Intactness Index (BII) in each grid cell. Read it into R and assign it to an object `bii`."
     solution: "`bii <- read.magpie('<path-to-output-subfolder>/cell.bii_0.5.mz')`"
   - task: "How many 0.5 degree grid cells and time steps does the object `bii` contain? Also use `magclass::getComment()` to find out in which unit the data is stored."
     solution: "Find out how many 0.5 degree grid cells and time steps `bii` contains by using `str(bii)`. You will find out that for default runs `x` covers 67420 grid cells, 18 time steps and only one data layer. `magclass::getComment(x)` gives `"unitless"`"
@@ -57,7 +57,7 @@ Spatially explicit MAgPIE output is usually stored in two different data formats
 
 In order to download _Panoply_ go to the website <https://www.giss.nasa.gov/tools/panoply/>. Scroll down until you find the header _Get Panoply_ and click on _Download Panoply_. This will lead you to the following page:
 
-![Panoply download](../assets/img/t08_panoply_download.png)
+![Panoply download](../assets/img/t09_panoply_download.png)
 
 Please, choose the right version for your operation system, select a destination folder and proceed with the download. After the download has finished, follow the instructions for installing _Panoply_ that can be found on the website for your operating system.
 
@@ -65,65 +65,65 @@ Please, choose the right version for your operation system, select a destination
 
 If you encounter an error while trying to execute _Panoply_ after installation, make sure you have **Java 11 (or later)** available on your computer. In case you need to install/update _Java_, go to the website <https://www.oracle.com/uk/java/technologies/downloads/#jdk21-windows> and download the appropriate version for your operating system (e.g. JDK 21).
 
-![Java download](../assets/img/t08_java_jdk-21_download.png)
+![Java download](../assets/img/t09_java_jdk-21_download.png)
 
 After the installing Java, please make sure that the `JAVA_HOME` is set correctly. To set the `JAVA_HOME` variable, locate your Java installation directory. If you chose JDK 21, it will be something like `C:\Program Files\Java\jdk-21`. On Windows 10/11 you can search for **Edit the system environment variables**. Select **Environment Variables...* and under **System variables** see whether the `JAVA_HOME` variable is set correctly. If it's not yet set, press **New...** and enter `JAVA_HOME` in **Variable name:** and under **Variable value:** enter the path to your Java installation, in this example `C:\Program Files\Java\jdk-21`. Press **OK** to set the `JAVA_HOME` variable.
 
-![Set environment variablw](../assets/img/t08_java_environment_variable.png)
+![Set environment variablw](../assets/img/t09_java_environment_variable.png)
 
 ### Using _Panoply_ to visualise MAgPIE output
 
 Navigate to the folder, in which _Panoply_ is stored and click on _Panoply.exe_ to execute the software. Each time a new session is started in _Panoply_, a new window opens that allows you to select your data. Navigate to the _output_ folder of your local MAgPIE version and select a subfolder containing the results of a succesful model run. _Panoply_ will display all NetCDF files that are available in this folder.
 
-![nc file](../assets/img/t08_output_data.png)
+![nc file](../assets/img/t09_output_data.png)
 
 Select the file 'cell.land_0.5.nc' and press _open_. 'cell.land_0.5.nc' includes a spatially explicit time-series of the land area (Mha) covered by the different land-types (cropland, pasture, etc.) per 0.5 degree grid cell. We now see a window that lists all information that is stored in this file, including the names and the type of data that are available. We can also look at the panel on the right-hand side to see some meta data, e.g. the _units_.
 
-![Panoply data view](../assets/img/t08_view_data.png)
+![Panoply data view](../assets/img/t09_view_data.png)
 
 We can now select the item 'crop' by left-clicking it. Then click _Create Plot_, accept all defaults and press _Create_. This will create a plot similar to this example:
 
-![Panoply plot](../assets/img/t08_initial_plot.png)
+![Panoply plot](../assets/img/t09_initial_plot.png)
 
 The plot shows the cropland area in each grid cell given in Mha. By default, _Panoply_ will plot the data in a smoothed form. Uncheck **interpolate** in the _Plot Controls_ Window to view the actual cell values.
 
-![Panoply interpolate](../assets/img/t08_interpolate.png)
+![Panoply interpolate](../assets/img/t09_interpolate.png)
 
 _Panoply_ also allows us to perform basic calculations and plot them. Now, let us compute the difference in cropland area per grid cell between the initial time step and 2050.
 
 We go back to our data window and click on 'crop' once again.
 
-![Panoply reselect](../assets/img/t08_reselect_data.png)
+![Panoply reselect](../assets/img/t09_reselect_data.png)
 
 But instead of pressing _Create plot_, this time we click on _Combine plot_. We now find two array tabs on the top left-hand side. Also, _Panoply_ will prompt the _Arrays_-window for us. Under _Plot_ select 'Array 2 - Array 1' and select the year 2050 in _Array 2: crop_, as shown below, and hit 'Enter'.
 
-![Panoply arrays](../assets/img/t08_arrays.png)
+![Panoply arrays](../assets/img/t09_arrays.png)
 
 We can also change the appearance of the plot by reprojection the map to a different coordinate reference system (CRS), or by changing the color scale.
 
 In order to change the CRS, we can select _Map Projection_ in the plot controls
 
-![Panoply proj1](../assets/img/t08_change_projection1.png)
+![Panoply proj1](../assets/img/t09_change_projection1.png)
 
 and then, for example, change to the 'Equal Earth' projection by clicking on the _Projection_ drop-down menu in the _Map projection_ window.
 
-![Panoply proj2](../assets/img/t08_change_projection2.png)
+![Panoply proj2](../assets/img/t09_change_projection2.png)
 
 After changing the CRS, the map looks like this:
 
-![Panoply eqEarth](../assets/img/t08_equalEarth.png)
+![Panoply eqEarth](../assets/img/t09_equalEarth.png)
 
 Now let us improve the looks of it a bit and work on the color scale. Therefore, select the option _Scale_ under _Window_.
 
-![Panoply scale](../assets/img/t08_choose_scale.png)
+![Panoply scale](../assets/img/t09_choose_scale.png)
 
 This will open the following window, where we can tweak a range of map properties.
 
-![Panoply scale window](../assets/img/t08_scale_window.png)
+![Panoply scale window](../assets/img/t09_scale_window.png)
 
 We can set the range of the legend to [-0.25; 0.25] and select the color bar 'CB_PiYG_09.cpt' or any color bar to your liking. However, consider that this is a change map and using a neutral color like grey or white in the center of your color range is recommended to facilitate the interpretation of the data. Also set the label format to '%.2f'. This will change the legend label format and provides us with two decimal places behind the comma. We can also add a custom caption by selecting _Custom_ and enter a suitable text. Under _Window_ -> _Label_ we can also change/remove global plot labels. In the end out plot looks like this:
 
-![Panoply crop change](../assets/img/t08_example_CroplandChange.png)
+![Panoply crop change](../assets/img/t09_example_CroplandChange.png)
 
 ### Creating an animated time series based on MAgPIE projections using _Panoply_
 
@@ -131,15 +131,15 @@ _Panoply_ can also be used to create an animated time series (e.g. in MP4-format
 
 To create an animation go to _Export Animation_.
 
-![Panoply animation](../assets/img/t08_export_animation.png)
+![Panoply animation](../assets/img/t09_export_animation.png)
 
 This will open up the following window:
 
-![Panoply animation option](../assets/img/t08_animation_options.png)
+![Panoply animation option](../assets/img/t09_animation_options.png)
 
 In order to display relative changes, set _Array 1: crop_ to 'None (leave fixed)' and select a frame rate of e.g. 1 fps, then click on _Okay_. Choose a file destination, choose a file name and press _Save_. _Panoply_ will now create an MP4-animation of the complete time series.
 
-![Panoply progress](../assets/img/t08_animation_progress.png)
+![Panoply progress](../assets/img/t09_animation_progress.png)
 
 ## Analysis of spatial outputs in R using the _magclass_ and _luplot_ libraries
 
@@ -197,7 +197,7 @@ The library contains helpful functions for plotting `magclass` objects in differ
 luplot::plotmap2(x[, 2050, 'cropland'], legend_range = c(0, 0.3))
 ```
 
-![plotmap2](../assets/img/t08_plotmap2.png)
+![plotmap2](../assets/img/t09_plotmap2.png)
 
 The data can also be transformed to a _[SpatRaster](https://rspatial.org/pkg/2-classes.html)_-object of the [terra](https://rspatial.org/pkg/index.html) package.
 
@@ -248,7 +248,7 @@ plot(r[["y2050..crop"]])
 
 ```
 
-![terra plot](../assets/img/t08_terra_plot.png)
+![terra plot](../assets/img/t09_terra_plot.png)
 
 
 
