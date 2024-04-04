@@ -2,9 +2,9 @@
 layout: tutorial
 title:  Spatial output analysis
 shortID: output2
-lastUpdated:   2022-03-01
+lastUpdated:   2024-04-04
 model: MAgPIE
-modelVersion: 4.4.0
+modelVersion: 4.7.2
 author: pvj
 level: 3
 requirements:
@@ -13,7 +13,7 @@ requirements:
   - Have R packages `madrat`, `magclass`, `luplot` and `terra` installed
 lessonsContent:
   - Know where to find spatially explicit output data (NetCDF & _magclass_-format)
-  - Data visualisation with the _Panoply_ NetCDF Data Viewer
+  - Data visualisation with the Panoply NetCDF Data Viewer
   - Learn how to make animated time series with output data
   - Use the `luplot` package for spatial visualisation of magclass objects in R
   - Transform `magclass`-object to a `SpatRaster`-object of the `terra` package
@@ -26,7 +26,7 @@ exercises:
     solution: "`biiDiff <- bii[, 2050,] - bii[, 2015, ]`"
   - task: "Plot the difference in BII per grid cell between 2015 and 2050 using the `terra::plot()` function."
     solution: "`terra::plot(as.SpatRaster(biiDiff), range = c(-0.25, 0.25))`"
-
+categories: tutorial
 published: true
 ---
 
