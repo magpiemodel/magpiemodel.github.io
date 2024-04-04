@@ -47,8 +47,8 @@ The `magclass` package is the data class most R functionality of MAgPIE is built
 ```r
 options(repos = c(CRAN = "https://cran.rstudio.com/",
                   pik = "https://rse.pik-potsdam.de/r/packages"))
-install.packages("madrat")
-library(madrat)
+install.packages("magclass")
+library(magclass)
 ```
 
 Setting the `repos` option in the first line is optional and adds the PIK-hosted package repository as second repository after the official CRAN repository. Doing so will make sure that you receive the most up-to-date version of `magclass`, without this line the package version currently hosted on CRAN will be installed, which is updated less regularly. 
