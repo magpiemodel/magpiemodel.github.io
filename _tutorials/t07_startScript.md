@@ -380,7 +380,7 @@ for(trade_setting  in c("selfsuff_reduced", "exo")){
 
     ## cfg has been changed further at his stage, start the run
     start_run(cfg=cfg, codeCheck = FALSE)
-  } # <- Closing land loop
+  } # <- Closing crop loop
 } # <- Closing trade loop
 ```
 
@@ -429,7 +429,7 @@ for(trade_setting  in c("selfsuff_reduced", "exo")){
 
     ## cfg has been changed further at his stage, start the run
     start_run(cfg=cfg, codeCheck = FALSE)
-  } # <- Closing land loop
+  } # <- Closing crop loop
 } # <- Closing trade loop
 ```
 
