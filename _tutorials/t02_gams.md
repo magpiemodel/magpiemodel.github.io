@@ -75,8 +75,7 @@ modules and the `include.gms` file that ensures the inclusion of all modules int
   - Realization folders containing the source code of each realization
   - The `modules.gms` file with the module description and listing of all
     realizations
-  - Several `[realization_name].gms` files with the realization description
-    that links to the specific source code
+
 
 New realizations can be added by keeping the same structure (more in
 [this tutorial](7-advanced-changecode)). In that sense, MAgPIE is easily extendable.
@@ -102,6 +101,7 @@ Note that not every gms-file is needed in every realization.
 | nl\_release.gms  | Releases restrictions to linear behavior again.                                                                                      |
 | scaling.gms         | Lists the expected order of magnitude of specific variables calculated in this model to improve the efficiency of the run|   
 | not\_used.txt    | Lists interfaces (declared in other modules) that are not used within this realization, but that are in other realizations of the same module |
+| realization.gms  | Contains the realization description hat links to the specific source code |
 
 ### Coding etiquette variable and parameter naming
 
