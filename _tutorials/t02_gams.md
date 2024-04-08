@@ -90,18 +90,18 @@ Note that not every gms-file is needed in every realization.
 
 | gms.file         | function                                                                                                                             |
 | :--------------- | :----------------------------------------------------------------------------------------------------------------------------------- |
-| declarations.gms | Declares all variables, equations, and parameters that are central to the realization.                                                  |
-| equations.gms    | Contains functional relationships that have to be fulfilled within the optimization.                                                 |
+| declarations.gms | Declares all variables, equations, and parameters that are central to the realization                                                  |
+| equations.gms    | Contains functional relationships that have to be fulfilled within the optimization                                                |
 | input.gms        | Loads input from `any_module/input` or `any_module/a_realization/input`                                                              |
 | sets.gms         | Lists sets that are used (mainly) within this specific realization or are needed for interfaces defined within this realilzation     |
-| preloop.gms      | Includes calculations to be executed before the model run.                                                                           |
-| presolve.gms     | Includes calculations to be executed before each time step.                                                                          |
-| postsolve.gms    | Includes calculations to be executed after each time step and defines output.                                                        |
-| nl\_fix.gms      | Fixes non-linear behaviour to linear behavior.                                                                                       |
-| nl\_release.gms  | Releases restrictions to linear behavior again.                                                                                      |
+| preloop.gms      | Includes calculations to be executed before the model run                                                                           |
+| presolve.gms     | Includes calculations to be executed before each time step                                                                          |
+| postsolve.gms    | Includes calculations to be executed after each time step and defines output                                                        |
+| nl\_fix.gms      | Fixes non-linear behaviour to linear behavior                                                                                       |
+| nl\_release.gms  | Releases restrictions to linear behavior again                                                                                      |
 | scaling.gms         | Lists the expected order of magnitude of specific variables calculated in this model to improve the efficiency of the run|   
 | not\_used.txt    | Lists interfaces (declared in other modules) that are not used within this realization, but that are in other realizations of the same module |
-| realization.gms  | Contains the realization description hat links to the specific source code |
+| realization.gms  | Contains the realization description that links to the specific source code |
 
 ### Coding etiquette variable and parameter naming
 
