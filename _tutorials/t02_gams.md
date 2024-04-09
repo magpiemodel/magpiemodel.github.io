@@ -2,9 +2,9 @@
 layout: tutorial
 title:  GAMS code, modules & realizations
 shortID: gams
-lastUpdated:   2022-03-06
+lastUpdated:   2024-04-08
 model: MAgPIE
-modelVersion: 4.4.0
+modelVersion: 4.7.2
 author:
   - kk
   - fb
@@ -152,4 +152,4 @@ Suffixes indicate the level of aggregation of an object:
     _glo global aggregation (exception)
 
 ### Workshop Material
-You will find the slides used in the workshop [here](../assets/pdf/GAMScode.pdf).
+You will find the slides used in the 2024 workshop [here]("./assets/slides/GAMS code, modules & realizations.pptx").
