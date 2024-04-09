@@ -149,7 +149,7 @@ includes the following steps:
 | :--------------------------------- | :---------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------- |
 | 1\. job submission                 | load chosen start script, apply chosen submission type                                                                  | start.R                                                   |
 | \- lock model folder -             | create `.lock` file to stop co-execution                                                                              | scripts/start\_functions.R                                |
- 2.\- Runs renv             | creates the log.renv.tx file whre information of versions of the R packages is recorded                                         | /renv/activate.R/|
+ 2.\- Runs renv             | creates the log\_renv.txt file where information of versions of the required R packages is recorded                                         | /renv/activate.R/|
 |3\. input data                     | check whether data download is nessessary, download data                                                                | scripts/start\_functions.R (`gms::download_distribute()`) | 
 | 4\. Configurate run and code check | load libraries, configure settings, run `gms::settingsCheck()` to check code for consistency                            | scripts/start\_function.R                                 |
 
