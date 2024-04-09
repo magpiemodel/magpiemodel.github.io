@@ -2,9 +2,9 @@
 layout: tutorial
 title:  Regional output analysis
 shortID: output
-lastUpdated:   2022-01-27
+lastUpdated:   2024-04-09
 model: MAgPIE
-modelVersion: 4.4.0
+modelVersion: 4.7.2
 author:
   - iw
   - fb
@@ -13,7 +13,7 @@ requirements:
   - Local copy of the MAgPIE model (<https://github.com/magpiemodel/magpie>)
   - Have R installed (<https://www.r-project.org/>)
   - (For validation.pdf creation:) Have Latex installed (e.g., MiKTeX <https://miktex.org/howto/install-miktex>)
-  - Have completed a MAgPIE run OR downloaded existing MAgPIE runs (<https://zenodo.org/record/2572620#.X8Zr9RbPw2w> or <https://zenodo.org/record/5417474#.YeAf8_DMJaQ>)
+  - Have completed a MAgPIE run or downloaded existing MAgPIE runs (<https://zenodo.org/record/2572620#.X8Zr9RbPw2w> or <https://zenodo.org/record/5417474#.YeAf8_DMJaQ>) TODO: UPDATE LINK!!!!
 lessonsContent:
   - Use model-internal R-scripts for output analysis.
   - Know where to find the automated validation PDF and how it is
@@ -44,16 +44,22 @@ exercises:
                3. After the interactive site has opened, select `title` as a filter in the `Select Data` tab and look for the simulation run of your choice\n
                4. Click on `Load selection` and open the `LinePlot1` or `AreaPlot1` tab\n
                5. Select a variable of your choice and optionally also a particular scenario or region."
+- task: "Using the interactive scenario analysis tool using the shinyresults R library,
+           look at a line plot and an area plot of land cover change."
+  solution: "1. Click on the Line Plot tab
+               2. Select (one after another) the indicators ``Resources - Land Cover Change - Cropland``, ``Resources - Land Cover Change - Pastures and Rangelands`` and compare the indicators for the given scenarios across the different regions
+               3. Click on the Area Plot tab
+               4. Select the indicator ``Resources - Land Cover Change`` and only one region to compare how different land cover types develop over time in the different scenarios."
 - task: "Find out how to include a custom validation file in the interactive scenario analysis tool.
          (This can be useful when you have additional or newer validation data at hand)"
   solution: "1. Open the documentation to the function ``shinyresults::appResultsLocal()``\n
             2. Specify a particular validation file (.rds or .mif) when executing the command,
-            e.g.: appResultsLocal(valfile = `output/default_2022-01-13_12.26.03/validationNEW.mif`).
+            e.g.: appResultsLocal(valfile = `output/default_2024-04-03_14.47.55/validation.mif`).
             Note that this file has to be located in the main folder
             or you need to provide the full path to its location."
 - task: "Apply the function carbonstock() from the R library magpie4 using the file “fulldata.gdx” in the folder of a model simulation run as input for the function.\n
                (a) Use the default settings of the arguments of the function\n
-               (b) Change the arguments of the function, e.g. change the regional resolution from cellular (cluster level) to regional."
+               (b) Change the arguments of the function, e.g. change the regional resolution from cellular (cluster level) to regional."
   solution: "1. Open an R session or R Studio\n
                2. Set the working directory to the main MAgPIE model folder (e.g. by copying the path of the folder with RIGHT CLICK + COPY and executing the command ``setwd(readClipboard())``\n
                3. Assign the gdx file: ``gdx <- ''fulldata.gdx''``\n
@@ -72,12 +78,12 @@ published: true
 After having successfully started and accomplished a simulation run, the
 next step is to evaluate the simulation results. In case you have not
 yet conducted an own MAgPIE simulation or your simulation is still
-running, you can download model runs produced for Mishra et al. (2021)
-(<https://doi.org/10.5194/gmd-14-6467-2021>).
-These runs were created with version 4.3.5 of the MAgPIE model
+running, you can download model runs produced for the purpose of this tutorial
+(<https://doi.org/10.5194/gmd-14-6467-2021>). To Do: Update link!
+These runs were created with version 4.7.2 of the MAgPIE model
 (<https://github.com/magpiemodel/magpie/tree/master>).
 You can download these runs as tgz folder from Zenodo (choose the folder
-``magpie_v4.3.5_gmd-2021-76.tgz`` at <https://zenodo.org/record/5417474#.YeAf8_DMJaQ>)
+``magpie_v4.3.5_gmd-2021-76.tgz`` at <https://zenodo.org/record/5417474#.YeAf8_DMJaQ>) TODO: Update link!
 and copy the folders containing the simulation
 results into the *output* folder of your local version of the MAgPIE
 model (Note: if you freshly cloned the model and did not set up a run yet, you
@@ -132,13 +138,14 @@ In the file *config/default.cfg*, it is possible to specify which of these
 output  R scripts are executed after a model run is finished.
 In the default MAgPIE configuration, the scripts *output\_check*
 *rds\_report* (to be used in appResultsLocal; see [below](#interactive-scenario-analysis)),
-*validation\_short* and *extra/disaggregation* are selected via ``cfg$output``:
+and *extra/disaggregation* are selected via ``cfg$output``:
 
 ``` r
-cfg$output <- c("output_check", "rds_report", "validation_short",
-                "extra/disaggregation")
+cfg$output <- c("output_check", "extra/disaggregation", "rds_report")
 ```
 
+More output scripts (e.g. "validation" or "validation_short") can be added
+to this vector if you want to run them for each and every of your runs.
 
 ## Automated model validation
 
@@ -152,14 +159,17 @@ by execution via the command window as explained
 a standard evaluation PDF is created that validates numerous
 model outputs with a validation database containing historical data and
 projections for most outputs returned by the model, either visually or
-via statistical tests. A standard evaluation PDF consists of hundreds of
-evaluation outputs and usually has a length of around 1800 pages. By
-evaluating the model outputs on such a broad level rather than focusing
+via statistical tests. A evaluation PDF consists of hundreds of
+evaluation outputs and usually has a length of around 1800 (short version)
+to 3600 (detailed version) pages.
+By evaluating the model outputs on such a broad level rather than focusing
 only on key outputs, it allows getting a more complete picture of the
 corresponding simulation. As an example of such validation files, you
 can download the evaluation documents produced for all runs shown in the
 MAgPIE 4 framework paper (<https://doi.org/10.5281/zenodo.1485303>)
 or run the "validation" or "validation_short" output scripts as explained above.
+The validation PDF is also included in the runs that you may have downloaded
+above. TODO INCLUDE LINK
 
 The table of contents of the validation PDF gives a good overview over
 the model outputs that can be simulated with a MAgPIE standard
@@ -172,12 +182,12 @@ possible model outputs:
 
 The automated model validation PDF is a good tool for visually
 evaluating a broad range of model outputs. However, comparison between
-model runs, i.e. between different scenarios, is rather difficult and
+model runs, i.e. between different scenarios, is rather difficult and
 inconvenient with the different model results being scattered across
 different large PDF files.
 
 To overcome this issue, we developed the interactive scenario analysis
-and evaluation tools appResultsLocal (and appResults for the use within
+and evaluation tools `appResultsLocal` (and `appResults` for the use within
 the PIK network) as part of the library ``shinyresults``
 (<https://github.com/pik-piam/shinyresults>). It facilitates the evaluation of
 results with plots for multiple scenarios including historical data and other
@@ -278,16 +288,15 @@ instances where ``gdx::readGDX`` is used,
 e.g.:
 
 ``` r
-a <- readGDX(gdx, "ov_carbon_stock", select=list(type = "level"), react = "silent")
-sm_cc_carbon <- readGDX(gdx, "sm_cc_carbon2", react = "silent")
-ov_land <- readGDX(gdx, "ov_land", select = list(type = "level"))
-fm_carbon_density <- readGDX(gdx, "fm_carbon_density")[,t,]
+a <- readGDX(gdx, "ov_carbon_stock", select = list(type = "level"), react = "silent")
+p32_carbon_density_ac <- readGDX(gdx, "p32_carbon_density_ac", react = "silent")
+top <- readGDX(gdx, "f59_topsoilc_density")[, getYears(cshare), ]
 ```
 
 It is possible to extract various GAMS objects like *“sets”*,
 *“equations”*, *“parameters”*, *“variables”* and *“aliases”* with
 ``readGDX``.
 
-With the argument ``select = list(type = “level”)``, you can select the level values
-of endogenous variables, with ``select = list(type = “marginal”)`` you can
+With the argument ``select = list(type = “level”)`` you can select the level values
+of endogenous variables; With ``select = list(type = “marginal”)`` you can
 extract the marginal values of these variables.

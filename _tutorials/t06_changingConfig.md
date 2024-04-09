@@ -14,7 +14,7 @@ requirements:
   - local copy of the MAgPIE model 
 lessonsContent:
   - Understand MAgPIE configuration
-  - Update settings
+  - Update settings in default.cfg
   - Run the model with updated configuration.
 exercises:
   - task: "By editing the corresponding setting in the default.cfg file, change the 
@@ -74,7 +74,7 @@ The main model folder should contain the folders and files shown in the
 following figure (note that depending on your settings for hidden files, 
 folders and files starting with `.` might not be shown):
 
-![Contents of folder where MAgPIE is cloned](../assets/img/MAgPIE_folder.png)
+![Contents of folder where MAgPIE is cloned](../assets/img/t06_MAgPIEfolder.png)
 
 The MAgPIE config file is called **default.cfg** and located within the 
 **config folder**. To open the MAgPIE config file follow the following
@@ -107,11 +107,11 @@ cfg$model <- "main.gms"   #def = "main.gms"
 #### input settings ####
 
 # which input data sets should be used?
-cfg$input <- c(regional    = "rev4.65_h12_magpie.tgz",
-               cellular    = "rev4.65_h12_1998ea10_cellularmagpie_c200_MRI-ESM2-0-ssp370_lpjml-8e6c5eb1.tgz",
-               validation  = "rev4.65_h12_validation.tgz",
-               additional  = "additional_data_rev4.07.tgz",
-               calibration = "calibration_H12_sticky_feb18_free_30Nov21.tgz")
+cfg$input <- c(regional    = "rev4.101_h12_magpie.tgz",
+               cellular    = "rev4.101_h12_fd712c0b_cellularmagpie_c200_MRI-ESM2-0-ssp370_lpjml-8e6c5eb1.tgz",
+               validation  = "rev4.101_h12_validation.tgz",
+               additional  = "additional_data_rev4.48.tgz",
+               calibration = "calibration_H12_per_ton_fao_may22_glo_13Mar24.tgz")
 ```
 
 ### Content of the config file
@@ -130,7 +130,7 @@ As MAgPIE is modular in structure, each module has its own section in the
 config file. Here, the module realization is chosen and additional module parameters
 are set, as shown in the following figure for the *technological change (13_tc)* module.
 
-![Example of a module section in the default.cfg file](../assets/img/moduleSectionConfigFile.png)
+![Example of a module section in the default.cfg file](../assets/img/t06_tcMoudleSettings.png)
 
 The following table gives a description of core components from the MAgPIE config file.
 Additionally, settings are also explained within the config file, by comments preceeding
@@ -138,30 +138,29 @@ the respective setting.
 
 | No | Config               | Description                                                                           |
 | -: | :------------------- | :------------------------------------------------------------------------------------ |
-|  1 | cfg$title            | Model run title                                                                           |
+|  1 | cfg$title            | Model run title                                                                       |
 |  2 | cfg$model            | Path to the submodel (relative to main model folder)                                  |
 |  3 | cfg$input            | Input data source                                                                     |
 |  4 | cfg$repositories     | Repository containing input data                                                      |
 |  5 | cfg$force\_download  | Should data be downloaded even if inputs didn’t change?                               |
 |  6 | cfg$force\_replace   | Should existing output folder be replaced if a new run with the same name is started? |
-|  7 | cfg$recalibrate      | Yield calibration                                                                     |
-|  8 | cfg$calib\_accuracy  | Accuracy for yield calibration                                                        |
-|  9 | cfg$calib\_maxiter   | Max. iterations if precision goal is not met                                          |
-| 10 | cfg$damping\_factor  | Factor determining new calibration factor’s influences on result                      |
-| 11 | cfg$calib\_cropland  | Switch for cropland calibration                                                       |
-| 12 | cfg$recalc\_npi\_ndc | Settings for NPI/NDC recalculation                                                    |
-| 13 | cfg$policyregions    | National or Sub-national mapping                                                      |
-| 14 | cfg$gms              | List of module settings                                                               |
-| 15 | cfg$sequential       | How runs should be made                                                               |
-| 16 | cfg$logoption        | Log information                                                                       |
-| 17 | cfg$output           | Output scripts that should be used                                                    |
-| 18 | cfg$results\_folder  | Results folder name                                                                   |
-| 19 | cfg$files2export     | Files copied to output folder                                                         |
-| 20 | cfg$runstatistics    | Folder run statistics location                                                        |
-| 21 | cfg$model\_name      | Name of the overall model                                                             |
-| 22 | cfg$model\_version   | Model version                                                                         |
-| 23 | cfg$developer\_mode  | Developer mode                                                                        |
-| 24 | cfg$debug            | Debugging mode                                                                        |
+|  7 | cfg$recalibrate      | Should yields be recalibrated?                                                        |
+|  8 | cfg$calib\_cropland  | Switch for cropland calibration                                                       |
+|  9 | cfg$recalibrate_landconversion_cost | Should land conversion cost be calibrated                              |   
+| 10 | cfg$recalc\_npi\_ndc | Settings for NPI/NDC recalculation                                                    |
+| 11 | cfg$policyregions    | National or sub-national mapping                                                      |
+| 12 | cfg$gms              | List of module settings                                                               |
+| 13 | cfg$magicc_emis_scen | Scenario for coupling with MAGICC for emissions outside the food system               |
+| 14 | cfg$sequential       | Should runs be made sequentially or in parallel?                                      |
+| 15 | cfg$logoption        | Log information                                                                       |
+| 16 | cfg$output           | Output scripts that should be used                                                    |
+| 17 | cfg$results\_folder  | Results folder name                                                                   |
+| 18 | cfg$files2export     | Files copied to output folder                                                         |
+| 19 | cfg$runstatistics    | Folder run statistics location                                                        |
+| 20 | cfg$model\_name      | Name of the overall model                                                             |
+| 21 | cfg$info             | List of additional information characterizing the run                                 |
+| 22 | cfg$developer\_mode  | Developer mode                                                                        |
+| 23 | cfg$debug            | Debugging mode                                                                        |
 
 
 ## Updating MAgPIE settings
@@ -265,7 +264,7 @@ setting, which years would be included?
 MAgPIE is also capable of generating some stylized outputs which can be
 created automatically once the model run is finished. To see the current
 output generation settings, look for the following text in the
-default.cfg file (line 1484):
+default.cfg file (line 1934):
 
 ``` r
 cfg$output
@@ -279,21 +278,20 @@ The default MAgPIE configuration runs the following scripts after a model
 run is finished:
 
 - **output\_check** (check a MAgPIE output gdx file for known problems)
-- **rds\_report** (to be used in appResults)
-- **validation\_short** (creating a pdf of main results and validation data)
 - **extra/disaggregation** (interpolates land pools to a finer resolution) 
+- **rds\_report** (to be used in appResults)
 
 All available output R scripts can be found in the MAgPIE model folder 
 under **scripts/output**.
 
-Usually, the creation of the validation pdf takes quite some time, generating 
-a pdf file of about 1500 pages, and is therefore sometimes excluded from 
-the output scripts that should be run. To change which output scripts should or
-should not be run, you can simply add or remove the corresponding script 
-name to the setting, e.g.
+For eyample, it is possible to automatically create a validation pdf file
+of about 1500 pages with the main model results and validation data. 
+This takes quite some time and is therefore not run by default. 
+To change which output scripts should or should not be run, you can 
+simply add or remove the corresponding script name to the setting, e.g.
 
 ``` r
-cfg$output <- c("output_check", "rds_report", "extra/disaggregation")
+cfg$output <- c("output_check", "rds_report", "extra/disaggregation", "validation_short")
 ```
 > Exercise 3: By editing the corresponding setting in the default.cfg file, 
   change the model configuration such that only the output script \"output_check\"
