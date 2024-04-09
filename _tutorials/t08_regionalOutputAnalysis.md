@@ -1,10 +1,10 @@
 ---
 layout: tutorial
-title: Regional output analysis
+title:  Regional output analysis
 shortID: output
-lastUpdated: 2024-04-09
+lastUpdated:   2024-04-09
 model: MAgPIE
-modelVersion: 4.4.0
+modelVersion: 4.7.2
 author:
   - iw
   - fb
@@ -45,11 +45,11 @@ exercises:
                4. Click on `Load selection` and open the `LinePlot1` or `AreaPlot1` tab\n
                5. Select a variable of your choice and optionally also a particular scenario or region."
 - task: "Using the interactive scenario analysis tool using the shinyresults R library,
-          look at a line plot and an area plot of land cover change."
- solution: "1. Click on the Line Plot tab
-              2. Select (one after another) the indicators Resources|Land Cover Change|+|Cropland, Resources|Land Cover Change|+|Pastures and Rangelands and compare the indicators for the given scenarios across the different regions
-              3. Click on the Area Plot tab
-              4. Select the indicator Resources|Land Cover Change and only one region to compare how different land cover types develop over time in the different scenarios."
+           look at a line plot and an area plot of land cover change."
+  solution: "1. Click on the Line Plot tab
+               2. Select (one after another) the indicators ``Resources - Land Cover Change - Cropland``, ``Resources - Land Cover Change - Pastures and Rangelands`` and compare the indicators for the given scenarios across the different regions
+               3. Click on the Area Plot tab
+               4. Select the indicator ``Resources - Land Cover Change`` and only one region to compare how different land cover types develop over time in the different scenarios."
 - task: "Find out how to include a custom validation file in the interactive scenario analysis tool.
          (This can be useful when you have additional or newer validation data at hand)"
   solution: "1. Open the documentation to the function ``shinyresults::appResultsLocal()``\n
@@ -59,7 +59,7 @@ exercises:
             or you need to provide the full path to its location."
 - task: "Apply the function carbonstock() from the R library magpie4 using the file “fulldata.gdx” in the folder of a model simulation run as input for the function.\n
                (a) Use the default settings of the arguments of the function\n
-               (b) Change the arguments of the function, e.g. change the regional resolution from cellular (cluster level) to regional."
+               (b) Change the arguments of the function, e.g. change the regional resolution from cellular (cluster level) to regional."
   solution: "1. Open an R session or R Studio\n
                2. Set the working directory to the main MAgPIE model folder (e.g. by copying the path of the folder with RIGHT CLICK + COPY and executing the command ``setwd(readClipboard())``\n
                3. Assign the gdx file: ``gdx <- ''fulldata.gdx''``\n
@@ -83,7 +83,7 @@ running, you can download model runs produced for the purpose of this tutorial
 These runs were created with version 4.7.2 of the MAgPIE model
 (<https://github.com/magpiemodel/magpie/tree/master>).
 You can download these runs as tgz folder from Zenodo (choose the folder
-``magpie_v4.3.5_gmd-2021-76.tgz`` at <https://zenodo.org/record/5417474#.YeAf8_DMJaQ>) To Do: Update link!
+``magpie_v4.3.5_gmd-2021-76.tgz`` at <https://zenodo.org/record/5417474#.YeAf8_DMJaQ>) TODO: Update link!
 and copy the folders containing the simulation
 results into the *output* folder of your local version of the MAgPIE
 model (Note: if you freshly cloned the model and did not set up a run yet, you
@@ -169,7 +169,7 @@ can download the evaluation documents produced for all runs shown in the
 MAgPIE 4 framework paper (<https://doi.org/10.5281/zenodo.1485303>)
 or run the "validation" or "validation_short" output scripts as explained above.
 The validation PDF is also included in the runs that you may have downloaded
-[above](##introduction)
+above. TODO INCLUDE LINK
 
 The table of contents of the validation PDF gives a good overview over
 the model outputs that can be simulated with a MAgPIE standard
@@ -182,7 +182,7 @@ possible model outputs:
 
 The automated model validation PDF is a good tool for visually
 evaluating a broad range of model outputs. However, comparison between
-model runs, i.e. between different scenarios, is rather difficult and
+model runs, i.e. between different scenarios, is rather difficult and
 inconvenient with the different model results being scattered across
 different large PDF files.
 
