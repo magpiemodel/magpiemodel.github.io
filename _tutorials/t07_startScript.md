@@ -402,7 +402,7 @@ source("scripts/start_functions.R")
 source("config/default.cfg")
 
 # Change results folder name
-cfg$results_folder <- "output/Workshop3/:title:"
+cfg$results_folder <- "output/:title:"
 
 # Change time step settings
 cfg$gms$c_timesteps <- 5
