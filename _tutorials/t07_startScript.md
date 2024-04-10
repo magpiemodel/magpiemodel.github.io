@@ -366,9 +366,9 @@ the loop which we deleted earlier):
 
 ``` r
 # Starting trade loop
-for (trade_setting  in c("selfsuff_reduced", "exo")){
+for (trade_setting  in c("selfsuff_reduced", "exo")) {
   # Starting crop loop
-  for (crop_setting  in c("endo_apr21", "rotation_apr22")){
+  for (crop_setting  in c("endo_apr21", "rotation_apr22")) {
 
     # Set trade realization
     cfg$gms$trade <- trade_setting
@@ -376,16 +376,10 @@ for (trade_setting  in c("selfsuff_reduced", "exo")){
     # Set crop realization
     cfg$gms$crop <- crop_setting
 
-    # Changing title flags
-    if(trade_setting  == "selfsuff_reduced") trade_flag="resTrade"
-    if(trade_setting  == "exo") trade_flag="exo"
-    if(crop_setting  == "endo_apr21") crop_flag = "endo"
-    if(crop_setting  == "rotation_apr22") crop_flag = "rotational"
-
     # Updating default tile
-    cfg$title<- paste0("MAgPIE","_",trade_flag,"_",crop_flag)
+    cfg$title<- paste0("MAgPIE","__", trade_setting, "__", crop_setting)
 
-    ## cfg has been changed further at his stage, start the run
+    # Start the run
     start_run(cfg=cfg, codeCheck = FALSE)
   } # <- Closing crop loop
 } # <- Closing trade loop
@@ -411,9 +405,9 @@ cfg$results_folder <- "output/:title:"
 cfg$gms$c_timesteps <- 5
 
 # Starting trade loop
-for (trade_setting  in c("selfsuff_reduced", "exo")){
+for (trade_setting  in c("selfsuff_reduced", "exo")) {
   # Starting crop loop
-  for (crop_setting  in c("endo_apr21", "rotation_apr22")){
+  for (crop_setting  in c("endo_apr21", "rotation_apr22")) {
 
     # Set trade realization
     cfg$gms$trade <- trade_setting
@@ -421,16 +415,10 @@ for (trade_setting  in c("selfsuff_reduced", "exo")){
     # Set crop realization
     cfg$gms$crop <- crop_setting
 
-    # Changing title flags
-    if(trade_setting  == "selfsuff_reduced") trade_flag="resTrade"
-    if(trade_setting  == "exo") trade_flag="exo"
-    if(crop_setting  == "endo_apr21") crop_flag = "endo"
-    if(crop_setting  == "rotation_apr22") crop_flag = "rotational"
-
     # Updating default tile
-    cfg$title<- paste0("MAgPIE","_",trade_flag,"_",crop_flag)
+    cfg$title<- paste0("MAgPIE","__", trade_setting, "__", crop_setting)
 
-    ## cfg has been changed further at his stage, start the run
+    # Start the run
     start_run(cfg=cfg, codeCheck = FALSE)
   } # <- Closing crop loop
 } # <- Closing trade loop
