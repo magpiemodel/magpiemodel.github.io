@@ -101,8 +101,7 @@ source("scripts/start_functions.R")
 This tells the R environment to source **start\_functions.R** from the
 **scripts** folder. Due to time constraints, we won’t look into what
 start\_functions.R does but we just have to remember that this script
-loads the config file and then loads start\_run function with this
-config which is needed to start MAgPIE runs.
+loads the start\_run function which is needed to start MAgPIE runs.
 
 Moving forward, the second command is:
 
@@ -130,7 +129,7 @@ simplicity, let’s just try to change two settings. We’ll make a total of
 
 
 
-### Creating a start script from scratch
+### Creating a new start script
 
 There are many ways in which you can initialize an R script that can be
 used as a starting script. The easiest way however is to just make a
@@ -237,7 +236,7 @@ source("scripts/start_functions.R")
 ```
 
 Now, we’ll source the **default config** which you had changed in
-tutorial 3. This loads the default.cfg file from the main folder and you can start
+the last tutrial. This loads the default.cfg file from the main folder and you can start
 making changes to it. To do so, add the following line to your
 script:
 
@@ -367,9 +366,9 @@ the loop which we deleted earlier):
 
 ``` r
 # Starting trade loop
-for(trade_setting  in c("selfsuff_reduced", "exo")){
+for (trade_setting  in c("selfsuff_reduced", "exo")){
   # Starting crop loop
-  for(crop_setting  in c("endo_apr21", "rotation_apr22")){
+  for (crop_setting  in c("endo_apr21", "rotation_apr22")){
 
     # Set trade realization
     cfg$gms$trade <- trade_setting
@@ -399,10 +398,6 @@ The final **magpie\_workshop.R** script should look like this:
 # description: Magpie workshop start script
 # ------------------------------------------------
 
-###########################################################
-#### Some header which explains what this script does  ####
-###########################################################
-
 # Load start_run(cfg) function which is needed to start MAgPIE runs
 source("scripts/start_functions.R")
 
@@ -416,9 +411,9 @@ cfg$results_folder <- "output/:title:"
 cfg$gms$c_timesteps <- 5
 
 # Starting trade loop
-for(trade_setting  in c("selfsuff_reduced", "exo")){
+for (trade_setting  in c("selfsuff_reduced", "exo")){
   # Starting crop loop
-  for(crop_setting  in c("endo_apr21", "rotation_apr22")){
+  for (crop_setting  in c("endo_apr21", "rotation_apr22")){
 
     # Set trade realization
     cfg$gms$trade <- trade_setting
