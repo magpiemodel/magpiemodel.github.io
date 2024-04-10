@@ -2,9 +2,9 @@
 layout: tutorial
 title: Managing renv
 shortID: renv
-lastUpdated: 2022-11-24
+lastUpdated: 2024-04-10
 model: MAgPIE
-modelVersion: 4.6.0
+modelVersion: 4.7.2
 author: ps
 level: 3
 requirements:
@@ -33,14 +33,14 @@ exercises:
                  - check-fix: Check if the GAMS code follows the coding etiquette and offer fixing any problems directly if possible using gms::codeCheck."
   - task: "Run all of the explained functions with arguments that actually work."
     solution: "1. Open an R session within your model's main directory\n
-               2. `renv::install('magclass@6.7.1')`\n
+               2. `renv::install('magclass@6.14.0')`\n
                3. `renv::install('pascalfu/madrat', ref = '3224977')`\n
                4. `gert::git_clone('https://github.com/pfuehrlich-pik/madrat.git', './local-madrat'); renv::install('./local-madrat')`\n
                5. `renv::remove('madrat')`\n
-               6. `renv::update(exclude = 'renv')`\n
+               6. `renv::update()`\n
                7. `renv::update('magclass')`\n
                8. `renv::snapshot()`\n
-               9. `renv::install('magclass@6.7.1'); renv::status()`\n
+               9. `renv::install('magclass@6.14.0'); renv::status()`\n
                10. `piamenv::archiveRenv()`"
 categories: tutorial
 published: true
@@ -118,7 +118,7 @@ The `piamenv` functions explained earlier should cover all common tasks, use the
 - `renv::install("githubuser/package", ref = "<commit hash>")` install package from GitHub, optionally provide commit hash
 - `renv::install("/p/tmp/username/yourpackagefolder")` install package from sources
 - `renv::remove("package")` uninstall package
-- `renv::update(exclude = "renv")` (`make update-renv-all`) update all packages except renv (please do not update renv itself)
+- `renv::update()` (`make update-renv-all`) update all packages
 - `renv::update("package")` update package
 - `renv::snapshot()` write renv.lock
 - `renv::status()` show differences between library and renv.lock
