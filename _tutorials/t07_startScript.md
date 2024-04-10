@@ -69,12 +69,20 @@ before we write our own starting script.
 
 If you navigate to **scripts/start/default.R**, you’ll see that the
 **default.R** script has the following structure: (you can open this
-script in R or even in a plain-text editor).
+script in RStudio or even in a plain-text editor).
 
 ``` r
-######################################
-#### Script to start a MAgPIE run ####
-######################################
+# |  (C) 2008-2024 Potsdam Institute for Climate Impact Research (PIK)
+# |  authors, and contributors see CITATION.cff file. This file is part
+# |  of MAgPIE and licensed under AGPL-3.0-or-later. Under Section 7 of
+# |  AGPL-3.0, you are granted additional permissions described in the
+# |  MAgPIE License Exception, version 1.0 (see LICENSE file).
+# |  Contact: magpie@pik-potsdam.de
+
+# ------------------------------------------------
+# description: start run with default.cfg settings
+# position: 1
+# ------------------------------------------------
 
 # Load start_run(cfg) function which is needed to start MAgPIE runs
 source("scripts/start_functions.R")
@@ -84,7 +92,7 @@ start_run(cfg="default.cfg")
 ```
 
 This is a basic script with no complex structure but let’s go through
-this step-by-step. The first line is:
+this step-by-step. The first command is:
 
 ``` r
 source("scripts/start_functions.R")
@@ -96,7 +104,7 @@ start\_functions.R does but we just have to remember that this script
 loads the config file and then loads start\_run function with this
 config which is needed to start MAgPIE runs.
 
-Moving forward, the second line is:
+Moving forward, the second command is:
 
 ``` r
 start_run(cfg="default.cfg")
