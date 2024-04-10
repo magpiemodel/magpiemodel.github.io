@@ -345,9 +345,9 @@ module realizations. In principle, this loop’s general structure should
 look like this:
 
 ``` r
-for(trade_setting in c("default_trade","alt_trade")){
+for (trade_setting in c("default_trade","alt_trade")){
 
-  for(crop_setting in c("default_crop","alt_crop")){
+  for (crop_setting in c("default_crop","alt_crop")){
 
     change_trade_module_realization   ## Updates cfg
 
