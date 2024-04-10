@@ -380,7 +380,7 @@ for (trade_setting  in c("selfsuff_reduced", "exo")) {
     cfg$title<- paste0("MAgPIE","__", trade_setting, "__", crop_setting)
 
     # Start the run
-    start_run(cfg=cfg, codeCheck = FALSE)
+    start_run(cfg = cfg, codeCheck = FALSE)
   } # <- Closing crop loop
 } # <- Closing trade loop
 ```
@@ -419,7 +419,7 @@ for (trade_setting  in c("selfsuff_reduced", "exo")) {
     cfg$title<- paste0("MAgPIE","__", trade_setting, "__", crop_setting)
 
     # Start the run
-    start_run(cfg=cfg, codeCheck = FALSE)
+    start_run(cfg = cfg, codeCheck = FALSE)
   } # <- Closing crop loop
 } # <- Closing trade loop
 ```
