@@ -209,7 +209,6 @@ Here we list some troubles and where to find them:
 | step     |                                                                  | possible issues:                                                             |
 | :------- | :--------------------------------------------------------------- | :--------------------------------------------------------------------------- |
 | pre1.    | job submission                                                   | General R issues (missing PATH variables)                                    |
-|          | \- lock model folder -                                           | `.lock` folder not deleted after termination of a run                        |
 | pre2.    | configurate run and code check                                   | missing libraries (although renv should take care of that), failed code check (after change in the code)              |
 | pre3.    | input data                                                       | no internet connection, input data not available (check spelling), access to repositories            |
 | pre4.    | npi/ndc calculation                                              |                                                                              |
