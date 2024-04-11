@@ -2,9 +2,9 @@
 layout: tutorial
 title:  Creating a new realization
 shortID: changeCode
-lastUpdated:   2022-03-10
+lastUpdated:   2024-04-11
 model: MAgPIE
-modelVersion: 4.4.0
+modelVersion: 4.7.2
 author: fh
 level: 4
 requirements:
@@ -103,7 +103,7 @@ loop(t_all$(ord(t_all) > 1),
 
 ``` r
 *fix carbon stocks to zero
-vm_carbon_stock.fx(j,"urban",c_pools) = 0;
+vm_carbon_stock.fx(j,"urban",c_pools,stockType) = 0;
 *Biodiversity
 vm_bv.fx(j,"urban", potnatveg) = pcm_land(j,"urban") * fm_bii_coeff("urban",potnatveg) * fm_luh2_side_layers(j,potnatveg);
 *fix costs to zero
