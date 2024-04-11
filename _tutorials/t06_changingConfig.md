@@ -2,9 +2,9 @@
 layout: tutorial
 title:  Update model settings
 shortID: config
-lastUpdated:   2022-02-23
+lastUpdated:   2024-04-11
 model: MAgPIE
-modelVersion: 4.4.0
+modelVersion: 4.7.2
 author: 
   - am
   - dl
