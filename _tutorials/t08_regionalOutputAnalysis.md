@@ -13,7 +13,7 @@ requirements:
   - Local copy of the MAgPIE model (<https://github.com/magpiemodel/magpie>)
   - Have R installed (<https://www.r-project.org/>)
   - (For validation.pdf creation:) Have Latex installed (e.g., MiKTeX <https://miktex.org/howto/install-miktex>)
-  - Have completed a MAgPIE run or downloaded existing MAgPIE runs (<https://zenodo.org/record/2572620#.X8Zr9RbPw2w> or <https://zenodo.org/record/5417474#.YeAf8_DMJaQ>) TODO: UPDATE LINK!!!!
+  - Have completed a MAgPIE run or downloaded existing MAgPIE runs (<https://zenodo.org/records/10949419>)
 lessonsContent:
   - Use model-internal R-scripts for output analysis.
   - Know where to find the automated validation PDF and how it is
@@ -79,12 +79,11 @@ After having successfully started and accomplished a simulation run, the
 next step is to evaluate the simulation results. In case you have not
 yet conducted an own MAgPIE simulation or your simulation is still
 running, you can download model runs produced for the purpose of this tutorial
-(<https://doi.org/10.5194/gmd-14-6467-2021>). To Do: Update link!
+(<https://zenodo.org/records/10949419>).
 These runs were created with version 4.7.2 of the MAgPIE model
 (<https://github.com/magpiemodel/magpie/tree/master>).
 You can download these runs as tgz folder from Zenodo (choose the folder
-``magpie_v4.3.5_gmd-2021-76.tgz`` at <https://zenodo.org/record/5417474#.YeAf8_DMJaQ>) TODO: Update link!
-and copy the folders containing the simulation
+``magpie24.zip``) and copy the folders containing the simulation
 results into the *output* folder of your local version of the MAgPIE
 model (Note: if you freshly cloned the model and did not set up a run yet, you
 will have to create an empty output folder first).
@@ -167,9 +166,10 @@ only on key outputs, it allows getting a more complete picture of the
 corresponding simulation. As an example of such validation files, you
 can download the evaluation documents produced for all runs shown in the
 MAgPIE 4 framework paper (<https://doi.org/10.5281/zenodo.1485303>)
-or run the "validation" or "validation_short" output scripts as explained above.
+or run the "validation" or "validation_short" output scripts as explained
+[above](#manual-execution-of-model-internal-r-scripts).
 The validation PDF is also included in the runs that you may have downloaded
-above. TODO INCLUDE LINK
+[above](#introduction).
 
 The table of contents of the validation PDF gives a good overview over
 the model outputs that can be simulated with a MAgPIE standard
@@ -210,9 +210,6 @@ You can use filters to select a subset of all runs stored in the output
 folder of the model, for example by searching for runs that have been
 finished at a certain day, have been created by a certain user
 or by searching for keywords in the title of the simulation runs:
-
-![Run selection by using a filter](../assets/img/appResults_runselection.png)
-
 
 ![How to use the title for filtering runs](../assets/img/appResults_runselection_title.png)
 

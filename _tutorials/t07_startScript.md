@@ -69,12 +69,20 @@ before we write our own starting script.
 
 If you navigate to **scripts/start/default.R**, you’ll see that the
 **default.R** script has the following structure: (you can open this
-script in R or even in a plain-text editor).
+script in RStudio or even in a plain-text editor).
 
 ``` r
-######################################
-#### Script to start a MAgPIE run ####
-######################################
+# |  (C) 2008-2024 Potsdam Institute for Climate Impact Research (PIK)
+# |  authors, and contributors see CITATION.cff file. This file is part
+# |  of MAgPIE and licensed under AGPL-3.0-or-later. Under Section 7 of
+# |  AGPL-3.0, you are granted additional permissions described in the
+# |  MAgPIE License Exception, version 1.0 (see LICENSE file).
+# |  Contact: magpie@pik-potsdam.de
+
+# ------------------------------------------------
+# description: start run with default.cfg settings
+# position: 1
+# ------------------------------------------------
 
 # Load start_run(cfg) function which is needed to start MAgPIE runs
 source("scripts/start_functions.R")
@@ -84,7 +92,7 @@ start_run(cfg="default.cfg")
 ```
 
 This is a basic script with no complex structure but let’s go through
-this step-by-step. The first line is:
+this step-by-step. The first command is:
 
 ``` r
 source("scripts/start_functions.R")
@@ -93,10 +101,9 @@ source("scripts/start_functions.R")
 This tells the R environment to source **start\_functions.R** from the
 **scripts** folder. Due to time constraints, we won’t look into what
 start\_functions.R does but we just have to remember that this script
-loads the config file and then loads start\_run function with this
-config which is needed to start MAgPIE runs.
+loads the start\_run function which is needed to start MAgPIE runs.
 
-Moving forward, the second line is:
+Moving forward, the second command is:
 
 ``` r
 start_run(cfg="default.cfg")
@@ -122,7 +129,7 @@ simplicity, let’s just try to change two settings. We’ll make a total of
 
 
 
-### Creating a start script from scratch
+### Creating a new start script
 
 There are many ways in which you can initialize an R script that can be
 used as a starting script. The easiest way however is to just make a
@@ -229,7 +236,7 @@ source("scripts/start_functions.R")
 ```
 
 Now, we’ll source the **default config** which you had changed in
-tutorial 3. This loads the default.cfg file from the main folder and you can start
+the last tutrial. This loads the default.cfg file from the main folder and you can start
 making changes to it. To do so, add the following line to your
 script:
 
@@ -338,9 +345,9 @@ module realizations. In principle, this loop’s general structure should
 look like this:
 
 ``` r
-for(trade_setting in c("default_trade","alt_trade")){
+for (trade_setting in c("default_trade","alt_trade")){
 
-  for(crop_setting in c("default_crop","alt_crop")){
+  for (crop_setting in c("default_crop","alt_crop")){
 
     change_trade_module_realization   ## Updates cfg
 
@@ -359,9 +366,9 @@ the loop which we deleted earlier):
 
 ``` r
 # Starting trade loop
-for(trade_setting  in c("selfsuff_reduced", "exo")){
+for (trade_setting  in c("selfsuff_reduced", "exo")) {
   # Starting crop loop
-  for(crop_setting  in c("endo_apr21", "rotation_apr22")){
+  for (crop_setting  in c("endo_apr21", "rotation_apr22")) {
 
     # Set trade realization
     cfg$gms$trade <- trade_setting
@@ -369,17 +376,11 @@ for(trade_setting  in c("selfsuff_reduced", "exo")){
     # Set crop realization
     cfg$gms$crop <- crop_setting
 
-    # Changing title flags
-    if(trade_setting  == "selfsuff_reduced") trade_flag="resTrade"
-    if(trade_setting  == "exo") trade_flag="exo"
-    if(crop_setting  == "endo_apr21") crop_flag = "endo"
-    if(crop_setting  == "rotation_apr22") crop_flag = "rotational"
-
     # Updating default tile
-    cfg$title<- paste0("MAgPIE","_",trade_flag,"_",crop_flag)
+    cfg$title<- paste0("MAgPIE","__", trade_setting, "__", crop_setting)
 
-    ## cfg has been changed further at his stage, start the run
-    start_run(cfg=cfg, codeCheck = FALSE)
+    # Start the run
+    start_run(cfg = cfg, codeCheck = FALSE)
   } # <- Closing crop loop
 } # <- Closing trade loop
 ```
@@ -391,10 +392,6 @@ The final **magpie\_workshop.R** script should look like this:
 # description: Magpie workshop start script
 # ------------------------------------------------
 
-###########################################################
-#### Some header which explains what this script does  ####
-###########################################################
-
 # Load start_run(cfg) function which is needed to start MAgPIE runs
 source("scripts/start_functions.R")
 
@@ -402,15 +399,15 @@ source("scripts/start_functions.R")
 source("config/default.cfg")
 
 # Change results folder name
-cfg$results_folder <- "output/Workshop3/:title:"
+cfg$results_folder <- "output/:title:"
 
 # Change time step settings
 cfg$gms$c_timesteps <- 5
 
 # Starting trade loop
-for(trade_setting  in c("selfsuff_reduced", "exo")){
+for (trade_setting  in c("selfsuff_reduced", "exo")) {
   # Starting crop loop
-  for(crop_setting  in c("endo_apr21", "rotation_apr22")){
+  for (crop_setting  in c("endo_apr21", "rotation_apr22")) {
 
     # Set trade realization
     cfg$gms$trade <- trade_setting
@@ -418,17 +415,11 @@ for(trade_setting  in c("selfsuff_reduced", "exo")){
     # Set crop realization
     cfg$gms$crop <- crop_setting
 
-    # Changing title flags
-    if(trade_setting  == "selfsuff_reduced") trade_flag="resTrade"
-    if(trade_setting  == "exo") trade_flag="exo"
-    if(crop_setting  == "endo_apr21") crop_flag = "endo"
-    if(crop_setting  == "rotation_apr22") crop_flag = "rotational"
-
     # Updating default tile
-    cfg$title<- paste0("MAgPIE","_",trade_flag,"_",crop_flag)
+    cfg$title<- paste0("MAgPIE","__", trade_setting, "__", crop_setting)
 
-    ## cfg has been changed further at his stage, start the run
-    start_run(cfg=cfg, codeCheck = FALSE)
+    # Start the run
+    start_run(cfg = cfg, codeCheck = FALSE)
   } # <- Closing crop loop
 } # <- Closing trade loop
 ```
