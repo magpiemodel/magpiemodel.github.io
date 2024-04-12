@@ -152,8 +152,16 @@ Now you can quit the R session with `q()`.
 ### Start a model run
 
 For a quick GAMS test, we simply set the new realization in the file
-`main.gms`: `$setglobal urban pop_growth`. We can then
-check if the model compiles correctly with this command evoked from the
+`main.gms`: `$setglobal urban pop_growth`. 
+
+Please make sure that all other modules are set to their default realization in 
+the `main.gms` file! 
+You can check differences of your local `main.gms` file against the version in 
+repository with `git diff main.gms`. 
+For on overview of all changes in your local copy compared to the repository use `git status`.
+Or use a GUI Git Manager like SourceTree[https://www.sourcetreeapp.com].
+
+We can then check if the model compiles correctly with this command evoked from the
 command line.
 
 ``` r
@@ -162,6 +170,13 @@ gams main.gms action=C
 
 If you get compilation errors, you have to resolve these first. Look
 into the `main.lst` file. It will tell you what kind of error occurred.
+
+Common errors are:
+- The name of realization specified in the `main.gms` file does not 
+match with the folder name of the realization in the modules folder. 
+In both cases it should be `pop_growth`
+- There can be leftover or empty realization folders in modules folder from previous checkouts. 
+Delete these manually. 
 
 To make our test run as fast as possible, we reduce the number of time
 steps to 3. For this, we set `$setglobal c_timesteps quicktest` in main.gms.
