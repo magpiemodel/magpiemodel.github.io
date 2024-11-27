@@ -1,0 +1,94 @@
+---
+layout: landing
+---
+
+<!-- Main -->
+<div id="main">
+
+{% if intro_button_header %}
+<!-- One -->
+<section id="one">
+	<div class="inner">
+		<header class="major">
+			<h2>{{ page.intro_header }}</h2>
+		</header>
+		<p>{{ page.intro_text | markdownify }}</p>
+		<ul class="actions">
+          <li><a href="#two" class="button next scrolly">Get Started</a></li>
+        </ul>
+	</div>
+</section>
+{% endif %}
+
+<!-- Two -->
+<section id="two" class="spotlights">
+{% for element in site[page.collection] %}
+<section>
+		<a href="{{element.url}}" target = "{{ page.button_target }}" class="image">
+			<img src="{{element.image}}" alt="" data-position="center center" />
+		</a>
+		<div class="content">
+			<div class="inner">
+				<header class="major">
+					<h3>{% if element.level == 0 %}
+  ⚪⚪⚪⚪⚪ 
+{% elsif element.level == 1 %}
+  ⚫⚪⚪⚪⚪
+{% elsif element.level == 2 %}
+  ⚫⚫⚪⚪⚪
+{% elsif element.level == 3 %}
+  ⚫⚫⚫⚪⚪ 
+{% elsif element.level == 4 %}
+  ⚫⚫⚫⚫⚪
+{% elsif element.level == 5 %}
+  ⚫⚫⚫⚫⚫ <span style="color:red">Expert
+{% endif %} {{element.title}}
+{% if element.level == 0 %}
+ <span style="color:#8d82c4">All levels
+{% elsif element.level == 1 %}
+ <span style="color:#87c5a4">Beginner
+{% elsif element.level == 2 %}
+ <span style="color:#87c5a4">Beginner
+{% elsif element.level == 3 %}
+ <span style="color:#e7b788">Advanced
+{% elsif element.level == 4 %}
+ <span style="color:#e7b788">Advanced
+{% elsif element.level == 5 %}
+ <span style="color:#ec8d81">Expert
+{% endif %} </span>
+</h3>
+				</header>
+				<p>{{element.description | markdownify }}
+					{% if element.lessonsContent %}
+					<ul>
+                      {% for lesson in element.lessonsContent %}
+                        <li>{{ lesson | markdownify | remove: '<p>' | remove: '</p>' }}</li>
+                      {% endfor %}
+					</ul>
+					{% endif %}
+				</p>
+				<ul class="actions">
+					<li><a href="{{element.url}}" target = "{{ page.button_target }}" class="button">{{ page.button_label }}</a></li>
+				</ul>
+			</div>
+		</div>
+	</section>
+{% endfor %}
+</section>
+
+{% if outtro_button_header %}
+<!-- Three -->
+<section id="three">
+	<div class="inner">
+		<header class="major">
+			<h2>{{ page.outtro_header }}</h2>
+		</header>
+		<p>{{ page.outtro_text | markdownify }}</p>
+		<ul class="actions">
+			<li><a href="{{ page.outtro_button_url }}" class="button next">{{ page.outtro_button_header }}</a></li>
+		</ul>
+	</div>
+</section>
+{% endif %}
+
+</div>

@@ -2,9 +2,10 @@
 layout: tutorial
 title:  Starting a MAgPIE run
 shortID: start
-lastUpdated: 2024-04-08
+image: assets/images/generic/pic05.jpg
+lastUpdated: 2020-11-20
 model: MAgPIE
-modelVersion: 4.7.2
+modelVersion: 4.0.0
 author:
   - emb
   - kk
@@ -60,12 +61,10 @@ Main selection of MAgPIE start scripts
  -> Scripts in this selection are actively   <-
  ->     managed and work out of the box      <-
  ----------------------------------------------
- 1:           default | start run with default.cfg settings
- 2:        check code | Checking code for consistency issues
- 3:     download data | just download default.cfg input data
- 4:         test runs | test routine to run for new pull requests
- 5:          forestry | start run with Forestry (Endogenous)
- 6: compilation check | download input and compile main.gms
+ 1:       default | start run with default.cfg settings
+ 2:    check code | Checking code for consistency issues
+ 3: download data | just download default.cfg input data
+ 4:     test runs | test routine to run for new pull requests
 
 Alternatively, choose a start script from another selection:
  5:         extra | Additional MAgPIE start scripts
@@ -107,7 +106,7 @@ scripts:
 
   - **`extra`** These contains currently used scripts that might require
     some manual adjustments before they are executed. Here you will also
-    find the **`recalibrate`** scripts which will recalculate the yield
+    find the **`recalibrate`** script which will recalculate the yield
     calibration factors. Recalibration will only be necessary if the
     input files change. Nevertheless, the default script will
     automatically run recalibration if the inputs change.
@@ -149,13 +148,11 @@ includes the following steps:
 | :--------------------------------- | :---------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------- |
 | 1\. job submission                 | load chosen start script, apply chosen submission type                                                                  | start.R                                                   |
 | \- lock model folder -             | create `.lock` file to stop co-execution                                                                              | scripts/start\_functions.R                                |
- 2.\- Runs renv             | creates the log\_renv.txt file where information of versions of the required R packages is recorded                                         | /renv/activate.R/|
-|3\. input data                     | check whether data download is nessessary, download data                                                                | scripts/start\_functions.R (`gms::download_distribute()`) | 
-| 4\. Configurate run and code check | load libraries, configure settings, run `gms::settingsCheck()` to check code for consistency                            | scripts/start\_function.R                                 |
-
-| 5\. NPI/NDC calculation            | calculate for specific cluster and regional settings the representation of land based npi/ndc policies within the model | scripts/npi\_ndc/start\_npi\_ndc.R                        |
-| 6\. yield and costs calibration              | calculates a regional yield calibration factors and land use change costs based on a pre run of magpie to be inline with FAO production data       | scripts/calibration/calc\_calib.R                         |
-| 7\. gams code submission           | execute gams command to final run the gams model, start post-processing after run finished                              | scripts/run\_submit/submit.R                              |
+| 2\. configurate run and code check | load libraries, configure settings, run `gms::settingsCheck()` to check code for consistency                            | scripts/start\_function.R                                 |
+| 3\. input data                     | check whether data download is nessessary, download data                                                                | scripts/start\_functions.R (`gms::download_distribute()`) |
+| 4\. npi/ndc calculation            | calculate for specific cluster and regional settings the representation of land based npi/ndc policies within the model | scripts/npi\_ndc/start\_npi\_ndc.R                        |
+| 5\. yield calibration              | calculates a regional yield calibration factor based on a pre run of magpie to be inline with FAO production data       | scripts/calibration/calc\_calib.R                         |
+| 6\. gams code submission           | execute gams command to final run the gams model, start post-processing after run finished                              | scripts/run\_submit/submit.R                              |
 | \- unlock model folder -           | delete `.lock` file, be ready for next call of start script                                                           | scripts/start\_functions.R                                |
 
 Several of these steps will generate terminal output.
@@ -168,7 +165,7 @@ The GAMS code execution is started with submit.R and by default there is
 no output on your terminal with regard to the optimizations process. You
 can find the output in the output folder of the run:
 
-  - `output/[run_title]/full.lst` - compilation, execution & iteration
+  - `output/[run_title]/full.lst` - complitation, execution & iteration
     log and summaries
   - `output/[run_title]/full.log` - optimization log (detailed solver
     output)
@@ -209,8 +206,9 @@ Here we list some troubles and where to find them:
 | step     |                                                                  | possible issues:                                                             |
 | :------- | :--------------------------------------------------------------- | :--------------------------------------------------------------------------- |
 | pre1.    | job submission                                                   | General R issues (missing PATH variables)                                    |
-| pre2.    | configurate run and code check                                   | missing libraries (although renv should take care of that), failed code check (after change in the code)              |
-| pre3.    | input data                                                       | no internet connection, input data not available (check spelling), access to repositories            |
+|          | \- lock model folder -                                           | `.lock` folder not deleted after termination of a run                        |
+| pre2.    | configurate run and code check                                   | missing libraries, failed code check (after change in the code)              |
+| pre3.    | input data                                                       | no internet connection, input data not available (check spelling)            |
 | pre4.    | npi/ndc calculation                                              |                                                                              |
 | pre5.    | yield calibration                                                | general gams issues (compilation or solver failures, missing PATH variables) |
 | pre6.    | gams code submission                                             |                                                                              |
@@ -239,7 +237,3 @@ Here we list some troubles and where to find them:
     automatically to unlock the model after a termination of a run.
 
 > **Exercise**: Stop the magpie run with `Crtl` + `C`.
-
-You will find the slides used in the 2024 workshop [here]("./assets/slides/Starting a MAgPIE run.pptx").
-
-

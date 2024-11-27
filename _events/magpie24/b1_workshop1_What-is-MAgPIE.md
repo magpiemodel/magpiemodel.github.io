@@ -1,15 +1,16 @@
 ---
 layout: event
-title:  "Workshop 1 - Welcome & Basics (hybrid)"
-event_start:   "2024-04-10T10:00:00+02:00"
-event_end:     "2024-04-10T12:00:00+02:00"
+workshopID: 24
+title:  "Workshop 1 - What is MAgPIE"
+event_start:   "2024-04-10T09:00:00+01:00"
+event_end:     "2024-04-10T11:00:00+01:00"
 
 agenda:
   - title: Welcome & agenda
     length: 10
     presenter: jpd 
   - title: What is MAgPIE?
-    url: https://slides.com/jandietrich/magpie-4-7/
+    url: https://slides.com/jandietrich/magpie-4-0/
     length: 50
     presenter: jpd
   - shortID: git

@@ -2,9 +2,10 @@
 layout: tutorial
 title:  Input data repositories & Patches
 shortID: changeInput
-lastUpdated:   2024-04-11
+image: assets/images/generic/pic12.jpg
+lastUpdated:   2022-02-28
 model: MAgPIE
-modelVersion: 4.7.2
+modelVersion: 4.4.2
 author:
   - ms
   - fh
@@ -25,7 +26,7 @@ published: true
 The input data for MAgPIE is prepared by a set of pre-processing
 routines that take the data from original sources (e.g. FAO, LPJmL…),
 execute additional calculations and convert it to the required MAgPIE
-parameter format (MADRaT). These pre-processing routines are not accessible as
+parameter format. These pre-processing routines are not accessible as
 open source at the moment. A user is instead provided with a ready-made
 inputs that are necessary for the model execution.
 
@@ -34,11 +35,11 @@ usually at the beginning of the settings. Currently, the input data is
 set as:
 
 ``` r
-cfg$input <- c(regional    = "rev4.101_h12_magpie.tgz",
-               cellular    = "rev4.101_h12_fd712c0b_cellularmagpie_c200_MRI-ESM2-0-ssp370_lpjml-8e6c5eb1.tgz",
-               validation  = "rev4.101_h12_validation.tgz",
-               additional  = "additional_data_rev4.48.tgz",
-               calibration = "calibration_H12_per_ton_fao_may22_glo_13Mar24.tgz")
+cfg$input <- c(regional    = "rev4.65_h12_magpie.tgz",
+               cellular    = "rev4.65_h12_1998ea10_cellularmagpie_c200_MRI-ESM2-0-ssp370_lpjml-8e6c5eb1.tgz",
+               validation  = "rev4.65_h12_validation.tgz",
+               additional  = "additional_data_rev4.07.tgz",
+               calibration = "calibration_H12_sticky_feb18_free_30Nov21.tgz")
 ```
 
 Once specified in the configuration as the input data, the data is
@@ -156,21 +157,21 @@ the input data and the existing patch file that replaces the existing
 input data. For this, edit the `config/default.cfg` file from:
 
 ``` r
-cfg$input <- c(regional    = "rev4.101_h12_magpie.tgz",
-               cellular    = "rev4.101_h12_fd712c0b_cellularmagpie_c200_MRI-ESM2-0-ssp370_lpjml-8e6c5eb1.tgz",
-               validation  = "rev4.101_h12_validation.tgz",
-               additional  = "additional_data_rev4.48.tgz",
-               calibration = "calibration_H12_per_ton_fao_may22_glo_13Mar24.tgz")
+cfg$input <- c(regional    = "rev4.65_h12_magpie.tgz",
+               cellular    = "rev4.65_h12_1998ea10_cellularmagpie_c200_MRI-ESM2-0-ssp370_lpjml-8e6c5eb1.tgz",
+               validation  = "rev4.65_h12_validation.tgz",
+               additional  = "additional_data_rev4.07.tgz",
+               calibration = "calibration_H12_sticky_feb18_free_30Nov21.tgz")
 ```
 
 to:
 
 ``` r
-cfg$input <- c(regional    = "rev4.101_h12_magpie.tgz",
-               cellular    = "rev4.101_h12_fd712c0b_cellularmagpie_c200_MRI-ESM2-0-ssp370_lpjml-8e6c5eb1.tgz",
-               validation  = "rev4.101_h12_validation.tgz",
-               additional  = "additional_data_rev4.48.tgz",
-               calibration = "calibration_H12_per_ton_fao_may22_glo_13Mar24.tgz",
+cfg$input <- c(regional    = "rev4.65_h12_magpie.tgz",
+               cellular    = "rev4.65_h12_1998ea10_cellularmagpie_c200_MRI-ESM2-0-ssp370_lpjml-8e6c5eb1.tgz",
+               validation  = "rev4.65_h12_validation.tgz",
+               additional  = "additional_data_rev4.07.tgz",
+               calibration = "calibration_H12_sticky_feb18_free_30Nov21.tgz",
                patch       = "patch_ndc_usa.tgz")
 ```
 
@@ -215,7 +216,7 @@ repo for downloading the files specified in `cfg$input`.
 
 Write your own starting script that will test the scenario with changed
 NDC policy for the USA described above. None of the changes should
-occur in the `default.cfg`, but instead the starting script
+actually occur in the `default.cfg`, but instead the starting script
 should introduce them to the loaded cfg object.
 
 Add a MAgPIE start script here:
@@ -263,11 +264,11 @@ start_run(cfg,codeCheck=FALSE)
 
 cfg$title <- "SSP2_NDC_USA"
 cfg <- gms::setScenario(cfg,c("SSP2","NDC"))
-cfg$input <- c(regional    = "rev4.101_h12_magpie.tgz",
-               cellular    = "rev4.101_h12_fd712c0b_cellularmagpie_c200_MRI-ESM2-0-ssp370_lpjml-8e6c5eb1.tgz",
-               validation  = "rev4.101_h12_validation.tgz",
-               additional  = "additional_data_rev4.48.tgz",
-               calibration = "calibration_H12_per_ton_fao_may22_glo_13Mar24.tgz",
+cfg$input <- c(regional    = "rev4.65_h12_magpie.tgz",
+               cellular    = "rev4.65_h12_1998ea10_cellularmagpie_c200_MRI-ESM2-0-ssp370_lpjml-8e6c5eb1.tgz",
+               validation  = "rev4.65_h12_validation.tgz",
+               additional  = "additional_data_rev4.07.tgz",
+               calibration = "calibration_H12_sticky_feb18_free_30Nov21.tgz",
                patch       = "patch_ndc_usa.tgz")
 start_run(cfg,codeCheck=FALSE)
 ```

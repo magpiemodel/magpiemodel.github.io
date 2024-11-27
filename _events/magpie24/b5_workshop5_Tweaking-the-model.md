@@ -1,8 +1,9 @@
 ---
 layout: event
-title:  "Workshop 5 - Tweaking the model (hybrid)"
-event_start:   "2024-04-12T10:00:00+02:00"
-event_end:     "2024-04-12T12:00:00+02:00"
+workshopID: 24
+title:  "Workshop 5 - Tweaking the model"
+event_start:   "2024-04-12T09:00:00+01:00"
+event_end:     "2024-04-12T11:00:00+01:00"
 agenda:
   - title: Welcome back
     length: 5

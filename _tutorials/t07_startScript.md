@@ -2,10 +2,11 @@
 layout: tutorial
 title:  Creating a start script
 shortID: startScript
-lastUpdated:   2024-04-05
+image: assets/images/generic/pic07.jpg
+lastUpdated:   2022-03-07
 model: MAgPIE
 modelVersion: 4.4.0
-authors: Abhijeet Mishra, Michael Windisch, Vartika Singh, David Hötten
+authors: Abhijeet Mishra, Michael Windisch, Vartika Singh
 level: 3
 requirements:
   - GAMS Installed, Magpie model folder cloned on local computer
@@ -24,9 +25,9 @@ maybe practical in cases where a user is making one run at a time but more
 often than not, users may have to work with a combination of different
 settings for the model.
 
-For example, a user may want to run two different trade scenarios in
-MAgPIE (exogenous or selfsuff_reduced) and along with this, a user
-may also want to run two different cropping scenarios (default and rotational cropping).
+For example, a user may want to run two different food demand scenarios in
+MAgPIE (free trade or selfsuff_reduced) and along with this, a user
+may also want to run two different land scenarios (landmatrix_dec18 and feb15).
 In this case, the total number of runs needed is 4. In
 such cases, editing config files by hand is not advisable. Here, a good
 programming practice would be to rather change these config files using
@@ -69,20 +70,12 @@ before we write our own starting script.
 
 If you navigate to **scripts/start/default.R**, you’ll see that the
 **default.R** script has the following structure: (you can open this
-script in RStudio or even in a plain-text editor).
+script in R or even in a plain-text editor).
 
 ``` r
-# |  (C) 2008-2024 Potsdam Institute for Climate Impact Research (PIK)
-# |  authors, and contributors see CITATION.cff file. This file is part
-# |  of MAgPIE and licensed under AGPL-3.0-or-later. Under Section 7 of
-# |  AGPL-3.0, you are granted additional permissions described in the
-# |  MAgPIE License Exception, version 1.0 (see LICENSE file).
-# |  Contact: magpie@pik-potsdam.de
-
-# ------------------------------------------------
-# description: start run with default.cfg settings
-# position: 1
-# ------------------------------------------------
+######################################
+#### Script to start a MAgPIE run ####
+######################################
 
 # Load start_run(cfg) function which is needed to start MAgPIE runs
 source("scripts/start_functions.R")
@@ -92,7 +85,7 @@ start_run(cfg="default.cfg")
 ```
 
 This is a basic script with no complex structure but let’s go through
-this step-by-step. The first command is:
+this step-by-step. The first line is:
 
 ``` r
 source("scripts/start_functions.R")
@@ -101,9 +94,10 @@ source("scripts/start_functions.R")
 This tells the R environment to source **start\_functions.R** from the
 **scripts** folder. Due to time constraints, we won’t look into what
 start\_functions.R does but we just have to remember that this script
-loads the start\_run function which is needed to start MAgPIE runs.
+loads the config file and then loads start\_run function with this
+config which is needed to start MAgPIE runs.
 
-Moving forward, the second command is:
+Moving forward, the second line is:
 
 ``` r
 start_run(cfg="default.cfg")
@@ -124,12 +118,12 @@ simplicity, let’s just try to change two settings. We’ll make a total of
 
 
 
-2.  Making runs with two different **crop** module realizations.
+2.  Making runs with two different **land** module realizations.
 
 
 
 
-### Creating a new start script
+### Creating a start script from scratch
 
 There are many ways in which you can initialize an R script that can be
 used as a starting script. The easiest way however is to just make a
@@ -149,13 +143,6 @@ the contents are the same and we’ll now start making changes to this
 The contents should look like this:
 
 ``` r
-# |  (C) 2008-2023 Potsdam Institute for Climate Impact Research (PIK)
-# |  authors, and contributors see CITATION.cff file. This file is part
-# |  of MAgPIE and licensed under AGPL-3.0-or-later. Under Section 7 of
-# |  AGPL-3.0, you are granted additional permissions described in the
-# |  MAgPIE License Exception, version 1.0 (see LICENSE file).
-# |  Contact: magpie@pik-potsdam.de
-
 # ------------------------------------------------
 # description: start run with default.cfg settings
 # position: 1
@@ -198,25 +185,8 @@ your comments as accurate and precise as possible.
 Now that we have the importance of documenting your code out of the way,
 lets go back to writing our script.
 
-We start with cleaning up things from the default script that we do not need.
-Let's ged rid of all comments, that are not fitting to the 
-purpose we have with the script. Delete the licence information, as well as 
-the description and the line starting with position, to obtain this version:
-
-``` r
-# ------------------------------------------------
-# description:
-# ------------------------------------------------
-
-# Load start_run(cfg) function which is needed to start MAgPIE runs
-source("scripts/start_functions.R")
-
-#start MAgPIE run
-start_run(cfg="default.cfg")
-```
-
 As we still want to make changes to the **config** before starting a
-run, lets delete the following line which starts the MAgPIE run,below. We
+run, lets delete/push the following line which starts the MAgPIE run,below. We
 don’t need it for now (we’ll need it in the end):
 
 ``` r
@@ -228,7 +198,8 @@ Your script should now look like this:
 
 ``` r
 # ------------------------------------------------
-# description:
+# description: start run with default.cfg settings
+# position: 1
 # ------------------------------------------------
 
 # Load start_run(cfg) function which is needed to start MAgPIE runs
@@ -236,7 +207,7 @@ source("scripts/start_functions.R")
 ```
 
 Now, we’ll source the **default config** which you had changed in
-the last tutrial. This loads the default.cfg file from the main folder and you can start
+tutorial 3. This loads the default.cfg file from the main folder and you can start
 making changes to it. To do so, add the following line to your
 script:
 
@@ -253,7 +224,8 @@ Your script should now look like this:
 
 ``` r
 # ------------------------------------------------
-# description:
+# description: start run with default.cfg settings
+# position: 1
 # ------------------------------------------------
 
 # Load start_run(cfg) function which is needed to start MAgPIE runs
@@ -275,23 +247,25 @@ changes would be made to the **cfg** object and we’ll use the notation
 **cfg$\<some\_setting\>** for this purpose (Ref. Table 1 from tutorial 3
 for details).
 
-You can add a description to give a sense of what this script does.
-The modfied **magpie\_workshop.R** script could now look like this:
+You can change the Description to give a sense of what this script does.
+Go ahead and add the following lines in your **magpie\_workshop.R**
+script:
 
 ``` r
 # ------------------------------------------------
 # description: Magpie workshop start script
+# position: 1
 # ------------------------------------------------
 
 ###########################################################
 #### Some header which explains what this script does  ####
 ###########################################################
 
-# Load start_run(cfg) function which is needed to start MAgPIE runs
-source("scripts/start_functions.R")
+# Change results folder name
+cfg$results_folder <- "output/:title:"
 
-# Source the default config at this stage and then over-write it before starting the run.
-source("config/default.cfg")
+# Change time step settings
+cfg$gms$c_timesteps <- 5
 
 ```
 
@@ -304,6 +278,7 @@ this now:
 
 # ------------------------------------------------
 # description: Magpie workshop start script
+# position: 1
 # ------------------------------------------------
 
 ###########################################################
@@ -328,30 +303,33 @@ cfg$gms$c_timesteps <- 5
 
 We’ll now write a loop to go over the different combinations of module
 realizations. As stated earlier, we’ll make 4 runs with changes to
-trade module and crop module.
+trade module and land module. Figure 1 describes and explains the
+available module realizations for these two modules.
+
+![Module setting combinations](../assets/images/tutorials/module-settings.png)
 
 The loop we write should change the config based on which module
 realization we choose. Here, lets try making runs with the following
 combinations:
 
-1.  Trade default + Crop default
-2.  Trade default + Crop alt
-3.  Trade alt + Crop default
-4.  Trade alt + Crop alt
+1.  Trade default + Land default
+2.  Trade default + Land alt
+3.  Trade alt + Land default
+4.  Trade alt + Land alt
 
 To do so, the loop should go two times over trade module realizations
-and then for each of theses instances, two times over the crop
+and then for each of theses instances, two times over the land
 module realizations. In principle, this loop’s general structure should
 look like this:
 
 ``` r
-for (trade_setting in c("default_trade","alt_trade")){
+for(trade_setting in c("default_trade","alt_trade")){
 
-  for (crop_setting in c("default_crop","alt_crop")){
+  for(land_setting in c("default_land","alt_land")){
 
     change_trade_module_realization   ## Updates cfg
 
-    change_crop_module_realization  ## Updates cfg
+    change_land_module_realization  ## Updates cfg
 
     change_title_according_to_run_setting
 
@@ -366,22 +344,28 @@ the loop which we deleted earlier):
 
 ``` r
 # Starting trade loop
-for (trade_setting  in c("selfsuff_reduced", "exo")) {
-  # Starting crop loop
-  for (crop_setting  in c("endo_apr21", "rotation_apr22")) {
+for(trade_setting  in c("selfsuff_reduced","free_apr16")){
+  # Starting land loop
+  for(land_setting  in c("landmatrix_dec18","feb15")){
 
     # Set trade realization
     cfg$gms$trade <- trade_setting
 
-    # Set crop realization
-    cfg$gms$crop <- crop_setting
+    # Set land realization
+    cfg$gms$land <- land_setting
+
+    # Changing title flags
+    if(trade_setting  == "selfsuff_reduced") trade_flag="resTrade"
+    if(trade_setting  == "free_apr16") trade_flag="freeTrade"
+    if(land_setting  == "landmatrix_dec18") land_flag = "landmatrix"
+    if(land_setting  == "feb15") land_flag = "baseland"
 
     # Updating default tile
-    cfg$title<- paste0("MAgPIE","__", trade_setting, "__", crop_setting)
+    cfg$title<- paste0("MAgPIE","_",trade_flag,"_",land_flag)
 
-    # Start the run
-    start_run(cfg = cfg, codeCheck = FALSE)
-  } # <- Closing crop loop
+    ## cfg has been changed further at his stage, start the run
+    start_run(cfg=cfg)
+  } # <- Closing land loop
 } # <- Closing trade loop
 ```
 
@@ -390,7 +374,12 @@ The final **magpie\_workshop.R** script should look like this:
 ``` r
 # ------------------------------------------------
 # description: Magpie workshop start script
+# position: 1
 # ------------------------------------------------
+
+###########################################################
+#### Some header which explains what this script does  ####
+###########################################################
 
 # Load start_run(cfg) function which is needed to start MAgPIE runs
 source("scripts/start_functions.R")
@@ -405,22 +394,28 @@ cfg$results_folder <- "output/:title:"
 cfg$gms$c_timesteps <- 5
 
 # Starting trade loop
-for (trade_setting  in c("selfsuff_reduced", "exo")) {
-  # Starting crop loop
-  for (crop_setting  in c("endo_apr21", "rotation_apr22")) {
+for(trade_setting  in c("selfsuff_reduced","free_apr16")){
+  # Starting land loop
+  for(land_setting  in c("landmatrix_dec18","feb15")){
 
     # Set trade realization
     cfg$gms$trade <- trade_setting
 
-    # Set crop realization
-    cfg$gms$crop <- crop_setting
+    # Set land realization
+    cfg$gms$land <- land_setting
+
+    # Changing title flags
+    if(trade_setting  == "selfsuff_reduced") trade_flag="resTrade"
+    if(trade_setting  == "free_apr16") trade_flag="freeTrade"
+    if(land_setting  == "landmatrix_dec18") land_flag = "landmatrix"
+    if(land_setting  == "feb15") land_flag = "baseland"
 
     # Updating default tile
-    cfg$title<- paste0("MAgPIE","__", trade_setting, "__", crop_setting)
+    cfg$title<- paste0("MAgPIE","_",trade_flag,"_",land_flag)
 
-    # Start the run
-    start_run(cfg = cfg, codeCheck = FALSE)
-  } # <- Closing crop loop
+    ## cfg has been changed further at his stage, start the run
+    start_run(cfg=cfg)
+  } # <- Closing land loop
 } # <- Closing trade loop
 ```
 

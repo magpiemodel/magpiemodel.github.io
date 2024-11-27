@@ -1,8 +1,9 @@
 ---
 layout: event
-title:  "MAgPIE stories #2 (hybrid)"
-event_start:   "2024-04-11T15:30:00+02:00"
-event_end:     "2024-04-11T17:00:00+02:00"
+workshopID: 24
+title:  "Stories 2 - MAgPIE stories #2"
+event_start:   "2024-04-11T14:30:00+01:00"
+event_end:     "2024-04-11T16:00:00+01:00"
 agenda:
   - title: Welcome
     length: 10
@@ -46,7 +47,3 @@ agenda:
 The second of two MAgPIE stories sessions in which MAgPIE user and developer
 share talk about their MAgPIE-based research and share their experiences (click
 on the arrows to see the abstracts for each talk).
-
-The MAgPIE story sessions are **open for everyone** and do not require any registration. You can join the sessions via [Zoom](https://pik-potsdam.zoom-x.de/j/63414780182?pwd=OTFpbDJVdU02cUZocy90L3hlODRnQT09).
-
-[**click here to join the zoom room**](https://pik-potsdam.zoom-x.de/j/63414780182?pwd=OTFpbDJVdU02cUZocy90L3hlODRnQT09)

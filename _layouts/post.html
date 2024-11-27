@@ -1,50 +1,36 @@
----
-layout: default
----
+<!DOCTYPE html>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
 
-<style>
-  .p-author a {
-    color:grey;
-  }
-</style>
+{% include head.html %}
 
-<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+<body>
 
-{% assign people = site.pages | where: "shortID", "people" | first %}
+    {% include header.html %} 
+    
+    
+<!-- Main -->
+<div id="main" class="alt">
 
-  <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
-    <p class="post-meta">
-      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-        {{ page.date | date: date_format }}
-      </time>
-      {%- if page.author -%}
-        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">
-          {% assign sep = "" %}
-          {% for author in page.author %}
-            {%- assign person = people.data | where: "id", author | first -%}
-            {{- sep -}}
-            {%- if person.url -%}
-              <a href="{{person.url}}">{{ person.firstName }} {{ person.lastName }}</a>
-            {%- elsif person.lastName -%}
-              {{ person.firstName }} {{ person.lastName }}
-            {%- else -%}
-              {{ author }}
-            {%- endif -%}
-            {%- assign sep = ", " -%}
-          {%- endfor -%}
-        </span></span>
-      {%- endif -%}</p>
-  </header>
+<!-- One -->
+<section id="one">
+	<div class="inner">
+		<header class="major">
+			<h1>{{ page.title }}</h1>
+		</header>
+		{% if page.image %}<span class="image main"><img src="{{ site.baseurl }}/{{ page.image }}" alt="" /></span>{% endif %}
+		{{ content }}
+	</div>
+</section>
 
-  <div class="post-content e-content" itemprop="articleBody">
-    {{ content }}
-  </div>
+</div>
 
-  {%- if site.disqus.shortname -%}
-    {%- include disqus_comments.html -%}
-  {%- endif -%}
+    {% include footer.html %}
 
-  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
-</article>
+</body>
+
+</html>

@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 ---
 
 <style>
@@ -87,7 +87,7 @@ layout: page
 </table>
 {% endif %}
 
-{% assign timetable = site.pages | where: "title", "Timetable" | first %}
+{% assign timetable = site.pages | where: "title", "Timetable" | where: "workshopID", page.workshopID %}
 <p>
 {% if page.previous.url %}
   <a href="{{page.previous.url}}">&lt; previous</a>

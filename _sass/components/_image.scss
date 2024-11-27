@@ -1,0 +1,75 @@
+///
+/// Forty by HTML5 UP
+/// html5up.net | @ajlkn
+/// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+///
+
+/* Image */
+
+img {
+    max-width: 100%;
+}
+
+.round {
+	border-radius: 50%;
+	width: 150px;
+	height: 150px;
+	object-fit: cover;
+}
+
+.image {
+		border: 0;
+		display: i	nline-block;
+		position: relative;
+
+		img {
+			display: block;
+		}
+
+		&.left,
+		&.right {
+			max-width: 30%;
+
+			img {
+				width: 100%;
+			}
+		}
+
+		&.left {
+			float: left;
+			margin: 0 1.5em 1.25em 0;
+			top: 0.25em;
+		}
+
+		&.right {
+			float: right;
+			margin: 0 0 1.25em 1.5em;
+			top: 0.25em;
+		}
+
+		&.fit {
+			display: block;
+			margin: 0 0 _size(element-margin) 0;
+			width: 100%;
+
+			img {
+				width: 100%;
+			}
+		}
+
+		&.main {
+			display: block;
+			margin: (_size(element-margin) * 1.25) 0;
+			width: 100%;
+
+			img {
+				width: 100%;
+				max-height: 400px;
+				object-fit: cover;
+			}
+
+			@include breakpoint(small) {
+				margin: (_size(element-margin) * 0.75) 0;
+			}
+		}
+	}

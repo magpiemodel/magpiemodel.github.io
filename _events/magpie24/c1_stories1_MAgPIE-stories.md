@@ -1,8 +1,9 @@
 ---
 layout: event
-title:  "MAgPIE stories #1 (hybrid)"
-event_start:   "2024-04-10T15:30:00+02:00"
-event_end:     "2024-04-10T17:00:00+02:00"
+workshopID: 24
+title:  "Stories 1 - MAgPIE stories #1"
+event_start:   "2024-04-10T14:30:00+01:00"
+event_end:     "2024-04-10T16:00:00+01:00"
 agenda:
   - title: Welcome
     length: 10
@@ -13,18 +14,18 @@ agenda:
     presenter: Jan Steinhauser
     institution: IIASA/PIK
     country: Austria 
-  - title: "Towards an integrated assessment of microbial protein production from CO2 and H2"
-    abstract: "Here, we determined the environmental benefits of substituting ruminant meat with protein from microbes that grow on H2 and CO2. Using historical data on margarine, a successful analog for an animal-based product, we derived growth projections for microbial protein substitution of ruminant meats. We used these projections in a novel linkage of the MESSAGE-MAgPIE models and analyzed their impacts on the global land-energy-water nexus. Upon substitution, we observed notable improvements in key environmental indicators: natural land, biodiversity, land emissions, water withdrawal and fertilizer use. We also explored the impact of different climate and biodiversity policies. We found microbial scenarios show promise in achieving more ambitious climate targets even under stringent biodiversity policy. Furthermore, the microbial scenario exhibits a reduced carbon price, while  attaining the same climate targets, underscoring its potential as an economically beneficial protein alternative."
-    length: 15
-    presenter: Roee Ben Nissan & Samuel-Jakob Lovat
-    institution: Weizmann institute of Science
-    country: Israel
   - title: "Exploring temperature overshoot scenarios in a Land-Energy-Climate nexus"
     abstract: "My work builds on the MESSAGE-MAgPIE emulator developed by Jan Steinhauser, and supports the work of Ron Milo's group from Weizmann (in collaboration IIASA and colleagues from PIK), both of which are also presented in MAgPIE stories. In this short section, I will talk about soft-coupling the emulator to MAGICC, the statistical climate model from IIASA, to explore global mean surface temperature overshoot beyond the most ambitious 1.5 °C target agreed in the Paris agreement. This gives us the technical tool to systematically explore Land-Energy-Climate scenarios."
     length: 15
     presenter: Sreyam Sengupta
     institution: IIASA
     country: Austria
+  - title: "Towards an integrated assessment of microbial protein production from CO2 and H2"
+    abstract: "Here, we determined the environmental benefits of substituting ruminant meat with protein from microbes that grow on H2 and CO2. Using historical data on margarine, a successful analog for an animal-based product, we derived growth projections for microbial protein substitution of ruminant meats. We used these projections in a novel linkage of the MESSAGE-MAgPIE models and analyzed their impacts on the global land-energy-water nexus. Upon substitution, we observed notable improvements in key environmental indicators: natural land, biodiversity, land emissions, water withdrawal and fertilizer use. We also explored the impact of different climate and biodiversity policies. We found microbial scenarios show promise in achieving more ambitious climate targets even under stringent biodiversity policy. Furthermore, the microbial scenario exhibits a reduced carbon price, while  attaining the same climate targets, underscoring its potential as an economically beneficial protein alternative."
+    length: 15
+    presenter: Roee Ben Nissan
+    institution: Weizmann institute of Science
+    country: Israel
   - title: "Sustainable intensification of grazing systems with managed pastures implementation"
     abstract: "Despite its role in diet shift scenarios, the livestock sector has received relatively less attention than crops in IAM development. I propose to oresent my work on sustainable intensification of grazing production systems made possible by the separation of managed pastures from rangelands and the creation if a oastures specific Tau factor. I will describe recent applications of these features in the FSEC, Nature Fiinance and Climate Advisers projects, and present proposals for anfuture research agenda."
     length: 15
@@ -42,7 +43,3 @@ agenda:
 The first of two MAgPIE stories sessions in which MAgPIE user and developer
 share talk about their MAgPIE-based research and share their experiences (click
 on the arrows to see the abstracts for each talk).
-
-The MAgPIE story sessions are **open for everyone** and do not require any registration. You can join the sessions via [Zoom](https://pik-potsdam.zoom-x.de/j/63414780182?pwd=OTFpbDJVdU02cUZocy90L3hlODRnQT09).
-
-[**click here to join the zoom room**](https://pik-potsdam.zoom-x.de/j/63414780182?pwd=OTFpbDJVdU02cUZocy90L3hlODRnQT09)

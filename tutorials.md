@@ -1,49 +1,23 @@
 ---
-# Feel free to add content and custom Front Matter to this file.
-# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-
-layout: page
 title: Tutorials
-permalink: /tutorials/
+layout: collection
+description: 'A collection of tutorials to get started'
+image: assets/images/generic/lu5.jpg
+style: 5
+nav-menu: true
+show_tile: true
+collection: tutorials
+intro_header: Introduction to MAgPIE and MADRaT
+intro_text: 'The following is the collection of tutorials which help in getting accquainted with the MAgPIE global land system framework as well as with the MADRaT   data preprocessing framework. The latter is used in MAgPIE to preprocess the input data, but also can be used independently for other data processing tasks.
+
+
+Tutorials are listed in the recommended order. Difficulty and recommended experience level are indicated in the title.'
+button_label: Start tutorial
+button_target: null
+outtro_header: Further information
+outtro_text: 'If you are seeking further information and want to get deeper involved in the MAgPIE and MADRaT development you can have a look at our events page where you can find dates of regular community events as well as the upcoming workshops or related conferences.'
+outtro_button_header: Go to events
+outtro_button_url: events.html
+
 ---
 
-<style>
-  blockquote {
-    color:black;
-    background: #f9f9f9;
-    font-style:normal;
-    padding: 1em;
-    -webkit-border-radius:10px;
-    -moz-border-radius:10px;
-    border-radius:10px;
-    border:2px solid #a9a9a9;
-  }
-
-  p {
-    margin:0
-  }
-</style>
-
-{% for tutorial in site.tutorials %}
-  <blockquote>
-  <h4><a href="{{tutorial.url}}">{{tutorial.title}}</a>
-{% if tutorial.level == 0 %}
-  ⚪⚪⚪⚪⚪ <span style="color:purple">All levels
-{% elsif tutorial.level == 1 %}
-  ⚫⚪⚪⚪⚪ <span style="color:green">Beginner
-{% elsif tutorial.level == 2 %}
-  ⚫⚫⚪⚪⚪ <span style="color:green">Beginner
-{% elsif tutorial.level == 3 %}
-  ⚫⚫⚫⚪⚪ <span style="color:orange">Advanced
-{% elsif tutorial.level == 4 %}
-  ⚫⚫⚫⚫⚪ <span style="color:orange">Advanced
-{% elsif tutorial.level == 5 %}
-  ⚫⚫⚫⚫⚫ <span style="color:red">Expert
-{% endif %} </span></h4>
-  <ul>
-  {% for lesson in tutorial.lessonsContent %}
-    <li>{{ lesson | markdownify }}</li>
-  {% endfor %}
-  </ul>
-  </blockquote>
-{% endfor %}

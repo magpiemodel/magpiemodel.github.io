@@ -1,10 +1,11 @@
 ---
 layout: tutorial
 title:  GAMS code, modules & realizations
+image: assets/images/generic/pic02.jpg
 shortID: gams
-lastUpdated:   2024-04-08
+lastUpdated:   2022-03-06
 model: MAgPIE
-modelVersion: 4.7.2
+modelVersion: 4.4.0
 author:
   - kk
   - fb
@@ -33,7 +34,7 @@ interdependence and more detailed information can be found in our
 Here, we want to shortly draw your attention to the ‘main line’ of
 module interdependence:
 
-<img src="../assets/img/magpie_model.gif" alt="centered image" width="450"/>
+<img src="../assets/images/tutorials/magpie_model.gif" alt="centered image" width="450"/>
 
 - The future projections of population and GDP for given scenario
   assumptions represent the main drivers of the model.
@@ -69,13 +70,14 @@ When you open the `modules` folder, you see a long list of the individual
 modules and the `include.gms` file that ensures the inclusion of all modules into the
 `full.gms`. All modules are built similarly and follow the same structure:
 
-![structure of any module](../assets/img/module_struc.png)
+![structure of any module](../assets/images/tutorials/module_struc.png)
 
   - An input folder with overarching input files for all realizations
   - Realization folders containing the source code of each realization
   - The `modules.gms` file with the module description and listing of all
     realizations
-
+  - Several `[realization_name].gms` files with the realization description
+    that links to the specific source code
 
 New realizations can be added by keeping the same structure (more in
 [this tutorial](7-advanced-changecode)). In that sense, MAgPIE is easily extendable.
@@ -90,18 +92,17 @@ Note that not every gms-file is needed in every realization.
 
 | gms.file         | function                                                                                                                             |
 | :--------------- | :----------------------------------------------------------------------------------------------------------------------------------- |
-| declarations.gms | Declares all variables, equations, and parameters that are central to the realization                                                  |
-| equations.gms    | Contains functional relationships that have to be fulfilled within the optimization                                                |
+| declarations.gms | Declares all variables, equations, and parameters that are central to the realization.                                                  |
+| equations.gms    | Contains functional relationships that have to be fulfilled within the optimization.                                                 |
 | input.gms        | Loads input from `any_module/input` or `any_module/a_realization/input`                                                              |
 | sets.gms         | Lists sets that are used (mainly) within this specific realization or are needed for interfaces defined within this realilzation     |
-| preloop.gms      | Includes calculations to be executed before the model run                                                                           |
-| presolve.gms     | Includes calculations to be executed before each time step                                                                          |
-| postsolve.gms    | Includes calculations to be executed after each time step and defines output                                                        |
-| nl\_fix.gms      | Fixes non-linear behaviour to linear behavior                                                                                       |
-| nl\_release.gms  | Releases restrictions to linear behavior again                                                                                      |
+| preloop.gms      | Includes calculations to be executed before the model run.                                                                           |
+| presolve.gms     | Includes calculations to be executed before each time step.                                                                          |
+| postsolve.gms    | Includes calculations to be executed after each time step and defines output.                                                        |
+| nl\_fix.gms      | Fixes non-linear behaviour to linear behavior.                                                                                       |
+| nl\_release.gms  | Releases restrictions to linear behavior again.                                                                                      |
 | scaling.gms         | Lists the expected order of magnitude of specific variables calculated in this model to improve the efficiency of the run|   
 | not\_used.txt    | Lists interfaces (declared in other modules) that are not used within this realization, but that are in other realizations of the same module |
-| realization.gms  | Contains the realization description that links to the specific source code |
 
 ### Coding etiquette variable and parameter naming
 
@@ -152,4 +153,4 @@ Suffixes indicate the level of aggregation of an object:
     _glo global aggregation (exception)
 
 ### Workshop Material
-You will find the slides used in the 2024 workshop [here]("./assets/slides/GAMS code, modules & realizations.pptx").
+You will find the slides used in the workshop [here](../assets/pdf/GAMScode.pdf).

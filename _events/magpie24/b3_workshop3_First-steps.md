@@ -1,8 +1,9 @@
 ---
 layout: event
-title:  "Workshop 3 - First steps (hybrid)"
-event_start:   "2024-04-11T10:00:00+02:00"
-event_end:     "2024-04-11T12:00:00+02:00"
+workshopID: 24
+title:  "Workshop 3 - First steps"
+event_start:   "2024-04-11T09:00:00+01:00"
+event_end:     "2024-04-11T11:00:00+01:00"
 agenda:
   - title: Welcome back
     length: 5

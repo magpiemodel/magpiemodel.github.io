@@ -2,6 +2,7 @@
 layout: post
 title:  "Call for Contributions online"
 date:   2021-10-13 10:00:00 +0200
+image: assets/images/generic/pic04.jpg
 author: jpd
 categories: magpie22
 published: false
