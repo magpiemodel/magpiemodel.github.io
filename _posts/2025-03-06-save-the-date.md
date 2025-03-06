@@ -6,7 +6,7 @@ image: assets/images/generic/pic03.jpg
 author: jpd
 categories: magpie25
 published: true
-description: "Announcing the dates for the MAgPIE25 workshop & stories event."
+description: "The dates for the MAgPIE25 workshop & stories event are out!"
 ---
 
 ### **Jun 16<sup>th</sup> - Jun 18<sup>th</sup> 2025** MAgPIE25 workshop & stories
