@@ -11,7 +11,7 @@ description: "The dates for the MAgPIE25 workshop & stories event are out!"
 
 ### **Jun 16<sup>th</sup> - Jun 18<sup>th</sup> 2025** MAgPIE25 workshop & stories
 
-After our successful [MAgPIE] training workshop last year, it is time again for next round. The next workshop and stories event is scheduled from **Jun 16<sup>th</sup> to Jun 18<sup>th</sup> 2025**, please save the date. Like last year we plan to organize the event in hybrid allowing both virtual as well as physical participation at the event. Event location will be again at the Telegrafenberg in [Potsdam at the Potsdam Institute for Climate Impact Research (PIK)](http://pik-potsdam.de)
+After our successful [MAgPIE] training workshop last year, it is time again for the next round. The next workshop and stories event is scheduled from **Jun 16<sup>th</sup> to Jun 18<sup>th</sup> 2025**, please save the date. Like last year we plan to organize the event in hybrid allowing virtual as well as physical participation at the event. Event location will be again at the Telegrafenberg in [Potsdam at the Potsdam Institute for Climate Impact Research (PIK)](http://pik-potsdam.de)
 
 As in the last years the workshop will most likely be preceded by a virtual pre event to help with the installation of the required tools and will be based on the [MAgPIE tutorials] available online and presented by various members of the [MAgPIE] development team, giving you the opportunity to not only getting to know the model but also the team behind it. Sessions will address different levels of experience from absolute beginners to more experienced MAgPIE users and participants are encouraged to select sessions based on their own experience level and interest.
 
