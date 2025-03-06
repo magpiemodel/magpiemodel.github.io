@@ -10,7 +10,7 @@ show_tile: true
 intro_header: News about MAgPIE
 intro_text: 'Keep up to date with all the developments surrounding the MAgPIE model'
 button_label: Read article 
-button_target: _blank
+button_target: _self
 outtro_header: Further information
 outtro_text: 'If you are seeking further information you can have a look at our news page where you can find recent updates of the MAgPIE universe including announcements of upcoming events.'
 ---
