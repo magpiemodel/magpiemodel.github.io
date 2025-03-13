@@ -45,10 +45,10 @@ collections:
 # You need to restart jekyll for changes to have an effect
 socials:
   envelope: mailto:magpie@pik-potsdam.de
-  home: https://www.pik-potsdam.de/en/institute/departments/transformation-pathways/research/landuse
+  home: https://www.pik-potsdam.de/en/institute/labs/landuse
   github: https://github.com/magpiemodel/magpie
   wikipedia-w: https://en.wikipedia.org/wiki/MAgPIE
-  book: https://rse.pik-potsdam.de/doc/magpie/4.8.2
+  book: https://rse.pik-potsdam.de/doc/magpie/4.9.1
  
 # build settings
 markdown: kramdown
