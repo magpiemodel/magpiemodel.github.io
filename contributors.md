@@ -210,6 +210,13 @@ data:
     affiliation: 
       - pik
     status: active
+  - firstName: Georg
+    lastName: Schröter
+    id: gs
+    image: assets/images/team/schroeter.jpg
+    affiliation: 
+      - pik 
+    status: active
 affiliations:
   - id: pik
     name: Potsdam Institute for Climate Impact Research (PIK)
