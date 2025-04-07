@@ -87,7 +87,7 @@ layout: post
 </table>
 {% endif %}
 
-{% assign timetable = site.pages | where_exp: "workshop", "workshop.title == 'Timetable' and workshop.workshopID == page.workshopID" %}
+{% assign timetable = site.pages | where_exp: "workshop", "workshop.title == 'Timetable' and workshop.workshopID == page.workshopID" | first %}
 <p>
 {% if page.previous.url %}
   <a href="{{page.previous.url}}">&lt; previous</a>
