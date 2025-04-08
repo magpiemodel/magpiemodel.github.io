@@ -28,11 +28,11 @@ layout: post
   <tbody>
 {% for item in page.agenda %}
     <tr>
-      <td style="width:15%">{{item.length}}min</td>
+      <td style="width: 5em">{{item.length}}min</td>
       {% if item.shortID %}
       {% assign elem = site.tutorials | where: "shortID", item.shortID | first %}
-      <td><a href="{{ elem.url }}">{{ elem.title }}</a></td>
-      <td>{% if elem.level == 0 %}
+      <td style="width:50%"><a href="{{ elem.url }}">{{ elem.title }}</a></td>
+      <td style="width:5em">{% if elem.level == 0 %}
           ⚪⚪⚪⚪⚪ <span style="color:purple">All levels
         {% elsif elem.level == 1 %}
           ⚫⚪⚪⚪⚪ <span style="color:green">Beginner
@@ -66,7 +66,7 @@ layout: post
         {% endif %}
         </td>
       {% endif %}
-      <td>
+      <td style="width:5em">
       {% assign person = people.data | where: "id", item.presenter | first %}
       <span class="nowrap">{% if person.url %}
         <a href="{{person.url}}">{{person.firstName}} {{person.lastName}}</a>
