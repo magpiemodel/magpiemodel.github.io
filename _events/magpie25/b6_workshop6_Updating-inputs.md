@@ -7,12 +7,12 @@ event_end:     "2025-06-18T15:00:00+01:00"
 agenda:
   - title: Welcome back
     length: 5
-    presenter: jpd 
-  - shortID: madrat
-    length: 90 
-    presenter: NN
+    presenter: jpd
   - shortID: magclass 
     length: 75 
+    presenter: NN 
+  - shortID: madrat
+    length: 90 
     presenter: NN
 ---
 

@@ -28,7 +28,7 @@ layout: post
   <tbody>
 {% for item in page.agenda %}
     <tr>
-      <td>{{item.length}}min</td>
+      <td style="width:15%">{{item.length}}min</td>
       {% if item.shortID %}
       {% assign elem = site.tutorials | where: "shortID", item.shortID | first %}
       <td><a href="{{ elem.url }}">{{ elem.title }}</a></td>
@@ -47,7 +47,7 @@ layout: post
         {% endif %}</span>
       </td>
       {% else %}
-        <td colspan="2">
+        <td colspan="2" style="width:60%">
         {% if item.abstract %}
         <details>
           <summary>{% if item.url %}
