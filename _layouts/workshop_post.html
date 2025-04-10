@@ -31,9 +31,12 @@
 
 		<div class="content">
 
-		<a href = {{ home.url }} >Home</a> |
-		<a href = "./timetable.html">Timetable</a> |
-		<a href = "./registration.html">Register</a>
+		<a href = {{ home.url }} >Home</a>
+		{% for element in workshopPages  %}
+		{% if element.home != true and element.hidden != true %}
+		 | <a href = {{ element.url }}>{{element.title}}</a>
+		{% endif %}
+		{% endfor %}
 
 		</div>
 		</center>
@@ -48,8 +51,13 @@
 
 <section id="two" class="tile">
 	<h3>Contents</h3>
+<section>
+	<a href="{{home.url}}" target = "{{ page.button_target }}"">
+		Home
+	</a>
+</section>
 {% for element in workshopPages  %}
-{% if element.home != true  %}
+{% if element.home != true and element.hidden != true %}
 <section>
 		<a href="{{element.url}}" target = "{{ page.button_target }}"">
 			{{ element.title }}
