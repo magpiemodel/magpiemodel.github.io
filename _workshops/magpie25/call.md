@@ -4,7 +4,7 @@ title: Call for Contributions
 shortID: workshop
 year: 25
 workshopID: 25
-published: false
+published: true
 ---
 
 #### submission deadline: 16.05.2025
@@ -32,16 +32,16 @@ Submissions will be reviewed in a *single-blind* process, which means that revie
 
 To submit your proposed talk please fill out our submission form. The form will ask you to provide your contact details along with a short description of your proposed contribution (max 1000 characters).
 
-Click **[->here<-](submission)** for submission.
+Click **[->here<-](submission_link)** for submission.
 
 The event is free of charge. We are looking forward to receiving your submission!
 
 
 ### Timeline
 
-* submission deadline  **16.05.2025** 
-* acceptance notification before 23.05.2025
-* final program available 06.06.2025
+* submission deadline  **09.05.2025** 
+* acceptance notification before 16.05.2025
+* final program available 30.05.2025
 * MAgPIE workshop & stories **16.06. - 18.06.2025** 
 
 ### Contact

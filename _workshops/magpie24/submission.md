@@ -80,12 +80,12 @@ Acceptance notifications are planned to be send no later than 15th of March 2024
   The workshop will be executed based on the teleconferencing system Zoom provided by Zoom Video Communications, Inc. ("Zoom"), 55 Almaden Boulevard, 6th Floor, San Jose, CA 95113. In individual cases, we are planning recordings of speakers. In these cases, we will inform you about it separately. If you participate in discussions, you and your contributions to the discussion by audio, video and/or chat will be a part of the conference session and will be streamed using the Zoom infrastructure and might be transferred to the USA or other Zoom computing centers in the world. We will not do any recordings of participant discussions sessions. At the same time, in deference to the other participants of the conference and to ensure compliance with EU data protection law, we kindly ask you to not film, take photos, record or further publish any material of the conference and the following discussion. Also please do not forward the Zoom link to third parties. Your participation in these Zoom sessions is not required by law or contract. If you do not provide us with your personal data for the purpose of these meetings, you cannot participate in the conference. If your personal data are processed, then you are a data subject within the meaning of the EU-GDPR and you shall have rights vis-à-vis the Controller.
   </div>
   <div class="form-group">
-    <input type="checkbox" name="dataprotectionpolicy" required>
-    <label>I have read the privacy policy statement and consent to it</label>
+    <input type="checkbox" id="dataprotectionpolicy" name="dataprotectionpolicy" required>
+    <label for="dataprotectionpolicy">I have read the privacy policy statement and consent to it</label>
   </div>
   <div class="form-group">
-    <input type="checkbox" name="publishabstract" required>
-    <label>I hereby confirm that my abstract can be published on the conference website.</label>
+    <input type="checkbox" id="publishabstract" name="publishabstract" required>
+    <label for="publishabstract">I hereby confirm that my abstract can be published on the conference website.</label>
   </div>
 
   <button type="submit" class="btn btn-primary">Submit</button>
