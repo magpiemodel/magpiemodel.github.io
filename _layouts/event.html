@@ -26,6 +26,11 @@ layout: post
 {% if page.agenda %}
 <table>
   <tbody>
+    <tr>
+      <th style="width:5em">Length</th>
+      <th colspan="2" style="width:60%">Title</th>
+      <th style="width:5em">Presenter</th>
+    </tr>
 {% for item in page.agenda %}
     <tr>
       <td>{{item.length}}min</td>

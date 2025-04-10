@@ -5,7 +5,7 @@ published: true
 home: true
 archived: false
 workshopID: 25
-description: The MAgPIE workshop series will return in 2025!
+description: The next workshop & stories event MAgPIE25 will take place again at the Potsdam Institute for Climate Impact Research (PIK) as well as online. Sessions will take place from Monday 16th till Wednesday 18th of June 2025. Registration is open!
 image: assets/images/generic/pic03.jpg
 ---
 
