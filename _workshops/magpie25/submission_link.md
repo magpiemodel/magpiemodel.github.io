@@ -2,6 +2,7 @@
 layout: workshop_post
 title: Submission
 published: true
+hidden: true
 workshopID: 25
 redirect_to:
  - https://rse.pik-potsdam.de/magpie/registration/MAgPIE_Submission.html

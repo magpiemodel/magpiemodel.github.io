@@ -31,10 +31,12 @@
 
 		<div class="content">
 
-		<a href = {{ home.url }} >Home</a> |
-		<a href = "./call.html">Call for Contributions</a> |
-		<a href = "./timetable.html">Timetable</a> |
-		<a href = "./registration.html">Register</a>
+		<a href = {{ home.url }} >Home</a>
+		{% for element in workshopPages  %}
+		{% if element.home != true and element.hidden != true %}
+		 | <a href = {{ element.url }}>{{element.title}}</a>
+		{% endif %}
+		{% endfor %}
 
 		</div>
 		</center>

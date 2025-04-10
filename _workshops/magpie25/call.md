@@ -1,7 +1,7 @@
 ---
 layout: workshop_post
 title: Call for Contributions
-shortID: workshop
+shortID: call
 year: 25
 workshopID: 25
 published: true
