@@ -27,11 +27,11 @@ published: false
 
 Welcome to the MAgPIE25 stories submission page. Please enter your details and shortly describe your proposed contribution to the stories event. For more information please check the [MAgPIE25 stories call for contributions](call).
 
-Acceptance notifications are planned to be send no later than 25th of April 2025. Please contact us via <magpie@pik-potsdam.de> if you have not heard back from us till then or have questions about the procedure.
+Acceptance notifications are planned to be send no later than 23rd of May 2025. Please contact us via <magpie@pik-potsdam.de> if you have not heard back from us till then or have questions about the procedure.
 
 **ATTENTION: We got some reports that the submission form is not working properly in combination with some content blocker browser plugins. In these cases you won't see any error message and you will get forwarded to the thank you page, but the contribution is not submitted. To make sure that your submission is reaching us, we recommend to also send in parallel a mail with title and abstract to <magpie@pik-potsdam.de>. Sorry for the inconvenience!**
 
-<form class="form" accept-charset="UTF-8" action="https://rse.pik-potsdam.de/magpie/registration/2024contribution.php" method="POST" enctype="multipart/form-data">
+<form class="form" accept-charset="UTF-8" action="https://rse.pik-potsdam.de/magpie/registration/2025contribution.php" method="POST" enctype="multipart/form-data">
 
   <div class="form-group">
     <label>Presenter Name<sup>*</sup></label>
