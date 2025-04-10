@@ -4,6 +4,7 @@ title: Thank you for your submission!
 shortID: workshop
 workshopID: 25
 published: true
+hidden: true
 year: 25
 ---
 

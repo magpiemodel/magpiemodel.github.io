@@ -42,7 +42,7 @@ The event is free of charge. We are looking forward to receiving your submission
 * submission deadline  **09.05.2025** 
 * acceptance notification before 16.05.2025
 * final program available 30.05.2025
-* MAgPIE workshop & stories **16.06. - 18.06.2025** 
+* MAgPIE25 workshop & stories **16.06. - 18.06.2025** 
 
 ### Contact
 
