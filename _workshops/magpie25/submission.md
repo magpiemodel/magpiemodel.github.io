@@ -1,6 +1,5 @@
 ---
 layout: workshop_post
-shortID: workshop
 year: 25
 workshopID: 25
 published: false
