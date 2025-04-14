@@ -5,6 +5,7 @@ date:   2025-03-28 16:00:00 +0200
 image: assets/images/generic/pic05.jpg
 author: gs
 categories: magpie25
+description: "MAgPIE25 workshop & stories is now open. We are looking forward to meet you at the workshop!"
 published: true
 ---
 
