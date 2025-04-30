@@ -14,7 +14,7 @@ requirements:
   - R installed (<https://www.r-project.org/>)
   - Libraries `pandoc` and `pandoc-citeproc` installed (<https://pandoc.org>)
 lessonsContent:
-  - Explaination of in-code documentation
+  - Explanation of in-code documentation
   - goxygen installation guide (for documentation compilation)
   - Properly reading MAgPIE documentation
   - Updating model documentation
