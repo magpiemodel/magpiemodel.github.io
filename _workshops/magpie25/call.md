@@ -6,7 +6,7 @@ workshopID: 25
 published: true
 ---
 
-#### submission deadline: 16.05.2025
+#### submission deadline: ~~09.05.2025~~ 16.05.2025
 
 Since the first open-source release of [MAgPIE] in 2019 the community around the model has started to grow. To foster the community aspect and to create a space for productive exchange we will also have this years **MAgPIE workshop** in **June 2025** combined with two **MAgPIE stories** sessions dedicated to sharing specific experiences of using [MAgPIE]. The aim is to give room for everyone to share their [MAgPIE]-related research and to allow the community to get an overview about the various currently ongoing activities.
 
@@ -38,8 +38,8 @@ The event is free of charge. We are looking forward to receiving your submission
 
 ### Timeline
 
-* submission deadline  **09.05.2025** 
-* acceptance notification before 16.05.2025
+* submission deadline  ~~09.05.2025~~ **16.05.2025** 
+* acceptance notification before ~~16.05.2025~~ 23.05.2025
 * final program available 30.05.2025
 * MAgPIE25 workshop & stories **16.06. - 18.06.2025** 
 
