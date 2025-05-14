@@ -8,7 +8,7 @@ agenda:
   - title: Welcome back
     length: 5
     presenter: jpd 
-  - shortID: start
+  - shortID: renv
     length: 40
     presenter: NN
   - shortID: config
