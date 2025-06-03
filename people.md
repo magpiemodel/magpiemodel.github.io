@@ -93,4 +93,8 @@ data:
     lastName: Tommey
     id: jt
     url: https://www.pik-potsdam.de/members/jaketo
+  - firstName: Georg
+    lastName: Schröter
+    id: gs
+    url: https://www.pik-potsdam.de/members/georgsc/homepage-de
 ---
