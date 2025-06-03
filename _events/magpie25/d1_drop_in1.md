@@ -2,8 +2,8 @@
 layout: event
 workshopID: 25
 title:  "Drop-in Session- Workshop 1/2"
-event_start:   "2025-06-17T16:00:00+01:00"
-event_end:     "2025-06-17T17:00:00+01:00"
+event_start:   "2025-06-17T17:00:00+02:00"
+event_end:     "2025-06-17T18:00:00+02:00"
 agenda:
   - title: Interactive help session
     length: 60

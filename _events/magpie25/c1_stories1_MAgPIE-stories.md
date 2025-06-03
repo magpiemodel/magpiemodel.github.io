@@ -2,8 +2,8 @@
 layout: event
 workshopID: 25
 title:  "Stories 1 - MAgPIE stories #1"
-event_start:   "2025-06-16T14:30:00+01:00"
-event_end:     "2025-06-16T16:00:00+01:00"
+event_start:   "2025-06-16T15:30:00+02:00"
+event_end:     "2025-06-16T17:00:00+02:00"
 agenda:
   - title: Welcome
     length: 10

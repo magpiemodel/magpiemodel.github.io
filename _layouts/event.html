@@ -21,6 +21,9 @@ layout: post
 
 <p>{{ content | markdownify}}</p>
 
+<p><b>{{page.event_start | date: "%a %-d %B %Y %H:%M"}} - {{page.event_end | date: "%H:%M"}} (local time)</b></p>
+
+
 {% assign people = site.pages | where: "shortID", "people" | first %}
 
 {% if page.agenda %}

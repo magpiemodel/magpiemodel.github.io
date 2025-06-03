@@ -2,8 +2,8 @@
 layout: event
 workshopID: 25
 title:  "Workshop 3 - First steps"
-event_start:   "2025-06-17T09:00:00+01:00"
-event_end:     "2025-06-17T11:00:00+01:00"
+event_start:   "2025-06-17T10:00:00+02:00"
+event_end:     "2025-06-17T12:00:00+02:00"
 agenda:
   - title: Welcome back
     length: 5

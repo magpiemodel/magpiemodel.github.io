@@ -2,15 +2,17 @@
 layout: event
 workshopID: 25
 title:  "Workshop 6 - Updating input data"
-event_start:   "2025-06-18T12:00:00+01:00"
-event_end:     "2025-06-18T15:00:00+01:00"
+event_start:   "2025-06-18T13:00:00+02:00"
+event_end:     "2025-06-18T16:00:00+02:00"
 agenda:
   - title: Welcome back
     length: 5
     presenter: jpd
   - shortID: magclass 
-    length: 75 
-    presenter: jpd 
+    length: 70
+    presenter: jpd
+  - title: break
+    length: 15 
   - shortID: madrat
     length: 90 
     presenter: dc

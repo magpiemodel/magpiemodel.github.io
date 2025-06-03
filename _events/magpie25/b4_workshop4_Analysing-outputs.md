@@ -2,8 +2,8 @@
 layout: event
 workshopID: 25
 title:  "Workshop 4 - Analyse outputs"
-event_start:   "2025-06-17T12:00:00+01:00"
-event_end:     "2025-06-17T14:00:00+01:00"
+event_start:   "2025-06-17T13:00:00+02:00"
+event_end:     "2025-06-17T15:00:00+02:00"
 agenda:
   - title: Welcome back
     length: 5

@@ -2,8 +2,8 @@
 layout: event
 workshopID: 25
 title:  "Workshop 1 - What is MAgPIE"
-event_start:   "2025-06-16T08:00:00+01:00"
-event_end:     "2025-06-16T11:00:00+01:00"
+event_start:   "2025-06-16T09:00:00+02:00"
+event_end:     "2025-06-16T12:00:00+02:00"
 
 agenda:
   - title: Registration
@@ -16,6 +16,8 @@ agenda:
     url: https://slides.com/jandietrich/magpie-4-10/
     length: 50
     presenter: jpd
+  - title: break
+    length: 20
   - shortID: git
     length: 40
     presenter: gs
