@@ -43,7 +43,7 @@ published: true
 ---
 
 ## In-code documentation
-MAgPIE uses in-doce documentation, which means that the code documentation is
+MAgPIE uses in-code documentation, which means that the code documentation is
 not written separately, but is instead part of the code base itself. A sharable
 documenation is created by running a documentation extraction tool (in our cases
 [goxygen]) over the code base.
