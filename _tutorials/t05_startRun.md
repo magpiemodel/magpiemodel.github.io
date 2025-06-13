@@ -94,8 +94,8 @@ To run a the code within your terminal you choose **`Direct execution`**
     download data.
   - **`test runs`** will execute the necessary test runs before a pull
     request is done GitHub.
-    **`forestry`** starts a MagPIE run with the forestry calculations made endogenously with "SSP2" and "NPI" settings.
-    **`compilation check`** downloads inputs and compiles the main.gms (nice option to check if MAgPIE is good to go)
+  - **`forestry`** starts a MagPIE run with the forestry calculations made endogenously with "SSP2" and "NPI" settings.
+  - **`compilation check`** downloads inputs and compiles the main.gms (nice option to check if MAgPIE is good to go)
 
 
 Also, you will find the following sub-folders with additional starting
