@@ -3,9 +3,9 @@ layout: tutorial
 title:  Starting a MAgPIE run
 shortID: start
 image: assets/images/generic/pic05.jpg
-lastUpdated: 2020-11-20
+lastUpdated: 2025-06-13
 model: MAgPIE
-modelVersion: 4.0.0
+modelVersion: 4.10.1
 author:
   - emb
   - kk
@@ -24,7 +24,7 @@ published: true
 # Introduction
 
 Whereas MAgPIE’s inner core is written in GAMS, it comes with an outer
-layer for data handling in R. This also applies to the start of MAgPIE.
+layer for data handling in R ([renv](https://rstudio.github.io/renv/)). This also applies to the start of MAgPIE.
 Moreover, this nested structure leads to some characteristics in code
 execution, that should be understood to do basic troubleshooting.
 
@@ -43,28 +43,22 @@ or from within R
 source("start.R")
 ```
 
-This will give you a list of available run scripts you can choose from,
+After downloading and installing [renv](https://rstudio.github.io/renv/) the first time you run MAgPIE, or checking for updates in subsequent runs, `Rscript start.R` will give you a list of available run scripts you can choose from,
 looking as follows:
 
 ``` bash
-Global .Rprofile loaded!
-
-Attaching package: 'gms'
-
-The following objects are masked from 'package:lucode2':
-
-    get_info, getfiledestinations
-
 
 Main selection of MAgPIE start scripts
  ----------------------------------------------
  -> Scripts in this selection are actively   <-
  ->     managed and work out of the box      <-
  ----------------------------------------------
- 1:       default | start run with default.cfg settings
- 2:    check code | Checking code for consistency issues
- 3: download data | just download default.cfg input data
- 4:     test runs | test routine to run for new pull requests
+ 1:           default | start run with default.cfg settings
+ 2:        check code | Checking code for consistency issues
+ 3:     download data | just download default.cfg input data
+ 4:         test runs | test routine to run for new pull requests
+ 5:          forestry | start run with Forestry (Endogenous)
+ 6: compilation check | download input and compile main.gms
 
 Alternatively, choose a start script from another selection:
  5:         extra | Additional MAgPIE start scripts
@@ -100,6 +94,9 @@ To run a the code within your terminal you choose **`Direct execution`**
     download data.
   - **`test runs`** will execute the necessary test runs before a pull
     request is done GitHub.
+    **`forestry`** starts a MagPIE run with the forestry calculations made endogenously with "SSP2" and "NPI" settings.
+    **`compilation check`** downloads inputs and compiles the main.gms (nice option to check if MAgPIE is good to go)
+
 
 Also, you will find the following sub-folders with additional starting
 scripts:
@@ -146,13 +143,14 @@ includes the following steps:
 
 | step                               | tasks:                                                                                                                  | embedded in:                                              |
 | :--------------------------------- | :---------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------- |
-| 1\. job submission                 | load chosen start script, apply chosen submission type                                                                  | start.R                                                   |
-| \- lock model folder -             | create `.lock` file to stop co-execution                                                                              | scripts/start\_functions.R                                |
-| 2\. configurate run and code check | load libraries, configure settings, run `gms::settingsCheck()` to check code for consistency                            | scripts/start\_function.R                                 |
-| 3\. input data                     | check whether data download is nessessary, download data                                                                | scripts/start\_functions.R (`gms::download_distribute()`) |
-| 4\. npi/ndc calculation            | calculate for specific cluster and regional settings the representation of land based npi/ndc policies within the model | scripts/npi\_ndc/start\_npi\_ndc.R                        |
-| 5\. yield calibration              | calculates a regional yield calibration factor based on a pre run of magpie to be inline with FAO production data       | scripts/calibration/calc\_calib.R                         |
-| 6\. gams code submission           | execute gams command to final run the gams model, start post-processing after run finished                              | scripts/run\_submit/submit.R                              |
+| 1\. renv download and/or update                 | download necessary R packages and creates the .../XX_renv.lock file                                                                 | scripts/start\_functions.R|
+| 2\. job submission                 | load chosen start script, apply chosen submission type                                                                  | start.R                                                   |
+| 3\. configurate run and lock model folder | apply settings on config and creates `.lock` file to stop co-execution                                                                              | scripts/start\_functions.R                                |
+| 4\. input data                     | check whether data download is nessessary, download data                                                                | scripts/start\_functions.R (`gms::download_distribute()`) |
+| 5\. code check | run `gms::settingsCheck()` to check code for consistency                            | scripts/start\_function.R                                 |
+| 6\. npi/ndc calculation            | calculate for specific cluster and regional settings the representation of land based npi/ndc policies within the model | scripts/npi\_ndc/start\_npi\_ndc.R                        |
+| 7\. land conversion costs calibration | calculates a regional land conversion calibration factor based on a pre run of magpie to be inline with FAO cropland area data       | scripts/calibration/landconversion\_cost.R                         |
+| 8\. gams code submission           | execute gams command to final run the gams model, start post-processing after run finished                              | scripts/run\_submit/submit.R                              |
 | \- unlock model folder -           | delete `.lock` file, be ready for next call of start script                                                           | scripts/start\_functions.R                                |
 
 Several of these steps will generate terminal output.
@@ -205,12 +203,12 @@ Here we list some troubles and where to find them:
 
 | step     |                                                                  | possible issues:                                                             |
 | :------- | :--------------------------------------------------------------- | :--------------------------------------------------------------------------- |
-| pre1.    | job submission                                                   | General R issues (missing PATH variables)                                    |
+| pre1.    | job submission                                                   | General R issues (missing PATH variables), lacking permissions to write in the folders                                    |
 |          | \- lock model folder -                                           | `.lock` folder not deleted after termination of a run                        |
 | pre2.    | configurate run and code check                                   | missing libraries, failed code check (after change in the code)              |
-| pre3.    | input data                                                       | no internet connection, input data not available (check spelling)            |
+| pre3.    | input data                                                       | no internet connection, input data not available (check spelling), missing permissions to download from repositories            |
 | pre4.    | npi/ndc calculation                                              |                                                                              |
-| pre5.    | yield calibration                                                | general gams issues (compilation or solver failures, missing PATH variables) |
+| pre5.    | land conversion costs calibration                                                | general gams issues (compilation or solver failures, missing PATH variables) |
 | pre6.    | gams code submission                                             |                                                                              |
 |          | \- unlock model folder -                                         |                                                                              |
 | gams1.   | code complilation                                                | general gams issues (compilation or solver failures, missing PATH variables) |
@@ -220,7 +218,7 @@ Here we list some troubles and where to find them:
 | gams2.3. | iterate food demand and magpie model till convergence is reached |                                                                              |
 | post1.   | Submit run statistics                                            | No access to repository (not critical)                                       |
 | post2.   | Execute configured output scripts                                |                                                                              |
-| post2.1. | rds report                                                       | missing libraries (specially gdx, gdxrrw, magpie4)                           |
+| post2.1. | rds report                                                       | missing libraries (specially gdx2, gdxrrw, magpie4)                           |
 | post2.2. | validation                                                       | latexrelated r-extension are not working or missing                          |
 | post2.3. | disaggregation                                                   |                                                                              |
 | post2.4. | (others)                                                         | r extension are missing (e.g. ncdf)                                          |
