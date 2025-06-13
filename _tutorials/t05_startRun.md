@@ -24,7 +24,7 @@ published: true
 # Introduction
 
 Whereas MAgPIE’s inner core is written in GAMS, it comes with an outer
-layer for data handling in R ([renv](https://rstudio.github.io/renv/)). This also applies to the start of MAgPIE.
+layer for data handling in R (check [renv](https://rstudio.github.io/renv/)). This also applies to the start of MAgPIE.
 Moreover, this nested structure leads to some characteristics in code
 execution, that should be understood to do basic troubleshooting.
 
@@ -43,7 +43,7 @@ or from within R
 source("start.R")
 ```
 
-After downloading and installing [renv](https://rstudio.github.io/renv/) the first time you run MAgPIE, or checking for updates in subsequent runs, `Rscript start.R` will give you a list of available run scripts you can choose from,
+After downloading and installing [renv](https://rstudio.github.io/renv/) the first time you run MAgPIE, or checking for renv-related updates in subsequent runs, `Rscript start.R` will give you a list of available run scripts you can choose from,
 looking as follows:
 
 ``` bash
