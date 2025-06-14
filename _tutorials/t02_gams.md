@@ -3,14 +3,15 @@ layout: tutorial
 title:  GAMS code, modules & realizations
 image: assets/images/generic/pic02.jpg
 shortID: gams
-lastUpdated:   2022-03-06
+lastUpdated:   2025-06-14
 model: MAgPIE
-modelVersion: 4.4.0
+modelVersion: 4.10.1
 author:
   - kk
   - fb
   - am
   - emb
+  - iw
 level: 2
 requirements:
   - GAMS Installed
@@ -22,14 +23,14 @@ lessonsContent:
 published: true
 ---
 
-## Preface: Structure of the MAgPIE Model
+## Preface: General structure of the MAgPIE Model
 
 MAgPIE (Model for Agricultural Production and its Impacts on the
 Environment) is a modular open source framework for modeling global
 land systems. Before looking into the code structure, we want you to
 understand the basic dependencies of what we call ‘modules’. The full
 interdependence and more detailed information can be found in our
-[model documentation](https://rse.pik-potsdam.de/doc/magpie/4.4.0/)
+[model documentation](https://rse.pik-potsdam.de/doc/magpie/4.10.1/)
 
 Here, we want to shortly draw your attention to the ‘main line’ of
 module interdependence:
@@ -53,7 +54,7 @@ module interdependence:
     - assessments of impacts and policy interactions (upper part)
     - details of the production chain (lower part).
 
-## Introduction
+## The MAgPIE GAMS code: Model components
 
 The inner core of the MAgPIE model is written in GAMS. For the model execution,
 all parts of the code are put into a single file, the `full.gms`
@@ -64,7 +65,7 @@ of each module. The configuration settings that are set in `default.cfg`
 (or inside the run start scripts) determine the realization entering the
 `full.gms`.  
 
-##  Structure of a module
+###  Structure of a module
 
 When you open the `modules` folder, you see a long list of the individual
 modules and the `include.gms` file that ensures the inclusion of all modules into the
@@ -104,7 +105,7 @@ Note that not every gms-file is needed in every realization.
 | scaling.gms         | Lists the expected order of magnitude of specific variables calculated in this model to improve the efficiency of the run|   
 | not\_used.txt    | Lists interfaces (declared in other modules) that are not used within this realization, but that are in other realizations of the same module |
 
-### Coding etiquette variable and parameter naming
+## Coding etiquette: Variable and parameter naming
 
 The MAgPIE model structure is built upon the idea that every module
 is autonomous and interacts through a **clearly defined
@@ -126,7 +127,7 @@ The following prefixes are used within the model code:
     p_ Processing parameters - influence optimization and are being influenced by it
     o_ Output parameters - influenced by optimization, but without effect on the optimization
     x_ eXtremely important output parameters - output parameters, that are necessary for the model to run properly (required by external postprocessing). They must not be removed.
-    c_ switches from the config.gms - parameters, that are switches to choose different scenarios
+    c_ Switches from the config.gms - parameters, that are switches to choose different scenarios
     m_ Macros
 
 The prefixes have to be extended in some cases by a second letter:
@@ -152,5 +153,5 @@ Suffixes indicate the level of aggregation of an object:
     _reg regional aggregation (exception)
     _glo global aggregation (exception)
 
-### Workshop Material
+## Workshop Material
 You will find the slides used in the workshop [here](../assets/pdf/GAMScode.pdf).
