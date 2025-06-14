@@ -81,7 +81,7 @@ modules and the `include.gms` file that ensures the inclusion of all modules int
     that links to the specific source code
 
 New realizations can be added by keeping the same structure (more in
-[this tutorial](7-advanced-changecode)). In that sense, MAgPIE is easily extendable.
+[this tutorial](t10_changeCode)). In that sense, MAgPIE is easily extendable.
 
 ### Structure within each realization
 
