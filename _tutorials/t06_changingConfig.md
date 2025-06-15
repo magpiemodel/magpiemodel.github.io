@@ -137,33 +137,32 @@ The following table gives a description of core components from the MAgPIE confi
 Additionally, settings are also explained within the config file, by comments preceeding
 the respective setting.
 
-| No | Config               | Description                                                                           |
-| -: | :------------------- | :------------------------------------------------------------------------------------ |
-|  1 | cfg$title            | Model run title                                                                           |
-|  2 | cfg$model            | Path to the submodel (relative to main model folder)                                  |
-|  3 | cfg$input            | Input data source                                                                     |
-|  4 | cfg$repositories     | Repositories containing input data                                                      |
-|  5 | cfg$force\_download  | Should data be downloaded even if inputs didn’t change?                               |
-|  6 | cfg$force\_replace   | Should existing output folder be replaced if a new run with the same name is started? |
-|  7 | cfg$recalibrate      | Should yields be recalibrated?                                                                     |
-|  8 | cfg$calib\_accuracy  | Accuracy for yield calibration                                                        |
-|  9 | cfg$calib\_maxiter   | Max. iterations if precision goal is not met                                          |
-| 10 | cfg$damping\_factor  | Factor determining new calibration factor’s influences on result                      |
-| 11 | cfg$calib\_cropland  | Switch for cropland calibration                                                       |
-| 12 | cfg$recalc\_npi\_ndc | Settings for NPI/NDC recalculation                                                    |
-| 13 | cfg$policyregions    | National or Sub-national mapping                                                      |
-| 14 | cfg$gms              | List of module settings                                                               |
-| 15 | cfg$sequential       | Whether the runs should be run sequentially or in parallel
-|
-| 16 | cfg$logoption        | Log information                                                                       |
-| 17 | cfg$output           | Output scripts that should be used                                                    |
-| 18 | cfg$results\_folder  | Results folder name                                                                   |
-| 19 | cfg$files2export     | Files copied to output folder                                                         |
-| 20 | cfg$runstatistics    | Folder run statistics location                                                        |
-| 21 | cfg$model\_name      | Name of the overall model                                                             |
-| 22 | cfg$model\_version   | Model version                                                                         |
-| 23 | cfg$developer\_mode  | Developer mode                                                                        |
-| 24 | cfg$debug            | Debugging mode                                                                        |
+| Config               | Description                                                                           |
+| :------------------- | :------------------------------------------------------------------------------------ |
+| cfg$title            | Model run title                                                                       |
+| cfg$model            | Path to the submodel (relative to main model folder)                                  |
+| cfg$input            | Input data source                                                                     |
+| cfg$repositories     | Repositories containing input data                                                    |
+| cfg$force\_download  | Should data be downloaded even if inputs didn’t change?                               |
+| cfg$force\_replace   | Should existing output folder be replaced if a new run with the same name is started? |
+| cfg$recalibrate      | Should yields be recalibrated?                                                        |
+| cfg$calib\_accuracy  | Accuracy for yield calibration                                                        |
+| cfg$calib\_maxiter   | Max. iterations if precision goal is not met                                          |
+| cfg$damping\_factor  | Factor determining new calibration factor’s influences on result                      |
+| cfg$calib\_cropland  | Switch for cropland calibration                                                       |
+| cfg$recalc\_npi\_ndc | Settings for NPI/NDC recalculation                                                    |
+| cfg$policyregions    | National or Sub-national mapping                                                      |
+| cfg$gms              | List of module settings                                                               |
+| cfg$sequential       | Whether the runs should be run sequentially or in parallel                            |
+| cfg$logoption        | Log information                                                                       |
+| cfg$output           | Output scripts that should be used                                                    |
+| cfg$results\_folder  | Results folder name                                                                   |
+| cfg$files2export     | Files copied to output folder                                                         |
+| cfg$runstatistics    | Folder run statistics location                                                        |
+| cfg$model\_name      | Name of the overall model                                                             |
+| cfg$model\_version   | Model version                                                                         |
+| cfg$developer\_mode  | Developer mode                                                                        |
+| cfg$debug            | Debugging mode                                                                        |
 
 
 ## Updating MAgPIE settings
