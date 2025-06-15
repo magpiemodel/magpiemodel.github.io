@@ -58,8 +58,8 @@ module, which guides optimization and is thereby central for the model.
 
 Alongside the ‘main line’ of agricultural production modules, the model
 includes:
-    - Impact assessments and policy interactions (upper part)
-    - Detailed components of the production chain (lower part).
+- Impact assessments and policy interactions (upper part)
+- Detailed components of the production chain (lower part).
 
 ## The MAgPIE GAMS code: Model components
 
