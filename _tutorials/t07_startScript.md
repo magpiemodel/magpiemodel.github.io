@@ -3,146 +3,56 @@ layout: tutorial
 title:  Creating a start script
 shortID: startScript
 image: assets/images/generic/pic07.jpg
-lastUpdated:   2022-03-07
+lastUpdated: 2025-06-15
 model: MAgPIE
-modelVersion: 4.4.0
-authors: Abhijeet Mishra, Michael Windisch, Vartika Singh
+modelVersion: 4.10.0
+authors: Abhijeet Mishra, Michael Windisch, Vartika Singh, Michael Crawford
 level: 3
 requirements:
-  - GAMS Installed, Magpie model folder cloned on local computer
-  - Undertaken Tutorial 4 and 5 and understand how to start model run
+  - GAMS installed, MAgPIE cloned on local machine
+  - Undertaken tutorials 4 and 5 with and understanding of how to start a model run
 lessonsContent:
-  - Understand MAgPIE starting scripts
-  - Create custom starting scripts
+  - The anatomy of a MAgPIE start script
+  - Creating a basic start script
+  - Creating a start script with loops
+  - Familiarization with the `scenario_config.csv` configuration table
 published: true
 ---
 
-## Introduction
+# Introduction
 
-MAgPIE reads its specified configuration file just before starting a
-model run. Editing these config files by hand (as we did in tutorial just before)
-maybe practical in cases where a user is making one run at a time but more
-often than not, users may have to work with a combination of different
-settings for the model.
+For parameterization, MAgPIE needs a configuration file before starting a model run. Editing these configuration files by hand (as in the last tutorial) is sometimes practical for testing, or singular, isolated runs. Complex configurations quickly outgrow this practicality. This motivates the need for start scripts, which are a flexible way to parameterize and run an arbitrary number of MAgPIE scenarios.
 
-For example, a user may want to run two different food demand scenarios in
-MAgPIE (free trade or selfsuff_reduced) and along with this, a user
-may also want to run two different land scenarios (landmatrix_dec18 and feb15).
-In this case, the total number of runs needed is 4. In
-such cases, editing config files by hand is not advisable. Here, a good
-programming practice would be to rather change these config files using
-an R script which changes the config settings in an automatized manner.
+This tutorial introduces the "default" start script and then builds a few simple extensions to it, modifying several parameters by hand. It then introduce the configuration table for when you need preset configurations (e.g. SSPs).
 
-With MAgPIE having a lot of modules and settings which can be changed
-and used in various combinations, it becomes imperative that a user be
-able to change a lot of settings concurrently. This can be achieved by
-changing the config file (from tutorial 5) for turning on or off
-module realizations and other settings.
+Before writing our own start script, it's important to know the necessary components of one. In the last section of Tutorial 4, the final exercise is to start a "Default" model run. For this, we first opened a terminal within the base directory of the MAgPIE clone, running the following command:
 
-## Getting started
-
-Before we write our own starting script, it is important to know what a
-start script really does. Let’s have a look at tutorial 4 again and see
-the last part of the exercise where we started a model run. For this, we
-first opened a command line prompt in the cloned MAgPIE folder and ran
-the following command:
-
-``` r
+```bash
 Rscript start.R
 ```
 
-This operation calls the **start.R** script from the folder where MAgPIE
-is cloned.
+This operation calls the `start.R` script from in the base directory of your MAgPIE clone. Selecting: 
 
-Then we selected option 1 (**default**) before making the model run.
+```bash
+1: default | start run with default.cfg settings
+``` 
 
-The **start.R** script looks for the **start** folder located in the
-**scripts** folder and displays all the R scripts contained inside.
+will execute a "Default" run of the MAgPIE model. This run will be parameterized entirely by the defaults contained in the `config/default.cfg`. The script itself can be found in `scripts/start/default.R`. 
 
-Looking into the contents of **scripts/start** you’ll notice an R script
-by the name of **default.R** which was used to carry out the operation
-we selected earlier.
+> The structure of this menu mirrors `scripts/start`, and putting your new project's start scripts within `scripts/start/projects` is the most common place approach.
 
-Let us have a look at the inner workings of this **default.R** script
-before we write our own starting script.
+# The anatomy of the default MAgPIE start script
 
-## Structure of default start script
+Opening this script, you see the main building blocks of a run script:
 
-If you navigate to **scripts/start/default.R**, you’ll see that the
-**default.R** script has the following structure: (you can open this
-script in R or even in a plain-text editor).
+```r
+# |  (C) 2008-2025 Potsdam Institute for Climate Impact Research (PIK)
+# |  authors, and contributors see CITATION.cff file. This file is part
+# |  of MAgPIE and licensed under AGPL-3.0-or-later. Under Section 7 of
+# |  AGPL-3.0, you are granted additional permissions described in the
+# |  MAgPIE License Exception, version 1.0 (see LICENSE file).
+# |  Contact: magpie@pik-potsdam.de
 
-``` r
-######################################
-#### Script to start a MAgPIE run ####
-######################################
-
-# Load start_run(cfg) function which is needed to start MAgPIE runs
-source("scripts/start_functions.R")
-
-#start MAgPIE run
-start_run(cfg="default.cfg")
-```
-
-This is a basic script with no complex structure but let’s go through
-this step-by-step. The first line is:
-
-``` r
-source("scripts/start_functions.R")
-```
-
-This tells the R environment to source **start\_functions.R** from the
-**scripts** folder. Due to time constraints, we won’t look into what
-start\_functions.R does but we just have to remember that this script
-loads the config file and then loads start\_run function with this
-config which is needed to start MAgPIE runs.
-
-Moving forward, the second line is:
-
-``` r
-start_run(cfg="default.cfg")
-```
-
-The **start\_run()** function sourced from above is the used to start
-the run using the settings specified in the **default.cfg** file.
-
-## Writing our own start script
-
-Before we start writing our own start script, let’s first discuss which
-settings we’d like to change using this start script. For the sake of
-simplicity, let’s just try to change two settings. We’ll make a total of
-2\*2=4 MAgPIE runs with following changes:
-
-1.  Making runs with two different **trade** module realizations.
-
-
-
-
-2.  Making runs with two different **land** module realizations.
-
-
-
-
-### Creating a start script from scratch
-
-There are many ways in which you can initialize an R script that can be
-used as a starting script. The easiest way however is to just make a
-copy of one of the existing start scripts inside the **scripts/start**
-folder.
-
-For this, just copy the **default.R** script in **scripts/start** folder
-and paste it within the same folder. Now rename this copied file to a
-name of your liking. For this workshop’s purpose, let’s call is
-**magpie\_workshop.R**.
-
-As **magpie\_workshop.R** is just a renamed version of **default.R**,
-the contents are the same and we’ll now start making changes to this
-**magpie\_workshop.R** script. Users are now requested to open this
-**magpie\_workshop.R** script in R or in a text editor of their choice.
-
-The contents should look like this:
-
-``` r
 # ------------------------------------------------
 # description: start run with default.cfg settings
 # position: 1
@@ -155,320 +65,318 @@ source("scripts/start_functions.R")
 start_run(cfg="default.cfg")
 ```
 
-### Importance of documenting your code/script
+A MAgPIE start script will have the following basic components. First, it must have a header: 
 
-At this point, we’d like to emphasize upon the importance of code
-documentation and comments within the code.
+```r
+# |  (C) 2008-2025 Potsdam Institute for Climate Impact Research (PIK)
+# |  authors, and contributors see CITATION.cff file. This file is part
+# |  of MAgPIE and licensed under AGPL-3.0-or-later. Under Section 7 of
+# |  AGPL-3.0, you are granted additional permissions described in the
+# |  MAgPIE License Exception, version 1.0 (see LICENSE file).
+# |  Contact: magpie@pik-potsdam.de
 
-The comments in your code would help you communicate to another user
-what your script is trying to do and what a certain fragment of code
-does. Not to mention that your future self will thank you for a well
-documented/commented code. Always remember to add appropriate comments
-to your code.
-
-Imagine if the **default.R** script mentioned above looked like this:
-
-``` r
-source("scripts/start_functions.R")
-start_run(cfg="default.cfg")
+# ------------------------------------------------
+# description: start run with default.cfg settings
+# position: 1
+# ------------------------------------------------
 ```
 
-Without any background information and documentation/comments, it is
-difficult to figure out what this piece of code is trying to do. Hence,
-it is always a good practice to document your code appropriately.
+This contains a description of the script and (optionally) a position in the menu for where it should sit in the list of scripts. These are what you see when you source `Rscript start.R` as you actually start the run.
 
-Also remember that *code never lies, comments sometimes do*, so keep
-your comments as accurate and precise as possible.
+Second, there will have to be a line sourcing the script `start_functions.R`:
 
-### Editing your start script
+```r
+# Load start_run(cfg) function which is needed to start MAgPIE runs
+source("scripts/start_functions.R")
+```
 
-Now that we have the importance of documenting your code out of the way,
-lets go back to writing our script.
+This tells the R environment to source `scripts/start_functions.R`. This script defines helper functions to assemble GAMS sets and update metadata from spatial and module inputs, then encapsulates the full MAgPIE startup workflow—checking dependencies, locking the model, updating inputs, snapshotting the R environment, and submitting the run.
 
-As we still want to make changes to the **config** before starting a
-run, lets delete/push the following line which starts the MAgPIE run,below. We
-don’t need it for now (we’ll need it in the end):
+And finally, there will be a line starting the MAgPIE run:
 
-``` r
+```r
 #start MAgPIE run
 start_run(cfg="default.cfg")
 ```
 
-Your script should now look like this:
+The `start_run` function handles everything necessary to begin the MAgPIE run itself, but needs a configuration. For the default run, it just uses the core `default.cfg`, found in `config/default.cfg`. 
 
-``` r
-# ------------------------------------------------
-# description: start run with default.cfg settings
-# position: 1
-# ------------------------------------------------
+These three building blocks are all that's truly necessary for producing a single default MAgPIE run.
 
-# Load start_run(cfg) function which is needed to start MAgPIE runs
-source("scripts/start_functions.R")
-```
+# Creating a bespoke, basic start script
 
-Now, we’ll source the **default config** which you had changed in
-tutorial 3. This loads the default.cfg file from the main folder and you can start
-making changes to it. To do so, add the following line to your
-script:
+The simplest way to generate more than one MAgPIE scenario is to create a configuration list using the `default.cfg` as a template, modify it, start the run, and then repeat the process. Modifying a few other parameters ensures that the resulting scenarios are easy to process once they're finished.
 
-``` r
-# Source the default config at this stage and then over-write it before starting the run.
-source("config/default.cfg")
-```
+For the following example, we focus on a user trying to start a "business-as-usual" baseline scenario, as well as a scenario with a carbon price.
 
-Remember that the above line just loads the object called **cfg** in R
-environment. Contents of this **cfg** object can be found in Table 1
-from tutorial 3.
+```r
+# |  (C) 2008-2025 Potsdam Institute for Climate Impact Research (PIK)
+# |  authors, and contributors see CITATION.cff file. This file is part
+# |  of MAgPIE and licensed under AGPL-3.0-or-later. Under Section 7 of
+# |  AGPL-3.0, you are granted additional permissions described in the
+# |  MAgPIE License Exception, version 1.0 (see LICENSE file).
+# |  Contact: magpie@pik-potsdam.de
 
-Your script should now look like this:
+# ----------------------------------------------------------
+# description: A simple custom start script
+# ----------------------------------------------------------
 
-``` r
-# ------------------------------------------------
-# description: start run with default.cfg settings
-# position: 1
-# ------------------------------------------------
-
-# Load start_run(cfg) function which is needed to start MAgPIE runs
+# Load the MAgPIE start‐up functions
 source("scripts/start_functions.R")
 
-# Source the default config at this stage and then over-write it before starting the run.
+version <- "v1"
+
+### Scenario 1: Default run ───────────────────────────────────────────────────
+# Load default configuration
+source("config/default.cfg")   # defines `cfg`
+
+cfg$title <- paste(version, "NPi", sep = "_")
+
+cfg$gms$c56_pollutant_prices <- "R34M410-SSP2-NPi2025"              # def = R34M410-SSP2-NPi2025
+cfg$gms$c56_pollutant_prices_noselect <- "R34M410-SSP2-NPi2025"     # def = R34M410-SSP2-NPi2025
+
+cfg$gms$c60_2ndgen_biodem <- "R34M410-SSP2-NPi2025"                 # def = R34M410-SSP2-NPi2025
+cfg$gms$c60_2ndgen_biodem_noselect <- "R34M410-SSP2-NPi2025"        # def = R34M410-SSP2-NPi2025
+
+# Launch the default MAgPIE run
+start_run(cfg, codeCheck = FALSE)
+
+### Scenario 2: Carbon price run ──────────────────────────────────────────────
+# Re‐load default config to reset any prior modifications
 source("config/default.cfg")
+
+cfg$title <- paste(version, "PkBudg1000", sep = "_")
+
+cfg$gms$c56_pollutant_prices <- "R34M410-SSP2-PkBudg1000"     
+cfg$gms$c56_pollutant_prices_noselect <- "R34M410-SSP2-PkBudg1000"
+
+cfg$gms$c60_2ndgen_biodem <- "R34M410-SSP2-PkBudg1000"  
+cfg$gms$c60_2ndgen_biodem_noselect <- "R34M410-SSP2-PkBudg1000"
+
+# Launch the carbon‐price MAgPIE run
+start_run(cfg, codeCheck = FALSE)
 ```
 
-At this stage, when the script is called, it loads **start\_run()**
-function and also loads the object **cfg** in R environment. Before
-submitting the run with **start\_run()**, we’ll make changes to the
-**default config** loaded in R environment.
+This script essentially runs a fully default (though helpfully renamed) MAgPIE scenario, and then a second scenario with a GHG price achieving 2 °C by 2100. More information about each particular parameter can be found in the `default.cfg` itself:
 
-#### Adding basic settings
-
-Lets add some basic settings before moving to the main changes. These
-changes would be made to the **cfg** object and we’ll use the notation
-**cfg$\<some\_setting\>** for this purpose (Ref. Table 1 from tutorial 3
-for details).
-
-You can change the Description to give a sense of what this script does.
-Go ahead and add the following lines in your **magpie\_workshop.R**
-script:
-
-``` r
-# ------------------------------------------------
-# description: Magpie workshop start script
-# position: 1
-# ------------------------------------------------
-
-###########################################################
-#### Some header which explains what this script does  ####
-###########################################################
-
-# Change results folder name
-cfg$results_folder <- "output/:title:"
-
-# Change time step settings
-cfg$gms$c_timesteps <- 5
-
+```r
+# * GHG emission price scenario
+# * Note: For best consistency it is recommended to use trajectories from the most recent
+# *     coupled REMIND-MAgPIE runs. Currently, this is R34M410.
+# * Available options:
+# *     none: no GHG prices
+# * R34M410: Coupled REMIND-MAgPIE runs with REMIND 3.4.0.dev619 (dev version close to 3.5) and MAgPIE 4.10
+# *  Note: SSP5 is provided but is no longer actively maintained and validated by REMIND
+# *  Note: See scripts/start/test_runs.R for mapping of NPi2025, PkBudg1050 and PkBudg650 to RCPs for SSP1/SSP2 and SSP3
+# *   NPi2025: Current policies; limit peak warming to 3.0°C in SSP1 and SSP2, but not in SSP3.
+# *   PkBudg1050: Peak Budget with 1050 GtCO2 until net-zero CO2 emissions; well-below 2.0°C in 2100
+# *   PkBudg650:  Peak Budget with 650 GtCO2 until net-zero CO2 emissions; well-below 1.5°C in 2100 (not feasible for SSP3)
+# *     R34M410-SSP1-NPi2025, R34M410-SSP1-PkBudg1000, R34M410-SSP1-PkBudg650,
+# *     R34M410-SSP2-NPi2025, R34M410-SSP2-PkBudg1000, R34M410-SSP2-PkBudg650,
+# *     R34M410-SSP3-NPi2025, R34M410-SSP3-PkBudg1000,  R34M410-SSP3-rollBack,
+# *     R34M410-SSP5-NPi2025, R34M410-SSP5-PkBudg1000, R34M410-SSP5-PkBudg650
+# (...)
+# * Note: c56_pollutant_prices applies to countries selected in policy_countries56
+# * c56_pollutant_prices_noselect applies to all other countries.
+# * Available scenarios for c56_pollutant_prices_noselect are identical to c56_pollutant_prices
+# * (see above) except for emulator and coupling (which can only be chosen for c56_pollutant_prices)
+cfg$gms$c56_pollutant_prices <- "R34M410-SSP2-NPi2025"     # def = R34M410-SSP2-NPi2025
+cfg$gms$c56_pollutant_prices_noselect <- "R34M410-SSP2-NPi2025"     # def = R34M410-SSP2-NPi2025
 ```
 
-You’ll see that we had already changed these settings by hand in
-tutorial 3. Here, these settings will be changed in **default config**
-using the **magpie\_workshop.R** starting script which should look like
-this now:
+Some important facets of this simple runscript to be familiar with:
 
-``` r
+- Be sure to source (**and then re-source!**) the `cfg` list to its "factory defaults" before each scenario with `source("config/default.cfg")`. Otherwise, with more complicated scenarios you may accidentally (and quietly) mix scenario definitions. Re-sourcing this script resets the `cfg` list but running this code:
 
-# ------------------------------------------------
-# description: Magpie workshop start script
-# position: 1
-# ------------------------------------------------
+```r
+##################
+#### SETTINGS ####
+##################
 
-###########################################################
-#### Some header which explains what this script does  ####
-###########################################################
+cfg <- list()
 
-# Load start_run(cfg) function which is needed to start MAgPIE runs
+#### Main settings ####
+
+# short description of the actual run
+cfg$title <- "default"
+```
+
+- Providing a **version ID** (`version`, which is here pasted to the `cfg$title`) ensures some degree of traceability for your debugging and analysis down the road. 
+- To modify individual parameters, you must change them in the GAMS parameters sub-list. This is done through the **`cfg$gms$` prefix**. This method corresponds to the structure in the `default.cfg`. Other parameters, e.g. the title, are accessed in the outer `cfg` list. You can find each of the parameters available by looking at the `default.cfg`.
+- If you're out of the development process and know that your GAMS code compiles, `codeCheck = FALSE` elimates pre-run syntax checks of your `.gms` code, saving you a bit of time.
+
+To finish preparing the start script, it should be saved in `scripts/start/projects/`, and can then be found through the `Rscript start.R` menu.
+
+# Basic looping is helpful for factorial scenairo setups 
+
+Scenario analyses will often require some degree of factorial design, as soon as a user maybe want to understand the independent and combined effects of multiple interventions simultaneously. Basic looping is a good method to ensure reproducability and reduce the chances that you misconfigure any particular scenario.
+
+For this example, after looking at the basic impacts of a carbon price on the land system, the user decides that they're also interested in the mitigation of nitrogen-based pollutants via marginal abatement cost curves (MACCs):
+
+```r
+# |  (C) 2008-2025 Potsdam Institute for Climate Impact Research (PIK)
+# |  authors, and contributors see CITATION.cff file. This file is part
+# |  of MAgPIE and licensed under AGPL-3.0-or-later. Under Section 7 of
+# |  AGPL-3.0, you are granted additional permissions described in the
+# |  MAgPIE License Exception, version 1.0 (see LICENSE file).
+# |  Contact: magpie@pik-potsdam.de
+
+# ----------------------------------------------------------
+# description: A custom start script using loops
+# ----------------------------------------------------------
+
+# Load the MAgPIE start‐up functions
 source("scripts/start_functions.R")
 
-# Source the default config at this stage and then over-write it before starting the run.
-source("config/default.cfg")
+version <- "v1"
 
-# Change results folder name
-cfg$results_folder <- "output/:title:"
+GHG_settings <- c(
+  NPi        = "R34M410-SSP2-NPi2025",
+  PkBudg1000 = "R34M410-SSP2-PkBudg1000"
+)
 
-# Change time step settings
-cfg$gms$c_timesteps <- 5
+MACC_settings <- c(
+  noMACC = 0,
+  low    = 10,
+  med    = 50,
+  high   = 100
+)
 
-```
-
-#### Adding loop(s)
-
-We’ll now write a loop to go over the different combinations of module
-realizations. As stated earlier, we’ll make 4 runs with changes to
-trade module and land module. Figure 1 describes and explains the
-available module realizations for these two modules.
-
-![Module setting combinations](../assets/images/tutorials/module-settings.png)
-
-The loop we write should change the config based on which module
-realization we choose. Here, lets try making runs with the following
-combinations:
-
-1.  Trade default + Land default
-2.  Trade default + Land alt
-3.  Trade alt + Land default
-4.  Trade alt + Land alt
-
-To do so, the loop should go two times over trade module realizations
-and then for each of theses instances, two times over the land
-module realizations. In principle, this loop’s general structure should
-look like this:
-
-``` r
-for(trade_setting in c("default_trade","alt_trade")){
-
-  for(land_setting in c("default_land","alt_land")){
-
-    change_trade_module_realization   ## Updates cfg
-
-    change_land_module_realization  ## Updates cfg
-
-    change_title_according_to_run_setting
-
-    ## cfg has been changed further at his stage, start the run
-    start_the_run
+for (ghg in names(GHG_settings)) {
+  for (macc in names(MACC_settings)) {
+    source("config/default.cfg")    # reset cfg
+    
+    # title: version_GHGsetting_MACCsetting
+    cfg$title <- paste(version, ghg, macc, sep = "_")
+    
+    # GHG settings
+    cfg$gms$c56_pollutant_prices          <- GHG_settings[ghg]
+    cfg$gms$c56_pollutant_prices_noselect <- GHG_settings[ghg]
+    cfg$gms$c60_2ndgen_biodem             <- GHG_settings[ghg]
+    cfg$gms$c60_2ndgen_biodem_noselect    <- GHG_settings[ghg]
+    
+    # MACC settings (all to same level)
+    lvl <- MACC_settings[macc]
+    cfg$gms$s57_maxmac_n_soil      <- lvl
+    cfg$gms$s57_maxmac_n_awms      <- lvl
+    cfg$gms$s57_maxmac_ch4_rice    <- lvl
+    cfg$gms$s57_maxmac_ch4_entferm <- lvl
+    cfg$gms$s57_maxmac_ch4_awms    <- lvl
+    
+    # outputs
+    cfg$output <- c("output_check", "extra/disaggregation", "rds_report", "projects/nitrogenBoundaries.R")
+    
+    start_run(cfg, codeCheck = FALSE)
   }
 }
 ```
 
-Hence our working loop should look like this (adding **start\_run** in
-the loop which we deleted earlier):
+This script creates two vectors of user-provided settings, and uses a nested for-loop to cycle through each. 
 
-``` r
-# Starting trade loop
-for(trade_setting  in c("selfsuff_reduced","free_apr16")){
-  # Starting land loop
-  for(land_setting  in c("landmatrix_dec18","feb15")){
+**Output scripts**: It's also possible to write your own output scripts and start them automatically after your run finished. To do so, add your output script to the `cfg$output` vector. This vector can be found at the bottom of the `default.cfg`. By default, it is:
 
-    # Set trade realization
-    cfg$gms$trade <- trade_setting
-
-    # Set land realization
-    cfg$gms$land <- land_setting
-
-    # Changing title flags
-    if(trade_setting  == "selfsuff_reduced") trade_flag="resTrade"
-    if(trade_setting  == "free_apr16") trade_flag="freeTrade"
-    if(land_setting  == "landmatrix_dec18") land_flag = "landmatrix"
-    if(land_setting  == "feb15") land_flag = "baseland"
-
-    # Updating default tile
-    cfg$title<- paste0("MAgPIE","_",trade_flag,"_",land_flag)
-
-    ## cfg has been changed further at his stage, start the run
-    start_run(cfg=cfg)
-  } # <- Closing land loop
-} # <- Closing trade loop
+```r
+cfg$output <- c("output_check", "extra/disaggregation", "rds_report")
 ```
 
-The final **magpie\_workshop.R** script should look like this:
+These are the most important output scripts and many workflows will rely on their results. They verify scenarios' outputs for common issues, disaggregate some core model outputs to the grid cell level (e.g. land pools, BII), and produce an data frame version of the `report.mif` for convenience, saved as `report.RDS`. If you have your own script to add, either write out the entire vector as I do above, or append it to the existing list, i.e. `cfg$output <- c(cfg$output, "projects/myNewOutputScript.R")`.
 
-``` r
-# ------------------------------------------------
-# description: Magpie workshop start script
-# position: 1
-# ------------------------------------------------
+# Running consistent scenarios using the `scenario_config.csv`
 
-###########################################################
-#### Some header which explains what this script does  ####
-###########################################################
+For more even more complicated analyses, users may often want to test internally-consistent scenarios featuring different SSPs, RCPs, diet shifts, or levels of climate change.
 
-# Load start_run(cfg) function which is needed to start MAgPIE runs
+This is particularly tricky because, as one example, changing SSPs will mean modifying dozens of parameters simultaneously. The best way to do this is with a **scenario configuration table**. The default `scenario_config.csv` can be found alongside the `default.cfg` in the `config` directory. Different projects can use their own custom tables by storing them in `config/projects`.
+
+A small portion of the standard `scenario_config.csv` looks like this, to give you an idea:
+
+| Parameter                          | cc | nocc | nocc_hist | SSP1  | SSP2  | SSP3  | SSP4  | SSP5  |
+|:-----------------------------------|:--:|:----:|:---------:|:-----:|:-----:|:-----:|:-----:|:-----:|
+| gms$c_timesteps                    |    |      |           |       |       |       |       |       |
+| gms$c09_pop_scenario               |    |      |           | SSP1  | SSP2  | SSP3  | SSP4  | SSP5  |
+| gms$c09_gdp_scenario               |    |      |           | SSP1  | SSP2  | SSP3  | SSP4  | SSP5  |
+| gms$c09_pal_scenario               |    |      |           | SSP1  | SSP2  | SSP3  | SSP4  | SSP5  |
+| gms$c14_yields_scenario            | cc | nocc | nocc_hist |       |       |       |       |       |
+| gms$c15_food_scenario              |    |      |           | SSP1  | SSP2  | SSP3  | SSP4  | SSP5  |
+| gms$s15_rumdairy_scp_substitution  |    |      |           | 0     | 0     | 0     | 0     | 0     |
+| gms$s15_food_subst_functional_form |    |      |           | 1     | 1     | 1     | 1     | 1     |
+| gms$s15_food_substitution_start    |    |      |           |       |       |       |       |       |
+
+Extrapolating this to over 80 settings demonstrates that configuring different SSPs or dietary shifts demands more than a loop or two.
+
+So, in this next example, the user decides that they're interested in running benchmarks for each SSP in MAgPIE. 
+
+```r
+# |  (C) 2008-2025 Potsdam Institute for Climate Impact Research (PIK)
+# |  authors, and contributors see CITATION.cff file. This file is part
+# |  of MAgPIE and licensed under AGPL-3.0-or-later. Under Section 7 of
+# |  AGPL-3.0, you are granted additional permissions described in the
+# |  MAgPIE License Exception, version 1.0 (see LICENSE file).
+# |  Contact: magpie@pik-potsdam.de
+
+# ----------------------------------------------------------
+# description: Baseline SSP scenarios using the scenario_config table
+# ----------------------------------------------------------
+
+library(gms)
 source("scripts/start_functions.R")
 
-# Source the default config at this stage and then over-write it before starting the run.
+version   <- "v1"
+
+### Scenario 1: SSP1 ─────────────────────────────────────────────────────────
 source("config/default.cfg")
+cfg <- setScenario(cfg, c("cc", "SSP1", "rcp4p5"))
+cfg$title <- paste(version, "SSP1", sep = "_")
+start_run(cfg = cfg, codeCheck = FALSE)
 
-# Change results folder name
-cfg$results_folder <- "output/:title:"
+### Scenario 2: SSP2 ─────────────────────────────────────────────────────────
+source("config/default.cfg")
+cfg <- setScenario(cfg, c("cc", "SSP2", "rcp4p5"))
+cfg$title <- paste(version, "SSP2", sep = "_")
+start_run(cfg = cfg, codeCheck = FALSE)
 
-# Change time step settings
-cfg$gms$c_timesteps <- 5
+### Scenario 3: SSP3 ─────────────────────────────────────────────────────────
+source("config/default.cfg")
+cfg <- setScenario(cfg, c("cc", "SSP3", "rcp4p5"))
+cfg$title <- paste(version, "SSP3", sep = "_")
+start_run(cfg = cfg, codeCheck = FALSE)
 
-# Starting trade loop
-for(trade_setting  in c("selfsuff_reduced","free_apr16")){
-  # Starting land loop
-  for(land_setting  in c("landmatrix_dec18","feb15")){
+### Scenario 4: SSP4 ─────────────────────────────────────────────────────────
+source("config/default.cfg")
+cfg <- setScenario(cfg, c("cc", "SSP4", "rcp4p5"))
+cfg$title <- paste(version, "SSP4", sep = "_")
+start_run(cfg = cfg, codeCheck = FALSE)
 
-    # Set trade realization
-    cfg$gms$trade <- trade_setting
+### Scenario 5: SSP5 ─────────────────────────────────────────────────────────
+source("config/default.cfg")
+cfg <- setScenario(cfg, c("cc", "SSP5", "rcp4p5"))
+cfg$title <- paste(version, "SSP5", sep = "_")
+start_run(cfg = cfg, codeCheck = FALSE)
+``` 
 
-    # Set land realization
-    cfg$gms$land <- land_setting
+The core changes to this run script are first calling `library(gms)` to gain access to the function `setScenario`. The default use case of this function takes two arguments: The first is your particular configuration list, which will almost always be called `cfg`, and the second is a list of scenario flags (columns) the user would like to "switch on". 
 
-    # Changing title flags
-    if(trade_setting  == "selfsuff_reduced") trade_flag="resTrade"
-    if(trade_setting  == "free_apr16") trade_flag="freeTrade"
-    if(land_setting  == "landmatrix_dec18") land_flag = "landmatrix"
-    if(land_setting  == "feb15") land_flag = "baseland"
+> **Use caution when with `setScenario`!** Each column flag writes over the last, so be sure that the ordering of your various scenario flags is either entirely non-overlapping or, if necessary, very carefully ordered. 
 
-    # Updating default tile
-    cfg$title<- paste0("MAgPIE","_",trade_flag,"_",land_flag)
+Finally, it's also possible to create your own custom scenario configuration tables, storing them in `config/projects`. To read them, supply `setScenario` with a third `scenario_config` argument:
 
-    ## cfg has been changed further at his stage, start the run
-    start_run(cfg=cfg)
-  } # <- Closing land loop
-} # <- Closing trade loop
+```r
+cfg <- setScenario(cfg, myNewScenarioFlag, scenario_config = "config/projects/myNewScenarioConfigurationTable.csv")
 ```
 
-## Exercise
-**Starting MAgPIE with custom R script**
+This is out of the scope of this tutorial, but can be seen throughout the scripts stored in `start/projects`.
 
-So far, we have learned:
+# Exercise
 
+1.  Copy any of these MAgPIE start scripts into your `scripts/start/projects` directory.
+2.  Add another parameter from the `config/default.cfg`, or otherwise modify the parameterization in some way. One could also add new switches from the scenario_config.csv.
+3.  Save and run the script with Rscript start.R, choosing your modified entry.
+4.  Confirm in the run log or output metadata that your change was applied. You can look at these particular settings within that scenario's output directory, in the `config.yaml`. This contains all the configurations from your MAgPIE run. Looking into it, you will see, e.g.:
 
-
-1.  How standard MAgPIE starting scripts work.
-
-
-
-2.  How to write our own starting script.
-
-
-
-Now that we have created our own **magpie\_workshop.R** starting script
-in the folder **scripts/start**, we are ready to test our script and
-make a MAgPIE run.
-
-To do so, windows users can go to the folder where MAgPIE was cloned and
-open a command line prompt there. For windows users, this can be done by
-typing **cmd** or **powershell** at the address bar of the folder where
-MAgPIE was cloned and then pressing return/enter.
-
-For mac users (if right click -\> open terminal setting is not enabled),
-Head into System Preferences and select Keyboard \> Shortcuts \>
-Services. Find “New Terminal at Folder” in the settings and click the
-box. Now, when you’re in Finder, just right-click a folder and you’re
-shown the open to open Terminal.
-
-In the command prompt (or powershell or terminal) you just opened, use
-the following command:
-
-``` r
-Rscript start.R
+```yaml
+  s56_fader_end: 2050.0
+  s56_fader_target: 1.0
+  s56_fader_functional_form: 1.0
+  c56_pollutant_prices: R32M46-SSP2EU-NPi
+  c56_pollutant_prices_noselect: R32M46-SSP2EU-NPi
+  c56_mute_ghgprices_until: y2
 ```
-
-You’ll now see a bunch of R scripts on your command prompt, based on
-which the model can be run.
-
-We will used recently created **magpie\_workshop.R** script which uses
-**default.cfg** as starting settings and then changes these settings
-automatically.
-
-In order to start the run, Select option number corresponding to
-**magpie\_workshop** to tell the model that we want to make runs
-according to our custom start script and then option 1 again (***Direct
-execution***).
-
-This will start\[1\] the model run on your local machine.
-
-1.  To stop a run you can use the key combination **ctrl** + **c** on
-    windows machines.
