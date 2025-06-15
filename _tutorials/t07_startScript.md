@@ -10,7 +10,7 @@ authors: Abhijeet Mishra, Michael Windisch, Vartika Singh, Michael Crawford
 level: 3
 requirements:
   - GAMS installed, MAgPIE cloned on local machine
-  - Undertaken tutorials 4 and 5 with and understanding of how to start a model run
+  - Undertaken Tutorials 4 and 5 with an understanding of how to start a model run
 lessonsContent:
   - The anatomy of a MAgPIE start script
   - Creating a basic start script
@@ -21,9 +21,9 @@ published: true
 
 # Introduction
 
-For parameterization, MAgPIE needs a configuration file before starting a model run. Editing these configuration files by hand (as in the last tutorial) is sometimes practical for testing, or singular, isolated runs. Complex configurations quickly outgrow this practicality. This motivates the need for start scripts, which are a flexible way to parameterize and run an arbitrary number of MAgPIE scenarios.
+MAgPIE needs a configuration file to parameterize the model scenario before starting a run. While editing these configuration files by hand is sometimes useful for testing, more complex scenario designs quickly outgrow this practicality. This motivates the need for start scripts, which are a flexible way to parameterize and run an arbitrary number and configuration of MAgPIE scenarios.
 
-This tutorial introduces the "default" start script and then builds a few simple extensions to it, modifying several parameters by hand. It then introduce the configuration table for when you need preset configurations (e.g. SSPs).
+This tutorial introduces the "default" start script and then builds a few simple extensions to it, modifying several parameters by hand. It then introduces the configuration table for when you need preset configurations (e.g. SSPs).
 
 Before writing our own start script, it's important to know the necessary components of one. In the last section of Tutorial 4, the final exercise is to start a "Default" model run. For this, we first opened a terminal within the base directory of the MAgPIE clone, running the following command:
 
@@ -31,15 +31,15 @@ Before writing our own start script, it's important to know the necessary compon
 Rscript start.R
 ```
 
-This operation calls the `start.R` script from in the base directory of your MAgPIE clone. Selecting: 
+This operation calls the `start.R` script from in the base directory of your MAgPIE clone. Afterwards, you can select: 
 
 ```bash
 1: default | start run with default.cfg settings
 ``` 
 
-will execute a "Default" run of the MAgPIE model. This run will be parameterized entirely by the defaults contained in the `config/default.cfg`. The script itself can be found in `scripts/start/default.R`. 
+This will execute a "Default" run of the MAgPIE model. This run will be parameterized entirely by the defaults contained in the `config/default.cfg`. The script itself can be found in `scripts/start/default.R`. 
 
-> The structure of this menu mirrors `scripts/start`, and putting your new project's start scripts within `scripts/start/projects` is the most common place approach.
+> The structure of this menu mirrors `scripts/start`, and putting your new project's start scripts within `scripts/start/projects` is the most common approach.
 
 # The anatomy of the default MAgPIE start script
 
@@ -101,11 +101,11 @@ start_run(cfg="default.cfg")
 
 The `start_run` function handles everything necessary to begin the MAgPIE run itself, but needs a configuration. For the default run, it just uses the core `default.cfg`, found in `config/default.cfg`. 
 
-These three building blocks are all that's truly necessary for producing a single default MAgPIE run.
+These three building blocks are all that's fundamentally necessary for producing a single MAgPIE run.
 
 # Creating a bespoke, basic start script
 
-The simplest way to generate more than one MAgPIE scenario is to create a configuration list using the `default.cfg` as a template, modify it, start the run, and then repeat the process. Modifying a few other parameters ensures that the resulting scenarios are easy to process once they're finished.
+The simplest way to generate more than one MAgPIE scenario is to create a configuration list using the `default.cfg` as a template, modify it, starting the run, and then repeating the process. Modifying a few other parameters ensures that the resulting scenarios are easy to process once they're finished.
 
 For the following example, we focus on a user trying to start a "business-as-usual" baseline scenario, as well as a scenario with a carbon price.
 
@@ -121,7 +121,7 @@ For the following example, we focus on a user trying to start a "business-as-usu
 # description: A simple custom start script
 # ----------------------------------------------------------
 
-# Load the MAgPIE start‐up functions
+# Load the MAgPIE start-up functions
 source("scripts/start_functions.R")
 
 version <- "v1"
@@ -186,7 +186,7 @@ cfg$gms$c56_pollutant_prices_noselect <- "R34M410-SSP2-NPi2025"     # def = R34M
 
 Some important facets of this simple runscript to be familiar with:
 
-- Be sure to source (**and then re-source!**) the `cfg` list to its "factory defaults" before each scenario with `source("config/default.cfg")`. Otherwise, with more complicated scenarios you may accidentally (and quietly) mix scenario definitions. Re-sourcing this script resets the `cfg` list but running this code:
+- Be sure to source (**and then re-source!**) the `cfg` list to its "factory defaults" before each scenario with `source("config/default.cfg")`. Otherwise, with more complicated scenarios you may accidentally (and quietly) mix scenario definitions. Re-sourcing this script resets the `cfg` list by running this code each time in the `default.cfg`:
 
 ```r
 ##################
@@ -202,12 +202,12 @@ cfg$title <- "default"
 ```
 
 - Providing a **version ID** (`version`, which is here pasted to the `cfg$title`) ensures some degree of traceability for your debugging and analysis down the road. 
-- To modify individual parameters, you must change them in the GAMS parameters sub-list. This is done through the **`cfg$gms$` prefix**. This method corresponds to the structure in the `default.cfg`. Other parameters, e.g. the title, are accessed in the outer `cfg` list. You can find each of the parameters available by looking at the `default.cfg`.
+- To modify individual parameters, you must change them in the GAMS parameters list. This is done through the **`cfg$gms$` variable**. This method corresponds to the structure in the `default.cfg`. Other parameters, e.g. the title, are accessed in the outer `cfg` list. You can find each of the parameters available by looking at the `default.cfg` (see Tutorial 6).
 - If you're out of the development process and know that your GAMS code compiles, `codeCheck = FALSE` elimates pre-run syntax checks of your `.gms` code, saving you a bit of time.
 
-To finish preparing the start script, it should be saved in `scripts/start/projects/`, and can then be found through the `Rscript start.R` menu.
+To be able to run the start script, it should be saved in `scripts/start/projects/`, and can then be found through the `Rscript start.R` menu.
 
-# Basic looping is helpful for factorial scenairo setups 
+# Basic looping is helpful for factorial scenario setups 
 
 Scenario analyses will often require some degree of factorial design, as soon as a user maybe want to understand the independent and combined effects of multiple interventions simultaneously. Basic looping is a good method to ensure reproducability and reduce the chances that you misconfigure any particular scenario.
 
@@ -273,19 +273,19 @@ for (ghg in names(GHG_settings)) {
 
 This script creates two vectors of user-provided settings, and uses a nested for-loop to cycle through each. 
 
-**Output scripts**: It's also possible to write your own output scripts and start them automatically after your run finished. To do so, add your output script to the `cfg$output` vector. This vector can be found at the bottom of the `default.cfg`. By default, it is:
+**Output scripts**: It's also possible to write your own output scripts and start them automatically after your has run finish. To do so, add your output script to the `cfg$output` vector. This vector can be found at the bottom of the `default.cfg`. By default, it is:
 
 ```r
 cfg$output <- c("output_check", "extra/disaggregation", "rds_report")
 ```
 
-These are the most important output scripts and many workflows will rely on their results. They verify scenarios' outputs for common issues, disaggregate some core model outputs to the grid cell level (e.g. land pools, BII), and produce an data frame version of the `report.mif` for convenience, saved as `report.RDS`. If you have your own script to add, either write out the entire vector as I do above, or append it to the existing list, i.e. `cfg$output <- c(cfg$output, "projects/myNewOutputScript.R")`.
+These are the most important output scripts and many workflows will rely on their results. They check for common issues in completed scenarios, disaggregate some core model outputs to the grid cell level (e.g. land pools, BII), and produce a data frame version of the `report.mif` for convenience, saved as `report.RDS`. If you have your own script to add, either write out the entire vector as I do above, or append it to the existing list, i.e. `cfg$output <- c(cfg$output, "projects/myNewOutputScript.R")`.
 
 # Running consistent scenarios using the `scenario_config.csv`
 
-For more even more complicated analyses, users may often want to test internally-consistent scenarios featuring different SSPs, RCPs, diet shifts, or levels of climate change.
+For even more complicated analyses, users may often need to test internally-consistent scenarios featuring different e.g. SSPs, RCPs, diet shifts, or levels of climate change.
 
-This is particularly tricky because, as one example, changing SSPs will mean modifying dozens of parameters simultaneously. The best way to do this is with a **scenario configuration table**. The default `scenario_config.csv` can be found alongside the `default.cfg` in the `config` directory. Different projects can use their own custom tables by storing them in `config/projects`.
+This is particularly tricky because, for instance, changing SSPs will mean modifying dozens of parameters simultaneously. The best way to do this is with a **scenario configuration table**. The default `scenario_config.csv` can be found alongside the `default.cfg` in the `config` directory. Different projects can use their own custom tables by storing them in `config/projects`.
 
 A small portion of the standard `scenario_config.csv` looks like this, to give you an idea:
 
