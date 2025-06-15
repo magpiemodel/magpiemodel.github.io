@@ -19,10 +19,9 @@ lessonsContent:
   - Run the model with updated configuration.
 exercises:
   - task: "By editing the corresponding setting in the default.cfg file, change the 
-           title of the model run to contain your affiliation (e.g. \"magpieWorkshopTutorial06\")."
+           title of the model run to describe the run you want to make (e.g. \"magpieWorkshopTutorial06\")."
     solution: "1. Find the title in setting the config file by searching for `cfg$title` (line 17).\n
-               2. Substitute the current title (typically `default`) by a title containing your affiliation, e.g. 
-                  `cfg$title <- \"magpieWorkshopTutorial06\"`."
+               2. Substitute the current title (typically `default`) by a title describing the run you want to make, e.g. `cfg$title <- \"magpieWorkshopTutorial06\"`."
   - task: "By editing the corresponding setting in the default.cfg file, change the model time steps
            to the set \"quicktest\". Additionally, find out which years are include in this set (without running the model)."
     solution: "1. Find the corresponding setting the config file by searching for `cfg$gms$c_timesteps` (line 133).\n
@@ -218,7 +217,7 @@ the model execution stops (if `cfg$force_replace <- FALSE`) or earlier
 model outputs are replaced (if `cfg$force_replace <- TRUE`).
 
 > Exercise 1: By editing the corresponding setting in the default.cfg file, change the 
-  title of the model run to contain your affiliation (e.g. \"magpieWorkshopTutorial06\").
+  title of the model run to describe the run you want to make (e.g. \"magpieWorkshopTutorial06\").
   
 
 ### Changing the time steps
