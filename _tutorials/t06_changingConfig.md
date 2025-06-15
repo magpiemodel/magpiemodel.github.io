@@ -3,9 +3,9 @@ layout: tutorial
 title:  Update model settings
 shortID: config
 image: assets/images/generic/pic06.jpg
-lastUpdated:   2022-02-23
+lastUpdated:   2024-06-15
 model: MAgPIE
-modelVersion: 4.4.0
+modelVersion: 4.10.1
 author: 
   - am
   - dl
@@ -19,22 +19,22 @@ lessonsContent:
   - Run the model with updated configuration.
 exercises:
   - task: "By editing the corresponding setting in the default.cfg file, change the 
-           title of the model run to contain your affiliation (e.g. \"magWorkshop_PIK\")."
+           title of the model run to contain your affiliation (e.g. \"magpieWorkshopPIK\")."
     solution: "1. Find the title in setting the config file by searching for `cfg$title` (line 17).\n
                2. Substitute the current title (typically `default`) by a title containing your affiliation, e.g. 
-                  `cfg$title <- \"magWorkshop_PIK\"`."
+                  `cfg$title <- \"magpieWorkshopPIK\"`."
   - task: "By editing the corresponding setting in the default.cfg file, change the model time steps
            to the set \"quicktest\". Additionally, find out which years are include in this set (without running the model)."
-    solution: "1. Find the corresponding setting the config file by searching for `cfg$gms$c_timesteps` (line 123).\n
+    solution: "1. Find the corresponding setting the config file by searching for `cfg$gms$c_timesteps` (line 133).\n
                2. Change the current time steps set (typically `\"coup2100\"`) to `\"quicktest\"`, i.e. 
                   `gms$c_timesteps <- \"quicktest\"`.\n
                3. Open the file **core/sets.gms** and find the definition of the set by searching 
                   for `\"quicktest\"` (line 190). The set includes the years y1995, y2010, y2025."
   - task: "By editing the corresponding setting in the default.cfg file, change the model configuration such that 
            only the output script \"output_check\" is run."
-    solution: "1. Find the corresponding setting the config file by searching for `cfg$output` (line 1484).\n
+    solution: "1. Find the corresponding setting the config file by searching for `cfg$output` (line 2229).\n
                2. Change the current output scripts (typically 
-                  `c(\"output_check\", \"rds_report\", \"validation_short\",\"extra/disaggregation\")`) 
+                  `c(\"output_check\", \"extra/disaggregation\"), \"rds_report\"`) 
                   to only include `\"output_check\"`, i.e. 
                   `cfg$output <- c(\"output_check\")`.\n"
   - task: "Start a MAgPIE run using the updated model settingsfrom exercises 1-3."
@@ -75,7 +75,7 @@ The main model folder should contain the folders and files shown in the
 following figure (note that depending on your settings for hidden files, 
 folders and files starting with `.` might not be shown):
 
-![Contents of folder where MAgPIE is cloned](../assets/images/tutorials/MAgPIE_folder.png)
+![Contents of folder where MAgPIE is cloned](../assets/images/tutorials/t06_MAgPIE_folder.png)
 
 The MAgPIE config file is called **default.cfg** and located within the 
 **config folder**. To open the MAgPIE config file follow the following
@@ -108,11 +108,11 @@ cfg$model <- "main.gms"   #def = "main.gms"
 #### input settings ####
 
 # which input data sets should be used?
-cfg$input <- c(regional    = "rev4.65_h12_magpie.tgz",
-               cellular    = "rev4.65_h12_1998ea10_cellularmagpie_c200_MRI-ESM2-0-ssp370_lpjml-8e6c5eb1.tgz",
-               validation  = "rev4.65_h12_validation.tgz",
-               additional  = "additional_data_rev4.07.tgz",
-               calibration = "calibration_H12_sticky_feb18_free_30Nov21.tgz")
+cfg$input <- c(regional    = "rev4.118_h12_magpie.tgz",
+               cellular    = "rev4.118_h12_1b5c3817_cellularmagpie_c200_MRI-ESM2-0-ssp245_lpjml-8e6c5eb1.tgz",
+               validation  = "rev4.118_h12_validation.tgz",
+               additional  = "additional_data_rev4.62.tgz",
+               calibration = "calibration_H12_FAO_13Mar25.tgz")
 ```
 
 ### Content of the config file
@@ -121,7 +121,7 @@ The config file includes all MAgPIE settings which are not fixed within the mode
 This includes 
 
 - metadata settings (e.g. the title of the model run)
-- technical settings (e.g. the maximum number of iterations if precision goal is not met)
+- technical settings (e.g. the maximum number of iterations if the precision goal is not met before)
 - module settings (e.g. which SSP scenario should be used for population projections)
 - output and model reporting settings (e.g. which output scripts should be run)
 
@@ -131,7 +131,7 @@ As MAgPIE is modular in structure, each module has its own section in the
 config file. Here, the module realization is chosen and additional module parameters
 are set, as shown in the following figure for the *technological change (13_tc)* module.
 
-![Example of a module section in the default.cfg file](../assets/images/tutorials/moduleSectionConfigFile.png)
+![Example of a module section in the default.cfg file](../assets/images/tutorials/t06_moduleSectionConfigFile.png)
 
 The following table gives a description of core components from the MAgPIE config file.
 Additionally, settings are also explained within the config file, by comments preceeding
@@ -142,10 +142,10 @@ the respective setting.
 |  1 | cfg$title            | Model run title                                                                           |
 |  2 | cfg$model            | Path to the submodel (relative to main model folder)                                  |
 |  3 | cfg$input            | Input data source                                                                     |
-|  4 | cfg$repositories     | Repository containing input data                                                      |
+|  4 | cfg$repositories     | Repositories containing input data                                                      |
 |  5 | cfg$force\_download  | Should data be downloaded even if inputs didn’t change?                               |
 |  6 | cfg$force\_replace   | Should existing output folder be replaced if a new run with the same name is started? |
-|  7 | cfg$recalibrate      | Yield calibration                                                                     |
+|  7 | cfg$recalibrate      | Should yields be recalibrated?                                                                     |
 |  8 | cfg$calib\_accuracy  | Accuracy for yield calibration                                                        |
 |  9 | cfg$calib\_maxiter   | Max. iterations if precision goal is not met                                          |
 | 10 | cfg$damping\_factor  | Factor determining new calibration factor’s influences on result                      |
@@ -153,7 +153,8 @@ the respective setting.
 | 12 | cfg$recalc\_npi\_ndc | Settings for NPI/NDC recalculation                                                    |
 | 13 | cfg$policyregions    | National or Sub-national mapping                                                      |
 | 14 | cfg$gms              | List of module settings                                                               |
-| 15 | cfg$sequential       | How runs should be made                                                               |
+| 15 | cfg$sequential       | Whether the runs should be run sequentially or in parallel
+|
 | 16 | cfg$logoption        | Log information                                                                       |
 | 17 | cfg$output           | Output scripts that should be used                                                    |
 | 18 | cfg$results\_folder  | Results folder name                                                                   |
@@ -202,7 +203,7 @@ cfg$title <- "titleOfYourChoice"
 Usually the **title** setting helps in creating the name of the
 **results** folder inside the **output** folder of the model. You can
 see this setting by searching for `cfg$results_folder` in default.cfg file
-(line 1490):
+(line 2234):
 
 ``` r
 cfg$results_folder <- "output/:title::date:"
@@ -218,7 +219,7 @@ the model execution stops (if `cfg$force_replace <- FALSE`) or earlier
 model outputs are replaced (if `cfg$force_replace <- TRUE`).
 
 > Exercise 1: By editing the corresponding setting in the default.cfg file, change the 
-  title of the model run to contain your affiliation (e.g. \"magWorkshop_PIK\").
+  title of the model run to contain your affiliation (e.g. \"magpieWorkshopPIK\").
   
 
 ### Changing the time steps
@@ -229,7 +230,7 @@ also run MAgPIE with ten year time steps (or a combination thereof).
 
 
 Current time step setting can be found by looking for the following text
-in the deafult.cfg file (line 123):
+in the deafult.cfg file (line 133):
 
 ``` r
 cfg$gms$c_timesteps
@@ -240,7 +241,7 @@ y1995, y2000, y2005, y2010, y2015, y2020, y2025, y2030, y2035, y2040, y2045,
 y2050, y2055, y2060, y2070, y2080, y2090 and y2100.
 
 The full set of possible **time step settings** can be found in the core sets
-defined in the model code under **core/sets.gms** (lines 182--211).
+defined in the model code under **core/sets.gms** (lines 181--212).
 
 Similar to how we updated the title, you can simply delete the default 
 set “coup2100” from the line containing
@@ -266,7 +267,7 @@ setting, which years would be included?
 MAgPIE is also capable of generating some stylized outputs which can be
 created automatically once the model run is finished. To see the current
 output generation settings, look for the following text in the
-default.cfg file (line 1484):
+default.cfg file (line 2229):
 
 ``` r
 cfg$output
@@ -280,21 +281,24 @@ The default MAgPIE configuration runs the following scripts after a model
 run is finished:
 
 - **output\_check** (check a MAgPIE output gdx file for known problems)
-- **rds\_report** (to be used in appResults)
-- **validation\_short** (creating a pdf of main results and validation data)
 - **extra/disaggregation** (interpolates land pools to a finer resolution) 
+- **rds\_report** (to be used in appResults for visualization of results)
 
 All available output R scripts can be found in the MAgPIE model folder 
 under **scripts/output**.
 
-Usually, the creation of the validation pdf takes quite some time, generating 
-a pdf file of about 1500 pages, and is therefore sometimes excluded from 
-the output scripts that should be run. To change which output scripts should or
-should not be run, you can simply add or remove the corresponding script 
-name to the setting, e.g.
+While results of a MAgPIE run can be viewed interactively using the `shinyresults` library 
+(see [Regional Output Analysis](t08_regionalOutputAnalysis)), sometimes it can be
+helpful to also have an overview of validation plots available as pdf. Such a pdf can be
+generated by running the output script **validation\_short**. As the creation of the 
+validation pdf takes quite some time, generating a pdf file of about 1500 pages, 
+it is no longer included in the default output scripts to be run. 
+
+To change which output scripts should or should not be run, you can simply add or 
+remove the corresponding script name to the setting, e.g.
 
 ``` r
-cfg$output <- c("output_check", "rds_report", "extra/disaggregation")
+cfg$output <- c("output_check", "rds_report", "extra/disaggregation", "validation_short")
 ```
 > Exercise 3: By editing the corresponding setting in the default.cfg file, 
   change the model configuration such that only the output script \"output_check\"
