@@ -3,9 +3,9 @@ layout: tutorial
 title:  Spatial output analysis
 shortID: output2
 image: assets/images/generic/pic09.jpg
-lastUpdated:   2022-03-01
+lastUpdated:   2025-06-16
 model: MAgPIE
-modelVersion: 4.4.0
+modelVersion: 4.10.1
 author: pvj
 level: 3
 requirements:
@@ -13,7 +13,7 @@ requirements:
   - Have R installed (<https://www.r-project.org/>)
   - Have R packages `madrat`, `magclass` and `luplot` installed
 lessonsContent:
-  - Know where to find spatially explicit output data (NetCDF & _magclass_-format)
+  - Know how to generate and where to find spatially explicit output data (NetCDF & _magclass_-format)
   - Data visualisation with the Panoply NetCDF Data Viewer
   - Learn how to make animated time series with output data
   - Use the `luplot` package for spatial visualisation of magclass objects in R
@@ -44,16 +44,20 @@ After optimisation, some of the model outputs can be disaggregated back to the 0
 cfg$output <- c("output_check", "rds_report", "validation_short",
                 "extra/disaggregation")
 ```
-However, other disaggregation scripts can be added by changing ``cfg$output`` _before_ conducting a model run, e.g. by adding `"extra/disaggregation_BII"`. In this example, we add spatially explicit projections at 0.5 degree for the _biodiversity intactness index_ (BII) to the _output_ folder.
+However, other scripts can be added by changing ``cfg$output`` _before_ conducting a model run, e.g. by adding `"extra/convertToNetCDF"`. In this example, we add a script that converts spatially explicit results to the common NetCDF format.
 
 ``` r
 cfg$output <- c("output_check", "rds_report", "validation_short",
-                "extra/disaggregation", "extra/disaggregation_BII")
+                "extra/disaggregation", "extra/convertToNetCDF")
 ```
 
 ## Visualisation of spatially explicit MAgPIE output with the _Panoply NetCDF Data Viewer_
 
-Spatially explicit MAgPIE output is usually stored in two different data formats in the _output_ folder, including the MAgPIE-own _magclass_-format with the ending '.mz' and the NetCDF format with the ending '.nc'. This section covers the handling and visualisation of spatial ouputs in the NetCDF format by using the NetCDF data visualisation tool _Panoply_. The _magclass_-format can be read-in and processed in R by using the R-packages `magclass` or `luplot` for visualisation. We will come back to this, however, at a later stage.
+Spatially explicit MAgPIE output is usually stored in the MAgPIE-own _magclass_-format with the ending '.mz', which is comparably storage efficient. But as shown above files can also be converted to the NetCDF format with the ending '.nc' using the output script `"extra/convertToNetCDF"`.
+
+The script `"extra/convertToNetCDF"` can also be manually executed after a running the model via the `Rscript output.R`.
+
+We will first cover the handling and visualisation of spatial ouputs in the NetCDF format by using the NetCDF data visualisation tool _Panoply_. The _magclass_-format can be read-in and processed in R by using the R-packages `magclass` or `luplot` for visualisation. We will come back to this, however, at a later stage.
 
 ### Installling _Panoply_
 
@@ -71,7 +75,7 @@ If you encounter an error while trying to execute _Panoply_ after installation, 
 
 ### Using _Panoply_ to visualise MAgPIE output
 
-Navigate to the folder, in which _Panoply_ is stored and click on _Panoply.exe_ to execute the software. Each time a new session is started in _Panoply_, a new window opens that allows you to select your data. Navigate to the _output_ folder of your local MAgPIE version and select a subfolder containing the results of a succesful model run. _Panoply_ will display all NetCDF files that are available in this folder.
+Navigate to the folder, where _Panoply_ is stored and click on _Panoply.exe_ to execute the software. Each time a new session is started in _Panoply_, a new window opens that allows you to select your data. Navigate to the _output_ folder of your local MAgPIE version and select a subfolder containing the results of a succesful model run. _Panoply_ will display all NetCDF files that are available in this folder.
 
 ![Panoply download](../assets/images/tutorials/t08_output_data.png)
 
@@ -139,7 +143,7 @@ In order to display relative changes, set _Array 1: crop_ to 'None (leave fixed)
 
 For further analysis and processing of spatial MAgPIE projections beyond visual interpretation, spatial outputs can be imported and analysed in R using the packages `magclass` (<https://github.com/pik-piam/magclass>) and `luplot` (<https://github.com/pik-piam/luplot>). `magclass` provides a range of tools for handling MAgPIE's own _magclass_-format (ending '.mz') for storing spatio-temporal data. The `magclass` package also includes a vignette that describes the functionality of the package, including examples on how to handle spatio-temporal MAgPIE data.
 
-We can make ourselves familiar with the `maglcass` package by opening an R (RStudio) session. Find the _output_ folder of your local MAgPIE version and set the working directory to the subfolder containing the results of a finished model run.
+We can make ourselves familiar with the `maglcass` package by opening an R (R Studio) session. Find the _output_ folder of your local MAgPIE version and set the working directory to the subfolder containing the results of a finished model run.
 
 ``` r
 setwd("/path/to/your/magpie/output/subfolder")
@@ -186,7 +190,7 @@ library(luplot)
 The library contains helpful functions for plotting `magclass` objects in different ways, e.g. `plotmap` that transfers data stored in a `magclass` object to a simple map. However, we cannot plot all data at the same time. Therefore, we need to select a time step and a variable that we want to look at. Here, we choose the year `y2050` and the variable primary forest again. In `plotmap` can also define the upper and lower boundary of the legend via `legend_range`.
 
 ```r
-luplot::plotmap(x[,'y2050', 'primforest'], legend_range = c(0, 0.3))
+luplot::plotmap2(x[,'y2050', 'primforest'], legend_range = c(0, 0.3))
 ```
 
 ![Panoply download](../assets/images/tutorials/t08_plotmap.png)
