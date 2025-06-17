@@ -267,7 +267,7 @@ page:
 
 ## Analyzing outputs with the gdx library
 
-The **gdx library** (<https://github.com/pik-piam/gdx>) allows to
+The **gdx2 library** (<https://github.com/pik-piam/gdx2>) allows to
 directly access objects contained in the *fulldata.gdx* file via the
 function ``readGDX``. A pragmatic way to learn how to use this function
 for the extraction of interesting information from the *fulldata.gdx* is
@@ -275,7 +275,7 @@ to open R files of the **magpie4** library within Rstudio. Most of the
 magpie4 functions make use of ``readGDX``.
 
 In the function ``magpie4::carbonstock()``, we see several
-instances where ``gdx::readGDX`` is used,
+instances where ``gdx2::readGDX`` is used,
 e.g.:
 
 ``` r
