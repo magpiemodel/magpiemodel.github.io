@@ -3,7 +3,7 @@ layout: tutorial
 title:  Update model settings
 shortID: config
 image: assets/images/generic/pic06.jpg
-lastUpdated:   2024-06-15
+lastUpdated:   2025-06-16
 model: MAgPIE
 modelVersion: 4.10.1
 author: 
