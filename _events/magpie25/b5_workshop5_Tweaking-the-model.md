@@ -13,7 +13,7 @@ agenda:
     presenter: fh
   - shortID: pr
     length: 15
-    presenter: ps
+    presenter: kk
   - shortID: changeInput
     length: 45
     presenter: ms

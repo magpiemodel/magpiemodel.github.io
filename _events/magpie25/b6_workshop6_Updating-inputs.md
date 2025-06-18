@@ -9,13 +9,18 @@ agenda:
     length: 5
     presenter: jpd
   - shortID: magclass 
-    length: 70
+    length: 60
     presenter: jpd
   - title: break
-    length: 15 
+    length: 20
   - shortID: madrat
-    length: 90 
-    presenter: dc
+    length: 60 
+    presenter: jpd
+  - title: break
+    length: 5
+  - title: Wrap up
+    length: 20
+    presenter: jpd
 ---
 
 The last part of the workshop will focus on the data preparation for model applications and will provide a brief introduction to the [madrat] data processing framework, and its primary data structure [magclass]. These libraries are used for the full data processing chain for the MAgPIE model.
