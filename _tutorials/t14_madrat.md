@@ -3,10 +3,10 @@ layout: tutorial
 title:  Input data preparation (MADRaT)
 shortID: madrat
 image: assets/images/generic/pic14.jpg
-lastUpdated:   2022-22-02
+lastUpdated:   2025-22-02
 model: MADRaT
 modelVersion: 1.0.0
-author: dc
+author: David Meng-Chuen Chen
 level: 4
 requirements:
   - Basic knowledge of R programming language
@@ -46,6 +46,8 @@ standardized for consistency. For this exercise, we will work with the
 
 First, please install and load the **madrat** package. 
 The installation may prompt you to set a main folder for madrat data. Name this folder '/inputdata/', and put it somewhere easily accessible, such as "C:/PIK/inputdata".
+
+A madrat 'cheat-sheet' can be found [here](../assets/pdf/madrat_cheat_sheet2025.pdf).
 
 
 ```r

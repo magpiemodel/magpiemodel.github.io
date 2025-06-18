@@ -6,6 +6,9 @@ shortID: people
 nav-menu: false
 show_tile: false
 data:
+  - firstName: N
+    lastName: N
+    id: nn
   - firstName: Hermann
     lastName: Lotze-Campen
     id: hlc
@@ -61,7 +64,6 @@ data:
   - firstName: Klein
     lastName: David
     id: dk 
-    url: https://www.pik-potsdam.de/members/dklein
   - firstName: Vartika
     lastName: Singh
     id: vs
@@ -73,7 +75,6 @@ data:
   - firstName: Marcos
     lastName: Alves
     id: ma
-    url: https://www.pik-potsdam.de/members/pedrosa
   - firstName: David Meng-Chuen
     lastName: Chen
     id: dc
@@ -92,7 +93,6 @@ data:
   - firstName: Jake
     lastName: Tommey
     id: jt
-    url: https://www.pik-potsdam.de/members/jaketo
   - firstName: Georg
     lastName: Schröter
     id: gs
