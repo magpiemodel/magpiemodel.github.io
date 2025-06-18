@@ -70,6 +70,7 @@ equations
 parameters
  p34_pop_growth(t_all,i) 		annual population growth rate (1)
 ;
+
 ```
 
 #### equations.gms
@@ -83,6 +84,7 @@ $offtext
 q34_urban(j2)..
  vm_land(j2,"urban") =e= 
  pcm_land(j2,"urban") * (1 + sum((ct,cell(i2,j2)), p34_pop_growth(ct,i2)) * m_timestep_length);
+
 ```
 
 #### preloop.gms
@@ -98,6 +100,7 @@ $offtext
 loop(t_all$(ord(t_all) > 1),
  p34_pop_growth(t_all,i) = (im_pop(t_all,i)/im_pop(t_all-1,i) - 1) / m_yeardiff(t_all);
 );
+
 ```
 
 #### presolve.gms
@@ -109,6 +112,7 @@ vm_carbon_stock.fx(j,"urban",c_pools) = 0;
 vm_bv.fx(j,"urban", potnatveg) = pcm_land(j,"urban") * fm_bii_coeff("urban",potnatveg) * fm_luh2_side_layers(j,potnatveg);
 *fix costs to zero
 vm_cost_urban.fx(j) = 0;
+
 ```
 
 #### realization.gms
@@ -118,6 +122,7 @@ vm_cost_urban.fx(j) = 0;
 *' Carbon stocks are assumed zero.
 
 *' @limitations Only for illustrative purpose
+
 ```
 
 ### Update the code
