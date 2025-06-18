@@ -3,9 +3,9 @@ layout: tutorial
 title:  Input data repositories & Patches
 shortID: changeInput
 image: assets/images/generic/pic12.jpg
-lastUpdated:   2022-02-28
+lastUpdated:   2025-06-17
 model: MAgPIE
-modelVersion: 4.4.2
+modelVersion: 4.10.1
 author:
   - ms
   - fh
@@ -35,11 +35,11 @@ usually at the beginning of the settings. Currently, the input data is
 set as:
 
 ``` r
-cfg$input <- c(regional    = "rev4.65_h12_magpie.tgz",
-               cellular    = "rev4.65_h12_1998ea10_cellularmagpie_c200_MRI-ESM2-0-ssp370_lpjml-8e6c5eb1.tgz",
-               validation  = "rev4.65_h12_validation.tgz",
-               additional  = "additional_data_rev4.07.tgz",
-               calibration = "calibration_H12_sticky_feb18_free_30Nov21.tgz")
+cfg$input <- c(regional    = "rev4.118_h12_magpie.tgz",
+               cellular    = "rev4.118_h12_1b5c3817_cellularmagpie_c200_MRI-ESM2-0-ssp245_lpjml-8e6c5eb1.tgz",
+               validation  = "rev4.118_h12_validation.tgz",
+               additional  = "additional_data_rev4.62.tgz",
+               calibration = "calibration_H12_FAO_13Mar25.tgz")
 ```
 
 Once specified in the configuration as the input data, the data is
@@ -52,15 +52,15 @@ contain the following types of data:
 
   - Cellular input data (e.g. land area, crop yields, water
     requirements, carbon density):
-      - `cellular    = "rev4.65_h12_1998ea10_cellularmagpie_c200_MRI-ESM2-0-ssp370_lpjml-8e6c5eb1.tgz"`
+      - `cellular    = "rev4.118_h12_1b5c3817_cellularmagpie_c200_MRI-ESM2-0-ssp245_lpjml-8e6c5eb1.tgz"`
   - Regional input and validation data (e.g. food demand):
-      - `regional    = "rev4.65_h12_magpie.tgz"`
-      - `validation  = "rev4.65_h12_validation.tgz"`
+      - `regional    = "rev4.118_h12_magpie.tgz"`
+      - `validation  = "rev4.118_h12_validation.tgz"`
   - Calibration data:
-      - `calibration = "calibration_H12_sticky_feb18_free_30Nov21.tgz"`
+      - `calibration = "calibration_H12_FAO_13Mar25.tgz"`
   - Global and other input data (e.g. conversion factors, national
     policies):
-      - `additional  = "additional_data_rev4.07.tgz"`
+      - `additional  = "additional_data_rev4.62.tgz"`
 
 ## Patch input data
 
@@ -147,7 +147,7 @@ environment and delete the file patch folder:
 gms::tardir(dir="patch_inputdata/patch_ndc_usa",
                tarfile="patch_inputdata/patch_ndc_usa.tgz")
 
-unlink("patch_inputdata/patch_ndc_usa", recursive=TRUE)
+unlink("patch_inputdata/patch_ndc_usa", recursive = TRUE)
 ```
 
 ### Add the patch file to the configuration
@@ -157,21 +157,21 @@ the input data and the existing patch file that replaces the existing
 input data. For this, edit the `config/default.cfg` file from:
 
 ``` r
-cfg$input <- c(regional    = "rev4.65_h12_magpie.tgz",
-               cellular    = "rev4.65_h12_1998ea10_cellularmagpie_c200_MRI-ESM2-0-ssp370_lpjml-8e6c5eb1.tgz",
-               validation  = "rev4.65_h12_validation.tgz",
-               additional  = "additional_data_rev4.07.tgz",
-               calibration = "calibration_H12_sticky_feb18_free_30Nov21.tgz")
+cfg$input <- c(regional    = "rev4.118_h12_magpie.tgz",
+               cellular    = "rev4.118_h12_1b5c3817_cellularmagpie_c200_MRI-ESM2-0-ssp245_lpjml-8e6c5eb1.tgz",
+               validation  = "rev4.118_h12_validation.tgz",
+               additional  = "additional_data_rev4.62.tgz",
+               calibration = "calibration_H12_FAO_13Mar25.tgz")
 ```
 
 to:
 
 ``` r
-cfg$input <- c(regional    = "rev4.65_h12_magpie.tgz",
-               cellular    = "rev4.65_h12_1998ea10_cellularmagpie_c200_MRI-ESM2-0-ssp370_lpjml-8e6c5eb1.tgz",
-               validation  = "rev4.65_h12_validation.tgz",
-               additional  = "additional_data_rev4.07.tgz",
-               calibration = "calibration_H12_sticky_feb18_free_30Nov21.tgz",
+cfg$input <- c(regional    = "rev4.118_h12_magpie.tgz",
+               cellular    = "rev4.118_h12_1b5c3817_cellularmagpie_c200_MRI-ESM2-0-ssp245_lpjml-8e6c5eb1.tgz",
+               validation  = "rev4.118_h12_validation.tgz",
+               additional  = "additional_data_rev4.62.tgz",
+               calibration = "calibration_H12_FAO_13Mar25.tgz",
                patch       = "patch_ndc_usa.tgz")
 ```
 
@@ -264,11 +264,11 @@ start_run(cfg,codeCheck=FALSE)
 
 cfg$title <- "SSP2_NDC_USA"
 cfg <- gms::setScenario(cfg,c("SSP2","NDC"))
-cfg$input <- c(regional    = "rev4.65_h12_magpie.tgz",
-               cellular    = "rev4.65_h12_1998ea10_cellularmagpie_c200_MRI-ESM2-0-ssp370_lpjml-8e6c5eb1.tgz",
-               validation  = "rev4.65_h12_validation.tgz",
-               additional  = "additional_data_rev4.07.tgz",
-               calibration = "calibration_H12_sticky_feb18_free_30Nov21.tgz",
+cfg$input <- c(regional    = "rev4.118_h12_magpie.tgz",
+               cellular    = "rev4.118_h12_1b5c3817_cellularmagpie_c200_MRI-ESM2-0-ssp245_lpjml-8e6c5eb1.tgz",
+               validation  = "rev4.118_h12_validation.tgz",
+               additional  = "additional_data_rev4.62.tgz",
+               calibration = "calibration_H12_FAO_13Mar25.tgz",
                patch       = "patch_ndc_usa.tgz")
 start_run(cfg,codeCheck=FALSE)
 ```
