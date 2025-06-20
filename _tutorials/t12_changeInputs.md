@@ -132,8 +132,8 @@ or in the command line:
 cp scripts/npi_ndc/policies/policy_definitions.csv patch_inputdata/patch_ndc_usa/.
 ```
 
-Edit the content, in this case update the USA afforestation NDC policy
-(`affore`) with a more ambitious target of 15 MHa of afforested area
+Edit the content, in this case update the existing USA afforestation NDC policy
+(`USA,affore,ndc,1,1995,2015,7.1`) with a more ambitious target of 15 MHa of afforested area
 starting in 2020 and reaching the target at 2030:
 
 ``` txt
