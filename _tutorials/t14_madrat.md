@@ -97,13 +97,12 @@ the WDI source folder in this directory. Metadata on where the data was obtained
 For another example,
 please see downloadTau in the MADRaT package.
 
-Note that if direct download not possible, data files can be manually
+Note that if direct download is not possible, data files can be manually
 created in the inputdata/sources folder. This is not the preferred
 implementation, but in this case, a download function is not necessary.
 Naming of the source folder and the read functions must match.
 
-
-Note again that although the function is itself named **downloadTutorialWDI**,
+Also, note that although the function is itself named **downloadTutorialWDI**,
 we call it via the **downloadSource()** wrapper.
 
 ### Read function
