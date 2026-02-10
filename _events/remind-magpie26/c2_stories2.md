@@ -8,5 +8,5 @@ agenda:
 
 ---
 
-The second of two REMIND & MAgPIE stories sessions in which REMIND & MAgPIE users and developers
-talk about their MAgPIE-based research and share their experiences.
+The first of two REMIND & MAgPIE stories sessions in which users and developers
+talk about their research with REMIND, MAgPIE and the coupled REMIND-MAgPIE system, and share their experiences.
