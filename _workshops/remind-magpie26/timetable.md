@@ -1,6 +1,6 @@
 ---
 layout: timetable 
-title: Preliminary timetable
+title: Timetable
 workshopID: 26
 published: true
 initialDate: 2026-02-24
