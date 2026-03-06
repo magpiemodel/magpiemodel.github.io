@@ -26,6 +26,6 @@ agenda:
     length: 30
     presenter:
 ---
-In the first workshop we will give a short overview about what the REMIND and [MAgPIE](https://github.com/magpiemodel/magpie) framework are, how they look like, and what they are used for.
+In the first workshop we will give a short overview about what the [REMIND](https://github.com/remindmodel/remind) and [MAgPIE](https://github.com/magpiemodel/magpie) framework are, how they look like, and what they are used for.
 
 Start for the first session for online participants is **9:30am CEST** (after the 30 minutes registration for in person participants).
