@@ -8,7 +8,7 @@ show_tile: false
 
 [ 
   {% for event in site.events %} 
-    { "title":"{{event.title}}", 
+    { "title":"{% if event.layout != "event_multitrack" %}{{event.title}}{% else %}Breakout: {% for track in event.tracks %}{{track.track}} {{track.title}}{%unless forloop.last %} | {%endunless%} {% endfor %}{% endif %}", 
       "start": "{{event.event_start}}", 
       "end": "{{event.event_end}}", 
       "allDay":false, 
