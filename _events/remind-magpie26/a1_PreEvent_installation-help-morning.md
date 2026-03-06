@@ -10,4 +10,4 @@ agenda:
     presenter: REMIND & MAgPIE teams
 ---
 
-At this pre-event we will offer a interactive Q&A session to help with installation problems. Please try to install the model in advance!
+At this pre-event we will offer an interactive Q&A session to help with installation problems. Please try to install the model(s) in advance!
