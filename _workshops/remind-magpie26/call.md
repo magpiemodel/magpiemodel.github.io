@@ -31,7 +31,7 @@ Submissions will be reviewed in a *single-blind* process, which means that revie
 
 To submit your proposed talk please fill out our submission form. The form will ask you to provide your contact details along with a short description of your proposed contribution (max 1000 characters).
 
-~~Click **here** for submission.~~ _Due to an ongoing server update, submissions are paused and will resume on 2026-04-28_
+Click **[->here<-](submission_link)** for submission.
 
 The event is free of charge. We are looking forward to receiving your submission!
 
