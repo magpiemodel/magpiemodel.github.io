@@ -6,7 +6,7 @@ workshopID: 26
 published: true
 ---
 
-#### submission deadline: 17.05.2026
+#### submission deadline: 24.05.2026
 
 Since the first open-source releases of [MAgPIE] and [REMIND] in 2019 the community around the models has started to grow. To foster the community aspect and to create a space for productive exchange we will also have this years **REMIND-MAgPIE workshop** in **June 2026** combined with two **REMIND & MAgPIE stories** sessions dedicated to sharing specific experiences of using [REMIND], [MAgPIE] and the coupled system. The aim is to give room for everyone to share their related research and to allow the community to get an overview about the various currently ongoing activities.
 
@@ -38,8 +38,8 @@ The event is free of charge. We are looking forward to receiving your submission
 
 ### Timeline
 
-* submission deadline  **17.05.2026** 
-* acceptance notification before 24.05.2026
+* submission deadline  **24.05.2026** 
+* acceptance notification before 26.05.2026
 * final program available 31.05.2026
 * REMIND-MAgPIE26 workshop & stories **16.06. - 19.06.2026** 
 
