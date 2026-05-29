@@ -11,19 +11,20 @@ tracks:
     agenda:
       - shortID: output 
         length: 60
-        presenter:
+        presenter: fb
       - shortID: output2
         length: 45
-        presenter:
+        presenter: pj
   - track: REMIND
     title: Configuration & Contribution
     agenda:
       - title: REMIND configuration
         length: 30
-        presenter:
-      - title: Contributing to REMIND
-        length: 30
-      - title: Running REMIND
+        presenter: David Klein
+      - title: Running on HPC/Cloud
         length: 45
-        presenter:
+        presenter: Tonn Rüter
+      - title: Reporting and Tooling
+        length: 30
+        presenter: Tonn Rüter
 ---

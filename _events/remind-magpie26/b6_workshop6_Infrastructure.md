@@ -8,11 +8,10 @@ event_end:     "2026-06-17T15:45:00+02:00"
 agenda:
   - shortID: renv
     length: 45
-    presenter:
+    presenter: Pascal Sauer, Falk Benke
   - title: break
     length: 15
-    presenter: 
   - shortID: magclass
     length: 60
-    presenter:
+    presenter: pr
 ---

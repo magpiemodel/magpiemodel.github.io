@@ -8,7 +8,7 @@ event_end:     "2026-06-16T14:45:00+02:00"
 agenda:
   - shortID: git
     length: 45
-    presenter:
+    presenter: Falk Benke
   - title: Group photo
     length: 15
     presenter:

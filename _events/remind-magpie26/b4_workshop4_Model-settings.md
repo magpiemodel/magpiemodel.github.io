@@ -11,22 +11,22 @@ tracks:
     agenda:
       - shortID: config
         length: 30
-        presenter:
+        presenter: bb
       - shortID: startScript
         length: 45
-        presenter:
+        presenter: mc
       - title: break
         length: 15
         presenter: 
       - shortID: pr
         length: 30
-        presenter:
+        presenter: ps
   - track: REMIND
     title: Calibration
     agenda:
       - title: Calibration
         length: 75
-        presenter:
+        presenter: Felix Schreyer
       - title: Q&A
         length: 30
         presenter:

@@ -7,6 +7,9 @@ event_end:     "2026-06-19T10:45:00+02:00"
 
 agenda:
   - title: Coupled system intro
-    length: 105
+    length: 75
+    presenter: David Klein
+  - title: Combined Q&A
+    length: 30
     presenter:
 ---

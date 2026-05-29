@@ -11,7 +11,7 @@ tracks:
     agenda:
       - shortID: changeCode 
         length: 60
-        presenter:
+        presenter: fh
       - title: break
         length: 15
       - title: Q&A
@@ -22,13 +22,13 @@ tracks:
     agenda:
       - title: "Sector focus: Transport"
         length: 30
-        presenter:
+        presenter: Alex Hagen
       - title: "Sector focus: Buildings"
         length: 30
-        presenter:
+        presenter: Robin Hasse
       - title: break
         length: 15
       - title: "Sector focus: Industry"
         length: 30
-        presenter:
+        presenter: Leonie Schweiger
 ---
