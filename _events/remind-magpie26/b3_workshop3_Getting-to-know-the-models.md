@@ -11,15 +11,15 @@ tracks:
     agenda:
       - shortID: start 
         length: 45 
-        presenter:
+        presenter: emb
       - title: break
         length: 15
       - shortID: gams
         length: 30
-        presenter:
+        presenter: iw
       - shortID: goxygen
         length: 30
-        presenter:
+        presenter: kk
       - title: Q&A
         length: 30
         presenter:
@@ -27,13 +27,16 @@ tracks:
     title: Structure & implementation
     agenda:
       - title: Code structure
-        length: 45
-        presenter:
+        length: 30
+        presenter: Lavinia Baumstark
+      - title: Start t1r REMIND run
+        length: 30
+        presenter: Tonn Rüter
       - title: break
         length: 15
       - title: Policy implementation
         length: 60
-        presenter:
+        presenter: Laurin Köhler-Schindler
       - title: Q&A
         length: 30 
         presenter:

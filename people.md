@@ -96,5 +96,9 @@ data:
   - firstName: Georg
     lastName: Schröter
     id: gs
-    url: https://www.pik-potsdam.de/members/georgsc/homepage-de
+    url: https://www.pik-potsdam.de/members/georgsc
+  - firstName: Patrick
+    lastName: Rein
+    id: pr
+    url: https://www.pik-potsdam.de/members/patrickr
 ---

@@ -8,5 +8,5 @@ event_end:     "2026-06-18T15:45:00+02:00"
 agenda:
   - shortID: madrat
     length: 60
-    presenter:
+    presenter: David Chen, Falk Benke
 ---

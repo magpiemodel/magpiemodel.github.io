@@ -16,16 +16,16 @@ tracks:
         length: 15
       - shortID: changeInput 
         length: 30 
-        presenter:
+        presenter: ms
   - track: REMIND
     title: Viewing results
     agenda:
-      - title: "Viewing results: PDF"
+      - title: Viewing results
         length: 60
-        presenter:
+        presenter: Pascal Weigmann
       - title: break
         length: 15
-      - title: "Viewing results: Validation Tool"
+      - title: Validating results
         length: 30
-        presenter:
+        presenter: Pascal Weigmann
 ---
