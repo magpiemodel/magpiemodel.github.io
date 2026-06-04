@@ -16,7 +16,7 @@ agenda:
     length: 60
     presenter: Renato Rodrigues
   - title: What is MAgPIE?
-    url: https://slides.com/jandietrich/magpie-4-10/
+    url: https://slides.com/jandietrich/magpie-4-14/
     length: 60
     presenter: jpd
   - title: break
