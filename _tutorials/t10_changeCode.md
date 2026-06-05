@@ -3,199 +3,320 @@ layout: tutorial
 title:  Creating a new realization
 shortID: changeCode
 image: assets/images/generic/pic10.jpg
-lastUpdated:   2022-03-10
+lastUpdated:   2026-06-05
 model: MAgPIE
-modelVersion: 4.4.0
-author: fh
+modelVersion: 4.14.0
+author: Florian Humpenöder
 level: 4
 requirements:
-  - Have GAMS installed (https://www.gams.com)
-  - Have R installed (https://www.r-project.org/)
-  - Have R packages `gms` and `magpie4` installed
-  - Have a local copy of the MAgPIE master checked out from https://github.com/magpiemodel/magpie
-  - Have downloaded the MAgPIE default data via `Rscript start.R` -> "download data"
+  - A GitHub Codespace for MAgPIE — GAMS, R (with the `gms` and `magpie4` packages) and a MAgPIE checkout are pre-installed
+  - The MAgPIE default input data — download it once via `Rscript start.R` -> "download data" (skip this if it is still present from a previous session)
 lessonsContent:
-  - Changing the MAgPIE GAMS code
-  - adding In-Code documentation
   - adding a new module realization
-  - integrate new realization
+  - changing the MAgPIE GAMS code
+  - integrating and testing the new realization
 published: true
 ---
 
 ## Introduction
 
-MAgPIE has a modular concept. Each module (e.g. `pasture`) can have
-several realizations (e.g. `dynamic` and `static`). The purpose of these
-realizations is a) to maintain the current default model behavior and b)
-to keep the model operational while developing a new realization. A
-typical use case is the extension of a realization by a specific
-feature. In this case, one would copy the current default realization,
-rename it properly, and apply the wanted changes. Then, the model
-behavior can be compared between the two realizations. Possibly, the
-new realization might become the new default at some point and the old
-realization is deleted.
+MAgPIE has a modular concept. Each module can have several realizations: one holds
+the current default behavior, while you develop a new one alongside it. A typical
+workflow is to **copy the current default realization, rename it, and apply your
+changes** — which is exactly what we do here.
 
-This tutorial shows how to add a new realization to a module in the
-MAgPIE model. To illustrate the different steps, we will expand the
-`urban` land module. In the current MAgPIE master, the `urban` land
-module has a `static` and `exo_nov21` realization. In `static`, 
-urban land is just static over time. In `exo_nov21`, future
-urban land is prescribed based on existing scenarios of urbanization.
-In this tutorial, we will add a new realization called `pop_growth`, 
-which changes urban land based on population
-growth. Note that this should be only used for illustrative purposes. 
+We add a new realization `pop_growth` to the `urban` land module
+(`modules/34_urban`). The module currently has two realizations: `static` (urban
+land constant over time) and `exo_nov21` (urban land prescribed from an input
+dataset — the default). Our `pop_growth` realization instead lets urban land grow
+with population. This is for illustrative purposes only.
+
+`exo_nov21` already pulls urban land towards a cellular **target** using a **soft
+penalty** (urban land may deviate from the target at a high cost, which keeps the
+model feasible). We reuse that machinery and only change where the target comes
+from: instead of reading it from a file, we compute it from population growth. The
+reasoning is explained in the [Details](#details-and-background) section at the end.
 
 ## Adding a new realization
 
-We want to add a new realization to the `urban` land module. The `urban`
-land module is located here: `modules/34_urban`.
+### Copy the default realization
 
-### Add a new realization by duplicating an existing one
+From the MAgPIE main folder, copy `exo_nov21` to a new `pop_growth` folder. Use the
+terminal — in Codespaces you cannot duplicate a folder by clicking on it:
 
-Duplicate the `static` folder and rename it to `pop_growth`. Now we need to edit and add 
-files in the `pop_growth` folder. 
-In the end, you should have the following files:
+``` bash
+cp -r modules/34_urban/exo_nov21 modules/34_urban/pop_growth
+```
+
+### Remove the input data
+
+`pop_growth` computes its target instead of reading it from a file, so delete the
+input-data parts of the copy:
+
+``` bash
+rm -rf modules/34_urban/pop_growth/input.gms \
+       modules/34_urban/pop_growth/input \
+       modules/34_urban/pop_growth/sets.gms
+```
+
+### Edit the files
+
+For each file below, set its content to what is shown. Keep the license header (the
+`*** |` block) at the top. In `declarations.gms`, also keep the auto-generated
+`R SECTION` block at the bottom — it is updated for you by the helper commands in the
+next step. The headers and `R SECTION` blocks are omitted from the code below for
+brevity.
 
 #### declarations.gms
 
+Declares the population-growth parameter and the target, the deviation-cost scalar,
+the cost and deviation variables, and the equations:
+
 ``` r
+parameters
+ p34_pop_growth(t_all,i)   annual population growth rate (1)
+ p34_urban_target(j)       urban land target from population growth (mio. ha)
+;
+
+scalars
+ s34_urban_deviation_cost  artificial cost for deviating from the urban target (USD17MER per ha)  / 1e+06 /
+;
+
 positive variables
- vm_cost_urban(j)			Technical adjustment cost
+ vm_cost_urban(j)          Technical adjustment costs
+ v34_cost1(j)              Technical adjustment costs
+ v34_cost2(j)              Technical adjustment costs
 ;
 
 equations
- q34_urban(j)       		urban land (mio. ha)
+ q34_urban_cell(j)         Constraint for urban land
+ q34_urban_cost1(j)        Technical punishment equation
+ q34_urban_cost2(j)        Technical punishment equation
+ q34_bv_urban(j,potnatveg) Biodiversity value for urban land (Mha)
 ;
-
-parameters
- p34_pop_growth(t_all,i) 		annual population growth rate (1)
-;
-
-```
-
-#### equations.gms
-
-``` r
-$ontext
-Urban land in the current time step (vm_land) is forced to the value from the previous 
-time step (pcm_land) multiplied by 1 + population growth between these time steps.
-$offtext
-
-q34_urban(j2)..
- vm_land(j2,"urban") =e= 
- pcm_land(j2,"urban") * (1 + sum((ct,cell(i2,j2)), p34_pop_growth(ct,i2)) * m_timestep_length);
-
 ```
 
 #### preloop.gms
 
+Computes the annual population growth rate from the population driver `im_pop`, and
+initialises the biodiversity value:
+
 ``` r
 $ontext
-#Calculate annual population growth rate
-Since the temporal resolution of t_all is 5-year time steps, we have to divide the change 
-between time steps by the number of years between these time steps (m_yeardiff) to get 
-annual values.
+Calculate the annual population growth rate. Since t_all has 5-year time steps, we
+divide the change between time steps by the number of years between them
+(m_yeardiff) to get annual values.
 $offtext
-
 loop(t_all$(ord(t_all) > 1),
  p34_pop_growth(t_all,i) = (im_pop(t_all,i)/im_pop(t_all-1,i) - 1) / m_yeardiff(t_all);
 );
 
+* Initialize biodiversity value
+vm_bv.l(j2,"urban", potnatveg) =
+  pcm_land(j2,"urban") * fm_bii_coeff("urban",potnatveg) * fm_luh2_side_layers(j2,potnatveg);
 ```
 
 #### presolve.gms
 
-``` r
-*fix carbon stocks to zero
-vm_carbon_stock.fx(j,"urban",c_pools) = 0;
-*Biodiversity
-vm_bv.fx(j,"urban", potnatveg) = pcm_land(j,"urban") * fm_bii_coeff("urban",potnatveg) * fm_luh2_side_layers(j,potnatveg);
-*fix costs to zero
-vm_cost_urban.fx(j) = 0;
-
-```
-
-#### realization.gms
+Computes the target each time step — the previous urban land scaled by population
+growth — and fixes urban land in the first time step (see
+[Details](#details-and-background)):
 
 ``` r
-*' @description In this realization, urban land expands based on population growth.
-*' Carbon stocks are assumed zero.
+vm_carbon_stock.fx(j,"urban",ag_pools,stockType) = 0;
 
-*' @limitations Only for illustrative purpose
-
+if(ord(t) = 1,
+  p34_urban_target(j)   = pcm_land(j,"urban");
+  vm_land.fx(j,"urban") = pcm_land(j,"urban");
+else
+  p34_urban_target(j)   = pcm_land(j,"urban") * (1 + sum(cell(i,j), p34_pop_growth(t,i)) * m_timestep_length);
+  vm_land.lo(j,"urban") = 0;
+  vm_land.l(j,"urban")  = p34_urban_target(j);
+  vm_land.up(j,"urban") = Inf;
+);
 ```
 
-### Update the code
+#### equations.gms
 
-To include the new realization `pop_growth` properly into the GAMS code we
-run a specific R command in the main folder. First navigate in your
-command line to the MAgPIE main folder, then open a new R session (type
-`R` followed by ENTER), and then copy-paste the following R commands:
+Holds the soft penalty: `q34_urban_cost1` and `q34_urban_cost2` measure the
+deviation of urban land below and above the target, `q34_urban_cell` charges it to
+the costs, and `q34_bv_urban` sets the biodiversity value:
+
+``` r
+q34_urban_cost1(j2) ..
+            v34_cost1(j2) =g= p34_urban_target(j2) - vm_land(j2,"urban");
+
+q34_urban_cost2(j2) ..
+            v34_cost2(j2) =g= vm_land(j2,"urban") - p34_urban_target(j2);
+
+q34_urban_cell(j2) ..
+            vm_cost_urban(j2) =e= (v34_cost1(j2) + v34_cost2(j2)) * s34_urban_deviation_cost;
+
+q34_bv_urban(j2,potnatveg) ..
+ vm_bv(j2,"urban", potnatveg) =e= vm_land(j2,"urban") * fm_bii_coeff("urban",potnatveg) * fm_luh2_side_layers(j2,potnatveg);
+```
+
+#### scaling.gms and realization.gms
+
+Leave `scaling.gms` unchanged (it scales `vm_cost_urban` for the solver). In
+`realization.gms`, update the `@description` to document the new behavior:
+
+``` r
+*' @description In this realization urban land changes over time with population
+*' growth. Each time step urban land is pulled towards a target equal to the previous
+*' urban land scaled by population growth, via a high punishment term for deviating
+*' from the target. Carbon stocks are assumed zero.
+
+*' @limitations Only for illustrative purpose.
+```
+
+### Update and check the code
+
+In the main folder, open an R session (type `R`) and run:
 
 ``` r
 gms::update_fulldataOutput()
 gms::update_modules_embedding()
-```
-
-These two commands will add a `postsolve.gms` file, and update the
-`realization.gms` and `declarations.gms` files. Hint: If you change, add
-or delete variables/parameters always run these commands to avoid GAMS
-compilation errors.
-
-Run codeCheck to check if all module interfaces exist.
-
-``` r
 gms::codeCheck(interactive = TRUE)
 ```
 
-codeCheck will detect a problem with interfaces in 34\_urban. Follow the
-instructions, which will add a `not_used.txt` file.
+The first two commands regenerate the auto-managed parts (`postsolve.gms`, the
+output declarations in `declarations.gms`, and the phase list in `realization.gms`).
+`codeCheck` then verifies the module interfaces. When it stops at an interface that
+is not handled in every realization, type a short reason such as `not needed` (or
+press Enter) and it writes the `not_used.txt` entry for you — type `n` only if the
+interface should actually be handled in code (see
+[Details](#details-and-background)). Then quit R with `q()` to return to the
+terminal — the commands in the next section run in the shell, not in R.
 
-Now you can quit the R session with `q()`.
+## Testing the new realization
 
-## Testing a new realization
+### Compile and run
 
-### Start a model run
+Set the realization to `pop_growth` in `main.gms`: open `main.gms` and change the
+line `$setglobal urban  exo_nov21` to `$setglobal urban  pop_growth`. Equivalently,
+run the `sed` command below in the terminal (not in R). Then check that the model
+compiles:
 
-For a quick GAMS test, we simply set the new realization in the file
-`main.gms`: `$setglobal urban pop_growth`. We can then
-check if the model compiles correctly with this command evoked from the
-command line.
-
-``` r
+``` bash
+sed -i 's/^$setglobal urban .*/$setglobal urban  pop_growth/' main.gms
 gams main.gms action=C
 ```
 
-If you get compilation errors, you have to resolve these first. Look
-into the `main.lst` file. It will tell you what kind of error occurred.
+If there are errors, look into `main.lst`. For a fast test, reduce the number of
+time steps to three: change the line `$setglobal c_timesteps  coup2100` to
+`$setglobal c_timesteps  quicktest`, or run the command below in the terminal. Then
+run the model (this can take 10–15 minutes, depending on the Codespace):
 
-To make our test run as fast as possible, we reduce the number of time
-steps to 3. For this, we set `$setglobal c_timesteps quicktest` in main.gms.
-
-Now we can start a test run with this command. This can take up to 10-15
-minutes, depending on the resources of your machine.
-
-``` r
+``` bash
+sed -i 's/^$setglobal c_timesteps .*/$setglobal c_timesteps  quicktest/' main.gms
 gams main.gms
 ```
 
-GAMS will create a `fulldata.gdx` file in the main folder.
-
-For starting a productive model run, we would have to change `cfg$gms$urban` in 
-the config file `config/default.cfg` (`cfg$gms$urban   <- "pop_growth"`).
-We could now start a model run with `Rscript start.R -> 1: default -> 1:
-Direct execution`. Or, even better write a start script without changing
-`config/default.cfg`.
+This creates a `fulldata.gdx` in the main folder. The commands above are a quick
+GAMS test; for a full productive run, use a dedicated start script instead (see
+[Details](#details-and-background)).
 
 ### Check the results
 
-Start a new R session in the MAgPIE main folder, and execute these
-commands.
+Start an R session in the main folder (type `R`) and run:
 
 ``` r
 options(digits=2)
 library(magpie4)
 gdx <- "fulldata.gdx"
-land(gdx,level="glo",type="urban")
-land(gdx,level="reg",type="urban")
+land(gdx,level="glo",types="urban")
+land(gdx,level="reg",types="urban")
 ```
+
+Global urban land now grows with population (your exact numbers may differ slightly
+with the input data version):
+
+```
+y1995 y2010 y2025
+   48    55    60
+```
+
+Regionally it grows fastest where population grows fastest (e.g. SSA, MEA) and stays
+roughly constant where population stagnates (e.g. JPN, EUR). The base year (y1995)
+reproduces the initial urban land (taken from the LUH input data), because urban land
+is fixed in the first time step.
+
+## Clean up
+
+When you are done, reset the model to its default state so the following tutorials
+are not affected. Run these commands in the terminal — if R is still open from the
+previous step, quit it first with `q()`. This restores `main.gms` (in particular the
+`urban` realization and the time steps), removes the new realization, and checks the
+result:
+
+``` bash
+git checkout main.gms modules/
+rm -rf modules/34_urban/pop_growth modules/34_urban/exo_nov21/not_used.txt
+git status
+```
+
+`git status` should report no modified tracked files and no `pop_growth` folder under
+`modules/34_urban/` — the model code is back to default. Any untracked run artifacts
+that remain (e.g. `restart_*.g00`) are harmless; your run outputs (the `output/`
+folder, `fulldata.gdx`) and the downloaded input data are kept.
+
+## Details and background
+
+**Why a soft penalty instead of a hard equation?** Forcing urban land to exactly
+match the target with a hard `=e=` equation can make the model infeasible: in a
+tight cell there may be no room left to grow urban land without violating another
+land constraint. The soft penalty lets urban land deviate from the target at a high
+cost (`s34_urban_deviation_cost = 1e6` USD per ha): `q34_urban_cost1` and
+`q34_urban_cost2` measure the deviation below and above the target, and
+`q34_urban_cell` charges it to `vm_cost_urban`. Urban land therefore follows the
+target closely while the model stays feasible. This is the same pattern `exo_nov21`
+uses for its input-data target.
+
+**First time step.** Urban land is fixed to its initial value in the first time step,
+so the base year keeps the input urban land (taken from the LUH land-use dataset)
+rather than the growth target, which would otherwise already move urban land in the
+base year. From the second time step on it is freed and follows the target.
+
+**Productive run.** The quick test above runs GAMS directly. For a full run (complete
+time horizon and output processing), do not edit `config/default.cfg`. Instead add a
+start script `scripts/start/pop_growth.R` that overrides only the urban realization:
+
+``` r
+library(gms)
+source("scripts/start_functions.R")
+source("config/default.cfg")
+
+cfg$title     <- "pop_growth"
+cfg$gms$urban <- "pop_growth"
+
+start_run(cfg, codeCheck = FALSE)
+```
+
+and launch it with `Rscript start.R runscripts=pop_growth submit=direct` (or run
+`Rscript start.R` without arguments for an interactive menu to pick the start script
+and submission type). `start_run` writes the config's settings into `main.gms`, so
+running this script also resets the `$setglobal` lines edited during the quick test
+back to their configured values.
+
+**License header.** Every `.gms` file must start with the MAgPIE license header (the
+`*** |` block). `codeCheck` checks for it, so copy it to the top of any new file you
+create.
+
+**Interfaces and `not_used.txt`.** `pop_growth` uses the population interface
+`im_pop`, which the sibling realizations `static` and `exo_nov21` do not. Every
+interface must be addressed in *all* realizations of a module, so `codeCheck` adds
+`im_pop, input, not needed` to a `not_used.txt` in `static` and `exo_nov21`.
+Conversely, `pop_growth` does not use `sm_fix_SSP2` (which `exo_nov21` uses), so it
+gets a `not_used.txt` listing `sm_fix_SSP2`. In interactive mode `codeCheck` stops
+at each such interface and asks for a reason; type a short reason (e.g. `not needed`,
+or press Enter for a default) and it appends the entry to the relevant
+`not_used.txt`. Type `n` only if the interface should actually be handled in the
+code.
+
+**What we changed relative to `exo_nov21`.** We removed the input dataset
+(`input.gms`, the `input/` folder, `sets.gms`) and the regional-total constraint
+`q34_urban_land`, and replaced the input-data target `i34_urban_area` with the
+population-growth target `p34_urban_target` computed in `preloop.gms` and
+`presolve.gms`. The soft-penalty equations, the biodiversity equation and the
+scaling are reused unchanged.
