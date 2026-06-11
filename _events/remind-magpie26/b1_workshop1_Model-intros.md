@@ -22,9 +22,9 @@ agenda:
   - title: break
     length: 15
     presenter: 
-  - title: Content and code structure
+  - shortID: git
     length: 30
-    presenter: Lavinia Baumstark, Isabelle Weindl
+    presenter: Falk Benke
 ---
 In the first workshop we will give a short overview about what the [REMIND](https://github.com/remindmodel/remind) and [MAgPIE](https://github.com/magpiemodel/magpie) framework are, how they look like, and what they are used for.
 
