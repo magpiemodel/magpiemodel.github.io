@@ -2,8 +2,8 @@
 layout: event_multitrack
 workshopID: 26
 title:  "Breakout 1 - Model code overview"
-event_start:   "2026-06-16T15:00:00+02:00"
-event_end:     "2026-06-16T17:30:00+02:00"
+event_start:   "2026-06-16T14:00:00+02:00"
+event_end:     "2026-06-16T16:30:00+02:00"
 
 tracks:
   - track: MAgPIE
