@@ -28,10 +28,10 @@ exercises:
                2. Change the current time steps set (typically `\"coup2100\"`) to `\"quicktest\"`, i.e. 
                   `gms$c_timesteps <- \"quicktest\"`.\n
                3. Open the file **core/sets.gms** and find the definition of the set by searching 
-                  for `\"quicktest\"` (line 190). The set includes the years y1995, y2010, y2025."
+                  for `\"quicktest\"` (line 196). The set includes the years y1995, y2010, y2025."
   - task: "By editing the corresponding setting in the default.cfg file, change the model configuration such that 
            only the output script \"output_check\" is run."
-    solution: "1. Find the corresponding setting the config file by searching for `cfg$output` (line 2229).\n
+    solution: "1. Find the corresponding setting the config file by searching for `cfg$output` (line 2349).\n
                2. Change the current output scripts (typically 
                   `c(\"output_check\", \"extra/disaggregation\"), \"rds_report\"`) 
                   to only include `\"output_check\"`, i.e. 
@@ -201,7 +201,7 @@ cfg$title <- "titleOfYourChoice"
 Usually the **title** setting helps in creating the name of the
 **results** folder inside the **output** folder of the model. You can
 see this setting by searching for `cfg$results_folder` in default.cfg file
-(line 2234):
+(line 2349):
 
 ``` r
 cfg$results_folder <- "output/:title::date:"
@@ -239,7 +239,7 @@ y1995, y2000, y2005, y2010, y2015, y2020, y2025, y2030, y2035, y2040, y2045,
 y2050, y2055, y2060, y2070, y2080, y2090 and y2100.
 
 The full set of possible **time step settings** can be found in the core sets
-defined in the model code under **core/sets.gms** (lines 181--212).
+defined in the model code under **core/sets.gms** (lines 177--217).
 
 Similar to how we updated the title, you can simply delete the default 
 set “coup2100” from the line containing
@@ -265,7 +265,7 @@ setting, which years would be included?
 MAgPIE is also capable of generating some stylized outputs which can be
 created automatically once the model run is finished. To see the current
 output generation settings, look for the following text in the
-default.cfg file (line 2229):
+default.cfg file (line 2344):
 
 ``` r
 cfg$output
