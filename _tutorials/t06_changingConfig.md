@@ -124,6 +124,8 @@ This includes
 - module settings (e.g. which SSP scenario should be used for population projections)
 - output and model reporting settings (e.g. which output scripts should be run)
 
+The config file is structured into Main settings (Input data, calibration, timesteps, gdx settings, ...), Module settings (Module realization, model parameters, scenario settings) and other settings (output scripts, postprocessing, runstatistics, ...)
+
 These settings are collected as elements of a list called `cfg`.
 The module settings (`cfg$gms$*`) make up the main part of the MAgPIE config file.
 As MAgPIE is modular in structure, each module has its own section in the 
@@ -312,8 +314,8 @@ So far, we have successfully changed:
 
 Now, lets try to run the model with this updated configuration.
 
-To do so, open a terminal (cmd for Windows, shell for Linux, MacOS) 
-in the main folder of your local MAgPIE clone, and execute the following command:
+To do so, open a terminal (Terminal in codespaces, cmd or PowerShell for Windows, shell for Linux, MacOS) 
+in the main folder of your MAgPIE clone, and execute the following command:
 
 ``` r
 Rscript start.R
