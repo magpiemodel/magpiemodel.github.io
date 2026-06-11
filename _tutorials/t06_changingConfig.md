@@ -144,7 +144,7 @@ the respective setting.
 | cfg$repositories     | Repositories containing input data                                                    |
 | cfg$force\_download  | Should data be downloaded even if inputs didn’t change?                               |
 | cfg$force\_replace   | Should existing output folder be replaced if a new run with the same name is started? |
-| cfg$recalibrate      | Should yields be recalibrated?                                                        |
+| cfg$recalibrate_landconversion_cost | Should land conversion costs be recalibrated?                          |
 | cfg$calib\_accuracy  | Accuracy for yield calibration                                                        |
 | cfg$calib\_maxiter   | Max. iterations if precision goal is not met                                          |
 | cfg$damping\_factor  | Factor determining new calibration factor’s influences on result                      |
