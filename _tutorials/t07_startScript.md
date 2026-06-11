@@ -3,9 +3,9 @@ layout: tutorial
 title:  Creating a start script
 shortID: startScript
 image: assets/images/generic/pic07.jpg
-lastUpdated: 2025-06-15
+lastUpdated: 2026-06-11
 model: MAgPIE
-modelVersion: 4.10.0
+modelVersion: 4.14.0
 authors: Abhijeet Mishra, Michael Windisch, Vartika Singh, Michael Crawford
 level: 3
 requirements:
@@ -264,7 +264,7 @@ for (ghg in names(GHG_settings)) {
     cfg$gms$s57_maxmac_ch4_awms    <- lvl
     
     # outputs
-    cfg$output <- c("output_check", "extra/disaggregation", "rds_report", "projects/nitrogenBoundaries.R")
+    cfg$output <- c("output_check", "extra/disaggregation", "rds_report")
     
     start_run(cfg, codeCheck = FALSE)
   }
@@ -370,13 +370,13 @@ This is out of the scope of this tutorial, but can be seen throughout the script
 1.  Copy any of these MAgPIE start scripts into your `scripts/start/projects` directory.
 2.  Add another parameter from the `config/default.cfg`, or otherwise modify the parameterization in some way. One could also add new switches from the scenario_config.csv.
 3.  Save and run the script with Rscript start.R, choosing your modified entry.
-4.  Confirm in the run log or output metadata that your change was applied. You can look at these particular settings within that scenario's output directory, in the `config.yaml`. This contains all the configurations from your MAgPIE run. Looking into it, you will see, e.g.:
+4.  Confirm in the run log or output metadata that your change was applied. You can look at these particular settings within that scenario's output directory, in the `config.yml`. This contains all the configurations from your MAgPIE run. Looking into it, you will see, e.g.:
 
 ```yaml
   s56_fader_end: 2050.0
   s56_fader_target: 1.0
   s56_fader_functional_form: 1.0
-  c56_pollutant_prices: R32M46-SSP2EU-NPi
-  c56_pollutant_prices_noselect: R32M46-SSP2EU-NPi
-  c56_mute_ghgprices_until: y2
+  c56_pollutant_prices: R34M410-SSP2-NPi2025
+  c56_pollutant_prices_noselect: R34M410-SSP2-NPi2025
+  c56_mute_ghgprices_until: y2030
 ```
