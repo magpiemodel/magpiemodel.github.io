@@ -203,15 +203,16 @@ cfg$title <- "default"
 
 - Providing a **version ID** (`version`, which is here pasted to the `cfg$title`) ensures some degree of traceability for your debugging and analysis down the road. 
 - To modify individual parameters, you must change them in the GAMS parameters list. This is done through the **`cfg$gms$` variable**. This method corresponds to the structure in the `default.cfg`. Other parameters, e.g. the title, are accessed in the outer `cfg` list. You can find each of the parameters available by looking at the `default.cfg` (see Tutorial 6).
-- If you're out of the development process and know that your GAMS code compiles, `codeCheck = FALSE` elimates pre-run syntax checks of your `.gms` code, saving you a bit of time.
+- Notice that the GHG price (`c56_pollutant_prices`) and the 2nd-generation bioenergy demand (`c60_2ndgen_biodem`) are set to the **same** scenario string. Both trajectories are drawn from the same coupled REMIND-MAgPIE run, so pairing them keeps your scenario internally consistent: the carbon-price pathway and the bioenergy demand REMIND derived alongside it belong together. Mixing them (e.g. a `PkBudg1000` price with `NPi2025` bioenergy demand) would pair pieces from two different scenarios.
+- If you're out of the development process and know that your GAMS code compiles, `codeCheck = FALSE` eliminates pre-run syntax checks of your `.gms` code, saving you a bit of time.
 
 To be able to run the start script, it should be saved in `scripts/start/projects/`, and can then be found through the `Rscript start.R` menu.
 
 # Basic looping is helpful for factorial scenario setups 
 
-Scenario analyses will often require some degree of factorial design, as soon as a user maybe want to understand the independent and combined effects of multiple interventions simultaneously. Basic looping is a good method to ensure reproducability and reduce the chances that you misconfigure any particular scenario.
+Scenario analyses will often require some degree of factorial design, as soon as a user wants to understand the independent and combined effects of multiple interventions simultaneously. Basic looping is a good method to ensure reproducibility and reduce the chances that you misconfigure any particular scenario.
 
-For this example, after looking at the basic impacts of a carbon price on the land system, the user decides that they're also interested in the mitigation of nitrogen-based pollutants via marginal abatement cost curves (MACCs):
+For this example, after looking at the basic impacts of a carbon price on the land system, the user decides that they're also interested in the mitigation of non-CO2 emissions (N2O and CH4) via marginal abatement cost curves (MACCs):
 
 ```r
 # |  (C) 2008-2025 Potsdam Institute for Climate Impact Research (PIK)
@@ -255,7 +256,7 @@ for (ghg in names(GHG_settings)) {
     cfg$gms$c60_2ndgen_biodem             <- GHG_settings[ghg]
     cfg$gms$c60_2ndgen_biodem_noselect    <- GHG_settings[ghg]
     
-    # MACC settings (all to same level)
+    # non-CO2 MACC mitigation level (same for all sources)
     lvl <- MACC_settings[macc]
     cfg$gms$s57_maxmac_n_soil      <- lvl
     cfg$gms$s57_maxmac_n_awms      <- lvl
@@ -271,9 +272,9 @@ for (ghg in names(GHG_settings)) {
 }
 ```
 
-This script creates two vectors of user-provided settings, and uses a nested for-loop to cycle through each. 
+This script creates two vectors of user-provided settings, and uses a nested for-loop to cycle through each. The `s57_maxmac_*` switches control how strongly these non-CO2 emissions are abated: the default of `-1` lets the GHG price drive abatement endogenously, `0` switches the MACCs off, and a positive value from `1` to `201` instead forces a fixed mitigation step independent of the price (`201` being maximum mitigation). Here the loop crosses the two GHG-price scenarios with four such settings (off, then three increasing forced steps), for eight runs in total. 
 
-**Output scripts**: It's also possible to write your own output scripts and start them automatically after your has run finish. To do so, add your output script to the `cfg$output` vector. This vector can be found at the bottom of the `default.cfg`. By default, it is:
+**Output scripts**: It's also possible to write your own output scripts and start them automatically after your run finishes. To do so, add your output script to the `cfg$output` vector. This vector can be found at the bottom of the `default.cfg`. By default, it is:
 
 ```r
 cfg$output <- c("output_check", "extra/disaggregation", "rds_report")
@@ -355,7 +356,7 @@ start_run(cfg = cfg, codeCheck = FALSE)
 
 The core changes to this run script are first calling `library(gms)` to gain access to the function `setScenario`. The default use case of this function takes two arguments: The first is your particular configuration list, which will almost always be called `cfg`, and the second is a list of scenario flags (columns) the user would like to "switch on". 
 
-> **Use caution when with `setScenario`!** Each column flag writes over the last, so be sure that the ordering of your various scenario flags is either entirely non-overlapping or, if necessary, very carefully ordered. 
+> **Use caution with `setScenario`!** Each column flag writes over the last, so be sure that the ordering of your various scenario flags is either entirely non-overlapping or, if necessary, very carefully ordered. 
 
 Finally, it's also possible to create your own custom scenario configuration tables, storing them in `config/projects`. To read them, supply `setScenario` with a third `scenario_config` argument:
 
