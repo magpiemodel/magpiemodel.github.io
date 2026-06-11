@@ -3,7 +3,7 @@ layout: tutorial
 title:  Input data repositories & Patches
 shortID: changeInput
 image: assets/images/generic/pic12.jpg
-lastUpdated:   2026-06-09
+lastUpdated:   2026-06-11
 model: MAgPIE
 modelVersion: 4.14.0
 author:
@@ -34,11 +34,11 @@ usually at the beginning of the settings. Currently, the input data is
 set as:
 
 ``` r
-cfg$input <- c(regional    = "rev4.118_h12_magpie.tgz",
-               cellular    = "rev4.118_h12_1b5c3817_cellularmagpie_c200_MRI-ESM2-0-ssp245_lpjml-8e6c5eb1.tgz",
-               validation  = "rev4.118_h12_validation.tgz",
-               additional  = "additional_data_rev4.62.tgz",
-               calibration = "calibration_H12_FAO_13Mar25.tgz")
+cfg$input <- c(regional    = "rev4.131_h12_magpie.tgz",
+               cellular    = "rev4.131_h12_1b5c3817_cellularmagpie_c200_MRI-ESM2-0-ssp245_lpjml-8e6c5eb1.tgz",
+               validation  = "rev4.131_h12_92e02314_validation.tgz",
+               additional  = "additional_data_rev4.65.tgz",
+               calibration = "calibration_H12_FAO_01Apr26.tgz")
 ```
 
 Once specified in the configuration as the input data, the data is
@@ -51,15 +51,15 @@ contain the following types of data:
 
   - Cellular input data (e.g. land area, crop yields, water
     requirements, carbon density):
-      - `cellular    = "rev4.118_h12_1b5c3817_cellularmagpie_c200_MRI-ESM2-0-ssp245_lpjml-8e6c5eb1.tgz"`
+      - `cellular    = "rev4.131_h12_1b5c3817_cellularmagpie_c200_MRI-ESM2-0-ssp245_lpjml-8e6c5eb1.tgz"`
   - Regional input and validation data (e.g. food demand):
-      - `regional    = "rev4.118_h12_magpie.tgz"`
-      - `validation  = "rev4.118_h12_validation.tgz"`
+      - `regional    = "rev4.131_h12_magpie.tgz"`
+      - `validation  = "rev4.131_h12_92e02314_validation.tgz"`
   - Calibration data:
-      - `calibration = "calibration_H12_FAO_13Mar25.tgz"`
+      - `calibration = "calibration_H12_FAO_01Apr26.tgz"`
   - Global and other input data (e.g. conversion factors, national
     policies):
-      - `additional  = "additional_data_rev4.62.tgz"`
+      - `additional  = "additional_data_rev4.65.tgz"`
 
 ## Patch input data
 
@@ -156,21 +156,21 @@ the input data and the existing patch file that replaces the existing
 input data. For this, edit the `config/default.cfg` file from:
 
 ``` r
-cfg$input <- c(regional    = "rev4.118_h12_magpie.tgz",
-               cellular    = "rev4.118_h12_1b5c3817_cellularmagpie_c200_MRI-ESM2-0-ssp245_lpjml-8e6c5eb1.tgz",
-               validation  = "rev4.118_h12_validation.tgz",
-               additional  = "additional_data_rev4.62.tgz",
-               calibration = "calibration_H12_FAO_13Mar25.tgz")
+cfg$input <- c(regional    = "rev4.131_h12_magpie.tgz",
+               cellular    = "rev4.131_h12_1b5c3817_cellularmagpie_c200_MRI-ESM2-0-ssp245_lpjml-8e6c5eb1.tgz",
+               validation  = "rev4.131_h12_92e02314_validation.tgz",
+               additional  = "additional_data_rev4.65.tgz",
+               calibration = "calibration_H12_FAO_01Apr26.tgz")
 ```
 
 to:
 
 ``` r
-cfg$input <- c(regional    = "rev4.118_h12_magpie.tgz",
-               cellular    = "rev4.118_h12_1b5c3817_cellularmagpie_c200_MRI-ESM2-0-ssp245_lpjml-8e6c5eb1.tgz",
-               validation  = "rev4.118_h12_validation.tgz",
-               additional  = "additional_data_rev4.62.tgz",
-               calibration = "calibration_H12_FAO_13Mar25.tgz",
+cfg$input <- c(regional    = "rev4.131_h12_magpie.tgz",
+               cellular    = "rev4.131_h12_1b5c3817_cellularmagpie_c200_MRI-ESM2-0-ssp245_lpjml-8e6c5eb1.tgz",
+               validation  = "rev4.131_h12_92e02314_validation.tgz",
+               additional  = "additional_data_rev4.65.tgz",
+               calibration = "calibration_H12_FAO_01Apr26.tgz",
                patch       = "patch_ndc_usa.tgz")
 ```
 
@@ -190,10 +190,10 @@ entry in the `.Rprofile` file. Typically `.Rprofile` is located in the
 users' home directory `(~/.Rprofile)`.
 
 ``` r
-options(magpie_repos=list("~/input_data/"=NULL))
+options(magpie_repos=list("~/patchdata/"=NULL))
 ```
 
-The local repository `input_data` can be located anywhere on your
+The local repository `patchdata` can be located anywhere on your
 filesystem. You could then add `patch_ndc_usa.tgz` in this
 folder.
 
@@ -253,11 +253,11 @@ start_run(cfg, codeCheck=FALSE)
 
 cfg$title <- "SSP2_NDC_USA"
 cfg <- gms::setScenario(cfg, c("SSP2","NDC"))
-cfg$input <- c(regional    = "rev4.118_h12_magpie.tgz",
-               cellular    = "rev4.118_h12_1b5c3817_cellularmagpie_c200_MRI-ESM2-0-ssp245_lpjml-8e6c5eb1.tgz",
-               validation  = "rev4.118_h12_validation.tgz",
-               additional  = "additional_data_rev4.62.tgz",
-               calibration = "calibration_H12_FAO_13Mar25.tgz",
+cfg$input <- c(regional    = "rev4.131_h12_magpie.tgz",
+               cellular    = "rev4.131_h12_1b5c3817_cellularmagpie_c200_MRI-ESM2-0-ssp245_lpjml-8e6c5eb1.tgz",
+               validation  = "rev4.131_h12_92e02314_validation.tgz",
+               additional  = "additional_data_rev4.65.tgz",
+               calibration = "calibration_H12_FAO_01Apr26.tgz",
                patch       = "patch_ndc_usa.tgz")
 start_run(cfg, codeCheck=FALSE)
 ```
@@ -273,14 +273,23 @@ v13_cost_tc = pc13_land × i13_tc_factor × v13_tau_core ^ i13_tc_exponent × (1
 
 The factor and exponent are loaded from `modules/13_tc/input/f13_tc_factor.cs3` and
 `f13_tc_exponent.cs3`, each providing three scenario columns (`low`, `medium`, `high`).
-The active scenario is selected via `cfg$gms$c13_tccost` in the start script (default:
-`"medium"`). The available scenario names are defined in the `scen13` set in
-`modules/13_tc/endo_jan22/sets.gms`.
+The factor scales the absolute TC cost (a *lower* factor makes technological change
+cheaper, so the model invests more in yield growth), while the exponent controls how
+steeply the cost rises with land use intensity. The active scenario is selected via
+`cfg$gms$c13_tccost` in the start script (default: `"medium"`). The available scenario
+names are defined in the `scen13` set in `modules/13_tc/endo_jan22/sets.gms`.
 
-Create a patch that: (1) adds a `custom` column with a steeper exponent of 3.0 to both
-CSV files, and (2) extends the `scen13` set in `sets.gms` to include `custom`. Then write
-a start script that sets `cfg$gms$c13_tccost <- "custom"` and compares a default run
-against a run using the steeper TC cost curve.
+Create a patch that adds a `custom` column to both CSV files and extends the `scen13`
+set in `sets.gms` to include `custom`. For the `custom` scenario:
+
+  - **Exponent** (`f13_tc_exponent.cs3`): use a value of 3.0 for all years.
+  - **Factor** (`f13_tc_factor.cs3`): keep the `medium` pathway (1672) through 2020, then
+    from 2025 make technological change progressively cheaper — more ambitious than the
+    `low` pathway — reaching a floor of 1144 from 2040 onward (1540, 1408, 1276 for 2025,
+    2030, 2035).
+
+Then write a start script that sets `cfg$gms$c13_tccost <- "custom"` and compares a
+default run against a run using the more ambitious, steeper TC cost curve.
 
 > **Note:** The directory structure inside the patch archive must mirror the MAgPIE
 > folder layout so that files are extracted to the right locations.
@@ -301,8 +310,16 @@ file.copy("modules/13_tc/input/f13_tc_exponent.cs3",
           "patch_inputdata/patch_tc_custom/modules/13_tc/input/.")
 file.copy("modules/13_tc/endo_jan22/sets.gms",
           "patch_inputdata/patch_tc_custom/modules/13_tc/endo_jan22/.")
+```
 
-# Add a 'custom' column to the exponent CSV (steeper curve: 3.0 for all years)
+The `custom` column can be added to the two CSV files in two equivalent
+ways. These files are in MAgPIE's `.cs3` format, so you can either treat
+them as plain tables with base R, or read them as magclass objects.
+
+**Option A — base R (`read.csv` / `write.csv`):**
+
+``` r
+# Exponent: curve of 3.0 for all years
 df_exp <- read.csv("patch_inputdata/patch_tc_custom/modules/13_tc/input/f13_tc_exponent.cs3",
                    comment.char = "*")
 df_exp$custom <- 3.0
@@ -310,14 +327,44 @@ write.csv(df_exp,
           "patch_inputdata/patch_tc_custom/modules/13_tc/input/f13_tc_exponent.cs3",
           row.names = FALSE, quote = FALSE)
 
-# Add a 'custom' column to the factor CSV (same as medium to isolate the exponent effect)
+# Factor: medium through 2020, then a more ambitious (cheaper) pathway from 2025
 df_fac <- read.csv("patch_inputdata/patch_tc_custom/modules/13_tc/input/f13_tc_factor.cs3",
                    comment.char = "*")
-df_fac$custom <- 1672
+df_fac$custom <- df_fac$medium
+yrs <- as.integer(sub("y", "", df_fac$dummy))
+df_fac$custom[yrs == 2025] <- 1540
+df_fac$custom[yrs == 2030] <- 1408
+df_fac$custom[yrs == 2035] <- 1276
+df_fac$custom[yrs >= 2040] <- 1144
 write.csv(df_fac,
           "patch_inputdata/patch_tc_custom/modules/13_tc/input/f13_tc_factor.cs3",
           row.names = FALSE, quote = FALSE)
+```
 
+**Option B — magclass (`read.magpie` / `write.magpie`):**
+
+``` r
+library(magclass)
+
+# Exponent: curve of 3.0 for all years
+m_exp <- read.magpie("patch_inputdata/patch_tc_custom/modules/13_tc/input/f13_tc_exponent.cs3")
+m_exp <- add_columns(m_exp, addnm = "custom", dim = 3.1)
+m_exp[, , "custom"] <- 3.0
+write.magpie(m_exp, "patch_inputdata/patch_tc_custom/modules/13_tc/input/f13_tc_exponent.cs3")
+
+# Factor: medium through 2020, then a more ambitious (cheaper) pathway from 2025
+m_fac <- read.magpie("patch_inputdata/patch_tc_custom/modules/13_tc/input/f13_tc_factor.cs3")
+m_fac <- add_columns(m_fac, addnm = "custom", dim = 3.1)
+m_fac[, , "custom"] <- m_fac[, , "medium"]
+m_fac[, c(2025, 2030, 2035), "custom"] <- c(1540, 1408, 1276)
+m_fac[, seq(2040, 2150, 5), "custom"] <- 1144
+write.magpie(m_fac, "patch_inputdata/patch_tc_custom/modules/13_tc/input/f13_tc_factor.cs3")
+```
+
+Continue (with either option) by extending the `scen13` set and packaging
+the patch:
+
+``` r
 # Extend the scen13 set in sets.gms to include 'custom'
 sets_lines <- readLines("patch_inputdata/patch_tc_custom/modules/13_tc/endo_jan22/sets.gms")
 sets_lines <- gsub("/low, medium, high/", "/low, medium, high, custom/", sets_lines)
@@ -350,11 +397,11 @@ start_run(cfg, codeCheck=FALSE)
 cfg$title <- "SSP2_NDC_tc_custom"
 cfg <- gms::setScenario(cfg, c("SSP2","NDC"))
 cfg$gms$c13_tccost <- "custom"
-cfg$input <- c(regional    = "rev4.118_h12_magpie.tgz",
-               cellular    = "rev4.118_h12_1b5c3817_cellularmagpie_c200_MRI-ESM2-0-ssp245_lpjml-8e6c5eb1.tgz",
-               validation  = "rev4.118_h12_validation.tgz",
-               additional  = "additional_data_rev4.62.tgz",
-               calibration = "calibration_H12_FAO_13Mar25.tgz",
+cfg$input <- c(regional    = "rev4.131_h12_magpie.tgz",
+               cellular    = "rev4.131_h12_1b5c3817_cellularmagpie_c200_MRI-ESM2-0-ssp245_lpjml-8e6c5eb1.tgz",
+               validation  = "rev4.131_h12_92e02314_validation.tgz",
+               additional  = "additional_data_rev4.65.tgz",
+               calibration = "calibration_H12_FAO_01Apr26.tgz",
                patch       = "patch_tc_custom.tgz")
 start_run(cfg, codeCheck=FALSE)
 ```
