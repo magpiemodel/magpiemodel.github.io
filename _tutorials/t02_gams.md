@@ -68,10 +68,10 @@ all parts of the code are automatically put into a single file, the `full.gms`.
 
 The `modules` folder stores and organizes the main code components, following
 the thematic structure defined by the modular architecture of MAgPIE.
-Each subfolder within `modules` represents a specific model component and can contain
-multiple realizations — different implementations of that component. Only one
-realization per module is included in the final model execution by being
-inserted into the `full.gms`. The choice of realizations is determined by the configuration
+Each subfolder within `modules` represents a specific model component and can
+contain multiple realizations — different implementations of that component. Only
+one realization per module is included in a model run and assembled into
+`full.gms`. The choice of realizations is determined by the configuration
 settings, defined in `default.cfg` or specified in the run start scripts.   
 
 ###  Structure of a module
@@ -83,11 +83,12 @@ modules and the `include.gms` file that ensures the inclusion of all modules int
 ![structure of any module](../assets/images/tutorials/module_struc.png)
 
   - An `input` folder with shared input files used by all realizations
-  - `Realization` folders containing the source code of each realization
-  - The `modules.gms` file with the module description and listing of all
+  - `realization` folders containing the source code of each realization
+  - The `module.gms` file with the module description and listing of all
     realizations
-  - Several `[realization_name].gms` files with the realization description
-    and include statements to the specific source code
+  - A `[realization_name].gms` file for each realization, located within the
+    corresponding realization folder, containing the realization description and
+    include statements to the source code
 
 This structure makes it easy to extend the model: new realizations can be added
 by following the same template (more in [this tutorial](/tutorials/t10-changecode)).
@@ -115,7 +116,7 @@ Note that not all gms-files are required in every realization.
 | scaling.gms      | Lists the expected order of magnitude of specific variables calculated in this realization to improve the efficiency of the run.     |   
 | not\_used.txt    | Lists interfaces (declared in other modules) that are not used within this realization, but in other realizations of the same module. |
 
-## Coding etiquette: Variable and parameter naming
+## Coding etiquette: Naming conventions
 
 Each MAgPIE module is designed to be self-contained with well-defined interfaces.
 In this sense, realizations are replaceable within a module, since all realizations
@@ -158,6 +159,8 @@ Suffixes indicate the level of aggregation of an object:
     _(setname) aggregation over set
     _reg regional aggregation (exception)
     _glo global aggregation (exception)
+
+Additional coding conventions regarding units, input data management, and postprocessing are documented in the MAgPIE model documentation.
 
 ## Workshop Material
 You will find the slides used in the workshop [here](../assets/pdf/GAMScode.pdf).
