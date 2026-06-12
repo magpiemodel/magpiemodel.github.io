@@ -3,9 +3,9 @@ layout: tutorial
 title:  GAMS code, modules & realizations
 image: assets/images/generic/pic02.jpg
 shortID: gams
-lastUpdated:   2025-06-14
+lastUpdated:   2026-06-12
 model: MAgPIE
-modelVersion: 4.10.1
+modelVersion: 4.14.0
 author:
   - kk
   - fb
@@ -14,8 +14,8 @@ author:
   - iw
 level: 2
 requirements:
-  - GAMS Installed
-  - MAgPIE clone in local machine
+  - Local copy of the MAgPIE model (https://github.com/magpiemodel/magpie)
+  - Have GAMS installed
 lessonsContent:
   - Navigate through the GAMS code of MAgPIE
   - Understand the structure of modules and realizations
@@ -27,16 +27,16 @@ published: true
 
 MAgPIE (Model for Agricultural Production and its Impacts on the
 Environment) is a modular open-source framework for modeling global
-land systems. Before looking into the code structure, we first introduce 
+land systems. Before looking into the code structure, we first introduce
 the concept of ‘modules‘, the building blocks of MAgPIE.
 
 The MAgPIE model structure is built upon the idea that every module
-is autonomous and interacts through a **clearly defined interface** 
+is autonomous and interacts through a **clearly defined interface**
 with other modules. This reflects the idea that every module represents
 a separate part of the model that could be represented in a simple or more
-sophisticated manner without relying on other modules. A complete description 
-of module interdependencies is available in the 
-[model documentation](https://rse.pik-potsdam.de/doc/magpie/4.10.1/).
+sophisticated manner without relying on other modules. A complete description
+of module interdependencies is available in the
+[model documentation](https://rse.pik-potsdam.de/doc/magpie/4.14.0/).
 
 Below, we briefly highlight the ‘main line’ of module interdependence:
 
@@ -49,9 +49,9 @@ Below, we briefly highlight the ‘main line’ of module interdependence:
 - Demand patterns are translated into production patterns via trade flows.
 - Production, combined with biophysical yield data, defines cropping patterns
   and informs land-use decisions.
-  
-Importantly, these are not one-way dependencies: e.g., constraints in 
-land availability can influence food consumption patterns through rising 
+
+Importantly, these are not one-way dependencies: e.g., constraints in
+land availability can influence food consumption patterns through rising
 food prices across different commodities. Associated costs of
 different activities are fed into the goal function of the cost
 module, which guides optimization and is thereby central for the model.
@@ -64,14 +64,14 @@ includes:
 ## The MAgPIE GAMS code: Model components
 
 The core of the MAgPIE model is written in GAMS. For the model execution,
-all parts of the code are automatically put into a single file, the `full.gms`. 
+all parts of the code are automatically put into a single file, the `full.gms`.
 
-The `modules` folder stores and organizes the main code components, following 
+The `modules` folder stores and organizes the main code components, following
 the thematic structure defined by the modular architecture of MAgPIE.
 Each subfolder within `modules` represents a specific model component and can contain
-multiple realizations — different implementations of that component. Only one 
-realization per module is included in the final model execution by being 
-inserted into the `full.gms`. The choice of realizations is determined by the configuration 
+multiple realizations — different implementations of that component. Only one
+realization per module is included in the final model execution by being
+inserted into the `full.gms`. The choice of realizations is determined by the configuration
 settings, defined in `default.cfg` or specified in the run start scripts.   
 
 ###  Structure of a module
@@ -89,8 +89,8 @@ modules and the `include.gms` file that ensures the inclusion of all modules int
   - Several `[realization_name].gms` files with the realization description
     and include statements to the specific source code
 
-This structure makes it easy to extend the model: new realizations can be added 
-by following the same template (more in [this tutorial](t10_changeCode.md)).
+This structure makes it easy to extend the model: new realizations can be added
+by following the same template (more in [this tutorial](/tutorials/t10-changecode)).
 
 ### Structure within each realization
 
@@ -118,7 +118,7 @@ Note that not all gms-files are required in every realization.
 ## Coding etiquette: Variable and parameter naming
 
 Each MAgPIE module is designed to be self-contained with well-defined interfaces.
-In this sense, realizations are replaceable within a module, since all realizations 
+In this sense, realizations are replaceable within a module, since all realizations
 of a module have to deliver/interact with the same interfaces.
 This is ensured by defined rules for variable and parameter naming.
 
