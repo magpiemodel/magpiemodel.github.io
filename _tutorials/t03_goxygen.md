@@ -3,12 +3,13 @@ layout: tutorial
 title: Model documentation (goxygen)
 image: assets/images/generic/pic03.jpg
 shortID: goxygen
-lastUpdated: 2022-01-05
+lastUpdated: 2026-06-15
 model: MAgPIE
-modelVersion: 4.4.0
+modelVersion: 4.14.0
 author:
   - jpd
   - fb
+  - kk
 level: 2
 requirements:
   - local copy of the MAgPIE model (<https://github.com/magpiemodel/magpie>)
@@ -25,12 +26,12 @@ exercises:
                2. run `goxygen::goxygen()`\n
                3. The documentation can now be found in the \"doc\" sub-folder
                   of the model"
-  - task: Check the number of interfaces and interactions of the yields module in MAgPIE 4.4.0
-    solution: "1. Open the model documentation for MAgPIE 4.10.1 ([here](https://rse.pik-potsdam.de/doc/magpie/4.10.1))\n
-               2. Find the yield module ([14. Yields](https://rse.pik-potsdam.de/doc/magpie/4.10.1/14_yields.htm))\n
-               3. Count the number of [inputs](https://rse.pik-potsdam.de/doc/magpie/4.10.1/14_yields.htm#input) and
-               [outputs](https://rse.pik-potsdam.de/doc/magpie/4.10.1/14_yields.htm#output) to the model\n
-               4. Check the links to other modules in the [interface plot](https://rse.pik-potsdam.de/doc/magpie/4.10.1/14_yields.htm#interfaces)\n\n
+  - task: Check the number of interfaces and interactions of the yields module in MAgPIE 4.14.0
+    solution: "1. Open the model documentation for MAgPIE 4.14.0 ([here](https://rse.pik-potsdam.de/doc/magpie/4.14.0))\n
+               2. Find the yield module ([14. Yields](https://rse.pik-potsdam.de/doc/magpie/4.14.0/14_yields.htm))\n
+               3. Count the number of [inputs](https://rse.pik-potsdam.de/doc/magpie/4.14.0/14_yields.htm#input) and
+               [outputs](https://rse.pik-potsdam.de/doc/magpie/4.14.0/14_yields.htm#output) to the model\n
+               4. Check the links to other modules in the [interface plot](https://rse.pik-potsdam.de/doc/magpie/4.14.0/14_yields.htm#interfaces)\n\n
                **Answer:** \n
                * **12 input** and **3 output** interfaces\n
                * **11 modules** exchange information with the yields module"
@@ -125,13 +126,13 @@ By default the function will create a folder `doc` in which the documentation
 in markdown, HTML and PDF format will be stored.
 
 ## Documentation Structure
-The model documentation for MAgPIE [4.10.1](https://github.com/magpiemodel/magpie)
-can be found [here](https://rse.pik-potsdam.de/doc/magpie/4.10.1/).
+The model documentation for MAgPIE [4.14.0](https://github.com/magpiemodel/magpie)
+can be found [here](https://rse.pik-potsdam.de/doc/magpie/4.14.0/).
 Links to the model documentations of other versions can usually be found in the
 `README.md` of the corresponding model version.
 Besides the overview page, which gives a general introduction to the model, the
 documentation is structured by modules, which are each documented on a
-separated HTML page (see for instance the [TC module](https://rse.pik-potsdam.de/doc/magpie/4.10.1/13_tc.htm)).
+separated HTML page (see for instance the [TC module](https://rse.pik-potsdam.de/doc/magpie/4.14.0/13_tc.htm)).
 Each module page starts with a brief introduction of the module, which we call
 `module contract`. This part explains the purpose of the module, what kind of
 information it computes and what kind of information it requires in order to do so
