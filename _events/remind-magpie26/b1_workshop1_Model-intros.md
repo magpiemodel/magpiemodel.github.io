@@ -3,7 +3,7 @@ layout: event
 workshopID: 26
 title:  "Panel 1 - Model intros"
 event_start:   "2026-06-16T09:00:00+02:00"
-event_end:     "2026-06-16T12:45:00+02:00"
+event_end:     "2026-06-16T12:55:00+02:00"
 
 agenda:
   - title: Registration
@@ -25,6 +25,9 @@ agenda:
   - shortID: git
     length: 30
     presenter: Falk Benke
+  - title: Group photo
+    length: 10
+    presenter:
 ---
 In the first workshop we will give a short overview about what the [REMIND](https://github.com/remindmodel/remind) and [MAgPIE](https://github.com/magpiemodel/magpie) framework are, how they look like, and what they are used for.
 
