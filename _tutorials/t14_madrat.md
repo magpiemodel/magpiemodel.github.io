@@ -27,7 +27,7 @@ of 75%. "
    \n  2. ag_employment <- readSource('TutorialWDI', subtype = 'SL.AGR.EMPL.ZS', convert = T) \n
                common_years <- intersect(getItems(ag_employment, dim=2), getItems(pop_conv, dim=2))
               \n ag_pop <- pop_conv[,common_years,] * 0.75 * ag_employment[,common_years,]
-            \n   ag_gdp_per_ag_capita <- ag_gdp[,common_years, ] * ag_pop
+            \n   ag_gdp_per_ag_capita <- ag_gdp[,common_years, ] / ag_pop
               "
   - task: "Recalculate a tgz file with a different regional aggregation, using the OECD regionmapping found in folder mrtutorial/inst/extdata and the .puc file we have already created."
     solution: "`` pucAggregate(puc = 'C:/PIK/inputdata/puc/rev1_extra_tutorial_tag.puc', regionmapping = 'regionmappingOECD.csv') ``"
