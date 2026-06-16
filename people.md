@@ -100,5 +100,5 @@ data:
   - firstName: Patrick
     lastName: Rein
     id: pr
-    url: https://www.pik-potsdam.de/members/patrickr
+    url: https://www.pik-potsdam.de/members/patrickr/homepage
 ---
