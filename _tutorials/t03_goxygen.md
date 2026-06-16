@@ -126,13 +126,13 @@ By default the function will create a folder `doc` in which the documentation
 in markdown, HTML and PDF format will be stored.
 
 ## Documentation Structure
-The model documentation for MAgPIE [4.14.0](https://github.com/magpiemodel/magpie)
-can be found [here](https://rse.pik-potsdam.de/doc/magpie/4.14.0/).
+The model documentation for MAgPIE [4.13.0](https://github.com/magpiemodel/magpie)
+can be found [here](https://rse.pik-potsdam.de/doc/magpie/4.13.0/).
 Links to the model documentations of other versions can usually be found in the
 `README.md` of the corresponding model version.
 Besides the overview page, which gives a general introduction to the model, the
 documentation is structured by modules, which are each documented on a
-separated HTML page (see for instance the [TC module](https://rse.pik-potsdam.de/doc/magpie/4.14.0/13_tc.htm)).
+separated HTML page (see for instance the [TC module](https://rse.pik-potsdam.de/doc/magpie/4.13.0/13_tc.htm)).
 Each module page starts with a brief introduction of the module, which we call
 `module contract`. This part explains the purpose of the module, what kind of
 information it computes and what kind of information it requires in order to do so
