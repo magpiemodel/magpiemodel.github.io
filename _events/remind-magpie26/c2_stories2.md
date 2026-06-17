@@ -7,7 +7,7 @@ event_end:     "2026-06-18T17:40:00+02:00"
 agenda:
   - title: Welcome
     length: 5
-    presenter: jpd 
+    presenter: dc
   - title: "Decoupling Livestock Production from Land-Based Feed: Environmental Implications of Single-Cell Protein Substitution in China"
     abstract: "This study assesses whether single-cell protein (SCP) can decouple China’s livestock production from land-based feed and reduce environmental pressures. Using the MAgPIE-China, we simulate SCP substitution from 2025 to 2050 under three feed-replacement pathways: cereal replacement, fodder replacement, and combined cereal–fodder replacement. Substitution intensities range from 0% to 100%, allowing us to identify pathway-specific and non-linear system responses. Preliminary results show that full cereal substitution produces the largest cropland reduction and the lowest nitrogen surplus and agricultural emissions, while fodder substitution may increase cropland demand and environmental pressures. The study contributes by shifting the focus from consumption-side alternative protein substitution to feed-side technological change, showing that the environmental benefits of SCP depend critically on which feed categories are replaced and at what intensity."
     length: 15
