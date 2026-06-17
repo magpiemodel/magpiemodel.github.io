@@ -7,7 +7,7 @@ event_end:     "2026-06-17T17:40:00+02:00"
 agenda:
   - title: Welcome
     length: 5
-    presenter: jpd 
+    presenter: Lavinia Baumstark 
   - title: "Long-term scenarios for NGFS"
     abstract: "The Network for Greening the Financial System has developed long-term climate scenarios for financial institutions, aligned with latest climate impact and climate transition science. The scenarios – stemming from an ensemble of models including three Integrated Assessment Models, the macroeconomic model NiGEM, and tools for climate impact projections – provide a carefully designed set of climate transition pathways describing the interaction between the economy, energy, land and climate systems. The NGFS long-term scenarios are specifically designed for central banks and supervisors to assess and quantify both transition and physical risks related to various climate policy ambitions. The risk assessments can be tailored to stress-test the financial system, to inform macro-economic policy and to explore alignment of investment strategies with long-term climate goals and climate impacts."
     length: 15
