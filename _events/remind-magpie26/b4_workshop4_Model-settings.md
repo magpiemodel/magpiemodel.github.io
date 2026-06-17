@@ -15,9 +15,6 @@ tracks:
       - shortID: startScript
         length: 45
         presenter: mc
-      - title: break
-        length: 15
-        presenter: 
       - shortID: pr
         length: 30
         presenter: ps
