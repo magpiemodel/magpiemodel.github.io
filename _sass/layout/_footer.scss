@@ -11,6 +11,7 @@
 			font-size: 0.8em;
 			list-style: none;
 			padding-left: 0;
+			margin-bottom: 0.5em;
 
 			li {
 				border-left: solid 1px _palette(border);
@@ -27,6 +28,11 @@
 				}
 			}
 		}
+		.funding {
+              font-size: 0.8em;       /* same size as the copyright list */
+              color: _palette(fg-light);
+              margin: 0;              /* removes the empty line */
+        }
 
 		@include breakpoint(xsmall) {
 			.copyright {
