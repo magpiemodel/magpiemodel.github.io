@@ -5,7 +5,7 @@ shortID: workshop
 home: true
 workshopID: 22
 published: true
-description: The MAgPIE22 workshop & stories event took place online from March 07th until March 16th 2024. 
+description: The MAgPIE22 workshop & stories event took place online from March 07th until March 16th 2022. 
 archived: true
 image: assets/images/generic/pic01.jpg
 ---
